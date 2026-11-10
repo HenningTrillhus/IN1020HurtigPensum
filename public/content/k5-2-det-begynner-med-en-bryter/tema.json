@@ -2,6 +2,32 @@
   "id": "k5-2-det-begynner-med-en-bryter",
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.2 Det begynner med en bryter",
-  "description": "",
-  "videos": []
+  "description": "Fra sant og usant til AND, OR, NOT og trappekoblingen, og hvorfor det lønner seg å spare porter.",
+  "videos": [
+    {
+      "title": "5.2 Det begynner med en bryter (del 1)",
+      "file": "video1.mp4",
+      "summary": "Sant eller usant er det samme som ett bit: 1 eller 0."
+    },
+    {
+      "title": "5.2 Det begynner med en bryter (del 2)",
+      "file": "video2.mp4",
+      "summary": "To brytere etter hverandre er AND. Ved siden av hverandre er det OR."
+    },
+    {
+      "title": "5.2 Det begynner med en bryter (del 3)",
+      "file": "video3.mp4",
+      "summary": "Brytere som gjør det motsatte gir NOT, og trappekoblingen er noe helt nytt."
+    },
+    {
+      "title": "5.2 Det begynner med en bryter (del 4)",
+      "file": "video4.mp4",
+      "summary": "Port, funksjon og krets: tre ord, tre betydninger."
+    },
+    {
+      "title": "5.2 Det begynner med en bryter (del 5)",
+      "file": "video5.mp4",
+      "summary": "Færre porter betyr mindre, kjøligere og raskere."
+    }
+  ]
 }
