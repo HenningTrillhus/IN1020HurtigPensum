@@ -1,6 +1,6 @@
 {
   "id": "k6-4-inverter",
-  "chapter": "Kapittel 6 – Transistoren og klokka",
+  "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.4 Inverteren",
   "description": "Den første porten vi bygger: to transistorer, og et ettall som ikke kommer fra inngangen.",
   "videos": [

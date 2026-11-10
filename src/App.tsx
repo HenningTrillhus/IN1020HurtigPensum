@@ -4,6 +4,7 @@ import Overview from './pages/Overview'
 import Feed from './pages/Feed'
 import Podcast from './pages/Podcast'
 import Quiz from './pages/Quiz'
+import Wip from './pages/Wip'
 import Disclaimer from './Disclaimer'
 
 const base = import.meta.env.BASE_URL + 'content/'
@@ -31,10 +32,13 @@ export default function App() {
   const topic = topics.find(t => t.id === id)
 
   if (!topic) return <Overview topics={topics} />
+  // Temaer uten videoer er ikke klare ennå.
+  if (topic.videos.length === 0) return <Wip topic={topic} />
   const common = { topic, base: `${base}${topic.id}/`, onChange: () => bump(n => n + 1) }
   const chapterName = (t: Topic) => t.chapter ?? 'Temaer'
   const chapter = chapterName(topic)
-  const chapterTopics = topics.filter(t => chapterName(t) === chapter)
+  // Feeden sveiper bare gjennom temaer som har videoer.
+  const chapterTopics = topics.filter(t => chapterName(t) === chapter && t.videos.length > 0)
 
   // Når en video fra et annet tema kommer i bildet, oppdaterer vi adressen (uten ny sidelasting)
   // slik at fanene og «tilbake til videoer» følger med.

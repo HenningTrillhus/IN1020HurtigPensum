@@ -1,0 +1,12 @@
+{
+  "id": "k7-2-hvorfor-det-ma-vaere-et-hierarki",
+  "chapter": "Kapittel 7 – Minnehierarki og pipeline",
+  "title": "7.2 Hvorfor det må være et hierarki",
+  "description": "Hvorfor maskinen din har en minnepyramide: register, cache, minne og disk.",
+  "videos": [
+    {
+      "title": "Hvorfor maskinen din har en minnepyramide",
+      "file": "video1.mp4"
+    }
+  ]
+}

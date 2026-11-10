@@ -1,6 +1,6 @@
 {
   "id": "k6-5-nand-nor",
-  "chapter": "Kapittel 6 – Transistoren og klokka",
+  "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.5 NAND, NOR og hvorfor AND er dyrere",
   "description": "Serie og parallell i silisium, og regnskapet i transistorer.",
   "videos": [

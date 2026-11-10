@@ -34,10 +34,14 @@ export default function Overview({ topics }: { topics: Topic[] }) {
               const n = t.videos.length
               const best = getQuizBest(t.id)
               return (
-                <a key={t.id} className="card" href={`#/${t.id}/feed`}>
+                <a key={t.id} className={`card${n === 0 ? ' wip' : ''}`} href={`#/${t.id}/feed`}>
                   <h2>{t.title}</h2>
-                  <p>{t.description}</p>
-                  <small>{n} {n === 1 ? 'video' : 'videoer'}{best >= 0 ? ` · quiz best: ${best}` : ''}</small>
+                  {t.description && <p>{t.description}</p>}
+                  <small>
+                    {n} {n === 1 ? 'video' : 'videoer'}
+                    {best >= 0 ? ` · quiz best: ${best}` : ''}
+                    {n === 0 && <span className="badge">🚧 Work in progress</span>}
+                  </small>
                 </a>
               )
             })}

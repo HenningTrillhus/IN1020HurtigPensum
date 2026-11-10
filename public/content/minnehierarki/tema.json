@@ -1,9 +1,0 @@
-{
-  "id": "minnehierarki",
-  "chapter": "Andre temaer",
-  "title": "Minnehierarki",
-  "description": "Hvorfor maskinen din har en minnepyramide: register, cache, minne og disk.",
-  "videos": [
-    { "title": "Hvorfor maskinen din har en minnepyramide", "file": "video1.mp4" }
-  ]
-}

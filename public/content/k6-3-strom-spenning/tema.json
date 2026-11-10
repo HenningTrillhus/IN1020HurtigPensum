@@ -1,6 +1,6 @@
 {
   "id": "k6-3-strom-spenning",
-  "chapter": "Kapittel 6 – Transistoren og klokka",
+  "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.3 Strøm, spenning og jord",
   "description": "Hvorfor en port trenger strøm, og hvor 0 og 1 egentlig kommer fra: VDD og GND.",
   "videos": [
