@@ -1,8 +1,6 @@
 import { useMemo, useState, type CSSProperties } from 'react'
 import type { Topic } from '../types'
-
-// Små bokstaver uten tegn som skiller æ/ø/å fra a/o, så «jord» finner «Jord» og «strom» finner «strøm».
-const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/ø/g, 'o').replace(/æ/g, 'ae')
+import { norm } from '../search'
 
 /** Fagbegreper for ett delkapittel, med søk. */
 export default function Terms({ topic }: { topic: Topic }) {

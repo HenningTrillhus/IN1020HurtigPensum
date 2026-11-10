@@ -3,6 +3,7 @@ import type { Chapter } from '../chapters'
 import { getQuizBest } from '../storage'
 import PodButtons from '../PodButtons'
 import { ThemeToggle } from '../theme'
+import ChapterSearch from '../ChapterSearch'
 
 // «6.2 Bryteren …» -> { num: '6.2', text: 'Bryteren …' }
 function splitTitle(title: string) {
@@ -25,6 +26,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
           <a href={compendiumUrl} target="_blank" rel="noreferrer">Les kompendiet for {chapter.label.toLowerCase()} (PDF)</a>
         </p>
       )}
+      {chapter.topics.length > 0 && <ChapterSearch topics={chapter.topics} compendiumUrl={compendiumUrl} />}
       {chapter.topics.length === 0 ? (
         <div className="wip-page">
           <h2>Work in progress</h2>
