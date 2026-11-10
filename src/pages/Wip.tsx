@@ -7,7 +7,7 @@ export default function Wip({ topic, backHref, backLabel }: { topic: Topic; back
       <nav className="tabs">
         <a href={backHref}>← {backLabel}</a>
       </nav>
-      <div className="wip">
+      <div className="wip-page">
         <div className="wip-icon" aria-hidden>🚧</div>
         <h2>Work in progress</h2>
         <p className="wip-topic">{topic.title}</p>

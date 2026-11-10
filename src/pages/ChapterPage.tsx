@@ -1,5 +1,12 @@
+import type { CSSProperties } from 'react'
 import type { Chapter } from '../chapters'
 import { getQuizBest } from '../storage'
+
+// «6.2 Bryteren …» -> { num: '6.2', text: 'Bryteren …' }
+function splitTitle(title: string) {
+  const m = /^(\d+(?:\.\d+)*)\s+(.*)$/.exec(title)
+  return m ? { num: m[1], text: m[2] } : { num: '•', text: title }
+}
 
 // Ett kapittel: alle delkapitlene.
 export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapter; compendiumUrl?: string }) {
@@ -16,25 +23,35 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
         </p>
       )}
       {chapter.topics.length === 0 ? (
-        <div className="wip">
+        <div className="wip-page">
           <div className="wip-icon" aria-hidden>🚧</div>
           <h2>Work in progress</h2>
           <p>Delkapitlene og videoene til dette kapitlet er ikke klare ennå. Kom tilbake senere!</p>
         </div>
       ) : (
         <div className="grid">
-          {chapter.topics.map(t => {
+          {chapter.topics.map((t, i) => {
             const n = t.videos.length
             const best = getQuizBest(t.id)
+            const { num, text } = splitTitle(t.title)
             return (
-              <a key={t.id} className={`card${n === 0 ? ' wip' : ''}`} href={`#/${t.id}/feed`}>
-                <h2>{t.title}</h2>
-                {t.description && <p>{t.description}</p>}
-                <small>
-                  {n} {n === 1 ? 'video' : 'videoer'}
-                  {best >= 0 ? ` · quiz best: ${best}` : ''}
-                  {n === 0 && <span className="badge">🚧 Work in progress</span>}
-                </small>
+              <a
+                key={t.id}
+                className={`card${n === 0 ? ' wip' : ''}`}
+                style={{ '--i': Math.min(i, 10) } as CSSProperties}
+                href={`#/${t.id}/feed`}
+              >
+                <span className="num sm">{num}</span>
+                <div className="body">
+                  <h2>{text}</h2>
+                  {t.description && <p>{t.description}</p>}
+                  <small>
+                    <span>{n} {n === 1 ? 'video' : 'videoer'}</span>
+                    {best >= 0 && <span>· quiz best: {best}</span>}
+                    {n === 0 && <span className="badge">🚧 Work in progress</span>}
+                  </small>
+                </div>
+                <span className="chev" aria-hidden>›</span>
               </a>
             )
           })}

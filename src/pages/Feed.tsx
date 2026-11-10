@@ -27,7 +27,8 @@ interface SlideProps {
   total: number
   stat?: Stat
   onStat: (id: string, patch: (s: Stat) => Stat) => void
-  onActive: (topicId: string) => void
+  /** Meldes når denne videoen kommer i bildet (tema og plass i kapitlet). */
+  onActive: (topicId: string, pos: number) => void
 }
 
 const fmt = (n: number) => (n >= CAP ? `${CAP}+` : String(n))
@@ -41,11 +42,18 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
   const [muted, setMuted] = useState(!isSoundOn())
   const [vote, setVote] = useState<Vote>(getVote(id))
   const [fullscreen, setFullscreen] = useState(false)
+  const [ready, setReady] = useState(false) // første bilde er lastet
+  const [buffering, setBuffering] = useState(false)
+  const [active, setActive] = useState(false)
+  const [popped, setPopped] = useState<'up' | 'down' | null>(null)
   // Observer-callbacken lages bare én gang, så den leser siste tall via ref.
   const statRef = useRef(stat)
   statRef.current = stat
 
   useEffect(() => subscribeSound(() => setMuted(false)), [])
+
+  // Videoen kan allerede være lastet (cache) før vi rakk å lytte.
+  useEffect(() => { if ((vid.current?.readyState ?? 0) >= 2) setReady(true) }, [])
 
   // Skjul overlegget i fullskjerm. Standard fullskjerm viser bare selve videoen,
   // men dette dekker også nettlesere som tar hele kortet (og iOS sin egen spiller).
@@ -72,15 +80,19 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
     const io = new IntersectionObserver(([e]) => {
       const video = vid.current
       if (e.isIntersecting) {
+        setActive(true)
         video?.play().catch(() => {})
-        onActive(topic.id)
+        onActive(topic.id, pos)
         if (!missing && !hasViewed(id)) {
           // Står telleren på taket, sendes ingenting til serveren.
           const full = (statRef.current?.views ?? 0) >= CAP
           sendView(id, !full)
           if (!full) onStat(id, s => ({ ...s, views: Math.min(s.views + 1, CAP) }))
         }
-      } else video?.pause()
+      } else {
+        setActive(false)
+        video?.pause()
+      }
     }, { threshold: 0.7 })
     io.observe(el)
     return () => io.disconnect()
@@ -101,6 +113,8 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
     if (vote === target) return
     const next: Vote = target
     setVote(next)
+    setPopped(target)
+    window.setTimeout(() => setPopped(null), 500)
     const canDec = open(vote)
     const canInc = open(next)
     // Skjermen oppdateres med en gang, men serveren får bare det endelige valget etter ca. 30 sekunder i ro,
@@ -116,13 +130,26 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
     })
   }
 
+  const cls = ['slide', !missing && !ready && 'loading', ready && 'ready', active && 'active'].filter(Boolean).join(' ')
+
   return (
-    <section className="slide" ref={ref} data-topic={topic.id} data-index={i}>
+    <section className={cls} ref={ref} data-topic={topic.id} data-index={i}>
       {missing ? (
         <div className="placeholder"><p>Video mangler</p><small>{v.file}</small></div>
       ) : (
-        <video ref={vid} src={`${root}${topic.id}/${v.file}`} loop playsInline muted={muted} controls preload="metadata" onError={() => setMissing(true)} />
+        <video
+          ref={vid}
+          // #t=0.1 gjør at første bilde vises som forhåndsvisning før du trykker play.
+          src={`${root}${topic.id}/${v.file}#t=0.1`}
+          loop playsInline muted={muted} controls preload="metadata"
+          onLoadedData={() => setReady(true)}
+          onWaiting={() => setBuffering(true)}
+          onPlaying={() => setBuffering(false)}
+          onCanPlay={() => setBuffering(false)}
+          onError={() => setMissing(true)}
+        />
       )}
+      {!missing && (!ready || buffering) && <div className="spin" aria-hidden />}
       {!missing && muted && !fullscreen && (
         <button className="sound" onClick={() => { enableSound(); vid.current?.play().catch(() => {}) }}>
           🔇 Trykk for lyd
@@ -130,14 +157,20 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
       )}
       {!missing && !fullscreen && (
         <div className="actions">
-          <button className={`vote${vote === 'up' ? ' on' : ''}`} onClick={() => cast('up')} aria-pressed={vote === 'up'} aria-label="Tommel opp">
+          <button
+            className={`vote${vote === 'up' ? ' on' : ''}${popped === 'up' ? ' pop' : ''}`}
+            onClick={() => cast('up')} aria-pressed={vote === 'up'} aria-label="Tommel opp"
+          >
             <ThumbUp filled={vote === 'up'} />
           </button>
-          <span className="count">{stat ? fmt(stat.likes) : ''}</span>
-          <button className={`vote${vote === 'down' ? ' on down' : ''}`} onClick={() => cast('down')} aria-pressed={vote === 'down'} aria-label="Tommel ned">
+          <span className="count" key={`l${stat?.likes}`}>{stat ? fmt(stat.likes) : ''}</span>
+          <button
+            className={`vote${vote === 'down' ? ' on down' : ''}${popped === 'down' ? ' pop' : ''}`}
+            onClick={() => cast('down')} aria-pressed={vote === 'down'} aria-label="Tommel ned"
+          >
             <ThumbDown filled={vote === 'down'} />
           </button>
-          <span className="count">{stat ? fmt(stat.dislikes) : ''}</span>
+          <span className="count" key={`d${stat?.dislikes}`}>{stat ? fmt(stat.dislikes) : ''}</span>
         </div>
       )}
       {!missing && !fullscreen && stat && (
@@ -164,14 +197,15 @@ function EndSlide({ onDone }: { onDone: () => void }) {
     let timer: number | undefined
     const io = new IntersectionObserver(([e]) => {
       window.clearTimeout(timer)
-      if (e.isIntersecting) timer = window.setTimeout(onDone, 400)
+      if (e.isIntersecting) timer = window.setTimeout(onDone, 700)
     }, { threshold: 0.7 })
     io.observe(el)
     return () => { io.disconnect(); window.clearTimeout(timer) }
   }, [])
   return (
     <section className="slide end" ref={ref}>
-      <p className="end-title">Ferdig med kapitlet 🎉</p>
+      <div className="end-emoji" aria-hidden>🎉</div>
+      <p className="end-title">Ferdig med kapitlet!</p>
       <small>Tar deg tilbake til kapitlet …</small>
       <button onClick={onDone}>Tilbake til kapitlet</button>
     </section>
@@ -179,16 +213,22 @@ function EndSlide({ onDone }: { onDone: () => void }) {
 }
 
 export default function Feed({ topics, root, startId, chapter, exitHash, onActive }: P) {
+  const slides = topics.flatMap(t => t.videos.map((_, i) => ({ topic: t, i })))
+  const startIdx = Math.max(0, slides.findIndex(s => s.topic.id === startId))
+
   const [stats, setStats] = useState<Record<string, Stat>>({})
+  const [current, setCurrent] = useState(startIdx)
   const feedRef = useRef<HTMLDivElement>(null)
   const ready = useRef(false)
   const activeRef = useRef(onActive)
   activeRef.current = onActive
 
-  const slides = topics.flatMap(t => t.videos.map((_, i) => ({ topic: t, i })))
-
-  // Meld bare fra om aktivt tema etter at vi har scrollet til startvideoen.
-  const report = useCallback((id: string) => { if (ready.current) activeRef.current(id) }, [])
+  // Meld bare fra om aktiv video etter at vi har scrollet til startvideoen.
+  const report = useCallback((id: string, pos: number) => {
+    if (!ready.current) return
+    setCurrent(pos)
+    activeRef.current(id)
+  }, [])
 
   useLayoutEffect(() => {
     const feed = feedRef.current!
@@ -236,6 +276,9 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
 
   return (
     <div className="feed-wrap">
+      <div className="segs" aria-hidden>
+        {slides.map((_, k) => <i key={k} className={`seg${k < current ? ' done' : k === current ? ' cur' : ''}`} />)}
+      </div>
       <div className="feed" ref={feedRef}>
         {slides.map((s, pos) => (
           <Slide

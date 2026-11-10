@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Topic } from './types'
 import { buildChapters, chapterInfo, type EmptyChapter } from './chapters'
+import { Loader, LoadError } from './Loader'
 import Overview from './pages/Overview'
 import ChapterPage from './pages/ChapterPage'
 import Feed from './pages/Feed'
@@ -10,6 +11,7 @@ import Wip from './pages/Wip'
 import Disclaimer from './Disclaimer'
 
 const base = import.meta.env.BASE_URL + 'content/'
+const SITE = 'IN1020 Hurtigpensum'
 
 interface Index {
   topics: string[]
@@ -20,13 +22,34 @@ interface Index {
   compendia?: Record<string, string>
 }
 
+async function getJson<T>(url: string): Promise<T> {
+  const r = await fetch(url)
+  if (!r.ok) throw new Error(`${url}: ${r.status}`)
+  return r.json()
+}
+
 export default function App() {
   const [topics, setTopics] = useState<Topic[] | null>(null)
   const [empty, setEmpty] = useState<EmptyChapter[]>([])
   const [courseUrl, setCourseUrl] = useState<string | undefined>()
   const [compendia, setCompendia] = useState<Record<string, string>>({})
   const [hash, setHash] = useState(location.hash)
+  const [error, setError] = useState(false)
+  const [attempt, setAttempt] = useState(0)
   const [, bump] = useState(0)
+
+  // Lasteanimasjonen vises minst en kort stund første gang i en økt, så den ikke bare blinker forbi.
+  const [minDone, setMinDone] = useState(() => {
+    try { return sessionStorage.getItem('loaded') === '1' } catch { return false }
+  })
+  useEffect(() => {
+    if (minDone) return
+    const t = window.setTimeout(() => {
+      setMinDone(true)
+      try { sessionStorage.setItem('loaded', '1') } catch { /* ignore */ }
+    }, 1100)
+    return () => window.clearTimeout(t)
+  }, [])
 
   useEffect(() => {
     const on = () => setHash(location.hash)
@@ -35,18 +58,40 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    fetch(base + 'index.json').then(r => r.json()).then(async (idx: Index) => {
-      const all = await Promise.all(idx.topics.map(id => fetch(`${base}${id}/tema.json`).then(r => r.json())))
-      setEmpty(idx.emptyChapters ?? [])
-      setCourseUrl(idx.courseUrl)
-      setCompendia(idx.compendia ?? {})
-      setTopics(all)
-    })
-  }, [])
+    let alive = true
+    getJson<Index>(base + 'index.json')
+      .then(async idx => {
+        const all = await Promise.all(idx.topics.map(id => getJson<Topic>(`${base}${id}/tema.json`)))
+        if (!alive) return
+        setEmpty(idx.emptyChapters ?? [])
+        setCourseUrl(idx.courseUrl)
+        setCompendia(idx.compendia ?? {})
+        setTopics(all)
+      })
+      .catch(() => { if (alive) setError(true) })
+    return () => { alive = false }
+  }, [attempt])
 
   const chapters = useMemo(() => (topics ? buildChapters(topics, empty) : []), [topics, empty])
 
-  if (!topics) return <p className="loading">Laster…</p>
+  // Sidetittel per side, og start øverst ved sidebytte.
+  useEffect(() => {
+    if (!topics) return
+    const [, a, b] = hash.replace('#', '').split('/')
+    let title = SITE
+    if (a === 'kap') {
+      const c = chapters.find(x => x.key === b)
+      if (c) title = `${c.label}${c.title ? ` – ${c.title}` : ''} · ${SITE}`
+    } else {
+      const t = topics.find(x => x.id === a)
+      if (t) title = `${t.title} · ${SITE}`
+    }
+    document.title = title
+    window.scrollTo(0, 0)
+  }, [hash, topics, chapters])
+
+  if (error) return <LoadError onRetry={() => { setError(false); setAttempt(n => n + 1) }} />
+  if (!topics || !minDone) return <Loader />
 
   // Adresser: #/ (forsiden), #/kap/<n> (ett kapittel), #/<tema>/<feed|podcast|quiz> (ett tema)
   const [, a, b] = hash.replace('#', '').split('/')

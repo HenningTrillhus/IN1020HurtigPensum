@@ -7,7 +7,15 @@ export default function Podcast({ topic, base }: { topic: Topic; base: string; o
   const audio = useRef<HTMLAudioElement>(null)
   const [rate, setRate] = useState(1)
   const [missing, setMissing] = useState(false)
-  if (!p) return <p className="pad">Ingen podkast for dette temaet.</p>
+  if (!p) {
+    return (
+      <div className="pad wip-page">
+        <div className="wip-icon" aria-hidden>🎧</div>
+        <h2>Podkast kommer snart</h2>
+        <p>Det er ingen podkast for dette temaet ennå.</p>
+      </div>
+    )
+  }
   const key = `${topic.id}:podcast`
   return (
     <div className="pad">
