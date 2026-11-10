@@ -438,14 +438,16 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
               {siblings.map(s => (
                 <li key={s.pos}>
                   <button
-                    className={`sheet-row${s.pos === current ? ' on' : ''}`}
+                    className={`sheet-row${s.pos === current ? ' sel' : ''}`}
                     onClick={() => jump(s)}
                     aria-current={s.pos === current ? 'true' : undefined}
                     autoFocus={s.pos === current}
                   >
                     <span className="num sm">{s.i + 1}</span>
-                    <span className="sheet-title">{s.topic.videos[s.i].title}</span>
-                    {s.pos === current && <span className="sheet-now">Spiller nå</span>}
+                    <span className="sheet-text">
+                      <span className="sheet-title">{s.topic.videos[s.i].title}</span>
+                      {s.pos === current && <span className="sheet-now">Spiller nå</span>}
+                    </span>
                   </button>
                 </li>
               ))}
