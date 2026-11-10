@@ -1,0 +1,17 @@
+{
+  "id": "k6-10-varmeveggen",
+  "chapter": "Kapittel 6 – Transistoren og klokka",
+  "title": "6.10 Hvorfor klokka stoppet på 3 GHz",
+  "description": "Moores lov, varme, varmeveggen og veien til flere kjerner.",
+  "videos": [
+    { "title": "Hvorfor blir maskinen varm?", "file": "video1.mp4", "summary": "Hvert badekar som fylles og tømmes koster en slurk som blir til varme." },
+    { "title": "Varmeveggen og flere kjerner", "file": "video2.mp4", "summary": "Rundt 2004 stoppet fart. Svaret ble flere kjerner." }
+  ],
+  "quiz": [
+    { "q": "Hvorfor blir en brikke varm?", "options": ["Transistorene gnisser mot hverandre", "Hvert kar som fylles og tømmes koster energi som blir til varme", "Bitene lagres som varme"], "answer": 1 },
+    { "q": "Du dobler spenningen og lar resten stå. Hva skjer med effekten?", "options": ["Den dobles", "Den halveres", "Den firedobles"], "answer": 2 },
+    { "q": "Hva er varmeveggen?", "options": ["Brikken smelter ved 1 GHz", "Spenningen kunne ikke senkes mer, så frekvensen kunne ikke økes uten for mye varme", "Moores lov som stoppet"], "answer": 1 },
+    { "q": "Hvorfor ble svaret flere kjerner?", "options": ["To kjerner på samme frekvens gir like mange beregninger uten spenningsøkningen en dobbelt så rask kjerne krevde", "Programmer blir raskere av seg selv på flere kjerner", "Små kjerner er billigere å lage"], "answer": 0 },
+    { "q": "Hva er Moores lov?", "options": ["En naturlov om transistorer", "En observasjon om dobling annethvert år som ble en selvoppfyllende bransjeplan", "En lov om klokkefrekvens"], "answer": 1 }
+  ]
+}

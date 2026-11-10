@@ -1,0 +1,14 @@
+{
+  "id": "k6-2-transistor",
+  "chapter": "Kapittel 6 – Transistoren og klokka",
+  "title": "6.2 Bryteren som ikke trenger en finger",
+  "description": "Fra lysbryter til transistor: en bryter styrt av et signal. nMOS og pMOS.",
+  "videos": [
+    { "title": "En bryter uten finger", "file": "video1.mp4", "summary": "En datamaskin har ingen fingre. Hvem trykker på bryterne?" }
+  ],
+  "quiz": [
+    { "q": "Hva er en transistor, sagt med én setning?", "options": ["En lyspære som lagrer biter", "En bryter som styres av et elektrisk signal i stedet for av en finger", "En ledning som alltid leder strøm"], "answer": 1 },
+    { "q": "Når leder en nMOS-transistor?", "options": ["Når styresignalet er 0", "Alltid", "Når styresignalet er 1"], "answer": 2 },
+    { "q": "Hva betyr boblen på styreledningen til en transistor?", "options": ["Transistoren leder ved 1", "Det er en pMOS-transistor som leder ved 0", "Transistoren er ødelagt"], "answer": 1 }
+  ]
+}

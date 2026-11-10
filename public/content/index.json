@@ -1,0 +1,14 @@
+{
+  "topics": [
+    "k6-2-transistor",
+    "k6-3-strom-spenning",
+    "k6-4-inverter",
+    "k6-5-nand-nor",
+    "k6-6-omrader",
+    "k6-7-det-tar-tid",
+    "k6-8-kritisk-vei",
+    "k6-9-klokka",
+    "k6-10-varmeveggen",
+    "minnehierarki"
+  ]
+}
