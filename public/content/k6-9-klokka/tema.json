@@ -10,6 +10,40 @@
       "summary": "Klokka er en avtale om når det er trygt å se."
     }
   ],
+  "terms": [
+    {
+      "term": "Klokke (klokkesignal)",
+      "def": "En ledning som veksler mellom 0 og 1 i et helt jevnt mønster, og som går til nesten alt på brikken. Den er en avtale om når det er trygt å se: tiden deles i like lange biter, alle kretser jobber fritt innenfor biten, og på slutten av biten lagres alle svarene samtidig. Det er ikke fordi verdier lekker ut, for porten holder utgangen aktivt oppe."
+    },
+    {
+      "term": "Klokkeperiode",
+      "def": "Tiden fra ett sted i mønsteret til samme sted neste gang, for eksempel fra en stigende flanke til neste stigende flanke. Perioden må være minst like lang som den kritiske veien, ellers lagres et halvferdig svar og maskinen regner feil."
+    },
+    {
+      "term": "Frekvens",
+      "def": "Hvor mange klokkeperioder som går per sekund: frekvens = 1 / klokkeperioden. En prosessor på 3 GHz har en periode på 1 / (3 · 10⁹) s, som er omtrent 333 ps."
+    },
+    {
+      "term": "Hertz (Hz) og gigahertz (GHz)",
+      "def": "Enheten for frekvens, etter fysikeren Heinrich Hertz. 1 Hz er én periode i sekundet, og 1 GHz er en milliard perioder i sekundet."
+    },
+    {
+      "term": "Stigende og fallende flanke",
+      "def": "Stigende flanke er øyeblikket signalet går fra 0 til 1, og fallende flanke er det motsatte. Det er på flankene ting skjer: da lagres resultatene."
+    },
+    {
+      "term": "Overklokking",
+      "def": "Å sette klokkeperioden kortere enn produsenten anbefaler og håpe at marginen var romsligere enn oppgitt. Ofte går det bra, men ellers får man tilfeldige krasj. Det er ikke programvarefeil, men kretser som ikke rakk fram."
+    },
+    {
+      "term": "Margin",
+      "def": "Ekstra tid i klokkeperioden, utover selve regnetiden, for at brikken er varm, for at akkurat dette eksemplaret er litt tregere enn gjennomsnittet, og for at klokkesignalet ikke kommer helt samtidig overalt."
+    },
+    {
+      "term": "Global og lokal klokke",
+      "def": "En moderne brikke har flere klokker. Kjernene kan gå i én takt, minnegrensesnittet i en annen og grafikken i en tredje. Deler som ikke er i bruk, kan få klokka slått helt av. Når noen oppgir at en maskin går i 3,5 GHz, er det den globale klokka til prosessorkjernene."
+    }
+  ],
   "quiz": [
     {
       "q": "Hvorfor trenger en maskin klokke?",

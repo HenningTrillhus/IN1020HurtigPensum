@@ -10,6 +10,48 @@
       "summary": "AND føles enklest. I silisium er det motsatt."
     }
   ],
+  "terms": [
+    {
+      "term": "NAND",
+      "def": "En port som gir 0 bare når begge inngangene er 1, og 1 i alle andre tilfeller. Den har fire transistorer: to nMOS i serie nede mot GND og to pMOS i parallell oppe mot VDD."
+    },
+    {
+      "term": "NOR",
+      "def": "Samme idé som NAND, men speilvendt: de to pMOS-ene står i serie oppe og de to nMOS-ene i parallell nede. Den har fire transistorer, og utgangen er 1 bare når begge inngangene er 0."
+    },
+    {
+      "term": "AND",
+      "def": "En AND-port er bygget som en NAND med en inverter etter, altså to trinn der det andre snur tilbake. Den koster seks transistorer, halvannen gang så mye som NAND."
+    },
+    {
+      "term": "OR",
+      "def": "En OR-port er en NOR med en inverter etter, og koster seks transistorer."
+    },
+    {
+      "term": "XOR",
+      "def": "En port med flere trinn inni seg som koster mellom 8 og 12 transistorer, avhengig av oppskrift."
+    },
+    {
+      "term": "Serie",
+      "def": "Brytere eller transistorer etter hverandre. Strømmen må gjennom begge, så begge må lede."
+    },
+    {
+      "term": "Parallell",
+      "def": "Brytere eller transistorer ved siden av hverandre. Strømmen har to veier å velge mellom, så det holder at én leder."
+    },
+    {
+      "term": "Trinn",
+      "def": "En gruppe transistorer oppe mot VDD og en gruppe nede mot GND. De to gruppene gjør alltid det motsatte av hverandre, og derfor snur et slikt trinn alltid signalet. Det er grunnen til at AND ikke kan bygges i ett trinn."
+    },
+    {
+      "term": "Sannhetsverditabell",
+      "def": "En tabell som viser hva utgangen på en port er for alle kombinasjoner av innganger. Du kan bruke den til å sjekke at en transistorkobling gir riktig port."
+    },
+    {
+      "term": "Transistorregnskap",
+      "def": "NOT koster 2 transistorer, NAND 4, NOR 4, AND 6, OR 6 og XOR 8 til 12 (porter med to innganger). Hver port du sparer, er et håndfast antall transistorer som slipper å ta plass, trekke strøm og bli varme. Derfor skriver en kretsdesigner heller om et uttrykk til NAND-er enn til AND-er."
+    }
+  ],
   "quiz": [
     {
       "q": "Hvor mange transistorer er det i en NAND-port og en AND-port?",

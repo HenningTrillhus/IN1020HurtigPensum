@@ -6,6 +6,7 @@ import Overview from './pages/Overview'
 import ChapterPage from './pages/ChapterPage'
 import Feed from './pages/Feed'
 import Quiz from './pages/Quiz'
+import Terms from './pages/Terms'
 import PodButtons from './PodButtons'
 import type { Exam } from './ExamCountdown'
 import { MiniPlayer, PlayerProvider } from './player'
@@ -143,6 +144,9 @@ function AppInner() {
       <nav className="tabs">
         <a href={chapterHref}>← {info.label}</a>
         <a className={!view || view === 'feed' ? 'on' : ''} href={`#/${topic.id}/feed`}>Videoer</a>
+        {topic.terms?.length ? (
+          <a className={view === 'begreper' ? 'on' : ''} href={`#/${topic.id}/begreper`}>Fagbegreper</a>
+        ) : null}
         <a className={view === 'quiz' ? 'on' : ''} href={`#/${topic.id}/quiz`}>Quiz</a>
       </nav>
       <Disclaimer compact compendiumUrl={compendia[info.key]} chapterLabel={info.label} />
@@ -152,7 +156,7 @@ function AppInner() {
           <PodButtons topic={topic} compact />
         </div>
       ) : null}
-      {view === 'quiz' ? <Quiz {...common} /> : (
+      {view === 'begreper' ? <Terms topic={topic} /> : view === 'quiz' ? <Quiz {...common} /> : (
         <Feed
           key={info.key}
           topics={chapterTopics}

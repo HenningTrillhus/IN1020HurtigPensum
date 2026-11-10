@@ -10,6 +10,32 @@
       "summary": "Fem porter à 5 ps. Hvor lang tid? Ikke 25."
     }
   ],
+  "terms": [
+    {
+      "term": "Kritisk vei",
+      "def": "Den lengste veien fra en inngang til en utgang i en krets. Den bestemmer hvor rask kretsen er, og er den eneste en designer bryr seg om å gjøre kortere. Å gjøre noe på en av de andre veiene raskere endrer ingenting."
+    },
+    {
+      "term": "Portene jobber samtidig",
+      "def": "Portene jobber ikke etter tur. De jobber alle sammen hele tiden, og en port begynner i samme øyeblikk inngangene er klare. Tiden gjennom en krets er derfor ikke summen av alle portene, men lengden på den lengste veien."
+    },
+    {
+      "term": "Fulladder",
+      "def": "Kretsen fra kapittel 5 som legger sammen to bit og en mente inn (Cinn), og gir en sum og en mente ut (Cut). Den har fem porter, men bare tre ligger etter hverandre på den kritiske veien (XOR, AND og OR). Den bruker derfor 15 ps, ikke 25 ps."
+    },
+    {
+      "term": "Mente",
+      "def": "Biten som føres videre til neste plass i en addisjon. Cinn er mente inn til en fulladder, og Cut er mente ut."
+    },
+    {
+      "term": "Mentekjede",
+      "def": "Fulladdere satt etter hverandre. Menten må ut av den første før den andre kan bli ferdig, og den må bli ferdig før den tredje, så ingenting går i parallell og tidene legger seg oppå hverandre. Fire bit koster 60 ps, og 64 bit koster omtrent 960 ps (cirka 1 GHz). Overslaget er litt for pessimistisk: bare det første leddet koster 15 ps, og de 63 andre trenger bare menten gjennom AND og OR, 10 ps hver, så 15 + 63 · 10 = 645 ps."
+    },
+    {
+      "term": "Carry look-ahead",
+      "def": "Kretser som gjetter menten på forhånd i stedet for å vente på den, og slipper dermed køen. De er mye raskere, men bruker betydelig flere transistorer, så det er enda et eksempel på fart mot plass og strøm."
+    }
+  ],
   "quiz": [
     {
       "q": "En fulladder har fem porter på 5 ps hver. Hvor lang tid bruker den?",

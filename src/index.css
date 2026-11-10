@@ -51,9 +51,10 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 .chapter-title { margin: 4px 0 14px; font-size: clamp(24px, 6.5vw, 30px); letter-spacing: -.02em }
 
 /* Faner / tilbake */
-.tabs { display: flex; gap: 8px; margin-bottom: 12px; font-size: 14px; flex-wrap: wrap }
+.tabs { display: flex; gap: 6px; margin-bottom: 12px; font-size: 14px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none }
+.tabs::-webkit-scrollbar { display: none }
 .tabs a {
-  display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 99px;
+  display: inline-flex; align-items: center; flex: none; white-space: nowrap; min-height: 40px; padding: 0 13px; border-radius: 99px;
   background: var(--surface); border: 1px solid var(--line);
   transition: transform .15s var(--ease), background .2s, border-color .2s;
 }
@@ -297,3 +298,22 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 
 /* Feeden skal aldri kollapse til null høyde (f.eks. i et lavt vindu med spilleren åpen). */
 .feed-wrap { min-height: 320px }
+
+/* ============ Fagbegreper ============ */
+.terms-head { margin-bottom: 12px }
+.terms-head h2 { margin: 6px 0 2px }
+.terms-search {
+  width: 100%; min-height: 46px; margin: 4px 0 14px; padding: 0 16px; font: inherit; color: var(--fg);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; outline: none;
+  transition: border-color .2s;
+}
+.terms-search::placeholder { color: var(--mut) }
+.terms-search:focus { border-color: #777 }
+.terms { margin: 0; display: grid; gap: 10px }
+.term {
+  padding: 14px 16px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line);
+  animation: cardIn .35s var(--ease) both; animation-delay: calc(var(--i, 0) * 30ms);
+}
+.term dt { font-weight: 700; font-size: 16px; letter-spacing: -.01em }
+.term dd { margin: 6px 0 0; color: #d4d4d4; font-size: 15px; line-height: 1.55 }
+.terms-empty { padding: 24px 4px }

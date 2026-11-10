@@ -10,6 +10,36 @@
       "summary": "Hvor kommer ettallet fra? Ikke fra inngangen."
     }
   ],
+  "terms": [
+    {
+      "term": "Inverter (NOT-port)",
+      "def": "Den enkleste porten som finnes. Den snur signalet: inn med 0 gir ut 1, og inn med 1 gir ut 0. Den bygges av to transistorer: en pMOS øverst mot VDD og en nMOS nederst mot GND, med utgangen tatt ut midt imellom."
+    },
+    {
+      "term": "Inngang og utgang",
+      "def": "Inngangen går bare til styreledningene og velger hvilken av de to veiene som åpnes. Utgangen tas ut midt mellom transistorene, og verdien på den kommer fra VDD eller GND, aldri fra inngangen."
+    },
+    {
+      "term": "Hvor nullene og ettallene kommer fra",
+      "def": "Hver eneste ener i maskinen er hentet rett fra strømforsyningen, og hver eneste null er hentet fra jord. Signalet som kommer inn i en port bærer ikke verdien videre, det åpner bare en kran. Verdien som renner ut er ny og like sterk uansett hvor slapp inngangen var."
+    },
+    {
+      "term": "Kortslutning",
+      "def": "En rak strøm fra VDD til GND uten at den gjør noe nyttig. Det ville skjedd hvis begge transistorene i en inverter ledet samtidig. Det skjer ikke når inngangen ligger i ro, fordi de to typene reagerer motsatt på den."
+    },
+    {
+      "term": "Nesten ingen strøm i ro",
+      "def": "Når kretsen står i ro, går det nesten ingen strøm gjennom den. Strømmen går bare i det korte øyeblikket utgangen skifter. Derfor kan en telefon ligge på bordet i en uke og fortsatt ha batteri."
+    },
+    {
+      "term": "Omslaget",
+      "def": "I de få pikosekundene inngangen er på vei fra 0 til 1 eller omvendt, er begge transistorene så vidt ledende samtidig. Da renner det en liten, rak strøm fra forsyningen til jord. Den varer kort, men kommer hver gang, og er en av grunnene til at det koster å skifte."
+    },
+    {
+      "term": "CMOS",
+      "def": "Complementary MOS. De to transistortypene, nMOS og pMOS, utfyller hverandre, og det er det «complementary» betyr. Det er teknologien praktisk talt all digital elektronikk er bygget i."
+    }
+  ],
   "quiz": [
     {
       "q": "Hvor mange transistorer er det i en inverter?",

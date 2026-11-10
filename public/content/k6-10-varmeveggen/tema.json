@@ -15,6 +15,52 @@
       "summary": "Rundt 2004 stoppet fart. Svaret ble flere kjerner."
     }
   ],
+  "terms": [
+    {
+      "term": "Moores lov",
+      "def": "Observasjonen om at antallet komponenter man får plass til på en brikke, dobler seg jevnlig. Gordon Moore skrev det i 1965 (en dobling hvert år) og justerte det i 1975 til en dobling annethvert år. Navnet er misvisende, for det er ingen naturlov."
+    },
+    {
+      "term": "Selvoppfyllende profeti",
+      "def": "Noe som slår til fordi alle handler som om det vil slå til. Hele bransjen planla etter Moores spådom, så den ble en felles tidsplan. Det forklarer hvordan den kunne stoppe uten at noen naturlov ble brutt."
+    },
+    {
+      "term": "Krymping av transistorer",
+      "def": "I femti år ga mindre transistorer både flere transistorer på samme flate og raskere transistorer, fordi en mindre transistor har et mindre badekar å fylle. Lenge fikk man begge deler gratis."
+    },
+    {
+      "term": "Hvorfor brikken blir varm",
+      "def": "Hver gang en utgang går fra 0 til 1, fylles et kar fra VDD, og når den går tilbake til 0, tømmes det i jord. Energien er borte og ender som varme. All elektrisk energi en datamaskin tar inn, blir til varme: en laptop på 45 watt varmer rommet like mye som en varmeovn på 45 watt."
+    },
+    {
+      "term": "Effekt",
+      "def": "Hvor mye energi brikken bruker per sekund, og dermed hvor mye varme den avgir. Den måles i watt og er proporsjonal med kapasitans · spenning² · frekvens. Spenningen står i andre potens, så halverer du spenningen, får du en firedel av effekten."
+    },
+    {
+      "term": "Varmeveggen",
+      "def": "Punktet rundt 2004 der spenningen ikke lenger kunne senkes i takt med at transistorene krympet. Fra da ble hver ny gigahertz betalt nesten rett i varme. Det er ingen vegg man kan bryte gjennom med bedre ingeniørkunst, for den står der to ønsker kolliderer: lavere spenning for å spare strøm, og høy nok spenning til at bryteren fortsatt er en bryter."
+    },
+    {
+      "term": "Lekkasje",
+      "def": "En stengt transistor er ikke helt stengt: det lekker alltid litt strøm gjennom, og jo tynnere og mindre transistoren er, jo mer. Utgiften løper hele tiden, også når brikken ikke gjør noe."
+    },
+    {
+      "term": "Kjerne",
+      "def": "En av regneenhetene i en prosessor. Da frekvensen ikke kunne økes mer, fikk vi flere kjerner i stedet for raskere kjerner: to kjerner som går like fort som før, i stedet for én som går dobbelt så fort."
+    },
+    {
+      "term": "Parallellprogrammering",
+      "def": "Å skrive programmer som bruker flere kjerner. To kjerner gjør bare de programmene raskere som er skrevet for å bruke begge. Da frekvensen stoppet i 2004, ble regningen sendt fra maskinvare til programvare, og det er derfor dette gikk fra å være et spesialfelt til noe alle må forholde seg til."
+    },
+    {
+      "term": "Logaritmisk skala",
+      "def": "En akse der hvert hakk oppover er ti ganger så mye som hakket under. Et lite hopp på papiret er da et stort hopp i virkeligheten, og en kurve som ser ut til å stige jevnt, dobler seg i virkeligheten om og om igjen."
+    },
+    {
+      "term": "Prosessnode («2 nm»)",
+      "def": "Navnet på en produksjonsgenerasjon, ikke et mål på noe. I det som markedsføres som en 2 nm-prosess, er den tilsvarende lengden i transistoren snarere 12 til 20 nanometer. Tallet er omtrent som modellåret på en bil."
+    }
+  ],
   "quiz": [
     {
       "q": "Hvorfor blir en brikke varm?",

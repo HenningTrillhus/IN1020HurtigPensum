@@ -24,6 +24,52 @@
       "duration": 404
     }
   ],
+  "terms": [
+    {
+      "term": "Bryter",
+      "def": "Et stykke metall som enten berører et annet stykke metall eller ikke. I kapittel 5 måtte noen trykke den inn for å flytte metallet, men en datamaskin har ingen fingre til det."
+    },
+    {
+      "term": "Styreledning (gate)",
+      "def": "Den tredje ledningen på en transistor. Strømmen går ikke gjennom den, men spenningen på den bestemmer om bryteren leder. På engelsk heter den gate."
+    },
+    {
+      "term": "Kontakter (source og drain)",
+      "def": "De to tilkoblingene på en transistor som strømmen eventuelt går mellom. På engelsk heter de source og drain. Boka kaller dem bare «de to kontaktene»."
+    },
+    {
+      "term": "Spenning på en ledning",
+      "def": "Det er spenning på en ledning når den er koblet til strømkilden, og ingen spenning når den er koblet til jord. Det er de to tilstandene vi skriver som 1 og 0. Foreløpig kan du tenke på det som «trykk på ledningen»."
+    },
+    {
+      "term": "Leder og stengt",
+      "def": "En transistor leder når den slipper strøm gjennom, og er stengt når den ikke gjør det. Boka bruker disse ordene og aldri «åpen» og «lukket»: i andre bøker betyr «åpen bryter» det samme som stengt her."
+    },
+    {
+      "term": "Transistor",
+      "def": "En bryter som styres av et elektrisk signal i stedet for av en finger. Den er laget av silisium, har ingen bevegelige deler og er så liten at det er plass til noen titalls milliarder av dem i en telefon."
+    },
+    {
+      "term": "nMOS",
+      "def": "Transistortypen som leder når styresignalet er 1."
+    },
+    {
+      "term": "pMOS",
+      "def": "Transistortypen som leder når styresignalet er 0. Den tegnes med en liten boble på styreledningen."
+    },
+    {
+      "term": "Boble",
+      "def": "Den lille sirkelen på et portsymbol eller på styreledningen til en transistor. Den betyr «denne gjør det motsatte»."
+    },
+    {
+      "term": "MOS",
+      "def": "Står for metal-oxide-semiconductor og beskriver hvordan transistoren er bygget opp i lag. Bokstavene n og p viser til to måter å behandle silisiumet på, slik at det leder strøm på hver sin måte. Det du må huske, er at nMOS leder ved 1 og pMOS leder ved 0."
+    },
+    {
+      "term": "Silisium",
+      "def": "Materialet transistorene er laget av."
+    }
+  ],
   "quiz": [
     {
       "q": "Hva er en transistor, sagt med én setning?",

@@ -10,6 +10,40 @@
       "summary": "Hver utgang er et badekar som må fylles og tømmes."
     }
   ],
+  "terms": [
+    {
+      "term": "Kapasitans",
+      "def": "Badekaret i vannbildet: hvor mye som må fylles på for at utgangen skal nå ny spenning. Det består av ledningen pluss styreledningene til portene den går til. Kapasitans er ikke en komponent noen har satt inn, men en uunngåelig følge av at ledninger og transistorer er fysiske ting. Den er heller ikke minne."
+    },
+    {
+      "term": "Lading og utlading",
+      "def": "Å sette utgangen til 1 er å fylle karet (krana åpen, avløpet stengt), og å sette den til 0 er å tømme det (krana stengt, avløpet åpent). Begge deler tar tid: jo større kran, jo raskere, og jo større kar, jo lengre tid."
+    },
+    {
+      "term": "Portforsinkelse",
+      "def": "Tiden fra inngangen til en port endrer seg til utgangen har kommet over på den nye verdien. Den er ikke lik for alle porter (en XOR bruker lengre tid enn en NAND), men boka regner med 5 pikosekunder for alle."
+    },
+    {
+      "term": "Pikosekund (ps)",
+      "def": "En billiondel av et sekund, altså 10⁻¹² s. Omtrent tiden én port bruker på å skifte."
+    },
+    {
+      "term": "Nanosekund (ns)",
+      "def": "10⁻⁹ s, tusen ganger lengre enn et pikosekund. En instruksjon kjøres, eller et tall hentes fra arbeidsminnet, på omtrent denne tiden."
+    },
+    {
+      "term": "Mikrosekund (µs)",
+      "def": "10⁻⁶ s. Omtrent tiden en lesing fra en SSD tar."
+    },
+    {
+      "term": "Millisekund (ms)",
+      "def": "10⁻³ s. Omtrent tiden en lesing fra en treg disk tar. Avstanden fra et pikosekund til et sekund er omtrent like stor som fra ett sekund til tretti tusen år."
+    },
+    {
+      "term": "Avveining",
+      "def": "Et valg der du ikke kan få alt. En bredere transistor leverer mer strøm og skifter raskere, men den tar mer plass, trekker mer strøm og er selv et større kar for porten foran. Fart, plass og strøm drar hver sin vei."
+    }
+  ],
   "quiz": [
     {
       "q": "Hva er portforsinkelse?",

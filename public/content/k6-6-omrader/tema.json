@@ -10,6 +10,40 @@
       "summary": "Hvorfor kan en fil kopieres tusen ganger uten tap, men ikke en kassett?"
     }
   ],
+  "terms": [
+    {
+      "term": "Analogt signal",
+      "def": "Et signal som kan ha uendelig mange verdier. En ledning i en brikke kan ha hvilken som helst spenning mellom 0 og 0,8 volt, for eksempel 0,37 volt, og den kan dirre litt opp og ned."
+    },
+    {
+      "term": "Digitalt signal",
+      "def": "Et signal som bare kjenner to verdier, 0 og 1. Det fungerer fordi hver verdi får et spenningsområde å bo i i stedet for én eksakt spenning."
+    },
+    {
+      "term": "Spenningsområde",
+      "def": "0 og 1 er områder, ikke tall. Alt under en viss grense teller som 0, og alt over en annen grense teller som 1. En ener på 0,74 volt og en ener på 0,79 volt er den samme eneren."
+    },
+    {
+      "term": "Udefinert belte",
+      "def": "Beltet mellom de to områdene, der kretsen ikke lover noe om hva den gjør. Det er der med vilje, slik at ingen signaler havner på grensen ved et uhell og velger ulikt fra gang til gang."
+    },
+    {
+      "term": "Støymargin",
+      "def": "Hvor mye juks et signal tåler før det blir misforstått. Bredden på det udefinerte beltet er en designbeslutning."
+    },
+    {
+      "term": "Støy",
+      "def": "Småsvingninger og rusk på en ledning. Signalet dras på av naboledninger, av varme og av at noe annet på brikken skifter i samme øyeblikk."
+    },
+    {
+      "term": "Signalgjenoppretting",
+      "def": "Hver port leser signalet, avgjør om det er over eller under grensa, og lager et helt nytt, skarpt signal fra VDD eller GND. Rusk som samler seg underveis, forsvinner, og regnskapet starter på nytt etter hver port. Derfor overlever en digital kopi av en kopi, mens en kassett kopiert tusen ganger bare blir susing."
+    },
+    {
+      "term": "Abstraksjon",
+      "def": "Et lag som skjuler detaljene under seg. Boka sier at en datamaskin er lag på lag med abstraksjoner, og at abstraksjoner lekker. «Et bit er en 0 eller en 1» er den nederste, og den lekker ikke, fordi hver port tvinger signalet tilbake i form."
+    }
+  ],
   "quiz": [
     {
       "q": "Hva er 0 og 1 i en digital krets?",

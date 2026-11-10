@@ -12,6 +12,9 @@ export interface Podcast {
   duration?: number
 }
 
+/** Et fagbegrep brukt i delkapittelet, med forklaring. */
+export interface Term { term: string; def: string }
+
 export interface Topic {
   id: string
   chapter?: string
@@ -19,5 +22,7 @@ export interface Topic {
   description: string
   videos: Video[]
   podcasts?: Podcast[]
+  /** Fagbegreper i delkapittelet (vises i fanen «Fagbegreper»). */
+  terms?: Term[]
   quiz?: QuizQ[]
 }

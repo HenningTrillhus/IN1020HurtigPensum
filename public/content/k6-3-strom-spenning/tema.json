@@ -10,6 +10,40 @@
       "summary": "En bok trenger ingen strøm for å huske tekst. Det gjør en datamaskin."
     }
   ],
+  "terms": [
+    {
+      "term": "Spenning",
+      "def": "I vannbildet: høydeforskjellen. Står vannet høyt, er det trykk og vannet vil nedover. Spenning måles i volt."
+    },
+    {
+      "term": "Strøm",
+      "def": "I vannbildet: hvor mye vann som faktisk renner. Det avhenger både av høydeforskjellen og av hvor mye krana er skrudd opp. Du kan ha stor spenning og likevel ingen strøm hvis krana er stengt, og akkurat det skaper en stengt transistor."
+    },
+    {
+      "term": "Volt",
+      "def": "Enheten for spenning."
+    },
+    {
+      "term": "Bit som tilstand",
+      "def": "Et bit i en datamaskin er ikke en ting, men en tilstand: en spenning som må holdes oppe et sted i kretsen, og som faller hvis du slipper den. Derfor må en datamaskin ha strøm, mens en bok ikke trenger strøm for å lagre tekst."
+    },
+    {
+      "term": "VDD",
+      "def": "Det høye punktet i kretsen og stedet strømmen kommer inn (forsyningsspenningen). VDD er logisk 1 og ligger rundt 0,8 volt i en moderne prosessor. Navnet kommer av «drain supply voltage», men i boka er det bare et navn på toppen."
+    },
+    {
+      "term": "GND (jord)",
+      "def": "Det lave punktet i kretsen, kort for ground. Det er 0 volt og referansen alt annet måles mot, og det er logisk 0. Jord er et sted så stort at det ikke merkes om du heller litt ladning i det, og derfor fungerer det som en stabil nullstrek."
+    },
+    {
+      "term": "Logisk 1 og logisk 0",
+      "def": "VDD er logisk 1 og GND er logisk 0. Mer er det ikke i oversettelsen mellom elektrisitet og logikk, og det er denne koblingen som gjør at alt du lærte i kapittel 5 faktisk kan sitte i en brikke."
+    },
+    {
+      "term": "Strømmen går fra VDD mot GND",
+      "def": "Strømmen går alltid fra høyt til lavt, aldri andre veien. Derfor har enhver ledning i kretsen en spenning et sted mellom 0 og 0,8 volt."
+    }
+  ],
   "quiz": [
     {
       "q": "Hvilken logisk verdi svarer VDD til?",
