@@ -283,3 +283,18 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important }
 }
+
+/* ============ Nedtelling til eksamen ============ */
+.exam {
+  display: flex; align-items: center; gap: 16px; padding: 14px 18px; margin: 0 0 18px; border-radius: var(--r);
+  background: var(--surface); border: 1px solid var(--line); animation: pageIn .35s var(--ease) both;
+}
+.exam-num { font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; min-width: 1.2ch }
+.exam-text { display: flex; flex-direction: column; gap: 2px; min-width: 0 }
+.exam-text strong { font-size: 16px }
+.exam-text small { font-size: 13px }
+.exam-text a { color: var(--fg); text-decoration: underline; text-decoration-color: #ffffff59; text-underline-offset: 3px }
+.exam-text a:hover { text-decoration-color: var(--fg) }
+
+/* Feeden skal aldri kollapse til null høyde (f.eks. i et lavt vindu med spilleren åpen). */
+.feed-wrap { min-height: 320px }

@@ -66,5 +66,10 @@
     "5": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap05.pdf",
     "6": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap06.pdf",
     "7": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap07.pdf"
+  },
+  "exam": {
+    "date": "2026-12-16T15:00",
+    "label": "Avsluttende skriftlig eksamen",
+    "url": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/eksamen/index.html"
   }
 }

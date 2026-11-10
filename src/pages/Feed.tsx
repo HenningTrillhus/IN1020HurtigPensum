@@ -3,6 +3,7 @@ import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
 import { CAP, fetchStats, getVote, hasViewed, queueVote, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
 import { ChevronDown, ChevronUp, Eye, FullscreenIcon, MutedIcon, ThumbDown, ThumbUp } from '../Icons'
+import { usePlayer } from '../player'
 
 interface P {
   /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
@@ -53,6 +54,7 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
   useEffect(() => subscribeSound(() => setMuted(false)), [])
 
   // Mens en podkast spiller: pause og demp videoen. Den starter ikke av seg selv igjen når podkasten stopper.
+  const player = usePlayer()
   const [podOn, setPodOn] = useState(isPodcastPlaying())
   useEffect(() => subscribePodcast(() => {
     const on = isPodcastPlaying()
@@ -158,6 +160,9 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
           // #t=0.1 gjør at første bilde vises som forhåndsvisning før du trykker play.
           src={`${root}${topic.id}/${v.file}#t=0.1`}
           loop playsInline muted={muted || podOn} controls controlsList="nofullscreen" preload="metadata"
+          // Trykker du play på videoen mens en podkast spiller, tar videoen over: podkasten pauses og videoen får lyd.
+          // (Videoene starter aldri av seg selv mens en podkast spiller, så dette er alltid et bevisst trykk.)
+          onPlay={() => { if (isPodcastPlaying()) { enableSound(); player.pause() } }}
           onLoadedData={() => setReady(true)}
           onWaiting={() => setBuffering(true)}
           onPlaying={() => setBuffering(false)}

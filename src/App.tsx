@@ -7,6 +7,7 @@ import ChapterPage from './pages/ChapterPage'
 import Feed from './pages/Feed'
 import Quiz from './pages/Quiz'
 import PodButtons from './PodButtons'
+import type { Exam } from './ExamCountdown'
 import { MiniPlayer, PlayerProvider } from './player'
 import Wip from './pages/Wip'
 import Disclaimer from './Disclaimer'
@@ -21,6 +22,8 @@ interface Index {
   courseUrl?: string
   /** Kompendium (PDF) per kapittelnummer. */
   compendia?: Record<string, string>
+  /** Eksamensdato (vises som nedtelling øverst på forsiden). */
+  exam?: Exam
 }
 
 async function getJson<T>(url: string): Promise<T> {
@@ -44,6 +47,7 @@ function AppInner() {
   const [empty, setEmpty] = useState<EmptyChapter[]>([])
   const [courseUrl, setCourseUrl] = useState<string | undefined>()
   const [compendia, setCompendia] = useState<Record<string, string>>({})
+  const [exam, setExam] = useState<Exam | undefined>()
   const [hash, setHash] = useState(location.hash)
   const [error, setError] = useState(false)
   const [attempt, setAttempt] = useState(0)
@@ -77,6 +81,7 @@ function AppInner() {
         setEmpty(idx.emptyChapters ?? [])
         setCourseUrl(idx.courseUrl)
         setCompendia(idx.compendia ?? {})
+        setExam(idx.exam)
         setTopics(all)
       })
       .catch(() => { if (alive) setError(true) })
@@ -110,11 +115,11 @@ function AppInner() {
     const chapter = chapters.find(c => c.key === b)
     return chapter
       ? <ChapterPage chapter={chapter} compendiumUrl={compendia[chapter.key]} />
-      : <Overview chapters={chapters} courseUrl={courseUrl} />
+      : <Overview chapters={chapters} courseUrl={courseUrl} exam={exam} />
   }
 
   const topic = topics.find(t => t.id === a)
-  if (!topic) return <Overview chapters={chapters} courseUrl={courseUrl} />
+  if (!topic) return <Overview chapters={chapters} courseUrl={courseUrl} exam={exam} />
 
   const info = chapterInfo(topic)
   const chapterHref = `#/kap/${info.key}`

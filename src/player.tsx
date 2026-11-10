@@ -39,6 +39,8 @@ interface PlayerApi {
   /** Start episoden, eller pause/fortsett hvis det er den som spiller nå. */
   toggle: (t: Track) => void
   seek: (t: number) => void
+  /** Pause uten å lukke spilleren. */
+  pause: () => void
   /** Hopp relativt, f.eks. skip(-10) eller skip(10). */
   skip: (delta: number) => void
   close: () => void
@@ -97,6 +99,8 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     setTime(v)
   }, [])
 
+  const pause = useCallback(() => { audio.current?.pause() }, [])
+
   const skip = useCallback((delta: number) => {
     const a = audio.current
     if (!a) return
@@ -146,8 +150,8 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
   }, [track])
 
   const api = useMemo<PlayerApi>(
-    () => ({ track, playing, time, duration, toggle, seek, skip, close }),
-    [track, playing, time, duration, toggle, seek, skip, close],
+    () => ({ track, playing, time, duration, toggle, seek, pause, skip, close }),
+    [track, playing, time, duration, toggle, seek, pause, skip, close],
   )
 
   return (
