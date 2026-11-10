@@ -357,15 +357,22 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   const uiHidden = idle && activePlaying && !picker && !atEnd
 
   // Hopper rett til videoen uten å sveipe forbi de mellom. Ellers ville de telt som sett.
+  // For at det ikke skal føles brått, toner feeden kort ned, hopper, og kommer mykt inn igjen.
   const jump = (target: { topic: Topic; i: number; pos: number }) => {
-    const feed = feedRef.current
-    const el = feed?.querySelector<HTMLElement>(`[data-topic="${target.topic.id}"][data-index="${target.i}"]`)
-    if (feed && el) feed.scrollTo({ top: el.offsetTop, behavior: 'instant' })
-    currentRef.current = target.pos
-    setCurrent(target.pos)
-    setActivePlaying(false)
     setPicker(false)
-    poke()
+    const feed = feedRef.current
+    const sel = `[data-topic="${target.topic.id}"][data-index="${target.i}"]`
+    if (!feed || !feed.querySelector(sel)) return
+    feed.classList.add('jump-out')
+    window.setTimeout(() => {
+      const el = feed.querySelector<HTMLElement>(sel)
+      if (el) feed.scrollTo({ top: el.offsetTop, behavior: 'instant' })
+      currentRef.current = target.pos
+      setCurrent(target.pos)
+      setActivePlaying(false)
+      poke()
+      requestAnimationFrame(() => feed.classList.remove('jump-out'))
+    }, 170)
   }
 
   // Esc lukker valgarket.
