@@ -181,12 +181,15 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 
 /* Øverst til høyre: lyd og fullskjerm */
 .top-actions { position: absolute; top: 22px; right: 12px; z-index: 3; display: flex; align-items: center; gap: 8px; animation: fadeIn .3s backwards }
-.sound, .fs-btn {
+.sound, .fs-btn, .top-actions .speed-btn {
   background: #000b; backdrop-filter: blur(6px); border-color: #ffffff2a; color: #fff;
 }
 .sound { gap: 8px; padding: 0 16px; min-height: 48px; border-radius: 99px }
 .fs-btn { width: 52px; height: 52px; min-height: 52px; padding: 0; border-radius: 50% }
 .fs-btn svg { width: 26px; height: 26px }
+.speed-btn { font-variant-numeric: tabular-nums; font-weight: 700; cursor: pointer }
+.top-actions .speed-btn { min-width: 52px; height: 52px; padding: 0 12px; border-radius: 99px; font-size: 15px }
+.mini-speed { margin-left: 4px; min-width: 52px; height: 36px; padding: 0 10px; border-radius: 99px; background: var(--surface2); border: 1px solid var(--line); color: var(--fg); font-size: 13px }
 
 .actions { position: absolute; right: 10px; bottom: 96px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 2px }
 .vote { width: 52px; height: 52px; border-radius: 50%; padding: 0; background: #000b; backdrop-filter: blur(6px); border-color: #ffffff2a; color: #fff }
@@ -452,14 +455,14 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 
 /* Etter noen sekunder uten berøring (mens videoen spiller) tones alt over videoen ned.
    Sveip, trykk eller musebevegelse henter det tilbake. */
-.caption, .actions, .views, .top-actions .fs-btn, .part-chip, .segs { transition: opacity .25s ease, transform .3s var(--ease) }
+.caption, .actions, .views, .top-actions button:not(.sound), .part-chip, .segs { transition: opacity .25s ease, transform .3s var(--ease) }
 .feed-wrap.ui-hidden .caption, .feed-wrap.ui-hidden .actions, .feed-wrap.ui-hidden .views,
-.feed-wrap.ui-hidden .top-actions .fs-btn, .feed-wrap.ui-hidden .part-chip, .feed-wrap.ui-hidden .segs { transition: opacity .9s ease, transform .9s var(--ease) }
+.feed-wrap.ui-hidden .top-actions button:not(.sound), .feed-wrap.ui-hidden .part-chip, .feed-wrap.ui-hidden .segs { transition: opacity .9s ease, transform .9s var(--ease) }
 .feed-wrap.ui-hidden .caption { opacity: 0; transform: translateY(10px); pointer-events: none }
 .feed-wrap.ui-hidden .actions { opacity: 0; transform: translateX(10px); pointer-events: none }
 /* «Trykk for lyd» blir stående så lenge lyden er av. Bare fullskjerm-knappen tones bort. */
 .feed-wrap.ui-hidden .views,
-.feed-wrap.ui-hidden .top-actions .fs-btn,
+.feed-wrap.ui-hidden .top-actions button:not(.sound),
 .feed-wrap.ui-hidden .part-chip,
 .feed-wrap.ui-hidden .segs { opacity: 0; pointer-events: none }
 

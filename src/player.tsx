@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import type { Podcast, Topic } from './types'
 import { setPodcastPlaying } from './sound'
 import { Back10, CloseIcon, Fwd10, PauseIcon, PlayIcon } from './Icons'
+import { SpeedButton, getSpeed, useSpeed } from './speed'
 
 const base = import.meta.env.BASE_URL
 
@@ -125,6 +126,15 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     setPodcastPlaying(false)
   }, [])
 
+  // Hastigheten gjelder alle episoder. Den nullstilles når en ny lydfil lastes, så den settes på nytt da.
+  const rate = useSpeed()
+  useEffect(() => {
+    const a = audio.current
+    if (!a) return
+    a.defaultPlaybackRate = rate
+    a.playbackRate = rate
+  }, [rate, track])
+
   // Gi sidene plass til spilleren nederst.
   useEffect(() => {
     document.documentElement.classList.toggle('has-player', !!track)
@@ -169,6 +179,7 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
         onEnded={() => { const t = trackRef.current; if (t) writePos(t.key, null) }}
         onLoadedMetadata={() => {
           const a = audio.current!
+          a.playbackRate = getSpeed()
           setDuration(a.duration)
           const s = pendingSeek.current
           pendingSeek.current = 0
@@ -219,6 +230,7 @@ export function MiniPlayer() {
           aria-valuetext={`${fmtTime(time)} av ${fmtTime(duration)}`}
         />
         <span>{fmtTime(duration)}</span>
+        <SpeedButton className="mini-speed" />
       </div>
     </div>
   )

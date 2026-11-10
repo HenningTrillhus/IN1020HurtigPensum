@@ -4,6 +4,7 @@ import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodc
 import { CAP, fetchStats, getVote, hasViewed, queueVote, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
 import { ChevronDown, ChevronUp, CloseIcon, Eye, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ThumbDown, ThumbUp } from '../Icons'
 import { usePlayer } from '../player'
+import { SpeedButton, useSpeed } from '../speed'
 
 interface P {
   /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
@@ -60,6 +61,10 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
   statRef.current = stat
 
   useEffect(() => subscribeSound(() => setMuted(false)), [])
+
+  // Valgt hastighet gjelder alle videoer.
+  const rate = useSpeed()
+  useEffect(() => { if (vid.current) vid.current.playbackRate = rate }, [rate])
 
   // Mens en podkast spiller: pause og demp videoen. Den starter ikke av seg selv igjen når podkasten stopper.
   const player = usePlayer()
@@ -181,7 +186,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
           src={`${root}${topic.id}/${v.file}#t=0.1`}
           loop playsInline muted={muted || podOn} controls={fullscreen} controlsList="nofullscreen" preload={preload}
           onTimeUpdate={e => { if (scrub === null) setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
-          onLoadedMetadata={e => setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 })}
+          onLoadedMetadata={e => { e.currentTarget.playbackRate = rate; setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
           // Trykker du play på videoen mens en podkast spiller, tar videoen over: podkasten pauses og videoen får lyd.
           // (Videoene starter aldri av seg selv mens en podkast spiller, så dette er alltid et bevisst trykk.)
           onPlay={() => {
@@ -216,10 +221,17 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
       {!missing && !fullscreen && (
         <div className="top-actions">
           {muted && !podOn && (
-            <button className="sound" onClick={() => { enableSound(); vid.current?.play().catch(() => {}) }}>
+            // Trykket på lydknappen skal ikke regnes som berøring av skjermen, så resten av teksten ikke dukker opp.
+            <button
+              className="sound"
+              onPointerDown={e => e.stopPropagation()} onTouchStart={e => e.stopPropagation()}
+              onClick={() => { enableSound(); vid.current?.play().catch(() => {}) }}
+            >
               <MutedIcon /> Trykk for lyd
             </button>
           )}
+          <SpeedButton />
+
           <button className="fs-btn" onClick={goFullscreen} aria-label="Fullskjerm" title="Fullskjerm">
             <FullscreenIcon />
           </button>
