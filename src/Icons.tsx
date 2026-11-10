@@ -37,8 +37,10 @@ export const MutedIcon = () => (
 )
 
 /** Hopp 10 sekunder tilbake / fram. */
-// Sirkelpil (310 grader, åpen oppe) med fylt pilspiss og «10» i midten.
-// Tilbake: pila peker mot venstre (mot klokka). Fram: speilvendt.
+// Sirkelpil (310 grader) med fylt pilspiss øverst og «10» i midten.
+// Pilspissen sitter i toppen og buen går bakover fra den:
+//  - Tilbake (↺, mot klokka): spissen peker mot venstre, buen går med klokka bort fra den.
+//  - Fram (↻, med klokka): spissen peker mot høyre, buen går mot klokka bort fra den.
 const skipText = {
   x: 12, y: 16.2, textAnchor: 'middle', fontSize: 8.6, fontWeight: 800, fill: 'currentColor', stroke: 'none',
   fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
@@ -46,17 +48,28 @@ const skipText = {
 
 export const Back10 = () => (
   <svg {...base} {...line} strokeWidth={2.1}>
-    <path d="M12 5.2a8 8 0 1 0 6.1 2.8" />
+    <path d="M12 5.2a8 8 0 1 1-6.1 2.8" />
     <path d="M13.2 1.6 7.4 5.2l5.8 3.6Z" fill="currentColor" stroke="none" />
     <text {...skipText}>10</text>
   </svg>
 )
 export const Fwd10 = () => (
   <svg {...base} {...line} strokeWidth={2.1}>
-    <path d="M12 5.2a8 8 0 1 1-6.1 2.8" />
+    <path d="M12 5.2a8 8 0 1 0 6.1 2.8" />
     <path d="M10.8 1.6 16.6 5.2l-5.8 3.6Z" fill="currentColor" stroke="none" />
     <text {...skipText}>10</text>
   </svg>
+)
+
+/** Sol (vises i mørkt tema: trykk for lyst) og måne (vises i lyst tema: trykk for mørkt). */
+export const SunIcon = () => (
+  <svg {...base} {...line}>
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4" />
+  </svg>
+)
+export const MoonIcon = () => (
+  <svg {...base} {...line}><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.8 6.8 0 0 0 9.7 9.7Z" /></svg>
 )
 
 export const ChevronUp = () => (

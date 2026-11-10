@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import type { Chapter } from '../chapters'
 import { getQuizBest } from '../storage'
 import PodButtons from '../PodButtons'
+import { ThemeToggle } from '../theme'
 
 // «6.2 Bryteren …» -> { num: '6.2', text: 'Bryteren …' }
 function splitTitle(title: string) {
@@ -15,6 +16,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
     <div className="shell">
       <nav className="tabs">
         <a href="#/">← Alle kapitler</a>
+        <ThemeToggle className="push" />
       </nav>
       <span className="chapter-label">{chapter.label}</span>
       <h1 className="chapter-title">{chapter.title || chapter.label}</h1>

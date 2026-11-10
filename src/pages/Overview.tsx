@@ -1,13 +1,17 @@
 import type { CSSProperties } from 'react'
 import { videoCount, type Chapter } from '../chapters'
 import Disclaimer from '../Disclaimer'
+import { ThemeToggle } from '../theme'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
 
 // Forsiden: bare kapitlene. Trykk på et kapittel for å se delkapitlene.
 export default function Overview({ chapters, courseUrl, exam }: { chapters: Chapter[]; courseUrl?: string; exam?: Exam }) {
   return (
     <div className="shell">
-      {exam && <ExamCountdown exam={exam} />}
+      <div className="top-row">
+        {exam && <ExamCountdown exam={exam} />}
+        <ThemeToggle />
+      </div>
       <header className="hero">
         <h1>IN1020 Hurtigpensum</h1>
         <p className="sub">Pensum i korte klipp. Velg et kapittel.</p>
