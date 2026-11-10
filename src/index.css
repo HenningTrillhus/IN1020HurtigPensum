@@ -49,3 +49,6 @@ h3.chapter { margin: 24px 0 8px; color: var(--mut); font-size: 14px; font-weight
 .count { font-size:13px; font-weight:600; text-shadow: 0 1px 3px #000; min-height:16px; margin-bottom:6px }
 .views { position:absolute; left:12px; bottom:60px; z-index:2; display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; background:#000a; backdrop-filter: blur(4px); padding:5px 10px; border-radius:99px; text-shadow: 0 1px 3px #000 }
 .caption { padding-bottom: 96px }
+.feed { position: relative }
+.slide.end { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; background:var(--card); text-align:center; padding:24px }
+.end-title { font-size:22px; font-weight:700; margin:0 }

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import type { Topic } from '../types'
 import { getQuizBest } from '../storage'
 import Disclaimer from '../Disclaimer'
@@ -10,13 +11,23 @@ export default function Overview({ topics }: { topics: Topic[] }) {
     if (!g) { g = { name, items: [] }; groups.push(g) }
     g.items.push(t)
   }
+  // Kom du hit fra slutten av en kapittelfeed, scroller vi til det kapitlet.
+  useEffect(() => {
+    let chapter: string | null = null
+    try { chapter = sessionStorage.getItem('scrollChapter'); sessionStorage.removeItem('scrollChapter') } catch { /* ignore */ }
+    if (!chapter) return
+    for (const el of document.querySelectorAll<HTMLElement>('[data-chapter]')) {
+      if (el.dataset.chapter === chapter) el.scrollIntoView()
+    }
+  }, [])
+
   return (
     <div className="shell">
       <h1>IN1020 Hurtigpensum</h1>
       <p className="sub">Pensum i korte klipp. Velg et tema.</p>
       <Disclaimer />
       {groups.map(g => (
-        <section key={g.name}>
+        <section key={g.name} data-chapter={g.name}>
           <h3 className="chapter">{g.name}</h3>
           <div className="grid">
             {g.items.map(t => {

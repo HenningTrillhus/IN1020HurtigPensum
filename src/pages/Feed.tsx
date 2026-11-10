@@ -1,22 +1,35 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound } from '../sound'
 import { fetchStats, getVote, hasViewed, sendVote, sendView, videoId, type Stat, type Vote } from '../stats'
 import { Eye, ThumbDown, ThumbUp } from '../Icons'
 
-interface P { topic: Topic; base: string; onChange: () => void }
+interface P {
+  /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
+  topics: Topic[]
+  /** Rotmappen for innhold, f.eks. /content/ */
+  root: string
+  /** Temaet feeden skal starte på. */
+  startId: string
+  chapter: string
+  /** Meldes når en video fra et nytt tema kommer i bildet. */
+  onActive: (topicId: string) => void
+}
 
 interface SlideProps {
   topic: Topic
-  base: string
+  root: string
   i: number
+  pos: number
+  total: number
   stat?: Stat
   onStat: (id: string, patch: (s: Stat) => Stat) => void
+  onActive: (topicId: string) => void
 }
 
 const fmt = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1).replace('.0', '')}k` : String(n))
 
-function Slide({ topic, base, i, stat, onStat }: SlideProps) {
+function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProps) {
   const v = topic.videos[i]
   const id = videoId(topic.id, i)
   const ref = useRef<HTMLElement>(null)
@@ -54,11 +67,10 @@ function Slide({ topic, base, i, stat, onStat }: SlideProps) {
       const video = vid.current
       if (e.isIntersecting) {
         video?.play().catch(() => {})
-        if (!missing) {
-          if (!hasViewed(id)) {
-            sendView(id)
-            onStat(id, s => ({ ...s, views: s.views + 1 }))
-          }
+        onActive(topic.id)
+        if (!missing && !hasViewed(id)) {
+          sendView(id)
+          onStat(id, s => ({ ...s, views: s.views + 1 }))
         }
       } else video?.pause()
     }, { threshold: 0.7 })
@@ -81,11 +93,11 @@ function Slide({ topic, base, i, stat, onStat }: SlideProps) {
   }
 
   return (
-    <section className="slide" ref={ref}>
+    <section className="slide" ref={ref} data-topic={topic.id} data-index={i}>
       {missing ? (
         <div className="placeholder"><p>Video mangler</p><small>{v.file}</small></div>
       ) : (
-        <video ref={vid} src={base + v.file} loop playsInline muted={muted} controls preload="metadata" onError={() => setMissing(true)} />
+        <video ref={vid} src={`${root}${topic.id}/${v.file}`} loop playsInline muted={muted} controls preload="metadata" onError={() => setMissing(true)} />
       )}
       {!missing && muted && !fullscreen && (
         <button className="sound" onClick={() => { enableSound(); vid.current?.play().catch(() => {}) }}>
@@ -113,31 +125,83 @@ function Slide({ topic, base, i, stat, onStat }: SlideProps) {
         <div className="caption">
           <h3>{v.title}</h3>
           {v.summary && <p>{v.summary}</p>}
-          <small>{i + 1} / {topic.videos.length}</small>
+          <small>{pos + 1} / {total}</small>
         </div>
       )}
     </section>
   )
 }
 
-export default function Feed({ topic, base }: P) {
+// Siste «video» i feeden. Sveiper du ned hit, går du tilbake til forsiden.
+function EndSlide({ onDone }: { onDone: () => void }) {
+  const ref = useRef<HTMLElement>(null)
+  useEffect(() => {
+    const el = ref.current!
+    let timer: number | undefined
+    const io = new IntersectionObserver(([e]) => {
+      window.clearTimeout(timer)
+      if (e.isIntersecting) timer = window.setTimeout(onDone, 400)
+    }, { threshold: 0.7 })
+    io.observe(el)
+    return () => { io.disconnect(); window.clearTimeout(timer) }
+  }, [])
+  return (
+    <section className="slide end" ref={ref}>
+      <p className="end-title">Ferdig med kapitlet 🎉</p>
+      <small>Tar deg tilbake til forsiden …</small>
+      <button onClick={onDone}>Tilbake til forsiden</button>
+    </section>
+  )
+}
+
+export default function Feed({ topics, root, startId, chapter, onActive }: P) {
   const [stats, setStats] = useState<Record<string, Stat>>({})
+  const feedRef = useRef<HTMLDivElement>(null)
+  const ready = useRef(false)
+  const activeRef = useRef(onActive)
+  activeRef.current = onActive
+
+  const slides = topics.flatMap(t => t.videos.map((_, i) => ({ topic: t, i })))
+
+  // Meld bare fra om aktivt tema etter at vi har scrollet til startvideoen.
+  const report = useCallback((id: string) => { if (ready.current) activeRef.current(id) }, [])
+
+  useLayoutEffect(() => {
+    const feed = feedRef.current!
+    const target = feed.querySelector<HTMLElement>(`[data-topic="${startId}"]`)
+    if (target) feed.scrollTop = target.offsetTop
+    const t = window.setTimeout(() => { ready.current = true }, 400)
+    return () => window.clearTimeout(t)
+  }, [])
 
   useEffect(() => {
     let alive = true
-    const ids = topic.videos.map((_, i) => videoId(topic.id, i))
-    fetchStats(ids).then(s => { if (alive && s) setStats(s) })
+    const ids = slides.map(s => videoId(s.topic.id, s.i))
+    // API-et tar maks 30 id-er per kall.
+    for (let k = 0; k < ids.length; k += 30) {
+      fetchStats(ids.slice(k, k + 30)).then(s => { if (alive && s) setStats(prev => ({ ...prev, ...s })) })
+    }
     return () => { alive = false }
-  }, [topic.id])
+  }, [chapter])
 
   const onStat = (id: string, patch: (s: Stat) => Stat) =>
     setStats(prev => ({ ...prev, [id]: patch(prev[id] ?? { likes: 0, dislikes: 0, views: 0 }) }))
 
+  const done = () => {
+    try { sessionStorage.setItem('scrollChapter', chapter) } catch { /* ignore */ }
+    location.hash = '#/'
+  }
+
   return (
-    <div className="feed">
-      {topic.videos.map((_, i) => (
-        <Slide key={i} topic={topic} base={base} i={i} stat={stats[videoId(topic.id, i)]} onStat={onStat} />
+    <div className="feed" ref={feedRef}>
+      {slides.map((s, pos) => (
+        <Slide
+          key={`${s.topic.id}:${s.i}`}
+          topic={s.topic} root={root} i={s.i} pos={pos} total={slides.length}
+          stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report}
+        />
       ))}
+      <EndSlide onDone={done} />
     </div>
   )
 }

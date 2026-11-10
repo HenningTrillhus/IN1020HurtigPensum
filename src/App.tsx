@@ -32,6 +32,17 @@ export default function App() {
 
   if (!topic) return <Overview topics={topics} />
   const common = { topic, base: `${base}${topic.id}/`, onChange: () => bump(n => n + 1) }
+  const chapterName = (t: Topic) => t.chapter ?? 'Temaer'
+  const chapter = chapterName(topic)
+  const chapterTopics = topics.filter(t => chapterName(t) === chapter)
+
+  // Når en video fra et annet tema kommer i bildet, oppdaterer vi adressen (uten ny sidelasting)
+  // slik at fanene og «tilbake til videoer» følger med.
+  const onActive = (activeId: string) => {
+    if (location.hash.split('/')[1] === activeId) return
+    history.replaceState(null, '', `#/${activeId}/feed`)
+    setHash(location.hash)
+  }
   return (
     <div className="shell topic">
       <nav className="tabs">
@@ -41,7 +52,9 @@ export default function App() {
         <a className={view === 'quiz' ? 'on' : ''} href={`#/${topic.id}/quiz`}>Quiz</a>
       </nav>
       <Disclaimer compact />
-      {view === 'podcast' ? <Podcast {...common} /> : view === 'quiz' ? <Quiz {...common} /> : <Feed {...common} />}
+      {view === 'podcast' ? <Podcast {...common} /> : view === 'quiz' ? <Quiz {...common} /> : (
+        <Feed key={chapter} topics={chapterTopics} root={base} startId={topic.id} chapter={chapter} onActive={onActive} />
+      )}
     </div>
   )
 }
