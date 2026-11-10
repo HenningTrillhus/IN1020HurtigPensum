@@ -51,5 +51,11 @@
     "k7-4-cachen",
     "k7-5-pipelinen",
     "k7-6-nar-pipelinen-stopper"
+  ],
+  "emptyChapters": [
+    {
+      "n": 1,
+      "title": ""
+    }
   ]
 }

@@ -11,7 +11,10 @@ interface P {
   root: string
   /** Temaet feeden skal starte på. */
   startId: string
+  /** Identifiserer kapitlet (brukes til å hente tall på nytt når kapitlet byttes). */
   chapter: string
+  /** Hvor sveip forbi siste video skal gå, f.eks. #/kap/6 (kapittelets forside). */
+  exitHash: string
   /** Meldes når en video fra et nytt tema kommer i bildet. */
   onActive: (topicId: string) => void
 }
@@ -169,13 +172,13 @@ function EndSlide({ onDone }: { onDone: () => void }) {
   return (
     <section className="slide end" ref={ref}>
       <p className="end-title">Ferdig med kapitlet 🎉</p>
-      <small>Tar deg tilbake til forsiden …</small>
-      <button onClick={onDone}>Tilbake til forsiden</button>
+      <small>Tar deg tilbake til kapitlet …</small>
+      <button onClick={onDone}>Tilbake til kapitlet</button>
     </section>
   )
 }
 
-export default function Feed({ topics, root, startId, chapter, onActive }: P) {
+export default function Feed({ topics, root, startId, chapter, exitHash, onActive }: P) {
   const [stats, setStats] = useState<Record<string, Stat>>({})
   const feedRef = useRef<HTMLDivElement>(null)
   const ready = useRef(false)
@@ -208,10 +211,8 @@ export default function Feed({ topics, root, startId, chapter, onActive }: P) {
   const onStat = (id: string, patch: (s: Stat) => Stat) =>
     setStats(prev => ({ ...prev, [id]: patch(prev[id] ?? { likes: 0, dislikes: 0, views: 0 }) }))
 
-  const done = () => {
-    try { sessionStorage.setItem('scrollChapter', chapter) } catch { /* ignore */ }
-    location.hash = '#/'
-  }
+  // Etter siste video: tilbake til forsiden av kapitlet.
+  const done = () => { location.hash = exitHash }
 
   // Pil opp/ned (vises på PC) og piltaster: flytt én video om gangen.
   const step = useCallback((dir: 1 | -1) => {

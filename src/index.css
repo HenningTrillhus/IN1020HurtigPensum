@@ -69,3 +69,7 @@ h3.chapter { margin: 24px 0 8px; color: var(--mut); font-size: 14px; font-weight
 .wip h2 { margin: 12px 0 4px }
 .wip-topic { color: var(--acc); font-weight: 600; margin: 0 0 16px }
 .wip-back { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 99px; background: var(--acc); color: #04120c; font-weight: 600; margin-top: 12px }
+.chapter-card { display: block }
+.chapter-card h2 { margin: 2px 0 8px; font-size: 20px }
+.chapter-label { display: block; color: var(--acc); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em }
+.chapter-title { margin: 2px 0 16px }
