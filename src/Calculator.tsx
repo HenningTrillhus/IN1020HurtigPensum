@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { CalcIcon, CloseIcon } from './Icons'
 
 // ---------- Hjelpere ----------
@@ -87,7 +87,7 @@ function Width() {
   const full = 1n << n
   const half = 1n << (n - 1n)
 
-  let out: JSX.Element | null = null
+  let out: ReactNode = null
   if (v !== null) {
     const pattern = v & (full - 1n)
     const unsigned = pattern
