@@ -55,7 +55,6 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
   const [buffering, setBuffering] = useState(false)
   const [active, setActive] = useState(false)
   const [popped, setPopped] = useState<'up' | 'down' | null>(null)
-  const [flash, setFlash] = useState<{ kind: 'play' | 'pause'; n: number } | null>(null)
   // Observer-callbacken lages bare én gang, så den leser siste tall via ref.
   const statRef = useRef(stat)
   statRef.current = stat
@@ -149,21 +148,17 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
     })
   }
 
-  // Trykk på videoen for å pause eller spille, uten å måtte treffe den lille knappen i spilleren.
+  // Egen pause/spill-knapp midt på videoen. Den tones bort sammen med teksten, men et trykk på stedet der den
+  // ligger (selv når den er usynlig) pauser med en gang. Trykk andre steder viser bare knappen igjen.
   const togglePlay = () => {
     const video = vid.current
     if (!video) return
-    const willPlay = video.paused
-    if (willPlay) video.play().catch(() => {})
+    if (video.paused) video.play().catch(() => {})
     else video.pause()
-    setFlash(f => ({ kind: willPlay ? 'play' : 'pause', n: (f?.n ?? 0) + 1 }))
   }
-  // Tilbakemeldingsikonet forsvinner av seg selv.
-  useEffect(() => {
-    if (!flash) return
-    const t = window.setTimeout(() => setFlash(null), 700)
-    return () => window.clearTimeout(t)
-  }, [flash])
+  const [playing, setPlaying] = useState(false)
+  const [time, setTime] = useState({ t: 0, d: 0 })
+  const [scrub, setScrub] = useState<number | null>(null)
 
   // Egen fullskjerm-knapp: stor og lett å treffe, i stedet for den lille i videospilleren.
   const goFullscreen = () => {
@@ -184,14 +179,17 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
           ref={vid}
           // #t=0.1 gjør at første bilde vises som forhåndsvisning før du trykker play.
           src={`${root}${topic.id}/${v.file}#t=0.1`}
-          loop playsInline muted={muted || podOn} controls controlsList="nofullscreen" preload={preload}
+          loop playsInline muted={muted || podOn} controls={fullscreen} controlsList="nofullscreen" preload={preload}
+          onTimeUpdate={e => { if (scrub === null) setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
+          onLoadedMetadata={e => setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 })}
           // Trykker du play på videoen mens en podkast spiller, tar videoen over: podkasten pauses og videoen får lyd.
           // (Videoene starter aldri av seg selv mens en podkast spiller, så dette er alltid et bevisst trykk.)
           onPlay={() => {
+            setPlaying(true)
             onPlayState(pos, true)
             if (isPodcastPlaying()) { enableSound(); player.pause() }
           }}
-          onPause={() => onPlayState(pos, false)}
+          onPause={() => { setPlaying(false); onPlayState(pos, false) }}
           onLoadedData={() => setReady(true)}
           onWaiting={() => setBuffering(true)}
           onPlaying={() => setBuffering(false)}
@@ -200,12 +198,20 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
         />
       )}
       {!missing && (!ready || buffering) && <div className="spin" aria-hidden />}
-      {/* Gjennomsiktig flate over videoen: trykk for å pause/spille. Den nederste delen er fri, så spillerens egen linje (spoling) fungerer. */}
-      {!missing && !fullscreen && <div className="tap" onClick={togglePlay} aria-hidden />}
-      {flash && !fullscreen && (
-        <div className="flash" key={flash.n} aria-hidden>
-          {flash.kind === 'play' ? <PlayIcon /> : <PauseIcon />}
-        </div>
+      {!missing && !fullscreen && (
+        <button className="pause-btn" onClick={togglePlay} aria-label={playing ? 'Pause' : 'Spill av'}>
+          {playing ? <PauseIcon /> : <PlayIcon />}
+        </button>
+      )}
+      {!missing && !fullscreen && (
+        <input
+          className="seek" type="range" min={0} max={time.d || 1} step={0.1}
+          value={scrub ?? time.t} aria-label="Spol i videoen"
+          style={{ ['--p' as string]: `${((scrub ?? time.t) / (time.d || 1)) * 100}%` }}
+          onChange={e => setScrub(+e.target.value)}
+          onPointerUp={() => { if (scrub !== null && vid.current) vid.current.currentTime = scrub; setScrub(null) }}
+          onKeyUp={() => { if (scrub !== null && vid.current) vid.current.currentTime = scrub; setScrub(null) }}
+        />
       )}
       {!missing && !fullscreen && (
         <div className="top-actions">
@@ -294,7 +300,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
 
   // Tekst og knapper over videoen tones ned etter noen sekunder uten berøring, så hele videoen blir synlig.
   // Alle berøringer, sveip og musebevegelser kaller poke() og henter dem tilbake.
-  const IDLE_MS = 4000
+  const IDLE_MS = 2000
   const poke = useCallback(() => {
     window.clearTimeout(idleTimer.current)
     setIdle(false)

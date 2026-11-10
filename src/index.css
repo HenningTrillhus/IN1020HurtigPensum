@@ -408,15 +408,25 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 @keyframes sheetIn { from { transform: translateY(28px); opacity: 0 } to { transform: none; opacity: 1 } }
 
 /* ============ Trykk for pause, og tekst som tones ned ============ */
-/* Gjennomsiktig flate over videoen. Nederste del er fri så spillerens egen linje (spoling) kan brukes. */
-.tap { position: absolute; left: 0; right: 0; top: 0; bottom: 64px; z-index: 1; cursor: pointer }
-.flash {
+/* Pause/spill midt på videoen. Skjult sammen med resten, men fortsatt trykkbar: et trykk på den usynlige knappen pauser. */
+.pause-btn {
   position: absolute; left: 50%; top: 50%; z-index: 3; width: 88px; height: 88px; margin: -44px 0 0 -44px; border-radius: 50%;
-  display: grid; place-items: center; background: #000a; backdrop-filter: blur(6px); color: #fff; pointer-events: none;
-  animation: flashPop .7s var(--ease) both;
+  display: grid; place-items: center; background: #000a; backdrop-filter: blur(6px); color: #fff; border: 0; padding: 0; cursor: pointer;
+  transition: opacity .25s ease;
 }
-.flash svg { width: 44px; height: 44px }
-@keyframes flashPop { 0% { opacity: 0; transform: scale(.6) } 25% { opacity: 1; transform: scale(1) } 100% { opacity: 0; transform: scale(1.25) } }
+.pause-btn svg { width: 44px; height: 44px }
+/* Spolelinje nederst. */
+.seek {
+  position: absolute; left: 12px; right: 12px; bottom: 14px; z-index: 3; height: 28px; margin: 0; background: transparent;
+  -webkit-appearance: none; appearance: none; cursor: pointer; transition: opacity .25s ease;
+}
+.seek::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: linear-gradient(to right, #fff var(--p), #fff5 var(--p)) }
+.seek::-moz-range-track { height: 4px; border-radius: 2px; background: #fff5 }
+.seek::-moz-range-progress { height: 4px; border-radius: 2px; background: #fff }
+.seek::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -5px; border-radius: 50%; background: #fff; border: 0 }
+.seek::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 0 }
+.feed-wrap.ui-hidden .pause-btn, .feed-wrap.ui-hidden .seek { opacity: 0; transition: opacity .9s ease }
+.feed-wrap.ui-hidden .seek { pointer-events: none }
 
 /* Etter noen sekunder uten berøring (mens videoen spiller) tones alt over videoen ned.
    Sveip, trykk eller musebevegelse henter det tilbake. */
