@@ -143,7 +143,7 @@ function AppInner() {
       <Disclaimer compact compendiumUrl={compendia[info.key]} chapterLabel={info.label} />
       {topic.podcasts?.length ? (
         <div className="pod-bar">
-          <span className="pod-label">🎧 Podkast</span>
+          <span className="pod-label">Podkast</span>
           <PodButtons topic={topic} compact />
         </div>
       ) : null}

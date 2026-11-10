@@ -24,6 +24,32 @@ export const CloseIcon = () => (
   <svg {...base} width={20} height={20} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="m6 6 12 12M18 6 6 18" /></svg>
 )
 
+const line = { fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } as const
+
+/** Fullskjerm: fire hjørner. */
+export const FullscreenIcon = () => (
+  <svg {...base} {...line}><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" /></svg>
+)
+
+/** Høyttaler med strek over (lyden er av). */
+export const MutedIcon = () => (
+  <svg {...base} width={20} height={20} {...line}><path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4ZM16 9.5l5 5M21 9.5l-5 5" /></svg>
+)
+
+/** Hopp 10 sekunder tilbake / fram. */
+export const Back10 = () => (
+  <svg {...base} {...line}>
+    <path d="M12 4a8 8 0 1 0 7.52 5.26" /><path d="M12 1l-3.5 3 3.5 3" />
+    <text x="12" y="15.2" textAnchor="middle" fontSize="7.4" fontWeight="700" fill="currentColor" stroke="none" fontFamily="system-ui, sans-serif">10</text>
+  </svg>
+)
+export const Fwd10 = () => (
+  <svg {...base} {...line}>
+    <path d="M12 4a8 8 0 1 1-7.52 5.26" /><path d="M12 1l3.5 3-3.5 3" />
+    <text x="12" y="15.2" textAnchor="middle" fontSize="7.4" fontWeight="700" fill="currentColor" stroke="none" fontFamily="system-ui, sans-serif">10</text>
+  </svg>
+)
+
 export const ChevronUp = () => (
   <svg {...base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
     <path d="m6 15 6-6 6 6" />

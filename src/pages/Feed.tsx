@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
 import { CAP, fetchStats, getVote, hasViewed, queueVote, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
-import { ChevronDown, ChevronUp, Eye, ThumbDown, ThumbUp } from '../Icons'
+import { ChevronDown, ChevronUp, Eye, FullscreenIcon, MutedIcon, ThumbDown, ThumbUp } from '../Icons'
 
 interface P {
   /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
@@ -138,6 +138,14 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
     })
   }
 
+  // Egen fullskjerm-knapp: stor og lett å treffe, i stedet for den lille i videospilleren.
+  const goFullscreen = () => {
+    const v = vid.current as (HTMLVideoElement & { webkitEnterFullscreen?: () => void }) | null
+    if (!v) return
+    if (v.requestFullscreen) void v.requestFullscreen().catch(() => {})
+    else v.webkitEnterFullscreen?.() // iPhone
+  }
+
   const cls = ['slide', !missing && !ready && 'loading', ready && 'ready', active && 'active'].filter(Boolean).join(' ')
 
   return (
@@ -149,7 +157,7 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
           ref={vid}
           // #t=0.1 gjør at første bilde vises som forhåndsvisning før du trykker play.
           src={`${root}${topic.id}/${v.file}#t=0.1`}
-          loop playsInline muted={muted || podOn} controls preload="metadata"
+          loop playsInline muted={muted || podOn} controls controlsList="nofullscreen" preload="metadata"
           onLoadedData={() => setReady(true)}
           onWaiting={() => setBuffering(true)}
           onPlaying={() => setBuffering(false)}
@@ -158,10 +166,17 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
         />
       )}
       {!missing && (!ready || buffering) && <div className="spin" aria-hidden />}
-      {!missing && muted && !podOn && !fullscreen && (
-        <button className="sound" onClick={() => { enableSound(); vid.current?.play().catch(() => {}) }}>
-          🔇 Trykk for lyd
-        </button>
+      {!missing && !fullscreen && (
+        <div className="top-actions">
+          {muted && !podOn && (
+            <button className="sound" onClick={() => { enableSound(); vid.current?.play().catch(() => {}) }}>
+              <MutedIcon /> Trykk for lyd
+            </button>
+          )}
+          <button className="fs-btn" onClick={goFullscreen} aria-label="Fullskjerm" title="Fullskjerm">
+            <FullscreenIcon />
+          </button>
+        </div>
       )}
       {!missing && !fullscreen && (
         <div className="actions">
@@ -212,8 +227,7 @@ function EndSlide({ onDone }: { onDone: () => void }) {
   }, [])
   return (
     <section className="slide end" ref={ref}>
-      <div className="end-emoji" aria-hidden>🎉</div>
-      <p className="end-title">Ferdig med kapitlet!</p>
+      <p className="end-title">Ferdig med kapitlet</p>
       <small>Tar deg tilbake til kapitlet …</small>
       <button onClick={onDone}>Tilbake til kapitlet</button>
     </section>

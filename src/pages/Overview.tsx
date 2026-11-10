@@ -7,11 +7,8 @@ export default function Overview({ chapters, courseUrl }: { chapters: Chapter[];
   return (
     <div className="shell">
       <header className="hero">
-        <img className="hero-logo" src="/favicon-192.png" alt="" width={64} height={64} />
-        <div>
-          <h1>IN1020 <span className="grad">Hurtigpensum</span></h1>
-          <p className="sub">Pensum i korte klipp. Velg et kapittel.</p>
-        </div>
+        <h1>IN1020 Hurtigpensum</h1>
+        <p className="sub">Pensum i korte klipp. Velg et kapittel.</p>
       </header>
       <Disclaimer courseUrl={courseUrl} />
       <div className="grid">
@@ -31,7 +28,7 @@ export default function Overview({ chapters, courseUrl }: { chapters: Chapter[];
                 <small>
                   <span>{c.title ? `${c.label} · ` : ''}{d} {d === 1 ? 'delkapittel' : 'delkapitler'}</span>
                   <span>· {v} {v === 1 ? 'video' : 'videoer'}</span>
-                  {v === 0 && <span className="badge">🚧 Work in progress</span>}
+                  {v === 0 && <span className="badge">Work in progress</span>}
                 </small>
               </div>
               <span className="chev" aria-hidden>›</span>

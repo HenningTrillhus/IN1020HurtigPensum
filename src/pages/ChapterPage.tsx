@@ -20,12 +20,11 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
       <h1 className="chapter-title">{chapter.title || chapter.label}</h1>
       {compendiumUrl && (
         <p className="compendium">
-          📄 <a href={compendiumUrl} target="_blank" rel="noreferrer">Les kompendiet for {chapter.label.toLowerCase()} (PDF)</a>
+          <a href={compendiumUrl} target="_blank" rel="noreferrer">Les kompendiet for {chapter.label.toLowerCase()} (PDF)</a>
         </p>
       )}
       {chapter.topics.length === 0 ? (
         <div className="wip-page">
-          <div className="wip-icon" aria-hidden>🚧</div>
           <h2>Work in progress</h2>
           <p>Delkapitlene og videoene til dette kapitlet er ikke klare ennå. Kom tilbake senere!</p>
         </div>
@@ -45,7 +44,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
                   <small>
                     <span>{n} {n === 1 ? 'video' : 'videoer'}</span>
                     {best >= 0 && <span>· quiz best: {best}</span>}
-                    {n === 0 && <span className="badge">🚧 Work in progress</span>}
+                    {n === 0 && <span className="badge">Work in progress</span>}
                   </small>
                 </div>
                 <span className="chev" aria-hidden>›</span>

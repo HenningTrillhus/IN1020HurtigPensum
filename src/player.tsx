@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import type { Podcast, Topic } from './types'
 import { setPodcastPlaying } from './sound'
-import { CloseIcon, PauseIcon, PlayIcon } from './Icons'
+import { Back10, CloseIcon, Fwd10, PauseIcon, PlayIcon } from './Icons'
 
 const base = import.meta.env.BASE_URL
 
@@ -39,6 +39,8 @@ interface PlayerApi {
   /** Start episoden, eller pause/fortsett hvis det er den som spiller nå. */
   toggle: (t: Track) => void
   seek: (t: number) => void
+  /** Hopp relativt, f.eks. skip(-10) eller skip(10). */
+  skip: (delta: number) => void
   close: () => void
 }
 
@@ -95,6 +97,15 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     setTime(v)
   }, [])
 
+  const skip = useCallback((delta: number) => {
+    const a = audio.current
+    if (!a) return
+    const end = Number.isFinite(a.duration) ? a.duration : Infinity
+    const t = Math.min(Math.max(0, a.currentTime + delta), end)
+    a.currentTime = t
+    setTime(t)
+  }, [])
+
   const close = useCallback(() => {
     const a = audio.current
     const t = trackRef.current
@@ -134,7 +145,10 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
     ms.setActionHandler('seekto', d => { if (a && d.seekTime != null) a.currentTime = d.seekTime })
   }, [track])
 
-  const api = useMemo<PlayerApi>(() => ({ track, playing, time, duration, toggle, seek, close }), [track, playing, time, duration, toggle, seek, close])
+  const api = useMemo<PlayerApi>(
+    () => ({ track, playing, time, duration, toggle, seek, skip, close }),
+    [track, playing, time, duration, toggle, seek, skip, close],
+  )
 
   return (
     <Ctx.Provider value={api}>
@@ -171,34 +185,36 @@ export function PlayerProvider({ children }: { children: ReactNode }) {
 
 /** Fast spiller nederst på skjermen mens en episode er åpen. */
 export function MiniPlayer() {
-  const { track, playing, time, duration, toggle, seek, close } = usePlayer()
+  const { track, playing, time, duration, toggle, seek, skip, close } = usePlayer()
   if (!track) return null
   const pct = duration > 0 ? Math.min(100, (time / duration) * 100) : 0
   return (
     <div className="mini" role="region" aria-label="Podkastspiller">
-      <img className={`mini-icon${playing ? ' playing' : ''}`} src={track.iconSrc} alt="" />
-      <div className="mini-main">
-        <div className="mini-top">
-          <div className="mini-text">
-            <strong>{track.title}</strong>
-            <small>{track.subtitle}</small>
-          </div>
-          <button className="mini-btn" onClick={() => toggle(track)} aria-label={playing ? 'Pause' : 'Spill av'}>
+      <button className="mini-close" onClick={close} aria-label="Lukk spilleren"><CloseIcon /></button>
+      <div className="mini-row">
+        <img className="mini-icon" src={track.iconSrc} alt="" />
+        <div className="mini-text">
+          <strong>{track.title}</strong>
+          <small>{track.subtitle}</small>
+        </div>
+        <div className="mini-ctrls">
+          <button className="mini-btn" onClick={() => skip(-10)} aria-label="Hopp 10 sekunder tilbake"><Back10 /></button>
+          <button className="mini-btn play" onClick={() => toggle(track)} aria-label={playing ? 'Pause' : 'Spill av'}>
             {playing ? <PauseIcon /> : <PlayIcon />}
           </button>
-          <button className="mini-btn ghost" onClick={close} aria-label="Lukk spilleren"><CloseIcon /></button>
+          <button className="mini-btn" onClick={() => skip(10)} aria-label="Hopp 10 sekunder fram"><Fwd10 /></button>
         </div>
-        <div className="mini-seek">
-          <span>{fmtTime(time)}</span>
-          <input
-            type="range" min={0} max={duration || 0} step={0.1} value={Math.min(time, duration || 0)}
-            style={{ '--p': `${pct}%` } as CSSProperties}
-            onChange={e => seek(Number(e.target.value))}
-            aria-label="Spol i podkasten"
-            aria-valuetext={`${fmtTime(time)} av ${fmtTime(duration)}`}
-          />
-          <span>{fmtTime(duration)}</span>
-        </div>
+      </div>
+      <div className="mini-seek">
+        <span>{fmtTime(time)}</span>
+        <input
+          type="range" min={0} max={duration || 0} step={0.1} value={Math.min(time, duration || 0)}
+          style={{ '--p': `${pct}%` } as CSSProperties}
+          onChange={e => seek(Number(e.target.value))}
+          aria-label="Spol i podkasten"
+          aria-valuetext={`${fmtTime(time)} av ${fmtTime(duration)}`}
+        />
+        <span>{fmtTime(duration)}</span>
       </div>
     </div>
   )
