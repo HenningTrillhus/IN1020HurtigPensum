@@ -3,31 +3,5 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.3 Portene",
   "description": "Alle sju portene: IKKE, AND, OR, XOR og de tre med boble, og feilene som koster flest poeng.",
-  "videos": [
-    {
-      "title": "5.3 Portene (del 1)",
-      "file": "video1.mp4",
-      "summary": "Skrivemåten for portene, og IKKE-porten som snur signalet."
-    },
-    {
-      "title": "5.3 Portene (del 2)",
-      "file": "video2.mp4",
-      "summary": "AND er to brytere etter hverandre, OR er to ved siden av hverandre. 1 + 1 = 1."
-    },
-    {
-      "title": "5.3 Portene (del 3)",
-      "file": "video3.mp4",
-      "summary": "XOR gir 1 når inngangene er forskjellige. Det er trappelyset."
-    },
-    {
-      "title": "5.3 Portene (del 4)",
-      "file": "video4.mp4",
-      "summary": "NAND, NOR og XNOR er de samme portene med utgangen snudd. Boblen betyr invertering."
-    },
-    {
-      "title": "5.3 Portene (del 5)",
-      "file": "video5.mp4",
-      "summary": "Å invertere inngangene er noe helt annet enn å invertere utgangen."
-    }
-  ]
+  "videos": []
 }
