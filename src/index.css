@@ -226,3 +226,79 @@ audio { width: 100%; margin-top: 12px }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important }
 }
+
+/* ============ Podkast ============ */
+/* Plass til spilleren nederst */
+:root.has-player { --player-h: calc(96px + env(safe-area-inset-bottom)) }
+.shell { padding-bottom: calc(28px + var(--player-h, 0px)) }
+.shell.topic { height: calc(100dvh - var(--player-h, 0px)); padding-bottom: 8px }
+
+/* Kort med podkast: lenken og knappene er søsken, så knappene ikke havner inni <a> */
+.card.split { display: block; padding: 0 }
+.card-main { display: flex; align-items: center; gap: 14px; padding: 15px 16px; border-radius: var(--r) }
+.card-pods { padding: 0 16px 14px calc(16px + 54px + 14px) }
+
+.pod-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start }
+.pod {
+  position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 0; padding: 0;
+  background: none; border: 0; border-radius: 50%; width: 66px; color: var(--fg);
+}
+.pod:hover { border-color: transparent }
+.pod-ring {
+  display: block; padding: 3px; border-radius: 50%; width: 66px; height: 66px;
+  background: conic-gradient(var(--acc) var(--pp, 0%), #ffffff26 0);
+  transition: transform .2s var(--ease), box-shadow .3s;
+}
+.pod:hover .pod-ring { transform: scale(1.06) }
+.pod.playing .pod-ring { box-shadow: 0 0 0 0 #5eead455; animation: ringPulse 1.8s ease-out infinite }
+.pod-img { position: relative; display: block; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: #0b0f19 }
+.pod-img img { display: block; width: 100%; height: 100%; object-fit: cover; user-select: none }
+/* Halvgjennomsiktig play/pause over ikonet */
+.pod-ov {
+  position: absolute; inset: 0; display: grid; place-items: center; color: #fff;
+  background: rgba(5, 10, 20, .34); transition: background .2s;
+}
+.pod-ov svg { filter: drop-shadow(0 1px 4px #000a); opacity: .92 }
+.pod:hover .pod-ov { background: rgba(5, 10, 20, .5) }
+.pod.playing .pod-ov { background: rgba(5, 10, 20, .42) }
+.pod-dur { font-size: 12px; font-weight: 600; color: var(--mut) }
+.pod.current .pod-dur { color: var(--acc) }
+
+/* Rad over videoen */
+.pod-bar { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; animation: pageIn .4s var(--ease) both }
+.pod-label { font-size: 13px; font-weight: 700; color: var(--mut); white-space: nowrap }
+.pod-row.compact { flex-wrap: nowrap; gap: 12px }
+.pod-row.compact .pod { width: 44px; gap: 2px }
+.pod-row.compact .pod-ring { width: 44px; height: 44px; padding: 2px }
+.pod-row.compact .pod-ov svg { width: 20px; height: 20px }
+.pod-row.compact .pod-dur { display: none }
+
+/* Fast mini-spiller nederst */
+.mini {
+  position: fixed; left: 50%; bottom: 0; z-index: 60; width: min(100%, 540px); transform: translateX(-50%);
+  display: flex; align-items: center; gap: 12px;
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); border-radius: 20px 20px 0 0;
+  background: #0c1220ee; backdrop-filter: blur(14px); border: 1px solid var(--line); border-bottom: 0;
+  box-shadow: 0 -12px 40px -16px #000; animation: miniIn .45s var(--ease) both;
+}
+.mini-icon { width: 52px; height: 52px; border-radius: 50%; flex: none; object-fit: cover }
+.mini-icon.playing { animation: spin 8s linear infinite }
+.mini-main { flex: 1; min-width: 0 }
+.mini-top { display: flex; align-items: center; gap: 8px }
+.mini-text { flex: 1; min-width: 0; display: flex; flex-direction: column }
+.mini-text strong { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.mini-text small { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.mini-btn { width: 44px; height: 44px; padding: 0; border-radius: 50%; background: var(--grad); color: #05101a; border: 0; flex: none }
+.mini-btn.ghost { background: transparent; color: var(--mut); border: 1px solid var(--line); width: 38px; height: 38px }
+.mini-btn.ghost:hover { color: var(--fg) }
+.mini-seek { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--mut); font-variant-numeric: tabular-nums }
+.mini-seek input { flex: 1; min-width: 0; height: 24px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer }
+.mini-seek input::-webkit-slider-runnable-track { height: 5px; border-radius: 5px; background: linear-gradient(to right, var(--acc) var(--p, 0%), #2a3347 var(--p, 0%)) }
+.mini-seek input::-moz-range-track { height: 5px; border-radius: 5px; background: #2a3347 }
+.mini-seek input::-moz-range-progress { height: 5px; border-radius: 5px; background: var(--acc) }
+.mini-seek input::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; margin-top: -5.5px; border-radius: 50%; background: #fff; border: 0; box-shadow: 0 1px 6px #000a }
+.mini-seek input::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 0 }
+
+@keyframes miniIn { from { transform: translate(-50%, 100%); opacity: 0 } to { transform: translate(-50%, 0); opacity: 1 } }
+@keyframes ringPulse { 0% { box-shadow: 0 0 0 0 #5eead466 } 100% { box-shadow: 0 0 0 12px #5eead400 } }
+:root:not(.has-player) .shell.topic { padding-bottom: max(8px, env(safe-area-inset-bottom)) }

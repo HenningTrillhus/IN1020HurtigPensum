@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { Topic } from '../types'
-import { isSoundOn, enableSound, subscribeSound } from '../sound'
+import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
 import { CAP, fetchStats, getVote, hasViewed, queueVote, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
 import { ChevronDown, ChevronUp, Eye, ThumbDown, ThumbUp } from '../Icons'
 
@@ -52,6 +52,14 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
 
   useEffect(() => subscribeSound(() => setMuted(false)), [])
 
+  // Mens en podkast spiller: pause og demp videoen. Den starter ikke av seg selv igjen når podkasten stopper.
+  const [podOn, setPodOn] = useState(isPodcastPlaying())
+  useEffect(() => subscribePodcast(() => {
+    const on = isPodcastPlaying()
+    setPodOn(on)
+    if (on) vid.current?.pause()
+  }), [])
+
   // Videoen kan allerede være lastet (cache) før vi rakk å lytte.
   useEffect(() => { if ((vid.current?.readyState ?? 0) >= 2) setReady(true) }, [])
 
@@ -81,7 +89,7 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
       const video = vid.current
       if (e.isIntersecting) {
         setActive(true)
-        video?.play().catch(() => {})
+        if (!isPodcastPlaying()) video?.play().catch(() => {})
         onActive(topic.id, pos)
         if (!missing && !hasViewed(id)) {
           // Står telleren på taket, sendes ingenting til serveren.
@@ -141,7 +149,7 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
           ref={vid}
           // #t=0.1 gjør at første bilde vises som forhåndsvisning før du trykker play.
           src={`${root}${topic.id}/${v.file}#t=0.1`}
-          loop playsInline muted={muted} controls preload="metadata"
+          loop playsInline muted={muted || podOn} controls preload="metadata"
           onLoadedData={() => setReady(true)}
           onWaiting={() => setBuffering(true)}
           onPlaying={() => setBuffering(false)}
@@ -150,7 +158,7 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
         />
       )}
       {!missing && (!ready || buffering) && <div className="spin" aria-hidden />}
-      {!missing && muted && !fullscreen && (
+      {!missing && muted && !podOn && !fullscreen && (
         <button className="sound" onClick={() => { enableSound(); vid.current?.play().catch(() => {}) }}>
           🔇 Trykk for lyd
         </button>

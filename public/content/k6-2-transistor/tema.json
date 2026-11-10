@@ -10,6 +10,20 @@
       "summary": "En datamaskin har ingen fingre. Hvem trykker på bryterne?"
     }
   ],
+  "podcasts": [
+    {
+      "title": "Slik fungerer transistoren",
+      "file": "podkast-dame.m4a",
+      "icon": "dame",
+      "duration": 88
+    },
+    {
+      "title": "Transistoren er bryteren uten fingre",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann",
+      "duration": 404
+    }
+  ],
   "quiz": [
     {
       "q": "Hva er en transistor, sagt med én setning?",

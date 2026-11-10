@@ -3,13 +3,48 @@
   "title": "Eksempeltema",
   "description": "Erstatt med et ekte IN1020-tema. Legg video- og lydfiler i denne mappen.",
   "videos": [
-    { "title": "Video 1: Hva er dette?", "file": "video1.mp4", "summary": "Legg video1.mp4 i denne mappen." },
-    { "title": "Video 2: Nøkkelbegreper", "file": "video2.mp4", "summary": "Legg video2.mp4 i denne mappen." },
-    { "title": "Video 3: Oppsummering", "file": "video3.mp4", "summary": "Legg video3.mp4 i denne mappen." }
+    {
+      "title": "Video 1: Hva er dette?",
+      "file": "video1.mp4",
+      "summary": "Legg video1.mp4 i denne mappen."
+    },
+    {
+      "title": "Video 2: Nøkkelbegreper",
+      "file": "video2.mp4",
+      "summary": "Legg video2.mp4 i denne mappen."
+    },
+    {
+      "title": "Video 3: Oppsummering",
+      "file": "video3.mp4",
+      "summary": "Legg video3.mp4 i denne mappen."
+    }
   ],
-  "podcast": { "title": "Podkast: Dypdykk", "file": "podkast.mp3" },
   "quiz": [
-    { "q": "Hvor legger du nytt innhold?", "options": ["I public/content/<tema>", "I node_modules", "I index.html"], "answer": 0 },
-    { "q": "Hva heter filen som beskriver et tema?", "options": ["data.txt", "tema.json", "readme.md"], "answer": 1 }
+    {
+      "q": "Hvor legger du nytt innhold?",
+      "options": [
+        "I public/content/<tema>",
+        "I node_modules",
+        "I index.html"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "Hva heter filen som beskriver et tema?",
+      "options": [
+        "data.txt",
+        "tema.json",
+        "readme.md"
+      ],
+      "answer": 1
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Eksempel-podkast",
+      "file": "podkast.m4a",
+      "icon": "dame",
+      "duration": 60
+    }
   ]
 }

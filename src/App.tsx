@@ -5,8 +5,9 @@ import { Loader, LoadError } from './Loader'
 import Overview from './pages/Overview'
 import ChapterPage from './pages/ChapterPage'
 import Feed from './pages/Feed'
-import Podcast from './pages/Podcast'
 import Quiz from './pages/Quiz'
+import PodButtons from './PodButtons'
+import { MiniPlayer, PlayerProvider } from './player'
 import Wip from './pages/Wip'
 import Disclaimer from './Disclaimer'
 
@@ -28,7 +29,17 @@ async function getJson<T>(url: string): Promise<T> {
   return r.json()
 }
 
+// Spilleren ligger utenfor sidene, så podkasten fortsetter å spille når du bytter side.
 export default function App() {
+  return (
+    <PlayerProvider>
+      <AppInner />
+      <MiniPlayer />
+    </PlayerProvider>
+  )
+}
+
+function AppInner() {
   const [topics, setTopics] = useState<Topic[] | null>(null)
   const [empty, setEmpty] = useState<EmptyChapter[]>([])
   const [courseUrl, setCourseUrl] = useState<string | undefined>()
@@ -127,11 +138,16 @@ export default function App() {
       <nav className="tabs">
         <a href={chapterHref}>← {info.label}</a>
         <a className={!view || view === 'feed' ? 'on' : ''} href={`#/${topic.id}/feed`}>Videoer</a>
-        <a className={view === 'podcast' ? 'on' : ''} href={`#/${topic.id}/podcast`}>Podkast</a>
         <a className={view === 'quiz' ? 'on' : ''} href={`#/${topic.id}/quiz`}>Quiz</a>
       </nav>
       <Disclaimer compact compendiumUrl={compendia[info.key]} chapterLabel={info.label} />
-      {view === 'podcast' ? <Podcast {...common} /> : view === 'quiz' ? <Quiz {...common} /> : (
+      {topic.podcasts?.length ? (
+        <div className="pod-bar">
+          <span className="pod-label">🎧 Podkast</span>
+          <PodButtons topic={topic} compact />
+        </div>
+      ) : null}
+      {view === 'quiz' ? <Quiz {...common} /> : (
         <Feed
           key={info.key}
           topics={chapterTopics}

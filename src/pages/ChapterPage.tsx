@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import type { Chapter } from '../chapters'
 import { getQuizBest } from '../storage'
+import PodButtons from '../PodButtons'
 
 // «6.2 Bryteren …» -> { num: '6.2', text: 'Bryteren …' }
 function splitTitle(title: string) {
@@ -34,13 +35,9 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
             const n = t.videos.length
             const best = getQuizBest(t.id)
             const { num, text } = splitTitle(t.title)
-            return (
-              <a
-                key={t.id}
-                className={`card${n === 0 ? ' wip' : ''}`}
-                style={{ '--i': Math.min(i, 10) } as CSSProperties}
-                href={`#/${t.id}/feed`}
-              >
+            const hasPods = (t.podcasts?.length ?? 0) > 0
+            const main = (
+              <>
                 <span className="num sm">{num}</span>
                 <div className="body">
                   <h2>{text}</h2>
@@ -52,7 +49,18 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
                   </small>
                 </div>
                 <span className="chev" aria-hidden>›</span>
-              </a>
+              </>
+            )
+            const style = { '--i': Math.min(i, 10) } as CSSProperties
+            const cls = `card${n === 0 ? ' wip' : ''}`
+            // Kort med podkast: knappene ligger under beskrivelsen og kan ikke ligge inni selve lenken.
+            return hasPods ? (
+              <div key={t.id} className={`${cls} split`} style={style}>
+                <a className="card-main" href={`#/${t.id}/feed`}>{main}</a>
+                <div className="card-pods"><PodButtons topic={t} /></div>
+              </div>
+            ) : (
+              <a key={t.id} className={cls} style={style} href={`#/${t.id}/feed`}>{main}</a>
             )
           })}
         </div>
