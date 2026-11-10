@@ -312,11 +312,15 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
 
   // Tekst og knapper over videoen tones ned etter noen sekunder uten berøring, så hele videoen blir synlig.
   // Alle berøringer, sveip og musebevegelser kaller poke() og henter dem tilbake.
-  const IDLE_MS = 2000
+  // Mens videoen spiller tones alt ned etter 2 sekunder. Står den på pause, går det 4 sekunder først,
+  // så du rekker å se knappene, men også kan studere det stillestående bildet i ro.
+  const IDLE_PLAYING_MS = 2000
+  const IDLE_PAUSED_MS = 4000
+  const playingRef = useRef(false)
   const poke = useCallback(() => {
     window.clearTimeout(idleTimer.current)
     setIdle(false)
-    idleTimer.current = window.setTimeout(() => setIdle(true), IDLE_MS)
+    idleTimer.current = window.setTimeout(() => setIdle(true), playingRef.current ? IDLE_PLAYING_MS : IDLE_PAUSED_MS)
   }, [])
   useEffect(() => { poke(); return () => window.clearTimeout(idleTimer.current) }, [poke])
 
@@ -326,6 +330,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
     currentRef.current = pos
     setCurrent(pos)
     setActivePlaying(false) // den nye videoen melder fra selv når den begynner å spille
+    playingRef.current = false
     poke()
     activeRef.current(id)
   }, [poke])
@@ -333,8 +338,9 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   const onPlayState = useCallback((pos: number, playing: boolean) => {
     if (pos !== currentRef.current) return
     setActivePlaying(playing)
-    // Teksten skal være synlig de første sekundene etter at videoen faktisk har begynt å spille.
-    if (playing) poke()
+    playingRef.current = playing
+    // Teksten skal være synlig en liten stund etter at videoen starter eller stopper.
+    poke()
   }, [poke])
 
   useLayoutEffect(() => {
@@ -372,7 +378,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   const siblings = cur ? slides.map((s, pos) => ({ ...s, pos })).filter(s => s.topic.id === cur.topic.id) : []
   const multi = siblings.length > 1
   // Skjul bare mens videoen faktisk spiller. Pauset video, åpent valgark og sluttsiden viser alltid alt.
-  const uiHidden = idle && activePlaying && !picker && !atEnd
+  const uiHidden = idle && !picker && !atEnd
 
   // Hopper rett til videoen uten å sveipe forbi de mellom. Ellers ville de telt som sett.
   // For at det ikke skal føles brått, toner feeden kort ned, hopper, og kommer mykt inn igjen.
