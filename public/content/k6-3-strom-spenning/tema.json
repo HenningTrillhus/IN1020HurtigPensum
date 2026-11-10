@@ -4,11 +4,39 @@
   "title": "6.3 Strøm, spenning og jord",
   "description": "Hvorfor en port trenger strøm, og hvor 0 og 1 egentlig kommer fra: VDD og GND.",
   "videos": [
-    { "title": "Hvorfor trenger en maskin strøm?", "file": "video1.mp4", "summary": "En bok trenger ingen strøm for å huske tekst. Det gjør en datamaskin." }
+    {
+      "title": "6.3 Strøm, spenning og jord",
+      "file": "video1.mp4",
+      "summary": "En bok trenger ingen strøm for å huske tekst. Det gjør en datamaskin."
+    }
   ],
   "quiz": [
-    { "q": "Hvilken logisk verdi svarer VDD til?", "options": ["Logisk 0", "Jord", "Logisk 1"], "answer": 2 },
-    { "q": "Hvorfor må en datamaskin ha strøm for å huske et bit?", "options": ["Fordi et bit er en spenning som må holdes oppe, og porter lager nye signaler som koster energi", "Fordi transistorer har bevegelige deler", "Fordi bitene lekker ut av ledningene hvis man venter"], "answer": 0 },
-    { "q": "I vannbildet: hva er spenning?", "options": ["Hvor mye vann som renner", "Høydeforskjellen", "Hvor langt krana er skrudd opp"], "answer": 1 }
+    {
+      "q": "Hvilken logisk verdi svarer VDD til?",
+      "options": [
+        "Logisk 0",
+        "Jord",
+        "Logisk 1"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "Hvorfor må en datamaskin ha strøm for å huske et bit?",
+      "options": [
+        "Fordi et bit er en spenning som må holdes oppe, og porter lager nye signaler som koster energi",
+        "Fordi transistorer har bevegelige deler",
+        "Fordi bitene lekker ut av ledningene hvis man venter"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "I vannbildet: hva er spenning?",
+      "options": [
+        "Hvor mye vann som renner",
+        "Høydeforskjellen",
+        "Hvor langt krana er skrudd opp"
+      ],
+      "answer": 1
+    }
   ]
 }

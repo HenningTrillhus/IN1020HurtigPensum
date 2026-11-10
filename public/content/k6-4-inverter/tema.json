@@ -4,12 +4,48 @@
   "title": "6.4 Inverteren",
   "description": "Den første porten vi bygger: to transistorer, og et ettall som ikke kommer fra inngangen.",
   "videos": [
-    { "title": "Inverteren av to brytere", "file": "video1.mp4", "summary": "Hvor kommer ettallet fra? Ikke fra inngangen." }
+    {
+      "title": "6.4 Inverteren",
+      "file": "video1.mp4",
+      "summary": "Hvor kommer ettallet fra? Ikke fra inngangen."
+    }
   ],
   "quiz": [
-    { "q": "Hvor mange transistorer er det i en inverter?", "options": ["4", "2", "6"], "answer": 1 },
-    { "q": "En inverter får inn 0. Hva skjer?", "options": ["nMOS leder, utgangen blir 1", "pMOS leder, utgangen blir 0", "pMOS leder, utgangen blir 1"], "answer": 2 },
-    { "q": "Hvor kommer ettallet på utgangen fra?", "options": ["Fra inngangen", "Fra forsyningen (VDD)", "Fra klokka"], "answer": 1 },
-    { "q": "Hvorfor går det nesten ingen strøm gjennom en CMOS-port i ro?", "options": ["De to transistorene leder aldri samtidig", "Spenningen er for lav", "Porten er slått av"], "answer": 0 }
+    {
+      "q": "Hvor mange transistorer er det i en inverter?",
+      "options": [
+        "4",
+        "2",
+        "6"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "En inverter får inn 0. Hva skjer?",
+      "options": [
+        "nMOS leder, utgangen blir 1",
+        "pMOS leder, utgangen blir 0",
+        "pMOS leder, utgangen blir 1"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "Hvor kommer ettallet på utgangen fra?",
+      "options": [
+        "Fra inngangen",
+        "Fra forsyningen (VDD)",
+        "Fra klokka"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "Hvorfor går det nesten ingen strøm gjennom en CMOS-port i ro?",
+      "options": [
+        "De to transistorene leder aldri samtidig",
+        "Spenningen er for lav",
+        "Porten er slått av"
+      ],
+      "answer": 0
+    }
   ]
 }

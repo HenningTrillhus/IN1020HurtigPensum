@@ -4,12 +4,48 @@
   "title": "6.7 Det tar tid",
   "description": "Badekaret, kapasitans og portforsinkelse: ingenting er momentant.",
   "videos": [
-    { "title": "Badekaret i hver port", "file": "video1.mp4", "summary": "Hver utgang er et badekar som må fylles og tømmes." }
+    {
+      "title": "6.7 Det tar tid",
+      "file": "video1.mp4",
+      "summary": "Hver utgang er et badekar som må fylles og tømmes."
+    }
   ],
   "quiz": [
-    { "q": "Hva er portforsinkelse?", "options": ["Tiden fra inngangen endrer seg til utgangen har kommet over på den nye verdien", "Tiden en klokkeperiode varer", "Tiden et signal bruker gjennom hele brikken"], "answer": 0 },
-    { "q": "Hva er kapasitans, forklart med badekaret?", "options": ["En komponent designeren legger inn for å lagre bits", "Størrelsen på krana", "Karet som må fylles, en uunngåelig følge av at ledninger og transistorer er fysiske"], "answer": 2 },
-    { "q": "Hvor lenge varer ett pikosekund?", "options": ["10⁻⁹ s", "10⁻¹² s", "10⁻⁶ s"], "answer": 1 },
-    { "q": "Hvorfor gjør man ikke bare alle transistorer større?", "options": ["Den blir et større kar for porten foran, og tar mer plass og strøm", "Det finnes ikke større transistorer", "Den blir tregere i seg selv"], "answer": 0 }
+    {
+      "q": "Hva er portforsinkelse?",
+      "options": [
+        "Tiden fra inngangen endrer seg til utgangen har kommet over på den nye verdien",
+        "Tiden en klokkeperiode varer",
+        "Tiden et signal bruker gjennom hele brikken"
+      ],
+      "answer": 0
+    },
+    {
+      "q": "Hva er kapasitans, forklart med badekaret?",
+      "options": [
+        "En komponent designeren legger inn for å lagre bits",
+        "Størrelsen på krana",
+        "Karet som må fylles, en uunngåelig følge av at ledninger og transistorer er fysiske"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "Hvor lenge varer ett pikosekund?",
+      "options": [
+        "10⁻⁹ s",
+        "10⁻¹² s",
+        "10⁻⁶ s"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "Hvorfor gjør man ikke bare alle transistorer større?",
+      "options": [
+        "Den blir et større kar for porten foran, og tar mer plass og strøm",
+        "Det finnes ikke større transistorer",
+        "Den blir tregere i seg selv"
+      ],
+      "answer": 0
+    }
   ]
 }

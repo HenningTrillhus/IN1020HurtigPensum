@@ -4,11 +4,39 @@
   "title": "6.6 Null og ett er områder, ikke tall",
   "description": "Støymargin og signalgjenoppretting: hvorfor digitale signaler tåler støy.",
   "videos": [
-    { "title": "Kopi av en kopi av en kopi", "file": "video1.mp4", "summary": "Hvorfor kan en fil kopieres tusen ganger uten tap, men ikke en kassett?" }
+    {
+      "title": "6.6 Null og ett er områder, ikke tall",
+      "file": "video1.mp4",
+      "summary": "Hvorfor kan en fil kopieres tusen ganger uten tap, men ikke en kassett?"
+    }
   ],
   "quiz": [
-    { "q": "Hva er 0 og 1 i en digital krets?", "options": ["Nøyaktige spenninger på 0 V og 0,8 V", "Spenningsområder med et udefinert belte imellom", "Tilfeldige verdier"], "answer": 1 },
-    { "q": "En port får inn et slapt, rusket signal i 1-området. Hva er utgangen?", "options": ["Like slapp som inngangen", "Et nytt, skarpt signal fra forsyningen", "Ingenting"], "answer": 1 },
-    { "q": "Hvorfor overlever en digital kopi av en kopi?", "options": ["Digitalt er alltid mer nøyaktig", "Hver port retter opp signalet, så feil ikke hoper seg opp", "Digitale filer kan ikke kopieres feil"], "answer": 1 }
+    {
+      "q": "Hva er 0 og 1 i en digital krets?",
+      "options": [
+        "Nøyaktige spenninger på 0 V og 0,8 V",
+        "Spenningsområder med et udefinert belte imellom",
+        "Tilfeldige verdier"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "En port får inn et slapt, rusket signal i 1-området. Hva er utgangen?",
+      "options": [
+        "Like slapp som inngangen",
+        "Et nytt, skarpt signal fra forsyningen",
+        "Ingenting"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "Hvorfor overlever en digital kopi av en kopi?",
+      "options": [
+        "Digitalt er alltid mer nøyaktig",
+        "Hver port retter opp signalet, så feil ikke hoper seg opp",
+        "Digitale filer kan ikke kopieres feil"
+      ],
+      "answer": 1
+    }
   ]
 }

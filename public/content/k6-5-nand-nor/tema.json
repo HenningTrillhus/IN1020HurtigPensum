@@ -4,11 +4,39 @@
   "title": "6.5 NAND, NOR og hvorfor AND er dyrere",
   "description": "Serie og parallell i silisium, og regnskapet i transistorer.",
   "videos": [
-    { "title": "Hvorfor AND koster mer enn NAND", "file": "video1.mp4", "summary": "AND føles enklest. I silisium er det motsatt." }
+    {
+      "title": "6.5 NAND, NOR og hvorfor AND er dyrere",
+      "file": "video1.mp4",
+      "summary": "AND føles enklest. I silisium er det motsatt."
+    }
   ],
   "quiz": [
-    { "q": "Hvor mange transistorer er det i en NAND-port og en AND-port?", "options": ["4 og 4", "6 og 4", "4 og 6"], "answer": 2 },
-    { "q": "Hvorfor koster AND mer enn NAND?", "options": ["AND bruker en annen type transistor", "AND er en NAND med en inverter etter, og inverteren koster to transistorer til", "AND har tre innganger"], "answer": 1 },
-    { "q": "I en NAND-port, hvordan står de to nMOS-transistorene?", "options": ["I serie", "I parallell", "Én i hver gruppe"], "answer": 0 }
+    {
+      "q": "Hvor mange transistorer er det i en NAND-port og en AND-port?",
+      "options": [
+        "4 og 4",
+        "6 og 4",
+        "4 og 6"
+      ],
+      "answer": 2
+    },
+    {
+      "q": "Hvorfor koster AND mer enn NAND?",
+      "options": [
+        "AND bruker en annen type transistor",
+        "AND er en NAND med en inverter etter, og inverteren koster to transistorer til",
+        "AND har tre innganger"
+      ],
+      "answer": 1
+    },
+    {
+      "q": "I en NAND-port, hvordan står de to nMOS-transistorene?",
+      "options": [
+        "I serie",
+        "I parallell",
+        "Én i hver gruppe"
+      ],
+      "answer": 0
+    }
   ]
 }
