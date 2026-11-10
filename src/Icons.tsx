@@ -26,6 +26,11 @@ export const CloseIcon = () => (
 
 const line = { fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' } as const
 
+/** Liste: brukes på knappen som åpner valg av video i delkapittelet. */
+export const ListIcon = () => (
+  <svg {...base} {...line}><path d="M9 6h12M9 12h12M9 18h12" /><path d="M4 6h.01M4 12h.01M4 18h.01" strokeWidth={3} /></svg>
+)
+
 /** Fullskjerm: fire hjørner. */
 export const FullscreenIcon = () => (
   <svg {...base} {...line}><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" /></svg>

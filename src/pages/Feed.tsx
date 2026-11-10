@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
 import { CAP, fetchStats, getVote, hasViewed, queueVote, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
-import { ChevronDown, ChevronUp, Eye, FullscreenIcon, MutedIcon, ThumbDown, ThumbUp } from '../Icons'
+import { ChevronDown, ChevronUp, CloseIcon, Eye, FullscreenIcon, ListIcon, MutedIcon, ThumbDown, ThumbUp } from '../Icons'
 import { usePlayer } from '../player'
 
 interface P {
@@ -25,7 +25,6 @@ interface SlideProps {
   root: string
   i: number
   pos: number
-  total: number
   /** Hvor mye av videoen som skal forhåndslastes: bare den aktive og den neste. */
   mode: 'active' | 'next' | 'far'
   stat?: Stat
@@ -36,7 +35,7 @@ interface SlideProps {
 
 const fmt = (n: number) => (n >= CAP ? `${CAP}+` : String(n))
 
-function Slide({ topic, root, i, pos, total, mode, stat, onStat, onActive }: SlideProps) {
+function Slide({ topic, root, i, pos, mode, stat, onStat, onActive }: SlideProps) {
   const v = topic.videos[i]
   // Aktiv video laster fritt, neste henter bare første bilde (så neste sveip starter med en gang),
   // og resten laster ingenting før de kommer nær. En video som først er lastet, beholder det den har.
@@ -217,7 +216,6 @@ function Slide({ topic, root, i, pos, total, mode, stat, onStat, onActive }: Sli
         <div className="caption">
           <h3>{v.title}</h3>
           {v.summary && <p>{v.summary}</p>}
-          <small>{pos + 1} / {total}</small>
         </div>
       )}
     </section>
@@ -225,13 +223,14 @@ function Slide({ topic, root, i, pos, total, mode, stat, onStat, onActive }: Sli
 }
 
 // Siste «video» i feeden. Sveiper du ned hit, går du tilbake til forsiden.
-function EndSlide({ onDone }: { onDone: () => void }) {
+function EndSlide({ onDone, onVisible }: { onDone: () => void; onVisible: (v: boolean) => void }) {
   const ref = useRef<HTMLElement>(null)
   useEffect(() => {
     const el = ref.current!
     let timer: number | undefined
     const io = new IntersectionObserver(([e]) => {
       window.clearTimeout(timer)
+      onVisible(e.isIntersecting)
       if (e.isIntersecting) timer = window.setTimeout(onDone, 700)
     }, { threshold: 0.7 })
     io.observe(el)
@@ -252,6 +251,8 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
 
   const [stats, setStats] = useState<Record<string, Stat>>({})
   const [current, setCurrent] = useState(startIdx)
+  const [atEnd, setAtEnd] = useState(false)       // sluttsiden er i bildet
+  const [picker, setPicker] = useState(false)     // valgarket for videoene i delkapittelet
   const feedRef = useRef<HTMLDivElement>(null)
   const ready = useRef(false)
   const activeRef = useRef(onActive)
@@ -294,8 +295,31 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
     if (feed) feed.scrollBy({ top: dir * feed.clientHeight, behavior: 'smooth' })
   }, [])
 
+  // Delkapitler med flere videoer (som 6.10): hvilken del du er på, og hopp til en annen uten å scrolle.
+  const cur = slides[current]
+  const siblings = cur ? slides.map((s, pos) => ({ ...s, pos })).filter(s => s.topic.id === cur.topic.id) : []
+  const multi = siblings.length > 1
+
+  // Hopper rett til videoen uten å sveipe forbi de mellom. Ellers ville de telt som sett.
+  const jump = (target: { topic: Topic; i: number; pos: number }) => {
+    const feed = feedRef.current
+    const el = feed?.querySelector<HTMLElement>(`[data-topic="${target.topic.id}"][data-index="${target.i}"]`)
+    if (feed && el) feed.scrollTo({ top: el.offsetTop, behavior: 'instant' })
+    setCurrent(target.pos)
+    setPicker(false)
+  }
+
+  // Esc lukker valgarket.
+  useEffect(() => {
+    if (!picker) return
+    const onEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') setPicker(false) }
+    window.addEventListener('keydown', onEsc)
+    return () => window.removeEventListener('keydown', onEsc)
+  }, [picker])
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (picker) return // la valgarket styre piltastene selv
       if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return
       if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
       const t = e.target as HTMLElement | null
@@ -306,7 +330,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [step])
+  }, [step, picker])
 
   return (
     <div className="feed-wrap">
@@ -317,13 +341,56 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
         {slides.map((s, pos) => (
           <Slide
             key={`${s.topic.id}:${s.i}`}
-            topic={s.topic} root={root} i={s.i} pos={pos} total={slides.length}
+            topic={s.topic} root={root} i={s.i} pos={pos}
             mode={pos === current ? 'active' : pos === current + 1 ? 'next' : 'far'}
             stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report}
           />
         ))}
-        <EndSlide onDone={done} />
+        <EndSlide onDone={done} onVisible={setAtEnd} />
       </div>
+
+      {multi && !atEnd && (
+        <button
+          className="part-chip"
+          onClick={() => setPicker(true)}
+          aria-haspopup="dialog"
+          aria-label={`Video ${cur.i + 1} av ${siblings.length} i dette delkapittelet. Velg video`}
+        >
+          <ListIcon />
+          <span>{cur.i + 1}/{siblings.length}</span>
+        </button>
+      )}
+
+      {picker && multi && (
+        <>
+          <div className="sheet-backdrop" onClick={() => setPicker(false)} />
+          <div className="sheet" role="dialog" aria-modal="true" aria-label="Velg video">
+            <div className="sheet-head">
+              <div>
+                <strong>{cur.topic.title}</strong>
+                <small>{siblings.length} videoer i dette delkapittelet</small>
+              </div>
+              <button className="sheet-close" onClick={() => setPicker(false)} aria-label="Lukk"><CloseIcon /></button>
+            </div>
+            <ul className="sheet-list">
+              {siblings.map(s => (
+                <li key={s.pos}>
+                  <button
+                    className={`sheet-row${s.pos === current ? ' on' : ''}`}
+                    onClick={() => jump(s)}
+                    aria-current={s.pos === current ? 'true' : undefined}
+                    autoFocus={s.pos === current}
+                  >
+                    <span className="num sm">{s.i + 1}</span>
+                    <span className="sheet-title">{s.topic.videos[s.i].title}</span>
+                    {s.pos === current && <span className="sheet-now">Spiller nå</span>}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      )}
       <div className="nav" aria-label="Bla mellom videoer">
         <button onClick={() => step(-1)} aria-label="Forrige video"><ChevronUp /></button>
         <button onClick={() => step(1)} aria-label="Neste video"><ChevronDown /></button>
