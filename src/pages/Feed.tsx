@@ -302,7 +302,6 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   const [atEnd, setAtEnd] = useState(false)       // sluttsiden er i bildet
   const [picker, setPicker] = useState(false)     // valgarket for videoene i delkapittelet
   const [idle, setIdle] = useState(false)         // ingen har rørt noe på en stund
-  const [activePlaying, setActivePlaying] = useState(false) // den aktive videoen spiller
   const feedRef = useRef<HTMLDivElement>(null)
   const ready = useRef(false)
   const currentRef = useRef(startIdx)
@@ -329,7 +328,6 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
     if (!ready.current) return
     currentRef.current = pos
     setCurrent(pos)
-    setActivePlaying(false) // den nye videoen melder fra selv når den begynner å spille
     playingRef.current = false
     poke()
     activeRef.current(id)
@@ -337,7 +335,6 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
 
   const onPlayState = useCallback((pos: number, playing: boolean) => {
     if (pos !== currentRef.current) return
-    setActivePlaying(playing)
     playingRef.current = playing
     // Teksten skal være synlig en liten stund etter at videoen starter eller stopper.
     poke()
@@ -393,7 +390,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
       if (el) feed.scrollTo({ top: el.offsetTop, behavior: 'instant' })
       currentRef.current = target.pos
       setCurrent(target.pos)
-      setActivePlaying(false)
+      playingRef.current = false
       poke()
       requestAnimationFrame(() => feed.classList.remove('jump-out'))
     }, 170)
