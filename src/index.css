@@ -430,13 +430,14 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 
 /* Etter noen sekunder uten berøring (mens videoen spiller) tones alt over videoen ned.
    Sveip, trykk eller musebevegelse henter det tilbake. */
-.caption, .actions, .views, .top-actions, .part-chip, .segs { transition: opacity .25s ease, transform .3s var(--ease) }
+.caption, .actions, .views, .top-actions .fs-btn, .part-chip, .segs { transition: opacity .25s ease, transform .3s var(--ease) }
 .feed-wrap.ui-hidden .caption, .feed-wrap.ui-hidden .actions, .feed-wrap.ui-hidden .views,
-.feed-wrap.ui-hidden .top-actions, .feed-wrap.ui-hidden .part-chip, .feed-wrap.ui-hidden .segs { transition: opacity .9s ease, transform .9s var(--ease) }
+.feed-wrap.ui-hidden .top-actions .fs-btn, .feed-wrap.ui-hidden .part-chip, .feed-wrap.ui-hidden .segs { transition: opacity .9s ease, transform .9s var(--ease) }
 .feed-wrap.ui-hidden .caption { opacity: 0; transform: translateY(10px); pointer-events: none }
 .feed-wrap.ui-hidden .actions { opacity: 0; transform: translateX(10px); pointer-events: none }
+/* «Trykk for lyd» blir stående så lenge lyden er av. Bare fullskjerm-knappen tones bort. */
 .feed-wrap.ui-hidden .views,
-.feed-wrap.ui-hidden .top-actions,
+.feed-wrap.ui-hidden .top-actions .fs-btn,
 .feed-wrap.ui-hidden .part-chip,
 .feed-wrap.ui-hidden .segs { opacity: 0; pointer-events: none }
 
