@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Topic } from '../types'
-import { getSeen, markSeen } from '../storage'
 import { isSoundOn, enableSound, subscribeSound } from '../sound'
 import { fetchStats, getVote, hasViewed, sendVote, sendView, videoId, type Stat, type Vote } from '../stats'
 import { Eye, ThumbDown, ThumbUp } from '../Icons'
@@ -12,19 +11,17 @@ interface SlideProps {
   base: string
   i: number
   stat?: Stat
-  onSeen: () => void
   onStat: (id: string, patch: (s: Stat) => Stat) => void
 }
 
 const fmt = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1).replace('.0', '')}k` : String(n))
 
-function Slide({ topic, base, i, stat, onSeen, onStat }: SlideProps) {
+function Slide({ topic, base, i, stat, onStat }: SlideProps) {
   const v = topic.videos[i]
   const id = videoId(topic.id, i)
   const ref = useRef<HTMLElement>(null)
   const vid = useRef<HTMLVideoElement>(null)
   const [missing, setMissing] = useState(false)
-  const [seen, setSeen] = useState(getSeen(topic.id).includes(i))
   const [muted, setMuted] = useState(!isSoundOn())
   const [vote, setVote] = useState<Vote>(getVote(id))
   const [fullscreen, setFullscreen] = useState(false)
@@ -58,7 +55,6 @@ function Slide({ topic, base, i, stat, onSeen, onStat }: SlideProps) {
       if (e.isIntersecting) {
         video?.play().catch(() => {})
         if (!missing) {
-          markSeen(topic.id, i); setSeen(true); onSeen()
           if (!hasViewed(id)) {
             sendView(id)
             onStat(id, s => ({ ...s, views: s.views + 1 }))
@@ -73,7 +69,7 @@ function Slide({ topic, base, i, stat, onSeen, onStat }: SlideProps) {
   const cast = (target: 'up' | 'down') => {
     const next: Vote = vote === target ? null : target
     setVote(next)
-    sendVote(id, next, vote)
+    sendVote(id, next)
     onStat(id, s => {
       const out = { ...s }
       if (vote === 'up') out.likes = Math.max(0, out.likes - 1)
@@ -115,7 +111,7 @@ function Slide({ topic, base, i, stat, onSeen, onStat }: SlideProps) {
       )}
       {!fullscreen && (
         <div className="caption">
-          <h3>{v.title} {seen && '✓'}</h3>
+          <h3>{v.title}</h3>
           {v.summary && <p>{v.summary}</p>}
           <small>{i + 1} / {topic.videos.length}</small>
         </div>
@@ -124,7 +120,7 @@ function Slide({ topic, base, i, stat, onSeen, onStat }: SlideProps) {
   )
 }
 
-export default function Feed({ topic, base, onChange }: P) {
+export default function Feed({ topic, base }: P) {
   const [stats, setStats] = useState<Record<string, Stat>>({})
 
   useEffect(() => {
@@ -140,7 +136,7 @@ export default function Feed({ topic, base, onChange }: P) {
   return (
     <div className="feed">
       {topic.videos.map((_, i) => (
-        <Slide key={i} topic={topic} base={base} i={i} stat={stats[videoId(topic.id, i)]} onSeen={onChange} onStat={onStat} />
+        <Slide key={i} topic={topic} base={base} i={i} stat={stats[videoId(topic.id, i)]} onStat={onStat} />
       ))}
     </div>
   )

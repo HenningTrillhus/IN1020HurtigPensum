@@ -1,16 +1,22 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { redis, ID_RE, noStore, rateLimited } from './_lib.js'
+import { redis, ID_RE, DEVICE_RE, noStore, rejectWrite } from './_lib.js'
 
-// POST /api/view  { id }  -> teller én visning. Klienten sender kun første visning per enhet.
+const THIRTY_DAYS = 60 * 60 * 24 * 30
+
+// POST /api/view  { id, device }
+// Teller bare første visning per enhet og video (SET NX), så gjentatte kall teller ikke.
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   noStore(res)
-  if (req.method !== 'POST') return res.status(405).json({ error: 'method' })
-  if (!redis) return res.status(503).json({ error: 'database not configured' })
+  if (await rejectWrite(req, res)) return
+  const r = redis!
 
-  const id = typeof req.body?.id === 'string' ? req.body.id : ''
-  if (!ID_RE.test(id)) return res.status(400).json({ error: 'id' })
-  if (await rateLimited(req, 'view', 60, 60)) return res.status(429).json({ error: 'rate limit' })
+  const { id, device } = req.body
+  if (typeof id !== 'string' || !ID_RE.test(id) || typeof device !== 'string' || !DEVICE_RE.test(device)) {
+    return res.status(400).json({ error: 'body' })
+  }
 
-  const views = await redis.incr(`views:${id}`)
-  res.status(200).json({ views })
+  const first = await r.set(`dv-view:${id}:${device}`, 1, { nx: true, ex: THIRTY_DAYS })
+  if (first) await r.incr(`views:${id}`)
+  const views = Number((await r.get<number>(`views:${id}`)) ?? 0)
+  res.status(200).json({ views, counted: !!first })
 }
