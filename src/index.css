@@ -469,3 +469,57 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 /* Hopp fra valgarket: feeden toner kort ned mens vi flytter oss, og kommer mykt inn igjen. */
 .feed { transition: opacity .25s ease }
 .feed.jump-out { opacity: 0; transition-duration: .16s }
+
+/* ============ Kalkulator ============ */
+.calc-backdrop {
+  position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; padding: 16px;
+  background: #000a; animation: fadeIn .2s both;
+}
+.calc {
+  width: 100%; max-width: 520px; max-height: min(86vh, 720px); overflow-y: auto; border-radius: 18px;
+  background: var(--bg); border: 1px solid var(--line-strong); box-shadow: 0 20px 60px #0008;
+  padding: 16px 16px 20px; animation: sheetIn .25s var(--ease) both;
+}
+.calc-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px }
+.calc-head strong { font-size: 18px; letter-spacing: -.01em }
+.calc-close { width: 40px; height: 40px; min-height: 40px; padding: 0; border-radius: 50%; background: var(--surface); border: 1px solid var(--line); color: var(--fg) }
+.calc-tabs { display: flex; gap: 6px; margin-bottom: 14px; overflow-x: auto; scrollbar-width: none }
+.calc-tabs button, .calc-seg button, .calc-chips button {
+  flex: none; min-height: 38px; padding: 0 14px; border-radius: 99px; background: var(--surface); border: 1px solid var(--line);
+  color: var(--fg); font: inherit; font-size: 14px; cursor: pointer; white-space: nowrap;
+}
+.calc-tabs button.on, .calc-seg button.on { background: var(--fg); color: var(--bg); border-color: var(--fg) }
+.calc-pane { display: grid; gap: 10px }
+.calc-hint { margin: 0; color: var(--txt2); font-size: 14px; line-height: 1.5 }
+.calc-hint b { color: var(--fg) }
+.calc-field { display: grid; gap: 4px }
+.calc-field > span { font-size: 13px; color: var(--mut) }
+.calc-input {
+  width: 100%; min-height: 46px; padding: 0 14px; font: inherit; font-size: 16px; color: var(--fg);
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; outline: none; transition: border-color .2s;
+}
+.calc-input:focus { border-color: var(--line-strong) }
+.calc-input.bad { border-color: #e5484d }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums }
+.calc-two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+.calc-seg, .calc-chips { display: flex; flex-wrap: wrap; gap: 6px }
+.calc-chips button { min-height: 32px; padding: 0 12px; font-size: 13px; font-family: ui-monospace, Consolas, monospace }
+.calc-err { margin: 0; color: #e5484d; font-size: 14px; line-height: 1.5 }
+.calc-note { margin: 0; color: var(--txt2); font-size: 14px; line-height: 1.5 }
+.calc-note b { color: var(--fg) }
+.calc-result { padding: 12px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line) }
+.calc-result small { color: var(--mut) }
+.calc-result .big { margin-top: 4px; font-size: 20px; letter-spacing: .04em; word-break: break-all }
+.calc-list { margin: 0; display: grid; gap: 6px }
+.calc-list > div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 2px; border-bottom: 1px solid var(--line) }
+.calc-list dt { color: var(--txt2); font-size: 14px }
+.calc-list dd { margin: 0; font-weight: 700 }
+.calc-steps { margin: 0; padding-left: 20px; color: var(--txt2); font-size: 14px; line-height: 1.8 }
+.calc-steps .mono { color: var(--fg) }
+.calc-table { width: 100%; border-collapse: collapse; font-size: 14px }
+.calc-table th, .calc-table td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: left }
+.calc-table th { font-weight: 600; color: var(--txt2); white-space: nowrap }
+.calc-table td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700 }
+.calc-table.tt th, .calc-table.tt td { text-align: center }
+.calc-table.tt .out { border-left: 1px solid var(--line-strong); font-weight: 700 }
+.calc-table.tt tr.one td.out { background: var(--surface2) }
