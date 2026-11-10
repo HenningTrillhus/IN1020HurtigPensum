@@ -39,16 +39,3 @@ export function buildChapters(topics: Topic[], empty: EmptyChapter[] = []): Chap
 }
 
 export const videoCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + t.videos.length, 0)
-
-// Én fast, flat farge per kapittel. Ingen gradienter og ingen fargeskifte.
-const PALETTE = ['#e879f9', '#38bdf8', '#a78bfa', '#34d399', '#fb7185', '#fb923c', '#a3e635']
-export const NEUTRAL = '#f4f4f5'
-
-export function chapterColor(n: number | null): string {
-  return n == null ? NEUTRAL : PALETTE[(n - 1) % PALETTE.length]
-}
-
-/** CSS-variabler for en farge: selve fargen, en svak bakgrunn og en kantfarge. */
-export function colorVars(color: string) {
-  return { '--c': color, '--c-soft': `${color}33`, '--c-line': `${color}66` } as Record<string, string>
-}

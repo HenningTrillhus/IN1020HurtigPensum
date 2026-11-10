@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { Topic } from './types'
-import { buildChapters, chapterColor, chapterInfo, type EmptyChapter } from './chapters'
+import { buildChapters, chapterInfo, type EmptyChapter } from './chapters'
 import { Loader, LoadError } from './Loader'
 import Overview from './pages/Overview'
 import ChapterPage from './pages/ChapterPage'
@@ -104,26 +104,6 @@ function AppInner() {
     }
     document.title = title
     window.scrollTo(0, 0)
-
-    // Aksentfarge følger kapitlet du er i (én fast farge per kapittel). Forsiden er nøytral.
-    const root = document.documentElement.style
-    let color: string | null = null
-    if (a === 'kap') {
-      const c = chapters.find(x => x.key === b)
-      if (c) color = chapterColor(c.n)
-    } else {
-      const t = topics.find(x => x.id === a)
-      if (t) color = chapterColor(chapterInfo(t).n)
-    }
-    if (color) {
-      root.setProperty('--acc', color)
-      root.setProperty('--acc-soft', `${color}26`)
-      root.setProperty('--acc-line', `${color}66`)
-    } else {
-      root.removeProperty('--acc')
-      root.removeProperty('--acc-soft')
-      root.removeProperty('--acc-line')
-    }
   }, [hash, topics, chapters])
 
   if (error) return <LoadError onRetry={() => { setError(false); setAttempt(n => n + 1) }} />

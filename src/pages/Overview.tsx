@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import { chapterColor, colorVars, videoCount, type Chapter } from '../chapters'
+import { videoCount, type Chapter } from '../chapters'
 import Disclaimer from '../Disclaimer'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
 
@@ -21,7 +21,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
             <a
               key={c.key}
               className={`card${v === 0 ? ' wip' : ''}`}
-              style={{ '--i': Math.min(i, 10), ...colorVars(chapterColor(c.n)) } as CSSProperties}
+              style={{ '--i': Math.min(i, 10) } as CSSProperties}
               href={`#/kap/${c.key}`}
             >
               <span className="num">{c.n ?? '•'}</span>
