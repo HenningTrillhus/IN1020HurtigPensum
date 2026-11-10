@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound } from '../sound'
-import { CAP, fetchStats, getVote, hasViewed, sendVote, sendView, videoId, type Stat, type Vote } from '../stats'
+import { CAP, fetchStats, getVote, hasViewed, queueVote, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
 import { ChevronDown, ChevronUp, Eye, ThumbDown, ThumbUp } from '../Icons'
 
 interface P {
@@ -83,14 +83,26 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
     return () => io.disconnect()
   }, [missing])
 
+  // Samme regel som på serveren: en teller på taket er frosset og endres ikke.
+  const open = (v: Vote) => {
+    const s = statRef.current
+    return v === 'up' ? (s?.likes ?? 0) < CAP : v === 'down' ? (s?.dislikes ?? 0) < CAP : false
+  }
+  const canSend = (prev: Vote, next: Vote) => open(prev) || open(next)
+
+  // Hvis et tidligere valg aldri ble sendt (side lukket, nettfeil), planlegges det på nytt.
+  useEffect(() => { resumeVote(id, canSend) }, [])
+
   const cast = (target: 'up' | 'down') => {
-    const next: Vote = vote === target ? null : target
+    // Trykk på tommelen som allerede er valgt gjør ingenting. Du kan bare bytte til den andre.
+    if (vote === target) return
+    const next: Vote = target
     setVote(next)
-    // Samme regel som på serveren: en teller på taket er frosset og endres ikke.
-    const open = (v: Vote) => (v === 'up' ? (stat?.likes ?? 0) < CAP : v === 'down' ? (stat?.dislikes ?? 0) < CAP : false)
     const canDec = open(vote)
     const canInc = open(next)
-    sendVote(id, next, canDec || canInc)
+    // Skjermen oppdateres med en gang, men serveren får bare det endelige valget etter ca. 30 sekunder i ro,
+    // og bare hvis det er annerledes enn det den allerede vet.
+    queueVote(id, next, canSend)
     onStat(id, s => {
       const out = { ...s }
       if (canDec && vote === 'up') out.likes = Math.max(0, out.likes - 1)

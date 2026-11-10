@@ -3,6 +3,9 @@ export const CAP = 999
 export interface Stat { likes: number; dislikes: number; views: number }
 export type Vote = 'up' | 'down' | null
 
+// Stemmer sendes først når brukeren har vært i ro så lenge. Trykk så mye du vil før det.
+export const VOTE_DELAY_MS = 30_000
+
 function read(key: string): string | null {
   try { return localStorage.getItem(key) } catch { return null }
 }
@@ -22,14 +25,15 @@ function deviceId(): string {
 }
 
 export const videoId = (topic: string, i: number) => `${topic}:${i}`
-export const getVote = (id: string): Vote => {
-  const v = read(`vote:${id}`)
-  return v === 'up' || v === 'down' ? v : null
-}
+const asVote = (v: string | null): Vote => (v === 'up' || v === 'down' ? v : null)
+/** Hva brukeren har valgt (vises i grensesnittet med en gang). */
+export const getVote = (id: string): Vote => asVote(read(`vote:${id}`))
+/** Hva serveren sist fikk vite at denne enheten har stemt. */
+export const getSentVote = (id: string): Vote => asVote(read(`vsent:${id}`))
 export const hasViewed = (id: string) => read(`viewed:${id}`) === '1'
 
-const post = (path: string, body: unknown) =>
-  fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+const post = (path: string, body: unknown, keepalive = false) =>
+  fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), keepalive })
 
 // Alle kall feiler stille: lokalt (uten API) og ved nettfeil skal siden fungere som før.
 export async function fetchStats(ids: string[]): Promise<Record<string, Stat> | null> {
@@ -47,8 +51,55 @@ export async function sendView(id: string, network = true): Promise<void> {
   try { await post('/api/view', { id, device: deviceId() }) } catch { /* ignore */ }
 }
 
-export async function sendVote(id: string, vote: Vote, network = true): Promise<void> {
+// ---- Stemmer: samles opp og sendes først etter VOTE_DELAY_MS uten nye trykk ----
+
+/** Avgjør om en endring fra `prev` til `next` fortsatt kan telle (ikke begge tellerne frosset). */
+type CanSend = (prev: Vote, next: Vote) => boolean
+interface Pending { vote: Vote; timer: ReturnType<typeof setTimeout>; canSend: CanSend }
+const pending = new Map<string, Pending>()
+
+async function flushVote(id: string, keepalive = false): Promise<void> {
+  const p = pending.get(id)
+  if (!p) return
+  clearTimeout(p.timer)
+  pending.delete(id)
+
+  const sent = getSentVote(id)
+  // Endte der den startet (eller trykket seg tilbake): ingenting å sende.
+  if (p.vote === sent) return
+  // Begge tellerne som berøres er på taket: husk valget lokalt, men ikke kall serveren.
+  if (!p.canSend(sent, p.vote)) { write(`vsent:${id}`, p.vote); return }
+
+  write(`vsent:${id}`, p.vote)
+  try {
+    const r = await post('/api/vote', { id, vote: p.vote, device: deviceId() }, keepalive)
+    if (!r.ok) write(`vsent:${id}`, sent) // prøv igjen ved neste besøk
+  } catch {
+    write(`vsent:${id}`, sent)
+  }
+}
+
+/** Registrer et valg. Valget vises og lagres lokalt med en gang, men sendes først etter VOTE_DELAY_MS i ro. */
+export function queueVote(id: string, vote: Vote, canSend: CanSend): void {
   write(`vote:${id}`, vote)
-  if (!network) return
-  try { await post('/api/vote', { id, vote, device: deviceId() }) } catch { /* ignore */ }
+  const old = pending.get(id)
+  if (old) clearTimeout(old.timer)
+  pending.set(id, { vote, canSend, timer: setTimeout(() => { void flushVote(id) }, VOTE_DELAY_MS) })
+}
+
+/** Ved sidelasting: hvis et valg aldri ble sendt (side lukket, nettfeil), planlegg det på nytt. */
+export function resumeVote(id: string, canSend: CanSend): void {
+  if (pending.has(id)) return
+  const vote = getVote(id)
+  if (vote !== getSentVote(id)) queueVote(id, vote, canSend)
+}
+
+/** Send alt som venter nå, f.eks. når fanen lukkes, så ingen stemmer går tapt i ventetiden. */
+export function flushAllVotes(): void {
+  for (const id of [...pending.keys()]) void flushVote(id, true)
+}
+
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  window.addEventListener('pagehide', flushAllVotes)
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flushAllVotes() })
 }
