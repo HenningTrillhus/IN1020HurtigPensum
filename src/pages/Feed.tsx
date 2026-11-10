@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
 import { CAP, fetchStats, getVote, hasViewed, queueVote, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
-import { ChevronDown, ChevronUp, CloseIcon, Eye, FullscreenIcon, ListIcon, MutedIcon, ThumbDown, ThumbUp } from '../Icons'
+import { ChevronDown, ChevronUp, CloseIcon, Eye, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ThumbDown, ThumbUp } from '../Icons'
 import { usePlayer } from '../player'
 
 interface P {
@@ -31,11 +31,13 @@ interface SlideProps {
   onStat: (id: string, patch: (s: Stat) => Stat) => void
   /** Meldes når denne videoen kommer i bildet (tema og plass i kapitlet). */
   onActive: (topicId: string, pos: number) => void
+  /** Meldes når videoen starter eller stopper, så feeden vet når tekst og knapper kan tones ned. */
+  onPlayState: (pos: number, playing: boolean) => void
 }
 
 const fmt = (n: number) => (n >= CAP ? `${CAP}+` : String(n))
 
-function Slide({ topic, root, i, pos, mode, stat, onStat, onActive }: SlideProps) {
+function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState }: SlideProps) {
   const v = topic.videos[i]
   // Aktiv video laster fritt, neste henter bare første bilde (så neste sveip starter med en gang),
   // og resten laster ingenting før de kommer nær. En video som først er lastet, beholder det den har.
@@ -53,6 +55,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive }: SlideProps
   const [buffering, setBuffering] = useState(false)
   const [active, setActive] = useState(false)
   const [popped, setPopped] = useState<'up' | 'down' | null>(null)
+  const [flash, setFlash] = useState<{ kind: 'play' | 'pause'; n: number } | null>(null)
   // Observer-callbacken lages bare én gang, så den leser siste tall via ref.
   const statRef = useRef(stat)
   statRef.current = stat
@@ -146,6 +149,22 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive }: SlideProps
     })
   }
 
+  // Trykk på videoen for å pause eller spille, uten å måtte treffe den lille knappen i spilleren.
+  const togglePlay = () => {
+    const video = vid.current
+    if (!video) return
+    const willPlay = video.paused
+    if (willPlay) video.play().catch(() => {})
+    else video.pause()
+    setFlash(f => ({ kind: willPlay ? 'play' : 'pause', n: (f?.n ?? 0) + 1 }))
+  }
+  // Tilbakemeldingsikonet forsvinner av seg selv.
+  useEffect(() => {
+    if (!flash) return
+    const t = window.setTimeout(() => setFlash(null), 700)
+    return () => window.clearTimeout(t)
+  }, [flash])
+
   // Egen fullskjerm-knapp: stor og lett å treffe, i stedet for den lille i videospilleren.
   const goFullscreen = () => {
     const v = vid.current as (HTMLVideoElement & { webkitEnterFullscreen?: () => void }) | null
@@ -168,7 +187,11 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive }: SlideProps
           loop playsInline muted={muted || podOn} controls controlsList="nofullscreen" preload={preload}
           // Trykker du play på videoen mens en podkast spiller, tar videoen over: podkasten pauses og videoen får lyd.
           // (Videoene starter aldri av seg selv mens en podkast spiller, så dette er alltid et bevisst trykk.)
-          onPlay={() => { if (isPodcastPlaying()) { enableSound(); player.pause() } }}
+          onPlay={() => {
+            onPlayState(pos, true)
+            if (isPodcastPlaying()) { enableSound(); player.pause() }
+          }}
+          onPause={() => onPlayState(pos, false)}
           onLoadedData={() => setReady(true)}
           onWaiting={() => setBuffering(true)}
           onPlaying={() => setBuffering(false)}
@@ -177,6 +200,13 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive }: SlideProps
         />
       )}
       {!missing && (!ready || buffering) && <div className="spin" aria-hidden />}
+      {/* Gjennomsiktig flate over videoen: trykk for å pause/spille. Den nederste delen er fri, så spillerens egen linje (spoling) fungerer. */}
+      {!missing && !fullscreen && <div className="tap" onClick={togglePlay} aria-hidden />}
+      {flash && !fullscreen && (
+        <div className="flash" key={flash.n} aria-hidden>
+          {flash.kind === 'play' ? <PlayIcon /> : <PauseIcon />}
+        </div>
+      )}
       {!missing && !fullscreen && (
         <div className="top-actions">
           {muted && !podOn && (
@@ -253,17 +283,41 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   const [current, setCurrent] = useState(startIdx)
   const [atEnd, setAtEnd] = useState(false)       // sluttsiden er i bildet
   const [picker, setPicker] = useState(false)     // valgarket for videoene i delkapittelet
+  const [idle, setIdle] = useState(false)         // ingen har rørt noe på en stund
+  const [activePlaying, setActivePlaying] = useState(false) // den aktive videoen spiller
   const feedRef = useRef<HTMLDivElement>(null)
   const ready = useRef(false)
+  const currentRef = useRef(startIdx)
+  const idleTimer = useRef<number | undefined>(undefined)
   const activeRef = useRef(onActive)
   activeRef.current = onActive
+
+  // Tekst og knapper over videoen tones ned etter noen sekunder uten berøring, så hele videoen blir synlig.
+  // Alle berøringer, sveip og musebevegelser kaller poke() og henter dem tilbake.
+  const IDLE_MS = 4000
+  const poke = useCallback(() => {
+    window.clearTimeout(idleTimer.current)
+    setIdle(false)
+    idleTimer.current = window.setTimeout(() => setIdle(true), IDLE_MS)
+  }, [])
+  useEffect(() => { poke(); return () => window.clearTimeout(idleTimer.current) }, [poke])
 
   // Meld bare fra om aktiv video etter at vi har scrollet til startvideoen.
   const report = useCallback((id: string, pos: number) => {
     if (!ready.current) return
+    currentRef.current = pos
     setCurrent(pos)
+    setActivePlaying(false) // den nye videoen melder fra selv når den begynner å spille
+    poke()
     activeRef.current(id)
-  }, [])
+  }, [poke])
+
+  const onPlayState = useCallback((pos: number, playing: boolean) => {
+    if (pos !== currentRef.current) return
+    setActivePlaying(playing)
+    // Teksten skal være synlig de første sekundene etter at videoen faktisk har begynt å spille.
+    if (playing) poke()
+  }, [poke])
 
   useLayoutEffect(() => {
     const feed = feedRef.current!
@@ -299,14 +353,19 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   const cur = slides[current]
   const siblings = cur ? slides.map((s, pos) => ({ ...s, pos })).filter(s => s.topic.id === cur.topic.id) : []
   const multi = siblings.length > 1
+  // Skjul bare mens videoen faktisk spiller. Pauset video, åpent valgark og sluttsiden viser alltid alt.
+  const uiHidden = idle && activePlaying && !picker && !atEnd
 
   // Hopper rett til videoen uten å sveipe forbi de mellom. Ellers ville de telt som sett.
   const jump = (target: { topic: Topic; i: number; pos: number }) => {
     const feed = feedRef.current
     const el = feed?.querySelector<HTMLElement>(`[data-topic="${target.topic.id}"][data-index="${target.i}"]`)
     if (feed && el) feed.scrollTo({ top: el.offsetTop, behavior: 'instant' })
+    currentRef.current = target.pos
     setCurrent(target.pos)
+    setActivePlaying(false)
     setPicker(false)
+    poke()
   }
 
   // Esc lukker valgarket.
@@ -333,17 +392,20 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   }, [step, picker])
 
   return (
-    <div className="feed-wrap">
+    <div
+      className={`feed-wrap${uiHidden ? ' ui-hidden' : ''}`}
+      onPointerDown={poke} onPointerMove={poke} onTouchStart={poke} onWheel={poke} onKeyDown={poke}
+    >
       <div className="segs" aria-hidden>
         {slides.map((_, k) => <i key={k} className={`seg${k < current ? ' done' : k === current ? ' cur' : ''}`} />)}
       </div>
-      <div className="feed" ref={feedRef}>
+      <div className="feed" ref={feedRef} onScroll={poke}>
         {slides.map((s, pos) => (
           <Slide
             key={`${s.topic.id}:${s.i}`}
             topic={s.topic} root={root} i={s.i} pos={pos}
             mode={pos === current ? 'active' : pos === current + 1 ? 'next' : 'far'}
-            stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report}
+            stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report} onPlayState={onPlayState}
           />
         ))}
         <EndSlide onDone={done} onVisible={setAtEnd} />
