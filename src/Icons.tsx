@@ -37,16 +37,25 @@ export const MutedIcon = () => (
 )
 
 /** Hopp 10 sekunder tilbake / fram. */
+// Sirkelpil (310 grader, åpen oppe) med fylt pilspiss og «10» i midten.
+// Tilbake: pila peker mot venstre (mot klokka). Fram: speilvendt.
+const skipText = {
+  x: 12, y: 16.2, textAnchor: 'middle', fontSize: 8.6, fontWeight: 800, fill: 'currentColor', stroke: 'none',
+  fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
+} as const
+
 export const Back10 = () => (
-  <svg {...base} {...line}>
-    <path d="M12 4a8 8 0 1 0 7.52 5.26" /><path d="M12 1l-3.5 3 3.5 3" />
-    <text x="12" y="15.2" textAnchor="middle" fontSize="7.4" fontWeight="700" fill="currentColor" stroke="none" fontFamily="system-ui, sans-serif">10</text>
+  <svg {...base} {...line} strokeWidth={2.1}>
+    <path d="M12 5.2a8 8 0 1 0 6.1 2.8" />
+    <path d="M13.2 1.6 7.4 5.2l5.8 3.6Z" fill="currentColor" stroke="none" />
+    <text {...skipText}>10</text>
   </svg>
 )
 export const Fwd10 = () => (
-  <svg {...base} {...line}>
-    <path d="M12 4a8 8 0 1 1-7.52 5.26" /><path d="M12 1l3.5 3-3.5 3" />
-    <text x="12" y="15.2" textAnchor="middle" fontSize="7.4" fontWeight="700" fill="currentColor" stroke="none" fontFamily="system-ui, sans-serif">10</text>
+  <svg {...base} {...line} strokeWidth={2.1}>
+    <path d="M12 5.2a8 8 0 1 1-6.1 2.8" />
+    <path d="M10.8 1.6 16.6 5.2l-5.8 3.6Z" fill="currentColor" stroke="none" />
+    <text {...skipText}>10</text>
   </svg>
 )
 

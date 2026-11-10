@@ -9,6 +9,9 @@
   --mut: #9d9da6;
   --acc: #f4f4f5;      /* eneste aksent: hvit på mørk, mørk på hvit */
   --on-acc: #0c0c0e;
+  --acc-soft: #ffffff26;
+  --acc-line: #ffffff66;
+  --exam: #fbbf24;
   --danger: #f87171;
   --r: 14px;
   --ease: cubic-bezier(.2, .8, .2, 1);
@@ -47,7 +50,7 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 .hero h1 { margin: 0; font-size: clamp(26px, 7vw, 34px); letter-spacing: -.025em }
 .hero .sub { margin: 6px 0 0 }
 
-.chapter-label { display: block; color: var(--mut); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em }
+.chapter-label { display: block; color: var(--acc); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em }
 .chapter-title { margin: 4px 0 14px; font-size: clamp(24px, 6.5vw, 30px); letter-spacing: -.02em }
 
 /* Faner / tilbake */
@@ -79,27 +82,27 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
   transition: transform .2s var(--ease), border-color .2s, background .2s;
   animation: cardIn .4s var(--ease) both; animation-delay: calc(var(--i, 0) * 35ms);
 }
-.card:hover { border-color: #4a4a52; background: #19191d }
+.card:hover { border-color: var(--c-line, #4a4a52); background: #19191d }
 .card:active { transform: scale(.99) }
 .card .body { flex: 1; min-width: 0 }
 .card h2 { margin: 0; font-size: 17px; letter-spacing: -.01em }
 .card p { margin: 4px 0 0; color: var(--mut); font-size: 14px }
 .card small { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 6px; font-size: 13px }
 .card .chev { flex: none; font-size: 22px; line-height: 1; color: var(--mut); transition: transform .2s var(--ease), color .2s }
-.card:hover .chev { transform: translateX(3px); color: var(--fg) }
+.card:hover .chev { transform: translateX(3px); color: var(--c, var(--fg)) }
 .num {
   flex: none; display: grid; place-items: center; min-width: 48px; height: 48px; padding: 0 9px; border-radius: 12px;
-  background: var(--surface2); border: 1px solid var(--line); color: var(--fg); font-weight: 700; font-size: 17px; letter-spacing: -.02em;
+  background: var(--c-soft, var(--surface2)); border: 1px solid var(--c-line, var(--line)); color: var(--c, var(--fg)); font-weight: 700; font-size: 17px; letter-spacing: -.02em;
 }
 .num.sm { font-size: 14px; min-width: 54px }
-.card.wip { opacity: .65 }
+.card.wip { opacity: .78 }
 .badge { padding: 1px 9px; border-radius: 99px; background: var(--surface2); border: 1px solid var(--line); color: var(--mut); font-size: 12px; white-space: nowrap }
 
 /* Work in progress */
 .wip-page { text-align: center; padding: 56px 8px; animation: pageIn .4s var(--ease) both }
 .wip-page h2 { margin: 0 0 6px; font-size: 22px }
 .wip-page p { color: var(--mut); margin: 6px 0 }
-.wip-page .wip-topic { color: var(--fg); font-weight: 600 }
+.wip-page .wip-topic { color: var(--acc); font-weight: 600 }
 .wip-back {
   display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border-radius: 99px; margin-top: 16px;
   background: var(--acc); color: var(--on-acc); font-weight: 600; transition: transform .15s var(--ease);
@@ -130,7 +133,7 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 .segs { position: absolute; top: 9px; left: 14px; right: 14px; z-index: 4; display: flex; gap: 4px; pointer-events: none }
 .seg { flex: 1; height: 3px; border-radius: 3px; background: #ffffff40; transition: background .3s }
 .seg.done { background: #ffffffb3 }
-.seg.cur { background: #fff }
+.seg.cur { background: var(--acc) }
 
 .caption {
   position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 78px 96px 18px; pointer-events: none;
@@ -152,7 +155,7 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 
 .actions { position: absolute; right: 10px; bottom: 96px; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 2px }
 .vote { width: 52px; height: 52px; border-radius: 50%; padding: 0; background: #000b; backdrop-filter: blur(6px); border-color: #ffffff2a; color: #fff }
-.vote.on { color: #fff; border-color: #fff; background: #ffffff26 }
+.vote.on { color: var(--acc); border-color: var(--acc); background: var(--acc-soft) }
 .vote.on.down { color: var(--danger); border-color: var(--danger); background: #f8717126 }
 .vote.pop svg { animation: pop .35s var(--ease) }
 .count { font-size: 13px; font-weight: 600; text-shadow: 0 1px 3px #000; min-height: 16px; margin-bottom: 6px; animation: bump .25s var(--ease) }
@@ -175,7 +178,7 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 
 /* ============ Quiz ============ */
 .qbar { height: 4px; border-radius: 4px; background: var(--surface2); overflow: hidden; margin-bottom: 14px }
-.qbar > div { height: 100%; background: var(--fg); border-radius: 4px; transition: width .4s var(--ease) }
+.qbar > div { height: 100%; background: var(--acc); border-radius: 4px; transition: width .4s var(--ease) }
 .pad h2 { margin: 6px 0 14px; font-size: 22px; letter-spacing: -.015em }
 .opt { display: flex; justify-content: flex-start; width: 100%; text-align: left; margin-top: 10px; padding: 14px 16px; border-radius: 12px; background: var(--surface); animation: cardIn .35s var(--ease) both; animation-delay: calc(var(--i, 0) * 50ms) }
 .opt.right { border-color: #4ade80; background: #4ade8018; animation: pulse .4s var(--ease) }
@@ -203,7 +206,7 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
   background: none; border: 0; border-radius: 50%; width: 66px; color: var(--fg);
 }
 .pod:hover { border-color: transparent }
-.pod-ring { display: block; padding: 3px; border-radius: 50%; width: 66px; height: 66px; background: conic-gradient(#fff var(--pp, 0%), #ffffff26 0); transition: transform .2s var(--ease) }
+.pod-ring { display: block; padding: 3px; border-radius: 50%; width: 66px; height: 66px; background: conic-gradient(var(--acc) var(--pp, 0%), #ffffff26 0); transition: transform .2s var(--ease) }
 .pod:hover .pod-ring { transform: scale(1.05) }
 .pod.playing .pod-ring { animation: ringPulse 1.8s ease-out infinite }
 .pod-img { position: relative; display: block; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: #0b0b0d }
@@ -213,7 +216,7 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 .pod-ov svg { filter: drop-shadow(0 1px 4px #000a); opacity: .95 }
 .pod:hover .pod-ov { background: rgba(0, 0, 0, .5) }
 .pod-dur { font-size: 12px; font-weight: 600; color: var(--mut) }
-.pod.current .pod-dur { color: var(--fg) }
+.pod.current .pod-dur { color: var(--acc) }
 
 /* Rad over videoen */
 .pod-bar { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; animation: pageIn .3s var(--ease) both }
@@ -236,13 +239,13 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 .mini-text { flex: 1; min-width: 0; display: flex; flex-direction: column }
 .mini-text strong { font-size: 14px; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden }
 .mini-text small { display: none }
-.mini-ctrls { display: flex; align-items: center; gap: 4px; flex: none }
-.mini-btn { width: 46px; height: 46px; min-height: 46px; padding: 0; border-radius: 50%; background: transparent; border: 0; color: var(--fg) }
+.mini-ctrls { display: flex; align-items: center; gap: 2px; flex: none }
+.mini-btn { width: 52px; height: 52px; min-height: 52px; padding: 0; border-radius: 50%; background: transparent; border: 0; color: var(--fg) }
 .mini-btn:hover { background: var(--surface2) }
-.mini-btn.play { width: 52px; height: 52px; min-height: 52px; background: var(--acc); color: var(--on-acc) }
+.mini-btn.play { width: 56px; height: 56px; min-height: 56px; background: var(--acc); color: var(--on-acc) }
 .mini-btn.play:hover { background: #fff }
-.mini-btn svg { width: 28px; height: 28px }
-.mini-btn.play svg { width: 26px; height: 26px }
+.mini-btn svg { width: 36px; height: 36px }
+.mini-btn.play svg { width: 28px; height: 28px }
 .mini-close {
   position: absolute; top: -16px; right: 12px; width: 32px; height: 32px; min-height: 32px; padding: 0; border-radius: 50%;
   background: var(--surface2); border: 1px solid var(--line); color: var(--mut);
@@ -251,9 +254,9 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 .mini-close svg { width: 16px; height: 16px }
 .mini-seek { display: flex; align-items: center; gap: 8px; margin-top: 2px; font-size: 12px; color: var(--mut); font-variant-numeric: tabular-nums }
 .mini-seek input { flex: 1; min-width: 0; height: 28px; margin: 0; background: transparent; -webkit-appearance: none; appearance: none; cursor: pointer }
-.mini-seek input::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(to right, #fff var(--p, 0%), #3a3a42 var(--p, 0%)) }
+.mini-seek input::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(to right, var(--acc) var(--p, 0%), #3a3a42 var(--p, 0%)) }
 .mini-seek input::-moz-range-track { height: 4px; border-radius: 4px; background: #3a3a42 }
-.mini-seek input::-moz-range-progress { height: 4px; border-radius: 4px; background: #fff }
+.mini-seek input::-moz-range-progress { height: 4px; border-radius: 4px; background: var(--acc) }
 .mini-seek input::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; margin-top: -6px; border-radius: 50%; background: #fff; border: 0 }
 .mini-seek input::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 0 }
 
@@ -289,7 +292,7 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
   display: flex; align-items: center; gap: 16px; padding: 14px 18px; margin: 0 0 18px; border-radius: var(--r);
   background: var(--surface); border: 1px solid var(--line); animation: pageIn .35s var(--ease) both;
 }
-.exam-num { font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; min-width: 1.2ch }
+.exam-num { color: var(--exam); font-size: 44px; font-weight: 700; line-height: 1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; min-width: 1.2ch }
 .exam-text { display: flex; flex-direction: column; gap: 2px; min-width: 0 }
 .exam-text strong { font-size: 16px }
 .exam-text small { font-size: 13px }

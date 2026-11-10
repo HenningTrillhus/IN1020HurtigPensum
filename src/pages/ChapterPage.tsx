@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import type { Chapter } from '../chapters'
+import { chapterColor, colorVars, type Chapter } from '../chapters'
 import { getQuizBest } from '../storage'
 import PodButtons from '../PodButtons'
 
@@ -50,7 +50,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
                 <span className="chev" aria-hidden>›</span>
               </>
             )
-            const style = { '--i': Math.min(i, 10) } as CSSProperties
+            const style = { '--i': Math.min(i, 10), ...colorVars(chapterColor(chapter.n)) } as CSSProperties
             const cls = `card${n === 0 ? ' wip' : ''}`
             // Kort med podkast: knappene ligger under beskrivelsen og kan ikke ligge inni selve lenken.
             return hasPods ? (
