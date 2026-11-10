@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound } from '../sound'
-import { fetchStats, getVote, hasViewed, sendVote, sendView, videoId, type Stat, type Vote } from '../stats'
-import { Eye, ThumbDown, ThumbUp } from '../Icons'
+import { CAP, fetchStats, getVote, hasViewed, sendVote, sendView, videoId, type Stat, type Vote } from '../stats'
+import { ChevronDown, ChevronUp, Eye, ThumbDown, ThumbUp } from '../Icons'
 
 interface P {
   /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
@@ -27,7 +27,7 @@ interface SlideProps {
   onActive: (topicId: string) => void
 }
 
-const fmt = (n: number) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1).replace('.0', '')}k` : String(n))
+const fmt = (n: number) => (n >= CAP ? `${CAP}+` : String(n))
 
 function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProps) {
   const v = topic.videos[i]
@@ -38,6 +38,9 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
   const [muted, setMuted] = useState(!isSoundOn())
   const [vote, setVote] = useState<Vote>(getVote(id))
   const [fullscreen, setFullscreen] = useState(false)
+  // Observer-callbacken lages bare én gang, så den leser siste tall via ref.
+  const statRef = useRef(stat)
+  statRef.current = stat
 
   useEffect(() => subscribeSound(() => setMuted(false)), [])
 
@@ -69,8 +72,10 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
         video?.play().catch(() => {})
         onActive(topic.id)
         if (!missing && !hasViewed(id)) {
-          sendView(id)
-          onStat(id, s => ({ ...s, views: s.views + 1 }))
+          // Står telleren på taket, sendes ingenting til serveren.
+          const full = (statRef.current?.views ?? 0) >= CAP
+          sendView(id, !full)
+          if (!full) onStat(id, s => ({ ...s, views: Math.min(s.views + 1, CAP) }))
         }
       } else video?.pause()
     }, { threshold: 0.7 })
@@ -81,13 +86,17 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
   const cast = (target: 'up' | 'down') => {
     const next: Vote = vote === target ? null : target
     setVote(next)
-    sendVote(id, next)
+    // Samme regel som på serveren: en teller på taket er frosset og endres ikke.
+    const open = (v: Vote) => (v === 'up' ? (stat?.likes ?? 0) < CAP : v === 'down' ? (stat?.dislikes ?? 0) < CAP : false)
+    const canDec = open(vote)
+    const canInc = open(next)
+    sendVote(id, next, canDec || canInc)
     onStat(id, s => {
       const out = { ...s }
-      if (vote === 'up') out.likes = Math.max(0, out.likes - 1)
-      if (vote === 'down') out.dislikes = Math.max(0, out.dislikes - 1)
-      if (next === 'up') out.likes += 1
-      if (next === 'down') out.dislikes += 1
+      if (canDec && vote === 'up') out.likes = Math.max(0, out.likes - 1)
+      if (canDec && vote === 'down') out.dislikes = Math.max(0, out.dislikes - 1)
+      if (canInc && next === 'up') out.likes = Math.min(out.likes + 1, CAP)
+      if (canInc && next === 'down') out.dislikes = Math.min(out.dislikes + 1, CAP)
       return out
     })
   }
@@ -192,16 +201,42 @@ export default function Feed({ topics, root, startId, chapter, onActive }: P) {
     location.hash = '#/'
   }
 
+  // Pil opp/ned (vises på PC) og piltaster: flytt én video om gangen.
+  const step = useCallback((dir: 1 | -1) => {
+    const feed = feedRef.current
+    if (feed) feed.scrollBy({ top: dir * feed.clientHeight, behavior: 'smooth' })
+  }, [])
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return
+      if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return
+      const t = e.target as HTMLElement | null
+      // La videospilleren og skjemafelt beholde piltastene sine (spoling, volum).
+      if (t && (t.tagName === 'VIDEO' || t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.tagName === 'SELECT')) return
+      e.preventDefault()
+      step(e.key === 'ArrowDown' ? 1 : -1)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [step])
+
   return (
-    <div className="feed" ref={feedRef}>
-      {slides.map((s, pos) => (
-        <Slide
-          key={`${s.topic.id}:${s.i}`}
-          topic={s.topic} root={root} i={s.i} pos={pos} total={slides.length}
-          stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report}
-        />
-      ))}
-      <EndSlide onDone={done} />
+    <div className="feed-wrap">
+      <div className="feed" ref={feedRef}>
+        {slides.map((s, pos) => (
+          <Slide
+            key={`${s.topic.id}:${s.i}`}
+            topic={s.topic} root={root} i={s.i} pos={pos} total={slides.length}
+            stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report}
+          />
+        ))}
+        <EndSlide onDone={done} />
+      </div>
+      <div className="nav" aria-label="Bla mellom videoer">
+        <button onClick={() => step(-1)} aria-label="Forrige video"><ChevronUp /></button>
+        <button onClick={() => step(1)} aria-label="Neste video"><ChevronDown /></button>
+      </div>
     </div>
   )
 }

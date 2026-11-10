@@ -52,3 +52,12 @@ h3.chapter { margin: 24px 0 8px; color: var(--mut); font-size: 14px; font-weight
 .feed { position: relative }
 .slide.end { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; background:var(--card); text-align:center; padding:24px }
 .end-title { font-size:22px; font-weight:700; margin:0 }
+.feed-wrap { position: relative; flex: 1; min-height: 0 }
+.feed-wrap > .feed { height: 100%; flex: none }
+/* Pil opp/ned: bare på PC (mus) og når det er plass utenfor videoen. */
+.nav { display: none }
+@media (hover: hover) and (pointer: fine) and (min-width: 700px) {
+  .nav { display: flex; flex-direction: column; gap: 10px; position: absolute; right: -64px; top: 50%; transform: translateY(-50%) }
+  .nav button { width: 48px; height: 48px; border-radius: 50%; padding: 0; justify-content: center }
+  .nav button:hover { background: var(--acc); color: #04120c }
+}

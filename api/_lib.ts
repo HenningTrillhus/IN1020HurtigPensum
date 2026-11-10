@@ -12,6 +12,10 @@ export const ID_RE = /^[a-z0-9-]{1,60}:\d{1,3}$/
 // Anonym enhets-id (tilfeldig, lagres i nettleseren): 32 hex-tegn
 export const DEVICE_RE = /^[a-f0-9]{32}$/
 
+// Hver teller (visninger, likes, tommel ned) stopper her. Når en teller er full skrives det ingenting mer til den,
+// og verdien vises som «999+». Må være lik CAP i src/stats.ts.
+export const COUNTER_CAP = 999
+
 // ---- Grenser. Kan justeres uten kodeendring via miljøvariabler i Vercel. ----
 const num = (v: string | undefined, d: number) => (v && Number.isFinite(Number(v)) ? Number(v) : d)
 // Per IP: maks så mange skrivinger (stemmer + visninger) per vindu.
@@ -56,12 +60,17 @@ export async function overDailyCap() {
   return n > DAILY_WRITE_CAP
 }
 
-// Felles port for alle endepunkter som skriver. Returnerer true hvis svar allerede er sendt.
-export async function rejectWrite(req: VercelRequest, res: VercelResponse): Promise<boolean> {
+// Del 1 av porten for endepunkter som skriver: ingen databasekall her. Returnerer true hvis svar er sendt.
+export function rejectBasic(req: VercelRequest, res: VercelResponse): boolean {
   if (req.method !== 'POST') { res.status(405).json({ error: 'method' }); return true }
   if (!redis) { res.status(503).json({ error: 'database not configured' }); return true }
   if (!sameOrigin(req)) { res.status(403).json({ error: 'origin' }); return true }
   if (typeof req.body !== 'object' || req.body === null) { res.status(400).json({ error: 'body' }); return true }
+  return false
+}
+
+// Del 2: rate limit per IP og døgntak. Telles som skrivinger, så kall dem først når vi vet at vi skal skrive.
+export async function rejectLimits(req: VercelRequest, res: VercelResponse): Promise<boolean> {
   if (await overIpLimit(req, 'write', IP_WRITE_LIMIT, IP_WRITE_WINDOW_SEC)) {
     res.status(429).json({ error: 'rate limit' }); return true
   }

@@ -1,3 +1,5 @@
+// Hver teller stopper her og vises som «999+». Må være lik COUNTER_CAP i api/_lib.ts.
+export const CAP = 999
 export interface Stat { likes: number; dislikes: number; views: number }
 export type Vote = 'up' | 'down' | null
 
@@ -37,13 +39,16 @@ export async function fetchStats(ids: string[]): Promise<Record<string, Stat> | 
   } catch { return null }
 }
 
-export async function sendView(id: string): Promise<void> {
+// network=false: husk det lokalt, men ikke kall serveren (telleren er full).
+export async function sendView(id: string, network = true): Promise<void> {
   if (hasViewed(id)) return
   write(`viewed:${id}`, '1')
+  if (!network) return
   try { await post('/api/view', { id, device: deviceId() }) } catch { /* ignore */ }
 }
 
-export async function sendVote(id: string, vote: Vote): Promise<void> {
+export async function sendVote(id: string, vote: Vote, network = true): Promise<void> {
   write(`vote:${id}`, vote)
+  if (!network) return
   try { await post('/api/vote', { id, vote, device: deviceId() }) } catch { /* ignore */ }
 }

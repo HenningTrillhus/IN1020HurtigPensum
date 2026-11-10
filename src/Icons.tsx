@@ -12,6 +12,18 @@ export const ThumbDown = ({ filled }: { filled?: boolean }) => (
   </svg>
 )
 
+export const ChevronUp = () => (
+  <svg {...base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
+    <path d="m6 15 6-6 6 6" />
+  </svg>
+)
+
+export const ChevronDown = () => (
+  <svg {...base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
+    <path d="m6 9 6 6 6-6" />
+  </svg>
+)
+
 export const Eye = () => (
   <svg {...base} width={18} height={18} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round">
     <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" />
