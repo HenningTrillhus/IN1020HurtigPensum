@@ -11,11 +11,20 @@ import Disclaimer from './Disclaimer'
 
 const base = import.meta.env.BASE_URL + 'content/'
 
-interface Index { topics: string[]; emptyChapters?: EmptyChapter[] }
+interface Index {
+  topics: string[]
+  emptyChapters?: EmptyChapter[]
+  /** Emnesiden med undervisningsmateriell (vises på forsiden). */
+  courseUrl?: string
+  /** Kompendium (PDF) per kapittelnummer. */
+  compendia?: Record<string, string>
+}
 
 export default function App() {
   const [topics, setTopics] = useState<Topic[] | null>(null)
   const [empty, setEmpty] = useState<EmptyChapter[]>([])
+  const [courseUrl, setCourseUrl] = useState<string | undefined>()
+  const [compendia, setCompendia] = useState<Record<string, string>>({})
   const [hash, setHash] = useState(location.hash)
   const [, bump] = useState(0)
 
@@ -29,6 +38,8 @@ export default function App() {
     fetch(base + 'index.json').then(r => r.json()).then(async (idx: Index) => {
       const all = await Promise.all(idx.topics.map(id => fetch(`${base}${id}/tema.json`).then(r => r.json())))
       setEmpty(idx.emptyChapters ?? [])
+      setCourseUrl(idx.courseUrl)
+      setCompendia(idx.compendia ?? {})
       setTopics(all)
     })
   }, [])
@@ -41,11 +52,13 @@ export default function App() {
   const [, a, b] = hash.replace('#', '').split('/')
   if (a === 'kap') {
     const chapter = chapters.find(c => c.key === b)
-    return chapter ? <ChapterPage chapter={chapter} /> : <Overview chapters={chapters} />
+    return chapter
+      ? <ChapterPage chapter={chapter} compendiumUrl={compendia[chapter.key]} />
+      : <Overview chapters={chapters} courseUrl={courseUrl} />
   }
 
   const topic = topics.find(t => t.id === a)
-  if (!topic) return <Overview chapters={chapters} />
+  if (!topic) return <Overview chapters={chapters} courseUrl={courseUrl} />
 
   const info = chapterInfo(topic)
   const chapterHref = `#/kap/${info.key}`
@@ -72,7 +85,7 @@ export default function App() {
         <a className={view === 'podcast' ? 'on' : ''} href={`#/${topic.id}/podcast`}>Podkast</a>
         <a className={view === 'quiz' ? 'on' : ''} href={`#/${topic.id}/quiz`}>Quiz</a>
       </nav>
-      <Disclaimer compact />
+      <Disclaimer compact compendiumUrl={compendia[info.key]} chapterLabel={info.label} />
       {view === 'podcast' ? <Podcast {...common} /> : view === 'quiz' ? <Quiz {...common} /> : (
         <Feed
           key={info.key}

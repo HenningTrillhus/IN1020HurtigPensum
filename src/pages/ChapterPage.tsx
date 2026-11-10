@@ -2,7 +2,7 @@ import type { Chapter } from '../chapters'
 import { getQuizBest } from '../storage'
 
 // Ett kapittel: alle delkapitlene.
-export default function ChapterPage({ chapter }: { chapter: Chapter }) {
+export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapter; compendiumUrl?: string }) {
   return (
     <div className="shell">
       <nav className="tabs">
@@ -10,6 +10,11 @@ export default function ChapterPage({ chapter }: { chapter: Chapter }) {
       </nav>
       <span className="chapter-label">{chapter.label}</span>
       <h1 className="chapter-title">{chapter.title || chapter.label}</h1>
+      {compendiumUrl && (
+        <p className="compendium">
+          📄 <a href={compendiumUrl} target="_blank" rel="noreferrer">Les kompendiet for {chapter.label.toLowerCase()} (PDF)</a>
+        </p>
+      )}
       {chapter.topics.length === 0 ? (
         <div className="wip">
           <div className="wip-icon" aria-hidden>🚧</div>

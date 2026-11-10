@@ -57,5 +57,14 @@
       "n": 1,
       "title": ""
     }
-  ]
+  ],
+  "courseUrl": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/",
+  "compendia": {
+    "2": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap02-digrep.pdf",
+    "3": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap03-instrlmc.pdf",
+    "4": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap04-arkitekturalu.pdf",
+    "5": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap05.pdf",
+    "6": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap06.pdf",
+    "7": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap07.pdf"
+  }
 }
