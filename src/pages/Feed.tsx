@@ -26,6 +26,8 @@ interface SlideProps {
   i: number
   pos: number
   total: number
+  /** Hvor mye av videoen som skal forhåndslastes: bare den aktive og den neste. */
+  mode: 'active' | 'next' | 'far'
   stat?: Stat
   onStat: (id: string, patch: (s: Stat) => Stat) => void
   /** Meldes når denne videoen kommer i bildet (tema og plass i kapitlet). */
@@ -34,8 +36,13 @@ interface SlideProps {
 
 const fmt = (n: number) => (n >= CAP ? `${CAP}+` : String(n))
 
-function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProps) {
+function Slide({ topic, root, i, pos, total, mode, stat, onStat, onActive }: SlideProps) {
   const v = topic.videos[i]
+  // Aktiv video laster fritt, neste henter bare første bilde (så neste sveip starter med en gang),
+  // og resten laster ingenting før de kommer nær. En video som først er lastet, beholder det den har.
+  const [warm, setWarm] = useState(false)
+  useEffect(() => { if (mode !== 'far') setWarm(true) }, [mode])
+  const preload = mode === 'active' ? 'auto' : mode === 'next' || warm ? 'metadata' : 'none'
   const id = videoId(topic.id, i)
   const ref = useRef<HTMLElement>(null)
   const vid = useRef<HTMLVideoElement>(null)
@@ -159,7 +166,7 @@ function Slide({ topic, root, i, pos, total, stat, onStat, onActive }: SlideProp
           ref={vid}
           // #t=0.1 gjør at første bilde vises som forhåndsvisning før du trykker play.
           src={`${root}${topic.id}/${v.file}#t=0.1`}
-          loop playsInline muted={muted || podOn} controls controlsList="nofullscreen" preload="metadata"
+          loop playsInline muted={muted || podOn} controls controlsList="nofullscreen" preload={preload}
           // Trykker du play på videoen mens en podkast spiller, tar videoen over: podkasten pauses og videoen får lyd.
           // (Videoene starter aldri av seg selv mens en podkast spiller, så dette er alltid et bevisst trykk.)
           onPlay={() => { if (isPodcastPlaying()) { enableSound(); player.pause() } }}
@@ -311,6 +318,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
           <Slide
             key={`${s.topic.id}:${s.i}`}
             topic={s.topic} root={root} i={s.i} pos={pos} total={slides.length}
+            mode={pos === current ? 'active' : pos === current + 1 ? 'next' : 'far'}
             stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report}
           />
         ))}
