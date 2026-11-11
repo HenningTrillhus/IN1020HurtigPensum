@@ -3,7 +3,38 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.6 Forenkling",
   "description": "",
-  "videos": [],
+  "videos": [
+    {
+      "title": "5.6.1 Reglene for forenkling",
+      "file": "video1.mp4",
+      "summary": "Fem regler dekker mye: nøytralt element, dominans, idempotens, komplement og felles faktor."
+    },
+    {
+      "title": "5.6.1 De to absorpsjonsreglene",
+      "file": "video2.mp4",
+      "summary": "De to reglene som faktisk sparer porter."
+    },
+    {
+      "title": "5.6.2 Første eksempel, helt ut",
+      "file": "video3.mp4",
+      "summary": "Tre ledd og seks bokstaver blir til «ikke A» + B i tre steg."
+    },
+    {
+      "title": "5.6.3 Andre eksempel, og en overraskelse",
+      "file": "video4.mp4",
+      "summary": "Åtte porter blir til en AND og en XNOR."
+    },
+    {
+      "title": "5.6.4 De Morgan",
+      "file": "video5.mp4",
+      "summary": "Drar du en overstrek fra utsiden og inn, snur du operatoren."
+    },
+    {
+      "title": "5.6.5 Hvor langt er langt nok",
+      "file": "video6.mp4",
+      "summary": "Du vet ikke sikkert når du er ferdig, så gå gjennom reglene én gang til."
+    }
+  ],
   "terms": [
     {
       "term": "Nøytralt element og dominans",

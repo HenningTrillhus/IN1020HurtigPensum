@@ -29,5 +29,13 @@
       "term": "Prikk i kretstegning",
       "def": "En fylt prikk der to ledninger møtes betyr at de er koblet sammen og fører samme signal. Krysser to streker hverandre uten prikk, går de bare over hverandre uten å røre. Det er den eneste måten en flat tegning kan vise noe som i virkeligheten ligger i flere lag."
     }
+  ],
+  "podcasts": [
+    {
+      "title": "Kretsen som legger sammen",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-3",
+      "duration": 1271
+    }
   ]
 }
