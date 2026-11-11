@@ -3,7 +3,33 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.4 Sannhetsverditabellen",
   "description": "",
-  "videos": [],
+  "videos": [
+    {
+      "title": "5.4 Sannhetsverditabellen og antall rader",
+      "file": "video1.mp4",
+      "summary": "En tabell som lister alle kombinasjoner, og n innganger gir 2ⁿ rader."
+    },
+    {
+      "title": "5.4.2 Trikset som gjør at du ikke glemmer noen",
+      "file": "video2.mp4",
+      "summary": "Skriv radene som binære tall i tellerekkefølge, så glemmer du aldri en rad."
+    },
+    {
+      "title": "5.4.3 Å lese en krets forlengs",
+      "file": "video3.mp4",
+      "summary": "Start ved inngangene og følg signalene mot utgangen."
+    },
+    {
+      "title": "5.4.4 Og baklengs",
+      "file": "video4.mp4",
+      "summary": "Start ved utgangen og spør hva den siste porten er."
+    },
+    {
+      "title": "5.4.5 Tre porter som var én",
+      "file": "video5.mp4",
+      "summary": "Regn ut kretsen rad for rad, så ser du at den er en NOR."
+    }
+  ],
   "terms": [
     {
       "term": "Sannhetsverditabell",
@@ -28,6 +54,14 @@
     {
       "term": "Tre porter som var én",
       "def": "To invertere og en AND, F = (ikke A) · (ikke B), gir 1 bare i raden der begge inngangene er 0. Mønsteret 1, 0, 0, 0 er NOR. Altså gjør tre porter nøyaktig det samme som én. Funksjonen er den samme, kretsen er ikke."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Sannhetsverditabellen",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-6",
+      "duration": 1106
     }
   ]
 }
