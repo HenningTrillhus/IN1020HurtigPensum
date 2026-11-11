@@ -27,7 +27,7 @@
     },
     {
       "term": "Absorpsjon, variant",
-      "def": "X + (ikke X) · Y = X + Y. Det ikke-inverterte X i andre ledd kan strykes. Den blir oftest oversett, og den gjør mest. De to absorpsjonsreglene er de som faktisk sparer porter."
+      "def": "(ikke X) + X · Y = (ikke X) + Y. X-en i andre ledd kan strykes. Er X = 0, er første ledd 1 og begge sider er 1. Er X = 1, faller første ledd bort på begge sider, og vi står igjen med Y mot Y. Den blir oftest oversett, og den gjør mest: de to absorpsjonsreglene er de som faktisk sparer porter."
     },
     {
       "term": "De Morgans lover",
