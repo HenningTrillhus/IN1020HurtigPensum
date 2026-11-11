@@ -3,5 +3,51 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.6 Forenkling",
   "description": "",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Nøytralt element og dominans",
+      "def": "X + 0 = X og X · 1 = X: noe som ikke legger til noe. X + 1 = 1 og X · 0 = 0: noe som avgjør alene. Reglene er nesten for opplagte til å skrive ned, og nettopp derfor glemmer man dem."
+    },
+    {
+      "term": "Idempotens",
+      "def": "X + X = X og X · X = X. Å si det to ganger hjelper ikke. Regelen betyr også at du kan skrive det samme leddet flere ganger uten å endre noe, og det utnyttes når fulladderen utledes."
+    },
+    {
+      "term": "Komplement",
+      "def": "X + (ikke X) = 1 og X · (ikke X) = 0. Én må være sann, men aldri begge. Det er grunnen til at B + (ikke B) i en parentes blir 1."
+    },
+    {
+      "term": "Felles faktor",
+      "def": "XY + XZ = X(Y + Z). Sett utenfor parentes, som den distributive loven i vanlig algebra. Det er regelen som oftest blir oversett når uttrykket ser rotete ut."
+    },
+    {
+      "term": "Absorpsjon",
+      "def": "X + XY = X. Det lange leddet er overflødig: er X = 1, er hele uttrykket 1, og er X = 0, blir andre ledd 0 også. Leddet XY endrer aldri noe."
+    },
+    {
+      "term": "Absorpsjon, variant",
+      "def": "X + (ikke X) · Y = X + Y. Det ikke-inverterte X i andre ledd kan strykes. Den blir oftest oversett, og den gjør mest. De to absorpsjonsreglene er de som faktisk sparer porter."
+    },
+    {
+      "term": "De Morgans lover",
+      "def": "Når du drar en overstrek fra utsiden og inn, snur du operatoren: ikke (A · B) = (ikke A) + (ikke B), og ikke (A + B) = (ikke A) · (ikke B). OG blir ELLER og omvendt, og hver variabel får sin egen overstrek. «Det er ikke sant at både Nora og Ahmed er hjemme» betyr «enten er ikke Nora hjemme, eller så er ikke Ahmed det»."
+    },
+    {
+      "term": "To tegnemåter for samme port",
+      "def": "På grunn av De Morgan kan en NAND tegnes som en AND med boble på utgangen, eller som en OR med bobler på begge inngangene. De er samme funksjon, og du velger det som viser leseren det du vil. Boka bruker bare den første formen."
+    },
+    {
+      "term": "Implikasjon (hvis A, så B)",
+      "def": "(ikke A) + B er påstanden «hvis A, så B». «Hvis det regner, tar jeg med paraply» er bare usant i ett tilfelle: det regner (A = 1) og du har ikke paraply (B = 0). Det er nøyaktig den ene raden der uttrykket gir 0, så implikasjon fra logikken og en toports krets er samme sak."
+    },
+    {
+      "term": "Hvor langt er langt nok",
+      "def": "Med reglene i kapitlet vet du ikke sikkert når du er ferdig: du leter etter felles faktorer og absorpsjon, og stopper når du ikke finner flere. Pass deg for å erklære at noe ikke kan forenkles. AB + AC + D ser ferdig ut, men felles faktor gir A(B + C) + D, som sparer en AND-port."
+    },
+    {
+      "term": "Karnaugh-diagram",
+      "def": "En systematisk metode som garanterer at du er i mål for små uttrykk, og som gjør samme arbeid på et rutenett i stedet for i en lang rekke omskrivninger. Står i appendiks B og er ikke pensum."
+    }
+  ]
 }

@@ -3,5 +3,27 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.10 Kretsen som husker",
   "description": "",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Kombinatorisk krets",
+      "def": "En krets der utgangen bare følger inngangene, hele tiden: endrer du en inngang, endrer utgangen seg straks etter. Kretsen har ingen fortid, og tar du bort inngangen, forsvinner svaret. Alle portene, adderen, dekoderen og multiplekseren er kombinatoriske."
+    },
+    {
+      "term": "Sekvensiell krets",
+      "def": "En krets med tilbakekobling, der utgangen også avhenger av rekkefølgen på det som har skjedd, og ikke bare av hva som står på inngangene nå. Det er det som gir hukommelse. Alt annet i kapitlet har vært kombinatorisk."
+    },
+    {
+      "term": "Tilbakekobling",
+      "def": "Ideen er én setning: koble utgangen tilbake til inngangen. Da avhenger kretsen også av hva den selv sa sist. Er koblingen satt opp riktig, holder den seg i ro i tilstanden den er i, til noen med vilje dytter den over i den andre."
+    },
+    {
+      "term": "Ett bit av to NOR-porter",
+      "def": "To NOR-porter som mater hverandre, holder nøyaktig én bit på denne måten. Registrene i kapittel 4 er bygget av nettopp dette, og det samme er cachen."
+    },
+    {
+      "term": "Appendiks C (ikke pensum)",
+      "def": "«Kretser som husker» tar denne siden videre: SR-latchen (to NOR-porter og den forbudte kombinasjonen), D-latchen (som gjør den forbudte tilstanden umulig og bestemmer når kretsen lytter), vippen (som smeller igjen i et bestemt øyeblikk) og registeret (åtte vipper med felles klokkeledning). Det er ikke pensum."
+    }
+  ]
 }

@@ -3,5 +3,31 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.7 Kretsen som legger sammen",
   "description": "",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Mente (carry)",
+      "def": "Det som sendes videre når svaret ikke får plass i kolonnen: 1 + 1 er 10 i totallssystemet, altså 0 i denne kolonnen og 1 i mente. På engelsk heter den carry, og i formler skrives den C. Menten som kommer inn fra posisjonen til høyre er Cinn, og den som går ut til venstre er Cut."
+    },
+    {
+      "term": "Sum og mente som to funksjoner",
+      "def": "Addisjon av to enkeltbit har to utganger, og hver av dem er sin egen funksjon, så du løser to tabeller hver for seg. Sum-kolonnen 0, 1, 1, 0 er XOR, og mente-kolonnen 0, 0, 0, 1 er AND. Maskinen legger sammen ved å spørre om bitene er forskjellige og om de begge er sanne."
+    },
+    {
+      "term": "Halvadder",
+      "def": "To bit inn, sum og mente ut: Sum = A XOR B og Mente ut = A · B. Bare to porter. Den kalles «halv» fordi den ikke kan ta imot mente, så den duger bare til den første kolonnen."
+    },
+    {
+      "term": "Fulladder",
+      "def": "Tre bit inn (A, B og Cinn), sum og mente ut. Sum = A XOR B XOR Cinn, og Cut = AB + ACinn + BCinn, altså 1 når minst to av de tre inngangene er 1. Den er utledet fra en tabell med åtte rader. Fem porter: to XOR, to AND og en OR. Det er prisen for å legge sammen én bit, og byggeklossen i ALU-en."
+    },
+    {
+      "term": "Fulladder av to halvaddere",
+      "def": "Den første halvadderen legger sammen A og B, og den andre legger Cinn til resultatet. OR-porten slipper menten videre uansett hvilken av dem som ga den. OR holder fordi de aldri oppstår samtidig: gir første halvadder mente, var både A og B lik 1, og summen er da 0."
+    },
+    {
+      "term": "Prikk i kretstegning",
+      "def": "En fylt prikk der to ledninger møtes betyr at de er koblet sammen og fører samme signal. Krysser to streker hverandre uten prikk, går de bare over hverandre uten å røre. Det er den eneste måten en flat tegning kan vise noe som i virkeligheten ligger i flere lag."
+    }
+  ]
 }

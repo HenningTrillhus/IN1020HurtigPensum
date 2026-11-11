@@ -48,5 +48,47 @@
       "icon": "dame-mann-5",
       "duration": 995
     }
+  ],
+  "terms": [
+    {
+      "term": "Skrivemåten for porter",
+      "def": "Inngangene kalles A og B, og utgangen F. OG skrives som gangetegn eller bokstavene inntil hverandre: A · B eller AB. ELLER skrives som pluss: A + B. IKKE skrives som en strek over bokstaven. På lysark skrives «ikke A» ofte med apostrof, men det betyr nøyaktig det samme."
+    },
+    {
+      "term": "NOT (IKKE-porten, inverteren)",
+      "def": "Den eneste porten med bare én inngang, og den snur signalet: inn 0 gir ut 1, inn 1 gir ut 0. Symbolet er en trekant med en liten sirkel i spissen. Kjøleskapslyset er eksempelet."
+    },
+    {
+      "term": "AND (OG-porten)",
+      "def": "Gir 1 bare når begge inngangene er 1, og 0 i alle de tre andre tilfellene. Det er de to bryterne etter hverandre. AND er den eneste av de sju som er vanlig multiplikasjon: 0 · 0 = 0, 0 · 1 = 0, 1 · 0 = 0 og 1 · 1 = 1."
+    },
+    {
+      "term": "OR (ELLER-porten)",
+      "def": "Gir 1 når minst én av inngangene er 1, og bare 0 når begge er 0. Det er de to bryterne ved siden av hverandre. Det boolske ELLER er mer rundhåndet enn norsk «enten kaffe eller te»: det er sant også når begge er sanne."
+    },
+    {
+      "term": "Plusstegnet er ikke addisjon",
+      "def": "I A + B står pluss for ELLER. Det oppfører seg som pluss i tre av fire tilfeller, men 1 + 1 = 1, fordi «minst én er sann» fortsatt bare er sant. Det er ikke 2, og ikke 0 med mente. Si «A eller B» høyt, ikke «A pluss B»."
+    },
+    {
+      "term": "XOR (ENTEN-ELLER-porten)",
+      "def": "Gir 1 når inngangene er forskjellige og 0 når de er like. Det er trappelyset. Velger du avtalen der lampa lyser når bryterne står ulikt, er koblingen en XOR, og velger du den andre avtalen er den en XNOR. XOR er den eneste porten som svarer på «er disse to forskjellige?», og den dukker opp igjen i halvadderen, fulladderen, overflyt-kretsen og subtraksjonskretsen."
+    },
+    {
+      "term": "NAND, NOR og XNOR (de tre med boble)",
+      "def": "De er AND, OR og XOR med utgangen snudd: NAND er AND med invertert utgang, NOR er OR med invertert utgang, og XNOR er XOR med invertert utgang. XNOR svarer på «er disse to like?». Det er fire porttyper å holde styr på, ikke sju."
+    },
+    {
+      "term": "Boble (invertering)",
+      "def": "Den lille sirkelen i et portsymbol. Den betyr invertering, hvor den enn står. Du tegner grunnporten og setter en sirkel på utgangen, så har du de tre siste portene."
+    },
+    {
+      "term": "Seksten oppførsler",
+      "def": "En funksjon med to innganger har fire tilfeller, og utgangen kan settes fritt til 0 eller 1 i hvert, altså 2 · 2 · 2 · 2 = 16 mulige oppførsler. Seks av dem har navn som toinngangsporter. Fire overser den ene inngangen, to gir samme svar uansett, og fire står sjelden som egne porter."
+    },
+    {
+      "term": "Invertere inngangene eller utgangen",
+      "def": "Det er forskjell på å snu A og B hver for seg før porten (ikke A og ikke B) og å snu svaret etter porten (ikke (A og B)). Med A = 1 og B = 0 gir den første 0 og den andre 1. Står inverterne foran porten, hører de til hver sin inngang. Står boblen i utgangen, hører inverteringen til hele uttrykket."
+    }
   ]
 }

@@ -3,5 +3,31 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.4 Sannhetsverditabellen",
   "description": "",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Sannhetsverditabell",
+      "def": "Lister opp alle mulige kombinasjoner av innganger, og hva utgangen blir for hver av dem. Den er uttømmende: når den er fylt ut, finnes det ingen situasjon kretsen kan havne i som ikke står der. Det er det første verktøyet du griper til når en krets er ukjent, for det gjør gjetting om til oppslag."
+    },
+    {
+      "term": "Antall rader: 2ⁿ",
+      "def": "Hver inngang er 0 eller 1, og valgene er uavhengige, så n innganger gir 2ⁿ rader: 2, 4, 8, 16 og 1 024 for 10. Tabellen dobles for hver inngang du legger til, samme dobling som i kapittel 2. I IN1020 holder vi oss til høyst tre innganger, altså åtte rader."
+    },
+    {
+      "term": "Tellerekkefølge",
+      "def": "Skriv radene som binære tall i rekkefølge: 00, 01, 10, 11 for to innganger, og 000 til 111 for tre. Da kommer alle kombinasjonene nøyaktig én gang, og i en rekkefølge alle bruker. Høyre kolonne skifter for hver rad, den neste annenhver, den neste hver fjerde."
+    },
+    {
+      "term": "Å lese en krets forlengs",
+      "def": "Start til venstre og følg signalene mot høyre, og navngi hver ledning etter hvert. Metoden er mekanisk, så du trenger ikke forstå hva kretsen gjør for å skrive opp uttrykket. Den er best når du skal finne ut hva en krets faktisk gjør, og når du leter etter feil."
+    },
+    {
+      "term": "Å lese en krets baklengs",
+      "def": "Start ved utgangen og spør: hva er den siste porten? Så spør du hva de to inngangene til den er, og går ett hakk til venstre for hver. Den er best når du har et uttrykk og skal tegne kretsen, eller når du leter etter unødvendige porter."
+    },
+    {
+      "term": "Tre porter som var én",
+      "def": "To invertere og en AND, F = (ikke A) · (ikke B), gir 1 bare i raden der begge inngangene er 0. Mønsteret 1, 0, 0, 0 er NOR. Altså gjør tre porter nøyaktig det samme som én. Funksjonen er den samme, kretsen er ikke."
+    }
+  ]
 }

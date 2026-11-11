@@ -40,5 +40,43 @@
       "icon": "dame-mann-4",
       "duration": 1430
     }
+  ],
+  "terms": [
+    {
+      "term": "Sant og usant som ett bit",
+      "def": "En påstand er enten sann eller usann, og aldri «nesten» eller «kommer an på». To svar er nøyaktig det ett bit rommer, så maskinen skriver sann som 1 og usann som 0. Det er samme ide som i kapittel 2: avtalen om hva bitet betyr gir det mening."
+    },
+    {
+      "term": "AND (to brytere etter hverandre)",
+      "def": "Strømmen må gjennom begge bryterne for å nå lampa. Slår du av én, er veien brutt. Begge må være på. Det er ikke en analogi, men det samme som AND."
+    },
+    {
+      "term": "OR (to brytere ved siden av hverandre)",
+      "def": "Strømmen har to veier å velge mellom, så det holder at minst én bryter er på. Det er OR."
+    },
+    {
+      "term": "NOT (bryter som er lukket i hvilestilling)",
+      "def": "En bryter som slipper strøm gjennom når ingen rører den, og bryter strømmen når du trykker den inn. Lampa lyser helt til noen trykker. Lyset i kjøleskapet er eksempelet: døra trykker inn bryteren når den lukkes. Med NOT har du alle tre: AND, OR og NOT."
+    },
+    {
+      "term": "Trappekobling",
+      "def": "To brytere som begge styrer samme lampe. Ingen av stillingene betyr «lys» i seg selv, det som avgjør er om bryterne står i samme stilling eller ikke. Mellom dem går det to ledninger, og hver bryter velger hvilken den bruker. Snur du én, skifter lyset alltid. Koblingen lar seg ikke lage med brytere etter hverandre eller ved siden av hverandre."
+    },
+    {
+      "term": "Port",
+      "def": "Et symbol for en oppførsel, så vi slipper å tegne milliarder av brytere. En port har noen få innganger (0 eller 1), nøyaktig én utgang (0 eller 1) og en fast regel for hva utgangen blir. På engelsk heter den gate. Portene finnes ikke fysisk: bak dem sitter transistorer, som er brytere styrt av spenning (kapittel 6)."
+    },
+    {
+      "term": "Funksjon",
+      "def": "Ordet har tre betydninger, men i dette kapitlet betyr det oppførselen til en krets: hva som kommer ut for hver kombinasjon av det som går inn. Den er en regel, ikke en handling, så det er ingenting som starter. Med få innganger kan du skrive opp alle tilfellene i en sannhetsverditabell."
+    },
+    {
+      "term": "Krets",
+      "def": "Porter koblet sammen med ledninger. Den samme funksjonen kan bygges av mange forskjellige kretser. Funksjonen er stedet du skal, og kretsen er veien dit: avtalen om hva som skal skje mot byggingen."
+    },
+    {
+      "term": "Hvorfor spare porter",
+      "def": "Hver port koster plass (areal på brikken), strøm, varme og tid. Flere porter etter hverandre gir lengre vei, og lengre vei betyr at klokka må gå saktere. Å fjerne en port gjør derfor brikken litt mindre, litt kjøligere og litt raskere, alt på én gang."
+    }
   ]
 }

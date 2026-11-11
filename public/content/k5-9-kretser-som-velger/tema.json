@@ -3,5 +3,27 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.9 Kretser som velger",
   "description": "",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Dekoder",
+      "def": "En krets som tar et tall og velger én linje: noen få innganger og én utgang per mulig kombinasjon, der nøyaktig én utgang er på. Den bygges av ett ledd per rad i tabellen, altså alle AND-leddene fra seksjon 5.5 på én gang, hvert med sin utgang. Hver AND-port er skreddersydd for sin ene kombinasjon."
+    },
+    {
+      "term": "Opkoden inn, styresignalet ut",
+      "def": "De fire første bitene i en instruksjon (opkoden, f.eks. 0101 for LDA) går inn i dekoderen. Én AND-port får fire ettall inn og slår ut, og de femten andre er mørke. Utgangen er LDA-linja, som åpner veiene i datastien. Det er hele koblingen mellom et program og en krets, og ingen tolker noe: det er en port som får fire ettall inn."
+    },
+    {
+      "term": "Multiplekser (mux)",
+      "def": "Den motsatte kretsen: den tar flere linjer og velger ut én av dem. Med to datainnganger og styreinngang S er F = (ikke S) · A + S · B. Er S = 0, blir F lik A, og er S = 1, blir F lik B. En bryter bygget av to AND-porter, en OR-port og en inverter."
+    },
+    {
+      "term": "AND som grind",
+      "def": "Samme ide i både dekoder og multiplekser: en AND-port brukes som en grind, der det ene signalet bestemmer om det andre får passere. En AND med en null inn er alltid 0, og med en 1 slipper den signalet gjennom."
+    },
+    {
+      "term": "Multipleksere i prosessoren",
+      "def": "De sitter overalt, selv om de sjelden tegnes. Hver gang datastien har to mulige kilder til samme sted, sitter det en multiplekser der og velger. Subtraksjonskretsen kunne også brukt en, men en XOR er billigere der."
+    }
+  ]
 }

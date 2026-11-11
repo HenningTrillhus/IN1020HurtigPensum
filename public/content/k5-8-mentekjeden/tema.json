@@ -3,5 +3,43 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.8 Mentekjeden",
   "description": "",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Mentekjede (ripple carry adder)",
+      "def": "Én fulladder per bitposisjon, med menten fra hver koblet inn i den neste. Menten går mot venstre, samme vei som når du legger sammen på papir, og den første får 0 inn. På engelsk heter den ripple carry adder, fordi menten «rippler» gjennom rekken, og mange sier seriell adder på norsk."
+    },
+    {
+      "term": "Hvorfor svaret ikke er riktig med en gang",
+      "def": "Alle fulladderne begynner å regne samtidig, men de fleste svarene er feil til menten har rukket fram. Den høyre vet svaret fra start, mens hver posisjon må vente på den til høyre, som dominobrikker. Leser du av for tidlig, ser tallet legitimt ut og er galt, og ingenting sier fra. Derfor venter maskinen et fast antall klokkeslag."
+    },
+    {
+      "term": "Hva mentekjeden koster",
+      "def": "Er tiden for én fulladder t, bruker rekken omtrent T ≈ n · t for n bit. Tiden vokser lineært med bredden, så fra 32 til 64 bit dobler du ventetiden. Verste tilfelle er 0111 + 0001, der menten må gjennom hver eneste posisjon."
+    },
+    {
+      "term": "Hvorfor ELLER er raskere enn addisjon",
+      "def": "En ELLER har ingen kjede: hver bitposisjon har sin egen OR-port, og ingen trenger å vite hva naboen fant ut, så alle 64 er ferdige samtidig. Addisjonen må vente på menten, posisjon for posisjon."
+    },
+    {
+      "term": "Carry look-ahead",
+      "def": "Å finne ut hva menten blir før den rekker fram. Er A0 og B0 begge 1, vet du at det blir mente ut derfra uten å vente. Satt i system brukes det i moderne prosessorer. Prisen er mange flere porter og mer strøm, altså plass mot tid."
+    },
+    {
+      "term": "C-flagget fra kretsen",
+      "def": "C-flagget er mente ut av den venstre fulladderen: den ene ledningen som stikker ut til venstre og som ingen flere fulladdere kan ta imot. Når det ble mente ut av den øverste posisjonen, var svaret for stort til bitbredden, og ledningen går rett inn i statusregisteret."
+    },
+    {
+      "term": "V-flagget fra kretsen",
+      "def": "Overflyt oppdages ved å sammenligne menten inn i den øverste posisjonen med menten ut av den: er de like, gikk det bra, er de forskjellige, er det overflyt. Hele deteksjonen er én XOR-port på de to menteledningene. I 1011 + 1010 (−5 + −6) er mente inn 0 og mente ut 1, så V = 1. Svaret 0101 er +5: to negative tall ga et positivt, og flagget hadde rett."
+    },
+    {
+      "term": "Subtraksjon med XOR og M",
+      "def": "a − b regnes som a + (−b), og −b i toerkomplement er alle bit i b invertert pluss 1. Bytt hver NOT med en XOR, der den andre inngangen er styreledningen M, og sett mente inn til M. Er M = 0, legger kretsen sammen, og er M = 1, trekker den fra. Prisen er fire XOR-porter og én ledning for 4 bit."
+    },
+    {
+      "term": "C-flagget ved subtraksjon",
+      "def": "Samme ledning og samme krets, men motsatt fortolkning. Ved addisjon er mente ut et varsel om at svaret ble for stort. Ved subtraksjon er den 1 nøyaktig når a ≥ b, altså når regnestykket ikke trengte å låne. Prosessoren vet hvilken som gjelder, siden den vet hva M sto på."
+    }
+  ]
 }

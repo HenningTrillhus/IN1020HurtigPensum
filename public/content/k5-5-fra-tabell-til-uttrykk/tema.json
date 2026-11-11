@@ -3,5 +3,31 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.5 Fra tabell til uttrykk",
   "description": "",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Fra tabell til uttrykk",
+      "def": "Den viktigste metoden i kapitlet: oppskriften som gjør et ønske om hva en krets skal gjøre, til noe du kan bygge. Den brukes også til å utlede adderkretsen. Metoden går motsatt vei av å lese en krets til en tabell."
+    },
+    {
+      "term": "Ettallene",
+      "def": "Se bare på radene der utgangen er 1. Vi beskriver som regel når noe skal skje (når alarmen skal gå), og det er lettere å liste opp de få tilfellene der svaret er ja enn alle de andre. Du forklarer en lampe ved å si «den lyser når bryteren står på»."
+    },
+    {
+      "term": "Ett ledd per rad",
+      "def": "For hver rad med F = 1 skriver du ett ledd, en AND mellom alle inngangene. Er inngangen 1 i raden, skriver du bokstaven som den er. Er den 0, skriver du bokstaven med overstrek, fordi leddet skal være sant akkurat i den raden. Til slutt kobler du alle leddene med ELLER."
+    },
+    {
+      "term": "Sum av produkter (SOP)",
+      "def": "Formen du får: AND-leddene er «produktene», og ELLER-en som binder dem sammen er «summen». SOP kommer av engelsk sum of products. I hver rad der F er 1 er nøyaktig ett ledd 1, og i radene der F er 0 er alle leddene 0."
+    },
+    {
+      "term": "Produkt av summer",
+      "def": "Alternativet: skriv ett ELLER-ledd per nullrad og bind dem sammen med OG. Det gir en annen, men likeverdig beskrivelse av samme funksjon. Vi bruker ettallene i denne boka, men har du en tabell med sytten ettall og tre nuller, er det nullene du vil beskrive."
+    },
+    {
+      "term": "Kostnaden før forenkling",
+      "def": "Med tre innganger og fire ettall får du fire ledd og tolv bokstaver. Bygger du uttrykket rett fram, trenger du tre invertere, fire AND-porter med tre innganger og en OR-port med fire: åtte porter for noe som skal vise seg å trenge to. Vi må ha uttrykket først, før vi kan forenkle det."
+    }
+  ]
 }
