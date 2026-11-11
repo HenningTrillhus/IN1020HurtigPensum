@@ -343,15 +343,12 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
 
   // Tekst og knapper over videoen tones ned etter noen sekunder uten berøring, så hele videoen blir synlig.
   // Alle berøringer, sveip og musebevegelser kaller poke() og henter dem tilbake.
-  // Mens videoen spiller tones alt ned etter 2 sekunder. Står den på pause, går det 4 sekunder først,
-  // så du rekker å se knappene, men også kan studere det stillestående bildet i ro.
-  const IDLE_PLAYING_MS = 2000
-  const IDLE_PAUSED_MS = 4000
-  const playingRef = useRef(false)
+  // Tekst og knapper tones ned etter 2 sekunder uten berøring, både mens videoen spiller og på pause.
+  const IDLE_MS = 2000
   const poke = useCallback(() => {
     window.clearTimeout(idleTimer.current)
     setIdle(false)
-    idleTimer.current = window.setTimeout(() => setIdle(true), playingRef.current ? IDLE_PLAYING_MS : IDLE_PAUSED_MS)
+    idleTimer.current = window.setTimeout(() => setIdle(true), IDLE_MS)
   }, [])
   useEffect(() => { poke(); return () => window.clearTimeout(idleTimer.current) }, [poke])
 
@@ -360,14 +357,12 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
     if (!ready.current) return
     currentRef.current = pos
     setCurrent(pos)
-    playingRef.current = false
     poke()
     activeRef.current(id)
   }, [poke])
 
   const onPlayState = useCallback((pos: number, playing: boolean) => {
     if (pos !== currentRef.current) return
-    playingRef.current = playing
     // Teksten skal være synlig en liten stund etter at videoen starter eller stopper.
     poke()
   }, [poke])
@@ -422,7 +417,6 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
       if (el) feed.scrollTo({ top: el.offsetTop, behavior: 'instant' })
       currentRef.current = target.pos
       setCurrent(target.pos)
-      playingRef.current = false
       poke()
       requestAnimationFrame(() => feed.classList.remove('jump-out'))
     }, 170)
