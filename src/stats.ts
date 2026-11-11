@@ -94,9 +94,46 @@ export function resumeVote(id: string, canSend: CanSend): void {
   if (vote !== getSentVote(id)) queueVote(id, vote, canSend)
 }
 
-/** Send alt som venter nå, f.eks. når fanen lukkes, så ingen stemmer går tapt i ventetiden. */
+// ---- «Meld feil i videoen»: samme mønster som stemmer. Av og på, sendes først etter ro. ----
+
+/** Hva brukeren har valgt (vises med en gang). */
+export const getReport = (id: string): boolean => read(`report:${id}`) === '1'
+const getSentReport = (id: string): boolean => read(`rsent:${id}`) === '1'
+const pendingReports = new Map<string, ReturnType<typeof setTimeout>>()
+
+async function flushReport(id: string, keepalive = false): Promise<void> {
+  const t = pendingReports.get(id)
+  if (t === undefined) return
+  clearTimeout(t)
+  pendingReports.delete(id)
+  const want = getReport(id), sent = getSentReport(id)
+  if (want === sent) return // trykket seg tilbake dit den startet
+  write(`rsent:${id}`, want ? '1' : null)
+  try {
+    const r = await post('/api/report', { id, report: want, device: deviceId() }, keepalive)
+    if (!r.ok) write(`rsent:${id}`, sent ? '1' : null)
+  } catch {
+    write(`rsent:${id}`, sent ? '1' : null)
+  }
+}
+
+export function queueReport(id: string, on: boolean): void {
+  write(`report:${id}`, on ? '1' : null)
+  const old = pendingReports.get(id)
+  if (old !== undefined) clearTimeout(old)
+  pendingReports.set(id, setTimeout(() => { void flushReport(id) }, VOTE_DELAY_MS))
+}
+
+/** Ved sidelasting: hvis en melding aldri ble sendt, planlegg den på nytt. */
+export function resumeReport(id: string): void {
+  if (pendingReports.has(id)) return
+  if (getReport(id) !== getSentReport(id)) queueReport(id, getReport(id))
+}
+
+/** Send alt som venter nå, f.eks. når fanen lukkes, så ingenting går tapt i ventetiden. */
 export function flushAllVotes(): void {
   for (const id of [...pending.keys()]) void flushVote(id, true)
+  for (const id of [...pendingReports.keys()]) void flushReport(id, true)
 }
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {

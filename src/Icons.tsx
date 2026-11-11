@@ -12,6 +12,13 @@ export const ThumbDown = ({ filled }: { filled?: boolean }) => (
   </svg>
 )
 
+/** Flagg: «meld feil». Fylt når meldingen er sendt. */
+export const FlagIcon = ({ filled }: { filled?: boolean }) => (
+  <svg {...base} fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round">
+    <path d="M5 21V4M5 4h11l-2 4 2 4H5" />
+  </svg>
+)
+
 export const PlayIcon = () => (
   <svg {...base} width={26} height={26}><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z" /></svg>
 )

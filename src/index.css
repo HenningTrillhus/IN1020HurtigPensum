@@ -195,6 +195,18 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 .vote { width: 52px; height: 52px; border-radius: 50%; padding: 0; background: #000b; backdrop-filter: blur(6px); border-color: #ffffff2a; color: #fff }
 .vote.on { color: var(--acc); border-color: var(--acc); background: var(--acc-soft) }
 .vote.pop svg { animation: pop .35s var(--ease) }
+.report-wrap { position: relative; display: grid; place-items: center }
+.report-note {
+  position: absolute; right: calc(100% + 10px); top: 50%; white-space: nowrap; padding: 8px 14px; border-radius: 14px 14px 4px 14px;
+  background: #000d; backdrop-filter: blur(6px); border: 1px solid #ffffff2a; color: #fff; font-size: 13px; font-weight: 600;
+  pointer-events: none; transform-origin: right center; animation: noteOut 1.9s var(--ease) both;
+}
+@keyframes noteOut {
+  0% { opacity: 0; transform: translate(14px, -50%) scale(.6) }
+  14% { opacity: 1; transform: translate(0, -50%) scale(1) }
+  78% { opacity: 1; transform: translate(0, -50%) scale(1) }
+  100% { opacity: 0; transform: translate(-6px, -50%) scale(.96) }
+}
 .count { font-size: 13px; font-weight: 600; text-shadow: 0 1px 3px #000; min-height: 16px; margin-bottom: 6px; animation: bump .25s var(--ease) }
 .views {
   position: absolute; left: 14px; bottom: 60px; z-index: 2; display: inline-flex; align-items: center; gap: 6px;

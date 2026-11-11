@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
-import { CAP, fetchStats, getVote, hasViewed, queueVote, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
-import { ChevronDown, ChevronUp, CloseIcon, Eye, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ThumbDown, ThumbUp } from '../Icons'
+import { CAP, fetchStats, getReport, getVote, hasViewed, queueReport, queueVote, resumeReport, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
+import { ChevronDown, ChevronUp, CloseIcon, Eye, FlagIcon, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ThumbDown, ThumbUp } from '../Icons'
 import { usePlayer } from '../player'
 import { SpeedButton, useSpeed } from '../speed'
 
@@ -55,7 +55,9 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
   const [ready, setReady] = useState(false) // første bilde er lastet
   const [buffering, setBuffering] = useState(false)
   const [active, setActive] = useState(false)
-  const [popped, setPopped] = useState<'up' | 'down' | null>(null)
+  const [popped, setPopped] = useState<'up' | 'down' | 'flag' | null>(null)
+  const [reported, setReported] = useState(getReport(id))
+  const [note, setNote] = useState<{ text: string; n: number } | null>(null)
   // Observer-callbacken lages bare én gang, så den leser siste tall via ref.
   const statRef = useRef(stat)
   statRef.current = stat
@@ -129,7 +131,23 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
   const canSend = (prev: Vote, next: Vote) => open(prev) || open(next)
 
   // Hvis et tidligere valg aldri ble sendt (side lukket, nettfeil), planlegges det på nytt.
-  useEffect(() => { resumeVote(id, canSend) }, [])
+  useEffect(() => { resumeVote(id, canSend); resumeReport(id) }, [])
+
+  // Meld feil i videoen: slås av og på som en tommel, og sendes først etter en stund i ro (ingen spam).
+  const toggleReport = () => {
+    const next = !reported
+    setReported(next)
+    queueReport(id, next)
+    setPopped('flag')
+    window.setTimeout(() => setPopped(null), 500)
+    setNote(n => ({ text: next ? 'Takk! Feilen er registrert' : 'Meldingen er fjernet', n: (n?.n ?? 0) + 1 }))
+  }
+  // Den lille teksten ved knappen forsvinner av seg selv.
+  useEffect(() => {
+    if (!note) return
+    const t = window.setTimeout(() => setNote(null), 1900)
+    return () => window.clearTimeout(t)
+  }, [note])
 
   const cast = (target: 'up' | 'down') => {
     // Trykk på tommelen som allerede er valgt gjør ingenting. Du kan bare bytte til den andre.
@@ -253,6 +271,15 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
             <ThumbDown filled={vote === 'down'} />
           </button>
           <span className="count" key={`d${stat?.dislikes}`}>{stat ? fmt(stat.dislikes) : ''}</span>
+          <div className="report-wrap">
+            <button
+              className={`vote report${reported ? ' on' : ''}${popped === 'flag' ? ' pop' : ''}`}
+              onClick={toggleReport} aria-pressed={reported} aria-label="Meld feil i videoen" title="Meld feil i videoen"
+            >
+              <FlagIcon filled={reported} />
+            </button>
+            {note && <span className="report-note" key={note.n} role="status">{note.text}</span>}
+          </div>
         </div>
       )}
       {!missing && !fullscreen && stat && (
