@@ -138,6 +138,10 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
     const next = !reported
     setReported(next)
     queueReport(id, next)
+    // Tallet oppdateres med en gang. Står det på taket, er det frosset (som på serveren).
+    if ((statRef.current?.reports ?? 0) < CAP) {
+      onStat(id, s => ({ ...s, reports: Math.min(Math.max(0, (s.reports ?? 0) + (next ? 1 : -1)), CAP) }))
+    }
     setPopped('flag')
     window.setTimeout(() => setPopped(null), 500)
     setNote(n => ({ text: next ? 'Takk! Feilen er registrert' : 'Meldingen er fjernet', n: (n?.n ?? 0) + 1 }))
@@ -280,6 +284,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
             </button>
             {note && <span className="report-note" key={note.n} role="status">{note.text}</span>}
           </div>
+          <span className="count" key={`r${stat?.reports}`} title="Antall som har meldt feil">{stat ? fmt(stat.reports ?? 0) : ''}</span>
         </div>
       )}
       {!missing && !fullscreen && stat && (
@@ -386,7 +391,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   }, [chapter])
 
   const onStat = (id: string, patch: (s: Stat) => Stat) =>
-    setStats(prev => ({ ...prev, [id]: patch(prev[id] ?? { likes: 0, dislikes: 0, views: 0 }) }))
+    setStats(prev => ({ ...prev, [id]: patch(prev[id] ?? { likes: 0, dislikes: 0, views: 0, reports: 0 }) }))
 
   // Etter siste video: tilbake til forsiden av kapitlet.
   const done = () => { location.hash = exitHash }

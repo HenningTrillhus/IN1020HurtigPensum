@@ -1,6 +1,6 @@
 // Hver teller stopper her og vises som «999+». Må være lik COUNTER_CAP i api/_lib.ts.
 export const CAP = 999
-export interface Stat { likes: number; dislikes: number; views: number }
+export interface Stat { likes: number; dislikes: number; views: number; reports: number }
 export type Vote = 'up' | 'down' | null
 
 // Stemmer sendes først når brukeren har vært i ro så lenge. Trykk så mye du vil før det.
