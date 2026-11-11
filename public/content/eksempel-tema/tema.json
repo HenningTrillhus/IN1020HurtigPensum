@@ -19,26 +19,6 @@
       "summary": "Legg video3.mp4 i denne mappen."
     }
   ],
-  "quiz": [
-    {
-      "q": "Hvor legger du nytt innhold?",
-      "options": [
-        "I public/content/<tema>",
-        "I node_modules",
-        "I index.html"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "Hva heter filen som beskriver et tema?",
-      "options": [
-        "data.txt",
-        "tema.json",
-        "readme.md"
-      ],
-      "answer": 1
-    }
-  ],
   "podcasts": [
     {
       "title": "Eksempel-podkast",

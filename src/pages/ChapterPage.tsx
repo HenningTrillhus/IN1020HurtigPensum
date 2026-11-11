@@ -1,6 +1,5 @@
 import type { CSSProperties } from 'react'
 import type { Chapter } from '../chapters'
-import { getQuizBest } from '../storage'
 import PodButtons from '../PodButtons'
 import { ThemeToggle } from '../theme'
 import ChapterSearch from '../ChapterSearch'
@@ -38,7 +37,6 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
         <div className="grid">
           {chapter.topics.map((t, i) => {
             const n = t.videos.length
-            const best = getQuizBest(t.id)
             const { num, text } = splitTitle(t.title)
             const hasPods = (t.podcasts?.length ?? 0) > 0
             const main = (
@@ -49,7 +47,6 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
                   {t.description && <p>{t.description}</p>}
                   <small>
                     <span>{n} {n === 1 ? 'video' : 'videoer'}</span>
-                    {best >= 0 && <span>· quiz best: {best}</span>}
                     {n === 0 && <span className="badge">Work in progress</span>}
                   </small>
                 </div>

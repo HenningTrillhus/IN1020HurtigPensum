@@ -60,52 +60,5 @@
       "term": "Prosessnode («2 nm»)",
       "def": "Navnet på en produksjonsgenerasjon, ikke et mål på noe. I det som markedsføres som en 2 nm-prosess, er den tilsvarende lengden i transistoren snarere 12 til 20 nanometer. Tallet er omtrent som modellåret på en bil."
     }
-  ],
-  "quiz": [
-    {
-      "q": "Hvorfor blir en brikke varm?",
-      "options": [
-        "Transistorene gnisser mot hverandre",
-        "Hvert kar som fylles og tømmes koster energi som blir til varme",
-        "Bitene lagres som varme"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "Du dobler spenningen og lar resten stå. Hva skjer med effekten?",
-      "options": [
-        "Den dobles",
-        "Den halveres",
-        "Den firedobles"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "Hva er varmeveggen?",
-      "options": [
-        "Brikken smelter ved 1 GHz",
-        "Spenningen kunne ikke senkes mer, så frekvensen kunne ikke økes uten for mye varme",
-        "Moores lov som stoppet"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "Hvorfor ble svaret flere kjerner?",
-      "options": [
-        "To kjerner på samme frekvens gir like mange beregninger uten spenningsøkningen en dobbelt så rask kjerne krevde",
-        "Programmer blir raskere av seg selv på flere kjerner",
-        "Små kjerner er billigere å lage"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "Hva er Moores lov?",
-      "options": [
-        "En naturlov om transistorer",
-        "En observasjon om dobling annethvert år som ble en selvoppfyllende bransjeplan",
-        "En lov om klokkefrekvens"
-      ],
-      "answer": 1
-    }
   ]
 }

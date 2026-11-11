@@ -225,17 +225,7 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
   .nav button:hover { background: var(--acc); color: var(--on-acc); border-color: transparent }
 }
 
-/* ============ Quiz ============ */
-.qbar { height: 4px; border-radius: 4px; background: var(--surface2); overflow: hidden; margin-bottom: 14px }
-.qbar > div { height: 100%; background: var(--acc); border-radius: 4px; transition: width .4s var(--ease) }
 .pad h2 { margin: 6px 0 14px; font-size: 22px; letter-spacing: -.015em }
-.opt { display: flex; justify-content: flex-start; width: 100%; text-align: left; margin-top: 10px; padding: 14px 16px; border-radius: 12px; background: var(--surface); animation: cardIn .35s var(--ease) both; animation-delay: calc(var(--i, 0) * 50ms) }
-.opt.right { border-color: var(--inv); background: var(--inv); color: var(--on-inv); font-weight: 600; animation: pulse .4s var(--ease) }
-.opt.wrong { border-style: dashed; border-color: var(--line-strong); color: var(--mut); text-decoration: line-through; animation: shake .4s }
-.next { margin-top: 18px; background: var(--acc); color: var(--on-acc); font-weight: 600; border-color: transparent; padding: 0 28px }
-.result { text-align: center; padding: 40px 0 }
-.result .big { font-size: 64px; font-weight: 700; letter-spacing: -.03em; animation: pop .5s var(--ease) both }
-.result h2 { font-size: 22px; margin-top: 4px }
 
 /* ============ Podkast ============ */
 /* Plass til spilleren nederst */

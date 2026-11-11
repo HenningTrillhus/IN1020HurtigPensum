@@ -10,5 +10,3 @@ export const markSeen = (topic: string, i: number) => {
 }
 export const getPos = (key: string): number => read(`pos:${key}`, 0)
 export const setPos = (key: string, t: number) => write(`pos:${key}`, t)
-export const getQuizBest = (topic: string): number => read(`quiz:${topic}`, -1)
-export const setQuizBest = (topic: string, n: number) => write(`quiz:${topic}`, Math.max(n, getQuizBest(topic)))

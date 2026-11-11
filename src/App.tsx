@@ -5,7 +5,6 @@ import { Loader, LoadError } from './Loader'
 import Overview from './pages/Overview'
 import ChapterPage from './pages/ChapterPage'
 import Feed from './pages/Feed'
-import Quiz from './pages/Quiz'
 import Terms from './pages/Terms'
 import PodButtons from './PodButtons'
 import type { Exam } from './ExamCountdown'
@@ -52,7 +51,6 @@ function AppInner() {
   const [hash, setHash] = useState(location.hash)
   const [error, setError] = useState(false)
   const [attempt, setAttempt] = useState(0)
-  const [, bump] = useState(0)
 
   // Lasteanimasjonen vises minst en kort stund første gang i en økt, så den ikke bare blinker forbi.
   const [minDone, setMinDone] = useState(() => {
@@ -110,7 +108,7 @@ function AppInner() {
   if (error) return <LoadError onRetry={() => { setError(false); setAttempt(n => n + 1) }} />
   if (!topics || !minDone) return <Loader />
 
-  // Adresser: #/ (forsiden), #/kap/<n> (ett kapittel), #/<tema>/<feed|podcast|quiz> (ett tema)
+  // Adresser: #/ (forsiden), #/kap/<n> (ett kapittel), #/<tema>/<feed|begreper> (ett tema)
   const [, a, b] = hash.replace('#', '').split('/')
   if (a === 'kap') {
     const chapter = chapters.find(c => c.key === b)
@@ -128,7 +126,6 @@ function AppInner() {
   if (topic.videos.length === 0) return <Wip topic={topic} backHref={chapterHref} backLabel={info.label} />
 
   const view = b
-  const common = { topic, base: `${base}${topic.id}/`, onChange: () => bump(n => n + 1) }
   // Feeden sveiper bare gjennom temaer i samme kapittel som har videoer.
   const chapterTopics = topics.filter(t => chapterInfo(t).key === info.key && t.videos.length > 0)
 
@@ -147,7 +144,6 @@ function AppInner() {
         {topic.terms?.length ? (
           <a className={view === 'begreper' ? 'on' : ''} href={`#/${topic.id}/begreper`}>Fagbegreper</a>
         ) : null}
-        <a className={view === 'quiz' ? 'on' : ''} href={`#/${topic.id}/quiz`}>Quiz</a>
       </nav>
       <Disclaimer compact compendiumUrl={compendia[info.key]} chapterLabel={info.label} />
       {topic.podcasts?.length ? (
@@ -156,7 +152,7 @@ function AppInner() {
           <PodButtons topic={topic} compact />
         </div>
       ) : null}
-      {view === 'begreper' ? <Terms topic={topic} /> : view === 'quiz' ? <Quiz {...common} /> : (
+      {view === 'begreper' ? <Terms topic={topic} /> : (
         <Feed
           key={info.key}
           topics={chapterTopics}

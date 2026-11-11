@@ -1,6 +1,6 @@
 # IN1020 Hurtigpensum
 
-**Pensum i korte klipp.** En studentlaget nettside for IN1020 ved UiO. Sveip deg gjennom ca. ett minutt lange videoer per delkapittel, hør på podkaster, slå opp fagbegreper og test deg selv med quiz. Bygget som en TikTok-/Reels-aktig feed, fordi det er lettere å åpne en video enn en PDF.
+**Pensum i korte klipp.** En studentlaget nettside for IN1020 ved UiO. Sveip deg gjennom ca. ett minutt lange videoer per delkapittel, hør på podkaster, og slå opp fagbegreper. Bygget som en TikTok-/Reels-aktig feed, fordi det er lettere å åpne en video enn en PDF.
 
 **Live:** https://in1020-hurtig-pensum.vercel.app
 
@@ -16,7 +16,6 @@
 - **Podkaster.** En fast spiller nederst som fortsetter når du bytter side, husker hvor du var, og har hopp på 10 sekunder og styring fra låseskjermen. Videoene pauses og dempes mens en podkast spiller.
 - **Delkapitler med flere videoer.** En liten velger lar deg hoppe mellom delene.
 - **Fagbegreper.** Egen fane per delkapittel, og et søk øverst i hvert kapittel som viser hvilke delkapitler som tar opp et begrep.
-- **Quiz** per delkapittel, med beste resultat lagret.
 - **Tommel opp og ned** og visningstall på videoene, med vern mot spam.
 - **Nedtelling til eksamen** på forsiden, mørkt og lyst tema (mørkt som standard), og layout som er laget for telefon først.
 
@@ -25,12 +24,12 @@
 | Del | Valg |
 |---|---|
 | Frontend | Vite, React 19, TypeScript (strict) |
-| Ruting | Hash-ruting (`#/`, `#/kap/<n>`, `#/<tema>/<feed\|quiz\|begreper>`), ingen ruter å konfigurere |
+| Ruting | Hash-ruting (`#/`, `#/kap/<n>`, `#/<tema>/<feed\|begreper>`), ingen ruter å konfigurere |
 | Innhold | Statiske filer i `public/content/`, ingen database for selve pensumet |
 | Tall (likes, visninger) | Vercel Functions i `api/` og Upstash Redis |
 | Hosting | Vercel |
 
-Fremdrift, quiz-resultater, tema og hastighet lagres lokalt i nettleseren. Det er ingen innlogging.
+Tema, hastighet og avspillingsposisjon lagres lokalt i nettleseren. Det er ingen innlogging.
 
 ## Kjøre lokalt
 
@@ -57,7 +56,7 @@ Hvert delkapittel er en mappe i `public/content/<tema-id>/`:
 
 ```
 public/content/k6-4-inverter/
-  tema.json        beskrivelse, videoer, podkaster, fagbegreper og quiz
+  tema.json        beskrivelse, videoer, podkaster og fagbegreper
   video1.mp4       videoene, i rekkefølge
   podkast-dame.m4a eventuelle podkaster
 ```
@@ -98,7 +97,7 @@ api/                Vercel Functions: stats, vote, view
 prompts/            Prompter til videoene (Gemini/NotebookLM)
 public/content/     Alt innholdet: temaer, videoer, podkaster
 public/podcast-icons/
-src/pages/          Forside, kapittel, feed, quiz og fagbegreper
+src/pages/          Forside, kapittel, feed og fagbegreper
 src/                Spiller, tema, hastighet, søk og felles komponenter
 vercel.json         Cache-regler for filene
 ```

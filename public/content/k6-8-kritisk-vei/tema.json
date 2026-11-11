@@ -35,43 +35,5 @@
       "term": "Carry look-ahead",
       "def": "Kretser som gjetter menten på forhånd i stedet for å vente på den, og slipper dermed køen. De er mye raskere, men bruker betydelig flere transistorer, så det er enda et eksempel på fart mot plass og strøm."
     }
-  ],
-  "quiz": [
-    {
-      "q": "En fulladder har fem porter på 5 ps hver. Hvor lang tid bruker den?",
-      "options": [
-        "25 ps",
-        "5 ps",
-        "15 ps"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "Tre veier gjennom en krets: 2, 5 og 3 porter à 5 ps. Hvor lang tid bruker kretsen?",
-      "options": [
-        "50 ps",
-        "10 ps",
-        "25 ps"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "Hva er den kritiske veien?",
-      "options": [
-        "Den korteste veien",
-        "Den lengste veien fra inngang til utgang, som bestemmer farten",
-        "Veien med flest transistorer"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "Hvorfor tar en mentekjede lang tid?",
-      "options": [
-        "Hvert ledd må vente på menten fra det forrige, så tidene legges sammen",
-        "Fulladdere er trege porter",
-        "Menten går gjennom klokka"
-      ],
-      "answer": 0
-    }
   ]
 }

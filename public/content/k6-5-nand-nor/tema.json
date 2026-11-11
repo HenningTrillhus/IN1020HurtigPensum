@@ -51,34 +51,5 @@
       "term": "Transistorregnskap",
       "def": "NOT koster 2 transistorer, NAND 4, NOR 4, AND 6, OR 6 og XOR 8 til 12 (porter med to innganger). Hver port du sparer, er et håndfast antall transistorer som slipper å ta plass, trekke strøm og bli varme. Derfor skriver en kretsdesigner heller om et uttrykk til NAND-er enn til AND-er."
     }
-  ],
-  "quiz": [
-    {
-      "q": "Hvor mange transistorer er det i en NAND-port og en AND-port?",
-      "options": [
-        "4 og 4",
-        "6 og 4",
-        "4 og 6"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "Hvorfor koster AND mer enn NAND?",
-      "options": [
-        "AND bruker en annen type transistor",
-        "AND er en NAND med en inverter etter, og inverteren koster to transistorer til",
-        "AND har tre innganger"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "I en NAND-port, hvordan står de to nMOS-transistorene?",
-      "options": [
-        "I serie",
-        "I parallell",
-        "Én i hver gruppe"
-      ],
-      "answer": 0
-    }
   ]
 }

@@ -1,5 +1,4 @@
 export interface Video { title: string; file: string; summary?: string }
-export interface QuizQ { q: string; options: string[]; answer: number }
 
 /** En podkast-episode til et tema. Lydfilen ligger i temamappen. */
 export interface Podcast {
@@ -24,5 +23,4 @@ export interface Topic {
   podcasts?: Podcast[]
   /** Fagbegreper i delkapittelet (vises i fanen «Fagbegreper»). */
   terms?: Term[]
-  quiz?: QuizQ[]
 }

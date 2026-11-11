@@ -43,43 +43,5 @@
       "term": "Global og lokal klokke",
       "def": "En moderne brikke har flere klokker. Kjernene kan gå i én takt, minnegrensesnittet i en annen og grafikken i en tredje. Deler som ikke er i bruk, kan få klokka slått helt av. Når noen oppgir at en maskin går i 3,5 GHz, er det den globale klokka til prosessorkjernene."
     }
-  ],
-  "quiz": [
-    {
-      "q": "Hvorfor trenger en maskin klokke?",
-      "options": [
-        "Verdiene lekker ut hvis man venter for lenge",
-        "Ulike veier blir ferdige til ulik tid, og noen må si fra når det er trygt å lese",
-        "For å gi strøm til transistorene"
-      ],
-      "answer": 1
-    },
-    {
-      "q": "Hva er frekvensen når klokkeperioden er 500 ps?",
-      "options": [
-        "2 GHz",
-        "500 MHz",
-        "5 GHz"
-      ],
-      "answer": 0
-    },
-    {
-      "q": "Hva er klokkeperioden i en prosessor på 3 GHz?",
-      "options": [
-        "3 ns",
-        "30 ps",
-        "333 ps"
-      ],
-      "answer": 2
-    },
-    {
-      "q": "Klokkeperioden må være ...",
-      "options": [
-        "Kortere enn portforsinkelsen",
-        "Minst like lang som den kritiske veien",
-        "Lik antall porter"
-      ],
-      "answer": 1
-    }
   ]
 }
