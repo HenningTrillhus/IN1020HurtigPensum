@@ -3,5 +3,42 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.2 Det begynner med en bryter",
   "description": "Fra sant og usant til AND, OR, NOT og trappekoblingen, og hvorfor det lønner seg å spare porter.",
-  "videos": []
+  "videos": [
+    {
+      "title": "5.2 Det begynner med en bryter (del 1)",
+      "file": "video1.mp4"
+    },
+    {
+      "title": "5.2 Det begynner med en bryter (del 2)",
+      "file": "video2.mp4"
+    },
+    {
+      "title": "5.2 Det begynner med en bryter (del 3)",
+      "file": "video3.mp4"
+    },
+    {
+      "title": "5.2 Det begynner med en bryter (del 4)",
+      "file": "video4.mp4"
+    },
+    {
+      "title": "5.2 Det begynner med en bryter (del 5)",
+      "file": "video5.mp4"
+    },
+    {
+      "title": "5.2 Det begynner med en bryter (del 6)",
+      "file": "video6.mp4"
+    },
+    {
+      "title": "5.2 Det begynner med en bryter (del 7)",
+      "file": "video7.mp4"
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Det begynner med en bryter",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-4",
+      "duration": 1430
+    }
+  ]
 }

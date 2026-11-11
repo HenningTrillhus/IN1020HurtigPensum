@@ -3,5 +3,50 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.3 Portene",
   "description": "Alle sju portene: IKKE, AND, OR, XOR og de tre med boble, og feilene som koster flest poeng.",
-  "videos": []
+  "videos": [
+    {
+      "title": "5.3 Portene (del 1)",
+      "file": "video1.mp4"
+    },
+    {
+      "title": "5.3 Portene (del 2)",
+      "file": "video2.mp4"
+    },
+    {
+      "title": "5.3 Portene (del 3)",
+      "file": "video3.mp4"
+    },
+    {
+      "title": "5.3 Portene (del 4)",
+      "file": "video4.mp4"
+    },
+    {
+      "title": "5.3 Portene (del 5)",
+      "file": "video5.mp4"
+    },
+    {
+      "title": "5.3 Portene (del 6)",
+      "file": "video6.mp4"
+    },
+    {
+      "title": "5.3 Portene (del 7)",
+      "file": "video7.mp4"
+    },
+    {
+      "title": "5.3 Portene (del 8)",
+      "file": "video8.mp4"
+    },
+    {
+      "title": "5.3 Portene (del 9)",
+      "file": "video9.mp4"
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Portene",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-5",
+      "duration": 995
+    }
+  ]
 }
