@@ -361,7 +361,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
     activeRef.current(id)
   }, [poke])
 
-  const onPlayState = useCallback((pos: number, playing: boolean) => {
+  const onPlayState = useCallback((pos: number, _playing: boolean) => {
     if (pos !== currentRef.current) return
     // Teksten skal være synlig en liten stund etter at videoen starter eller stopper.
     poke()
