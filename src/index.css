@@ -798,3 +798,7 @@ button.total-progress .completion { display: block }
 /* Fremdriftssiden bruker de vanlige kapittelbannerne, tonet ut mot venstre */
 .prog-row.has-banner { position: relative; overflow: hidden }
 .prog-row.has-banner::before { opacity: .38 }
+
+/* «Fortsett der du slapp» har kapittelets banner, men grått og dempet så kortet skiller seg fra kapittelkortene */
+.resume.has-banner { position: relative; background: color-mix(in srgb, var(--ch, var(--acc)) 4%, var(--surface)) }
+.resume.has-banner::before { filter: grayscale(.7); opacity: .36 }
