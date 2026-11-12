@@ -19,5 +19,47 @@
       "file": "video3.mp4",
       "summary": "Tre pluss antall instruksjoner, og gevinsten nærmer seg fire."
     }
+  ],
+  "terms": [
+    {
+      "term": "Pipeline (samlebånd)",
+      "def": "Flere instruksjoner inne i maskinen samtidig, hver i sitt trinn, slik at neste starter så snart trinnet foran er ledig. Som tre som tar oppvasken: Amina vasker, Jonas skyller og Henrik tørker, og tretti tallerkener tar 32 minutter i stedet for 90. Ingen tallerken går fortere, men de kommer ut mye oftere."
+    },
+    {
+      "term": "De fire trinnene: IF, DE, EX, WB",
+      "def": "IF (Instruction Fetch): instruksjonen hentes fra minnet og programtelleren økes. DE (Decode): instruksjonen tydes. EX (Execute): arbeidet gjøres, for en addisjon regner ALU-en. WB (Write Back): resultatet skrives tilbake til et register eller minnet. Mange bøker skriver ID for DE."
+    },
+    {
+      "term": "Uten og med pipeline",
+      "def": "Uten pipeline gjør maskinen én instruksjon helt ferdig før neste: tre instruksjoner tar 12 sykluser, og tre fjerdedeler av maskinen står stille. Med pipeline tar fem instruksjoner 8 sykluser, og fra syklus 4 er alle fire trinn i arbeid samtidig, med én ferdig instruksjon i hver syklus."
+    },
+    {
+      "term": "Regnestykket: tre pluss antall instruksjoner",
+      "def": "Uten pipeline bruker hver instruksjon fire sykluser. Med pipeline må den først fylles, og det tar tre sykluser, deretter blir det ferdig én instruksjon per syklus: tre pluss antall instruksjoner. Gevinsten nærmer seg fire, men når den aldri: 1 instruksjon gir 1,0 ganger, 4 gir 2,3, 10 gir 3,1, 100 gir 3,9 og 1000 gir 3,99. De tre syklusene er en fast kostnad."
+    },
+    {
+      "term": "Latens",
+      "def": "Hvor lang tid én instruksjon bruker fra start til slutt: fire sykluser både med og uten pipeline. Pipelining endrer den ikke. Pipelinen gjorde ingen instruksjon raskere."
+    },
+    {
+      "term": "Gjennomstrømning",
+      "def": "Hvor mange instruksjoner som blir ferdige per syklus: 0,25 uten pipeline og nesten 1 med. Her ligger hele gevinsten. Skillet mellom latens og gjennomstrømning er det punktet flest tar feil av. Spørsmålet «gjør pipelining prosessoren raskere?» må besvares med «raskere for hvem?»."
+    },
+    {
+      "term": "Det tregeste trinnet bestemmer",
+      "def": "Samlebåndet går i takt med det tregeste trinnet, alltid. Tar skyllingen ett minutt og vaskingen tre, kommer tallerkenene ut hvert tredje minutt. I en prosessor er det klokka: klokkeperioden må være lang nok til at alle trinnene rekker å bli ferdige, og de raske trinnene venter på det tregeste."
+    },
+    {
+      "term": "Pipelineregister",
+      "def": "Lagringsstedet mellom to trinn: en rad med vipper som holder på resultatet fra ett trinn til neste er klart for det. Det er ikke et register du kan nevne i en instruksjon, og programmet vet ikke at det finnes. Det koster transistorer, plass og litt tid i hver syklus."
+    },
+    {
+      "term": "Hvorfor ikke hundre trinn",
+      "def": "Rundt årtusenskiftet bygde Intel prosessorer med rundt tjue og i siste utgave over tretti trinn, med høy klokkefrekvens, men ytelsen fulgte ikke med. Tre ting setter en grense: registrene mellom trinnene tar tid, arbeidet lar seg ikke dele vilkårlig, og jo dypere pipeline, jo mer koster det når noe går galt. Moderne prosessorer har mellom ti og tjue trinn, et kompromiss."
+    },
+    {
+      "term": "Modellen med fem trinn",
+      "def": "Den vanligste modellen utenfor kurset har fem trinn: IF, ID, EX, MEM og WB. Minnetilgangen får sitt eget trinn, fordi å lese og skrive minnet er en helt annen jobb enn å regne. Boka bruker fire, fordi det er modellen kurset bruker. Fire er ikke den korteste pipelinen som finnes: små prosessorer bruker gjerne tre."
+    }
   ]
 }

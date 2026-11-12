@@ -10,7 +10,6 @@ import PodButtons from './PodButtons'
 import type { Exam } from './ExamCountdown'
 import { MiniPlayer, PlayerProvider } from './player'
 import Wip from './pages/Wip'
-import Disclaimer from './Disclaimer'
 
 const base = import.meta.env.BASE_URL + 'content/'
 const SITE = 'IN1020 Hurtigpensum'
@@ -145,7 +144,6 @@ function AppInner() {
           <a className={view === 'begreper' ? 'on' : ''} href={`#/${topic.id}/begreper`}>Fagbegreper</a>
         ) : null}
       </nav>
-      <Disclaimer compact compendiumUrl={compendia[info.key]} chapterLabel={info.label} />
       {topic.podcasts?.length ? (
         <div className="pod-bar">
           <span className="pod-label">Podkast</span>

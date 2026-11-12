@@ -29,5 +29,43 @@
       "file": "video5.mp4",
       "summary": "Cache-koherens, og at cachen er usynlig for programmet."
     }
+  ],
+  "terms": [
+    {
+      "term": "Cachelinje",
+      "def": "Klumpen cachen håndterer, og den minste enheten den arbeider med. Ber prosessoren om fire byte, kommer det typisk 64 tilbake, nok til seksten tall på fire byte. Turen er dyr og bæringen billig, som å ta med hele kassa fra kjelleren. Derfor lønner naboskap seg."
+    },
+    {
+      "term": "Radvis mot kolonnevis i cachen",
+      "def": "Den radvise løkka bommer én gang per seksten tall: én bom gir femten gratis treff. Den kolonnevise hopper 32 000 byte videre, og naboene rekker aldri å bli brukt før de kastes ut, så den bommer hver gang. Det målte forholdet ble over tretti, større enn seksten, fordi maskinvaren også henter de neste linjene på forhånd når du går jevnt framover."
+    },
+    {
+      "term": "Hva en bom utløser",
+      "def": "Tre ting i rekkefølge: forespørselen sendes videre til neste nivå (L1 spør L2, L2 spør L3, L3 spør RAM), hele cachelinja hentes opp, og linja legges i cachen mens noe annet må vike. Prosessoren venter hele tiden, og det er turen nedover i hierarkiet som koster, ikke letingen."
+    },
+    {
+      "term": "Treffrate",
+      "def": "Andelen tilganger som er treff. Eksempel: en cachelinje rommer fire tall, og et program leser tolv tall i rekkefølge fra en tom cache. Det blir bom på tall 0, 4 og 8, altså 3 bommer og 9 treff, treffrate 75 prosent. Med større cachelinje blir det færre bommer."
+    },
+    {
+      "term": "Cachenivåer: L1, L2 og L3",
+      "def": "Avveiningen fra minnehierarkiet gjentar seg: skal cachen svare på fire sykluser, må den være liten (noen titalls kilobyte), og skal den romme et par megabyte, kan den ikke svare så fort. L1 er privat for hver kjerne og delt i to, én for instruksjoner og én for data. L2 er privat og større. L3 deles av alle kjernene og er stor. Alle ligger på samme brikke som kjernene."
+    },
+    {
+      "term": "Gjennomskriving (write-through)",
+      "def": "Skriv begge steder, i cachen og i RAM, med en gang. Enkelt, og de to kopiene er alltid like. Prisen er at hver eneste skriving må helt ned til RAM, selv om du endrer samme variabel hundre ganger på rad. En skrivebuffer demper det, men turene blir like mange."
+    },
+    {
+      "term": "Tilbakeskriving (write-back)",
+      "def": "Skriv bare i cachen og merk linja som endret. Først når linja må vike for noe annet, skrives den ned til RAM. Hundre endringer blir én tur. Det er raskere og det vanlige valget i dag. Prisen er at cachen og RAM er uenige en stund, og maskinen må holde orden på hvilke linjer som er endret."
+    },
+    {
+      "term": "Cache-koherens",
+      "def": "Problemet som oppstår fordi hver kjerne har sin egen L1-cache: har to kjerner kopi av den samme cachelinja og den ene endrer sin, har maskinen to svar på samme spørsmål, og minst ett er feil. Det løses i maskinvaren: cachene holder øye med hverandre, og når én endrer en linje, får de andre beskjed om at kopien ikke lenger gjelder."
+    },
+    {
+      "term": "Cachen er usynlig",
+      "def": "Ingen instruksjon forteller cachen hva den skal gjøre. Programmet ber om en adresse og får en verdi, og gir samme svar med eller uten cache. Det eneste som endrer seg, er hvor lang tid det tar. Det er et abstraksjonslag: skjult, virker, og du trenger aldri tenke på det for å få riktig svar. Det eneste du styrer er rekkefølgen du går gjennom data i."
+    }
   ]
 }

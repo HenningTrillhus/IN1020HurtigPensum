@@ -29,5 +29,43 @@
       "file": "klipp-5.mp4",
       "summary": "Effektiv aksesstid: 90 prosent treff gir 10,9 ns, 99 prosent gir 1,99 ns."
     }
+  ],
+  "terms": [
+    {
+      "term": "Minnehierarki",
+      "def": "Flere lag minne, der hvert lag oppover er raskere, dyrere og mindre: registre, L1, L2, L3, RAM og SSD (og harddisk utenfor figuren). Hvert lag holder en kopi av noe i laget under, og ingenting flyttes bort, det kopieres oppover. Du flytter ting oppover når du bruker dem, som pulten, hylla og biblioteket når du skriver en oppgave."
+    },
+    {
+      "term": "Primærminne og sekundærminne",
+      "def": "Primærminne er registre, cache og RAM, og det mister innholdet uten strøm. Sekundærminne er SSD og harddisk, og det husker uten strøm. Skillet går mellom RAM og disk. Et dokument du ikke har lagret, forsvinner når strømmen går fordi det bare lå i primærminnet."
+    },
+    {
+      "term": "Ventetid i sykluser",
+      "def": "Ved 3 GHz varer én syklus rundt 0,3 ns. Register: under 1 syklus. L1: ca. 4. L2: ca. 12. L3: ca. 40. RAM: ca. 240. SSD: ca. 150 000. Harddisk: ca. 24 millioner. Hvis én syklus var ett sekund, tar L1 fire sekunder, RAM fire minutter og harddisken ni måneder."
+    },
+    {
+      "term": "Avstand koster tid",
+      "def": "Et signal beveger seg ikke øyeblikkelig: ledningen har kapasitans som må fylles, og jo lengre ledning, jo lengre tid. Et register ligger noen mikrometer fra regneenheten, L3 på den andre siden av brikka og RAM noen centimeter unna. Også stort betyr tregt: et minne med mange adresser trenger en større dekoder med flere porter på den kritiske veien, og lengre ledninger."
+    },
+    {
+      "term": "SRAM og DRAM",
+      "def": "SRAM brukes i cache: hvert bit holdes av seks transistorer så lenge det er strøm. DRAM brukes i RAM: hvert bit er én transistor og en liten kondensator (et lekkende badekar) som må friskes opp tusenvis av ganger i sekundet, derav «dynamisk», og derfor er den tregere. DRAM-cellen er mye mindre, og SRAM tar ti til tjue ganger så stor plass per bit."
+    },
+    {
+      "term": "Raskt, stort og billig: velg to",
+      "def": "Tre ønsker som ikke kan oppfylles samtidig: minnet skal være raskt, så prosessoren slipper å vente, stort, så programmet får plass, og billig. Du får bare to av dem. Derfor er løsningen å ha flere lag."
+    },
+    {
+      "term": "Cache",
+      "def": "Et lite og raskt minne som holder en kopi av det maskinen bruker oftest, slik at turen til det store og trege minnet kan droppes. Uttales «kæsj». Det finnes flere, nummerert L1, L2 og L3 etter hvor nær kjernen de ligger. L1 er nærmest og minst."
+    },
+    {
+      "term": "Treff og bom",
+      "def": "Finner prosessoren det den leter etter i cachen, er det et treff. Finner den det ikke og må hente det fra et lavere lag, er det en bom (hit og miss på engelsk). Treffraten er andelen tilganger som er treff."
+    },
+    {
+      "term": "Effektiv aksesstid",
+      "def": "Den gjennomsnittlige tiden en tilgang tar når du regner treff og bom sammen. Med treff på 1 ns og bom på 100 ns: ved 90 prosent treff er den 0,9 + 10 = 10,9 ns, og ved 99 prosent er den 0,99 + 1 = 1,99 ns. Bommene dominerer: én bom koster mer enn alle ni treffene til sammen, så ni prosentpoeng bedre treffrate gir over fem ganger raskere tilgang."
+    }
   ]
 }

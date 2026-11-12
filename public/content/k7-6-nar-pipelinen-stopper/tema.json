@@ -3,5 +3,39 @@
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.6 Når pipelinen stopper",
   "description": "Hasarder: data, kontroll og struktur, og hva de koster i tapte sykluser.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Hasard",
+      "def": "En situasjon der pipelinen ikke kan gå videre som planlagt. En hasard er en følge av maskinvaren. De tre typene er datahasard, kontrollhasard og strukturhasard."
+    },
+    {
+      "term": "Avhengighet",
+      "def": "At en instruksjon trenger resultatet fra en tidligere. Det er en egenskap ved programmet, og sant uansett maskin. Avhengigheten blir en hasard bare hvis maskinen ikke rekker å levere verdien i tide, så en smartere maskin kan fjerne hasarden uten at avhengigheten forsvinner."
+    },
+    {
+      "term": "Datahasard",
+      "def": "En instruksjon venter på et resultat som ikke finnes ennå. Eksempel: LDA sum, ADD tall, STA sum. ADD trenger verdien fra LDA allerede i syklus 3, men den er først klar i syklus 4. Tre instruksjoner som skulle tatt seks sykluser, bruker ti. Sekvensen hent, regn, lagre er noe av det vanligste i et program."
+    },
+    {
+      "term": "Boble og å stoppe opp (stall)",
+      "def": "En boble er en syklus der et trinn i pipelinen ikke gjør noe nyttig, fordi det venter. At maskinen settes til å vente, kalles å stoppe opp, på engelsk stall. Stansene legger seg oppå hverandre: instruksjon 3 må også vente på at instruksjon 2 blir ferdig med å vente."
+    },
+    {
+      "term": "Kontrollhasard",
+      "def": "Et hopp (BRA, BRZ, BRP) gjør de allerede hentede instruksjonene ugyldige. Pipelinen henter instruksjoner i rekkefølge, og maskinen vet ikke om hoppet tas før EX-trinnet, så den har hentet to instruksjoner til. Hvis hoppet tas, er begge feil. En if som veksler uregelmessig inne i en løkke, taper noen sykluser hver gang."
+    },
+    {
+      "term": "Å tømme pipelinen",
+      "def": "Å kaste instruksjonene som allerede er hentet, fordi de viste seg å være feil, og begynne på nytt fra riktig sted. I vår modell kastes to instruksjoner. I en pipeline med tjue trinn kan det være femten eller flere, hver gang, og derfor er dype pipelines risikable."
+    },
+    {
+      "term": "Strukturhasard",
+      "def": "To trinn vil ha den samme maskinvaren i samme syklus. Klassisk eksempel: IF skal hente en instruksjon fra minnet mens en LDA i EX skal hente en dataverdi, og begge trenger minnet. Løsningen er to minner, og det er derfor L1-cachen er delt i en for instruksjoner og en for data. Den sjeldneste og enkleste typen."
+    },
+    {
+      "term": "To måter å stå stille på",
+      "def": "En prosessor kan vente på minnet: en bom i cachen, og maskinen står i tolv, førti eller to hundre og førti sykluser. Og den kan vente på seg selv: en hasard, og maskinen står noen sykluser. Sett fra utsiden er det det samme: klokka tikker og ingenting nyttig skjer. En datahasard koster to sekunder i sekundskalaen, en bom helt til RAM fire minutter."
+    }
+  ]
 }

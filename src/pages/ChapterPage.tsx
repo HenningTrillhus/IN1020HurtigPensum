@@ -4,6 +4,7 @@ import PodButtons from '../PodButtons'
 import { ThemeToggle } from '../theme'
 import ChapterSearch from '../ChapterSearch'
 import { CalcButton } from '../Calculator'
+import Disclaimer from '../Disclaimer'
 import BugButton from '../BugButton'
 import { ChapterRating } from '../Rating'
 import { seenIn } from '../storage'
@@ -27,11 +28,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
       </nav>
       <span className="chapter-label">{chapter.label}</span>
       <h1 className="chapter-title">{chapter.title || chapter.label}</h1>
-      {compendiumUrl && (
-        <p className="compendium">
-          <a href={compendiumUrl} target="_blank" rel="noreferrer">Les kompendiet for {chapter.label.toLowerCase()} (PDF)</a>
-        </p>
-      )}
+      <Disclaimer compact compendiumUrl={compendiumUrl} chapterLabel={chapter.label} />
       {chapter.topics.length > 0 && <ChapterSearch topics={chapter.topics} compendiumUrl={compendiumUrl} />}
       {chapter.topics.length === 0 ? (
         <div className="wip-page">
