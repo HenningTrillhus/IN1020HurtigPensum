@@ -710,3 +710,16 @@ html.swipe-in-from-left .shell { animation: swipeInFromLeft .3s var(--ease) both
 .resume-txt strong { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
 .resume-txt em { font-style: normal; color: var(--mut); font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
 .resume .chev { margin-left: auto }
+
+/* Fremdriftsring rundt kapittelikonet på forsiden */
+.ring-wrap { position: relative; flex: none; width: 64px; height: 64px; display: grid; place-items: center }
+.ring { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg) }
+.ring circle { fill: none; stroke-width: 3.5 }
+.ring-track { stroke: var(--line) }
+.ring-fill { stroke: color-mix(in srgb, var(--ch, var(--acc)) 75%, var(--fg)); stroke-linecap: round; transition: stroke-dasharray .6s var(--ease) }
+.ring-wrap .ch-icon { width: 44px; height: 44px }
+.ring-wrap .num { margin: 0 }
+.total-progress { margin: 18px 0 8px; padding: 14px 16px; border-radius: var(--r); border: 1px solid var(--line); background: var(--surface) }
+.tp-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; font-size: 14px; color: var(--mut) }
+.tp-head strong { font-size: 18px; color: var(--fg) }
+.total-progress small { display: block; margin-top: 8px; color: var(--mut); font-size: 12.5px }

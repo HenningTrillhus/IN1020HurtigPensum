@@ -27,6 +27,9 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
     }
     return null
   }, [chapters])
+  const totalVideos = chapters.reduce((n, c) => n + videoCount(c), 0)
+  const totalSeen = chapters.reduce((n, c) => n + seenCount(c), 0)
+  const pct = totalVideos ? Math.round((totalSeen / totalVideos) * 100) : 0
   const closeSearch = () => { setQ(''); setSearchOpen(false) }
   useEffect(() => {
     let alive = true
@@ -83,9 +86,15 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
               href={`#/kap/${c.key}`}
               data-ch={c.color}
             >
-              {c.icon
-                ? <img className="ch-icon" src={c.icon} alt="" width={56} height={56} draggable={false} />
-                : <span className="num">{c.n ?? '•'}</span>}
+              <span className="ring-wrap">
+                <svg className="ring" viewBox="0 0 64 64" aria-hidden>
+                  <circle className="ring-track" cx="32" cy="32" r="29" pathLength={100} />
+                  {seen > 0 && <circle className="ring-fill" cx="32" cy="32" r="29" pathLength={100} strokeDasharray={`${Math.min(100, (seen / v) * 100)} 100`} />}
+                </svg>
+                {c.icon
+                  ? <img className="ch-icon" src={c.icon} alt="" width={44} height={44} draggable={false} />
+                  : <span className="num">{c.n ?? '•'}</span>}
+              </span>
               <div className="body">
                 <h2>{c.title || c.label}</h2>
                 <small>
@@ -102,6 +111,13 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
           )
         })}
       </div>
+      {!q.trim() && totalVideos > 0 && (
+        <section className="total-progress" aria-label="Total fremdrift">
+          <div className="tp-head"><span>Total fremdrift</span><strong>{pct} %</strong></div>
+          <div className="completion" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}><i style={{ width: `${pct}%` }} /></div>
+          <small>Du har sett {totalSeen} av {totalVideos} videoer</small>
+        </section>
+      )}
     </div>
   )
 }
