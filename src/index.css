@@ -363,7 +363,7 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 
 /* Søk i kapittelet */
 .chap-search { margin-top: 4px }
-.chap-search .terms-search { margin-bottom: 8px }
+.chap-search .search-field { margin-bottom: 8px }
 .suggest { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px }
 .suggest button {
   padding: 7px 14px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface);
@@ -613,6 +613,17 @@ html.swipe-in-from-right .shell { animation: swipeInFromRight .3s var(--ease) bo
 html.swipe-in-from-left .shell { animation: swipeInFromLeft .3s var(--ease) both }
 
 /* Søk på forsiden */
-.global-search { margin: 0 0 16px }
+.search-field.global-search { margin: 0 0 16px }
 .hit-def { margin: 6px 0 0; color: var(--txt2); font-size: 14px; line-height: 1.5 }
 .grid[hidden] { display: none }
+
+/* Søkefelt med x */
+.search-field { position: relative; margin: 4px 0 14px }
+.search-field .terms-search { margin: 0; padding-right: 52px }
+.terms-search::-webkit-search-cancel-button, .terms-search::-webkit-search-decoration { -webkit-appearance: none; appearance: none; display: none }
+.search-clear {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 38px; height: 38px; min-height: 38px; padding: 0;
+  border-radius: 50%; display: grid; place-items: center; background: var(--surface2); border: 1px solid var(--line); color: var(--fg); cursor: pointer;
+}
+.search-clear:hover { border-color: var(--line-strong) }
+.search-clear svg { width: 16px; height: 16px }

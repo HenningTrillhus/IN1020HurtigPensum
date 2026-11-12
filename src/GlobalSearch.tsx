@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import type { Chapter } from './chapters'
 import { norm } from './search'
+import SearchField from './SearchField'
 
 interface Hit {
   term: string
@@ -18,10 +19,9 @@ const snippet = (s: string, n = 130) => (s.length > n ? `${s.slice(0, n).replace
 /** Søkefelt på forsiden som finner fagbegreper i alle kapitler. Et treff tar deg rett til delkapittelet. */
 export function GlobalSearchBox({ q, setQ }: { q: string; setQ: (v: string) => void }) {
   return (
-    <input
-      className="terms-search global-search" type="search" value={q} onChange={e => setQ(e.target.value)}
-      placeholder="Søk etter et fagbegrep i alle kapitler" aria-label="Søk etter fagbegrep i alle kapitler"
-      autoCapitalize="off" autoCorrect="off" spellCheck={false}
+    <SearchField
+      className="global-search" value={q} onChange={setQ}
+      placeholder="Søk etter et fagbegrep i alle kapitler" label="Søk etter fagbegrep i alle kapitler"
     />
   )
 }

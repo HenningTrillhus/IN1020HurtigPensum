@@ -1,6 +1,7 @@
 import { useMemo, useState, type CSSProperties } from 'react'
 import type { Topic } from '../types'
 import { norm } from '../search'
+import SearchField from '../SearchField'
 
 /** Fagbegreper for ett delkapittel, med søk. */
 export default function Terms({ topic }: { topic: Topic }) {
@@ -27,10 +28,7 @@ export default function Terms({ topic }: { topic: Topic }) {
         <small>{all.length} begreper i {topic.title}</small>
       </div>
       {all.length > 5 && (
-        <input
-          className="terms-search" type="search" placeholder="Søk i begrepene" value={q}
-          onChange={e => setQ(e.target.value)} aria-label="Søk i fagbegreper"
-        />
+        <SearchField value={q} onChange={setQ} placeholder="Søk i begrepene" label="Søk i fagbegreper" />
       )}
       {shown.length === 0 ? (
         <p className="sub terms-empty">Ingen begreper passer med «{q}».</p>

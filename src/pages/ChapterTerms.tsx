@@ -1,6 +1,7 @@
 import { useMemo, useRef, useState } from 'react'
 import type { Chapter } from '../chapters'
 import { swipeHandlers, type SwipeStart } from '../swipe'
+import SearchField from '../SearchField'
 import { norm } from '../search'
 import { ThemeToggle } from '../theme'
 import { CalcButton } from '../Calculator'
@@ -54,10 +55,7 @@ export default function ChapterTerms({ chapter }: { chapter: Chapter }) {
       <span className="chapter-label">{chapter.label}</span>
       <h1 className="chapter-title">Fagbegreper</h1>
       <p className="sub">{all.length} begreper i {chapter.label.toLowerCase()}, sortert alfabetisk.</p>
-      <input
-        className="terms-search" type="search" placeholder="Søk i begrepene" value={q}
-        onChange={e => setQ(e.target.value)} aria-label="Søk i fagbegreper i kapitlet"
-      />
+      <SearchField value={q} onChange={setQ} placeholder="Søk i begrepene" label="Søk i fagbegreper i kapitlet" />
       {all.length === 0 ? (
         <div className="wip-page"><h2>Fagbegreper kommer snart</h2><p>Det er ingen fagbegreper for dette kapitlet ennå.</p></div>
       ) : shown.length === 0 ? (
