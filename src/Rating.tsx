@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Topic } from './types'
-import { Eye, StarIcon, ThumbDown, ThumbUp } from './Icons'
+import { CheckIcon, Eye, StarIcon, ThumbDown, ThumbUp } from './Icons'
+import { seenIn } from './storage'
 import { CAP, fetchRatings, fetchStats, videoId, getRating, getSentRating, queueRating, resumeRating, type Rating } from './stats'
 
 const fmtAvg = (n: number) => n.toFixed(1).replace('.', ',')
@@ -90,6 +91,10 @@ export function ChapterRating({ chapterKey, topics }: { chapterKey: string; topi
   const count = Math.max(0, base.count + (own > 0 ? 1 : 0) - (sentAtFetch > 0 ? 1 : 0))
   const avg = count > 0 ? sum / count : 0
 
+  // Hvor mange av videoene i kapitlet du har sett. Lagres bare i nettleseren din.
+  const totalVideos = topics.reduce((n, t) => n + t.videos.length, 0)
+  const seenVideos = topics.reduce((n, t) => n + seenIn(t.id, t.videos.length), 0)
+
   return (
     <section className="rating" aria-label="Vurder kapitlet">
       <h2>Hva synes du om kapitlet?</h2>
@@ -106,6 +111,11 @@ export function ChapterRating({ chapterKey, topics }: { chapterKey: string; topi
       <p className="rating-sum" aria-live="polite">
         {note ? note.text : count > 0 ? `Snitt ${fmtAvg(avg)} av 5 · ${fmtCount(count)} ${count === 1 ? 'vurdering' : 'vurderinger'}` : 'Bli den første til å vurdere'}
       </p>
+      {totalVideos > 0 && (
+        <p className={`rating-seen${seenVideos === totalVideos ? ' all' : ''}`}>
+          <CheckIcon /> Du har sett {seenVideos} av {totalVideos} {totalVideos === 1 ? 'video' : 'videoer'} i kapitlet
+        </p>
+      )}
       <Totals topics={topics} />
     </section>
   )

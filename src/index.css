@@ -587,3 +587,7 @@ select.calc-input { padding: 0 10px; cursor: pointer }
 .seen-tag svg { width: 14px; height: 14px }
 .sheet-seen { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; border: 1px solid #555; color: #fff }
 .sheet-seen svg { width: 15px; height: 15px }
+
+.rating-seen { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 14px; color: var(--txt2) }
+.rating-seen.all { color: var(--fg); font-weight: 600 }
+.rating-seen svg { width: 16px; height: 16px }
