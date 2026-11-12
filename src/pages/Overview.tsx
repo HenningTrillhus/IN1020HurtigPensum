@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from 'react'
+import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { podcastCount, seenCount, videoCount, type Chapter } from '../chapters'
 import Disclaimer from '../Disclaimer'
 import { ThemeToggle } from '../theme'
@@ -6,7 +6,8 @@ import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
 import { RatingLine } from '../Rating'
 import { GlobalSearchBox, GlobalSearchResults } from '../GlobalSearch'
-import { SearchIcon } from '../Icons'
+import { PlayIcon, SearchIcon } from '../Icons'
+import { getLast } from '../storage'
 import { fetchRatings, type Rating } from '../stats'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
 
@@ -16,6 +17,16 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   const [ratings, setRatings] = useState<Record<string, Rating>>({})
   const [q, setQ] = useState('')
   const [searchOpen, setSearchOpen] = useState(false)
+  // Siste video du så på, så du kan fortsette der du slapp.
+  const last = useMemo(() => {
+    const l = getLast()
+    if (!l) return null
+    for (const c of chapters) {
+      const t = c.topics.find(x => x.id === l.topic)
+      if (t && t.videos[l.i]) return { chapter: c, topic: t, i: l.i, video: t.videos[l.i] }
+    }
+    return null
+  }, [chapters])
   const closeSearch = () => { setQ(''); setSearchOpen(false) }
   useEffect(() => {
     let alive = true
@@ -47,6 +58,17 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
       <Disclaimer courseUrl={courseUrl} />
       <GlobalSearchResults chapters={chapters} q={q} courseUrl={courseUrl} />
       {/* Mens du søker, vises treffene i stedet for kapittellisten. */}
+      {last && !q.trim() && (
+        <a className="resume" href={`#/${last.topic.id}/feed/${last.i + 1}`} data-ch={last.chapter.color}>
+          <span className="resume-ic" aria-hidden><PlayIcon /></span>
+          <span className="resume-txt">
+            <small>Fortsett der du slapp</small>
+            <strong>{last.video.title}</strong>
+            <em>{last.topic.title}</em>
+          </span>
+          <span className="chev" aria-hidden>›</span>
+        </a>
+      )}
       <div className="grid" hidden={!!q.trim()}>
         {chapters.map((c, i) => {
           const v = videoCount(c)

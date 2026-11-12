@@ -696,3 +696,17 @@ html.swipe-in-from-left .shell { animation: swipeInFromLeft .3s var(--ease) both
 .notice-toggle strong { color: var(--txt2) }
 .notice-chev { flex: none; font-size: 15px; line-height: 1 }
 .notice.slim p { margin: 0; padding: 0 12px 12px; line-height: 1.55; color: var(--mut) }
+
+/* Fortsett der du slapp */
+.resume {
+  display: flex; align-items: center; gap: 12px; margin-top: 16px; padding: 12px 14px; border-radius: var(--r, 16px);
+  border: 1px solid var(--line); color: inherit; text-decoration: none;
+  background: color-mix(in srgb, var(--ch, var(--acc)) var(--tint, 10%), var(--surface));
+}
+.resume-ic { flex: none; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--surface2); color: var(--txt) }
+.resume-ic svg { width: 18px; height: 18px }
+.resume-txt { display: flex; flex-direction: column; min-width: 0; gap: 1px }
+.resume-txt small { color: var(--mut); font-size: 12px }
+.resume-txt strong { font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.resume-txt em { font-style: normal; color: var(--mut); font-size: 12.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.resume .chev { margin-left: auto }

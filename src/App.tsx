@@ -130,6 +130,8 @@ function AppInner() {
   if (topic.videos.length === 0) return <Wip topic={topic} backHref={chapterHref} backLabel={info.label} />
 
   const view = b
+  // #/<tema>/feed/<n>: start på video n (fra 1) i temaet. Brukes av «Fortsett» og delte lenker.
+  const startI = view === 'feed' && /^\d{1,3}$/.test(c ?? '') ? Math.min(topic.videos.length, Math.max(1, +c)) - 1 : 0
   // Feeden sveiper bare gjennom temaer i samme kapittel som har videoer.
   const chapterTopics = topics.filter(t => chapterInfo(t).key === info.key && t.videos.length > 0)
 
@@ -170,6 +172,7 @@ function AppInner() {
           topics={chapterTopics}
           root={base}
           startId={topic.id}
+          startI={startI}
           chapter={info.key}
           exitHash={chapterHref}
           onActive={onActive}

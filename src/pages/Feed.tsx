@@ -2,11 +2,11 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState, type Pointer
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
 import { CAP, fetchStats, getReport, getVote, hasViewed, queueReport, queueVote, resumeReport, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
-import { ChevronDown, ChevronUp, CloseIcon, Eye, CheckIcon, FlagIcon, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ThumbDown, ThumbUp } from '../Icons'
+import { ChevronDown, ChevronUp, CloseIcon, Eye, CheckIcon, FlagIcon, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ShareIcon, ThumbDown, ThumbUp } from '../Icons'
 import { usePlayer } from '../player'
 import { SpeedButton, useSpeed } from '../speed'
 import { ChapterRating } from '../Rating'
-import { isSeen, markSeen } from '../storage'
+import { isSeen, markSeen, setLast } from '../storage'
 
 interface P {
   /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
@@ -15,6 +15,8 @@ interface P {
   root: string
   /** Temaet feeden skal starte på. */
   startId: string
+  /** Hvilken video i temaet (fra 0) feeden skal starte på. */
+  startI?: number
   /** Identifiserer kapitlet (brukes til å hente tall på nytt når kapitlet byttes). */
   chapter: string
   /** Hvor sveip forbi siste video skal gå, f.eks. #/kap/6 (kapittelets forside). */
@@ -70,6 +72,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
   }
   const [reported, setReported] = useState(getReport(id))
   const [note, setNote] = useState<{ text: string; n: number } | null>(null)
+  const [shareNote, setShareNote] = useState<{ text: string; n: number } | null>(null)
   // Observer-callbacken lages bare én gang, så den leser siste tall via ref.
   const statRef = useRef(stat)
   statRef.current = stat
@@ -207,6 +210,32 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
     else v.webkitEnterFullscreen?.() // iPhone
   }
 
+  // Del lenke rett til denne videoen: delingsarket på mobil, ellers kopieres lenken.
+  const share = async () => {
+    const url = `${location.origin}${location.pathname}#/${topic.id}/feed/${i + 1}`
+    const data = { title: `${v.title} · IN1020 Hurtigpensum`, text: v.title, url }
+    try {
+      if (navigator.share) { await navigator.share(data); return }
+    } catch (e) {
+      if ((e as Error).name === 'AbortError') return // du lukket delingsarket selv
+    }
+    let ok = false
+    try { await navigator.clipboard.writeText(url); ok = true } catch { /* ingen tilgang til utklippstavlen */ }
+    if (!ok) {
+      const ta = document.createElement('textarea')
+      ta.value = url; ta.style.position = 'fixed'; ta.style.opacity = '0'
+      document.body.appendChild(ta); ta.select()
+      try { ok = document.execCommand('copy') } catch { /* gir opp */ }
+      ta.remove()
+    }
+    setShareNote(n => ({ text: ok ? 'Lenken er kopiert' : 'Kunne ikke kopiere lenken', n: (n?.n ?? 0) + 1 }))
+  }
+  useEffect(() => {
+    if (!shareNote) return
+    const t = window.setTimeout(() => setShareNote(null), 1900)
+    return () => window.clearTimeout(t)
+  }, [shareNote])
+
   const cls = ['slide', !missing && !ready && 'loading', ready && 'ready', active && 'active'].filter(Boolean).join(' ')
 
   return (
@@ -218,6 +247,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
           ref={vid}
           // #t=0.1 gjør at første bilde vises som forhåndsvisning før du trykker play.
           src={`${root}${topic.id}/${v.file}#t=0.1`}
+          poster={`${root}${topic.id}/${v.file.replace(/\.mp4$/i, '.jpg')}`}
           playsInline muted={muted || podOn} controls={fullscreen} controlsList="nofullscreen" preload={preload}
           onTimeUpdate={e => { markIfSeen(e.currentTarget.currentTime, e.currentTarget.duration); if (scrub === null) setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
           onLoadedMetadata={e => { e.currentTarget.playbackRate = rate; setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
@@ -299,6 +329,12 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
             {note && <span className="report-note" key={note.n} role="status">{note.text}</span>}
           </div>
           <span className="count" key={`r${stat?.reports}`} title="Antall som har meldt feil">{stat ? fmt(stat.reports ?? 0) : ''}</span>
+          <div className="report-wrap">
+            <button className="vote" onClick={share} aria-label="Del videoen" title="Del videoen">
+              <ShareIcon />
+            </button>
+            {shareNote && <span className="report-note" key={shareNote.n} role="status">{shareNote.text}</span>}
+          </div>
         </div>
       )}
       {!missing && !fullscreen && stat && (
@@ -336,9 +372,9 @@ function EndSlide({ chapterKey, topics, onDone, onVisible }: { chapterKey: strin
   )
 }
 
-export default function Feed({ topics, root, startId, chapter, exitHash, onActive }: P) {
+export default function Feed({ topics, root, startId, startI = 0, chapter, exitHash, onActive }: P) {
   const slides = topics.flatMap(t => t.videos.map((_, i) => ({ topic: t, i })))
-  const startIdx = Math.max(0, slides.findIndex(s => s.topic.id === startId))
+  const startIdx = Math.max(0, slides.findIndex(s => s.topic.id === startId && s.i === startI))
 
   const [stats, setStats] = useState<Record<string, Stat>>({})
   const [current, setCurrent] = useState(startIdx)
@@ -371,6 +407,8 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
     currentRef.current = pos
     setCurrent(pos)
     poke()
+    const sl = slides[pos]
+    if (sl) setLast(sl.topic.id, sl.i)
     activeRef.current(id)
   }, [poke])
 
@@ -382,9 +420,13 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
 
   useLayoutEffect(() => {
     const feed = feedRef.current!
-    const target = feed.querySelector<HTMLElement>(`[data-topic="${startId}"]`)
+    const target = feed.querySelector<HTMLElement>(`[data-topic="${startId}"][data-index="${startI}"]`) ?? feed.querySelector<HTMLElement>(`[data-topic="${startId}"]`)
     if (target) feed.scrollTop = target.offsetTop
-    const t = window.setTimeout(() => { ready.current = true }, 400)
+    const t = window.setTimeout(() => {
+      ready.current = true
+      const sl = slides[currentRef.current]
+      if (sl) setLast(sl.topic.id, sl.i)
+    }, 400)
     return () => window.clearTimeout(t)
   }, [])
 

@@ -19,6 +19,13 @@ export const FlagIcon = ({ filled }: { filled?: boolean }) => (
   </svg>
 )
 
+/** Del: pil ut av en firkant. */
+export const ShareIcon = () => (
+  <svg {...base} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round">
+    <path d="M12 15V3m0 0L8 7m4-4 4 4M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" />
+  </svg>
+)
+
 export const PlayIcon = () => (
   <svg {...base} width={26} height={26}><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z" /></svg>
 )

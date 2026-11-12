@@ -13,3 +13,10 @@ export const markSeen = (topic: string, i: number) => {
 }
 export const getPos = (key: string): number => read(`pos:${key}`, 0)
 export const setPos = (key: string, t: number) => write(`pos:${key}`, t)
+
+/** Siste video du var på, så forsiden kan tilby «Fortsett». */
+export const getLast = (): { topic: string; i: number } | null => {
+  const v = read<{ topic?: string; i?: number } | null>('last', null)
+  return v && typeof v.topic === 'string' && Number.isInteger(v.i) ? { topic: v.topic, i: v.i as number } : null
+}
+export const setLast = (topic: string, i: number) => write('last', { topic, i })
