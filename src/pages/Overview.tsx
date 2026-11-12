@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties } from 'react'
-import { podcastCount, videoCount, type Chapter } from '../chapters'
+import { podcastCount, seenCount, videoCount, type Chapter } from '../chapters'
 import Disclaimer from '../Disclaimer'
 import { ThemeToggle } from '../theme'
 import { CalcButton } from '../Calculator'
@@ -37,6 +37,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
           const v = videoCount(c)
           const d = c.topics.length
           const p = podcastCount(c)
+          const seen = seenCount(c)
           return (
             <a
               key={c.key}
@@ -51,6 +52,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
                   <span>{c.title ? `${c.label} · ` : ''}{d} {d === 1 ? 'delkapittel' : 'delkapitler'}</span>
                   <span>· {v} {v === 1 ? 'video' : 'videoer'}</span>
                   <span>· {p} {p === 1 ? 'podkast' : 'podkaster'}</span>
+                  {seen > 0 && <span className="seen-tag">· {seen} av {v} sett</span>}
                   <RatingLine r={ratings[c.key]} />
                   {v === 0 && <span className="badge">Work in progress</span>}
                 </small>

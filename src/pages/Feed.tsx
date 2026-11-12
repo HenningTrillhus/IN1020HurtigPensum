@@ -2,10 +2,11 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState, type Pointer
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
 import { CAP, fetchStats, getReport, getVote, hasViewed, queueReport, queueVote, resumeReport, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
-import { ChevronDown, ChevronUp, CloseIcon, Eye, FlagIcon, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ThumbDown, ThumbUp } from '../Icons'
+import { ChevronDown, ChevronUp, CloseIcon, Eye, CheckIcon, FlagIcon, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ThumbDown, ThumbUp } from '../Icons'
 import { usePlayer } from '../player'
 import { SpeedButton, useSpeed } from '../speed'
 import { ChapterRating } from '../Rating'
+import { isSeen, markSeen } from '../storage'
 
 interface P {
   /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
@@ -37,11 +38,13 @@ interface SlideProps {
   onPlayState: (pos: number, playing: boolean) => void
   /** Meldes når videoen er ferdig, så feeden kan gå videre til neste. */
   onEnded: (pos: number) => void
+  /** Meldes første gang videoen regnes som sett. */
+  onSeen: () => void
 }
 
 const fmt = (n: number) => (n >= CAP ? `${CAP}+` : String(n))
 
-function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState, onEnded }: SlideProps) {
+function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState, onEnded, onSeen }: SlideProps) {
   const v = topic.videos[i]
   // Aktiv video laster fritt, neste henter bare første bilde (så neste sveip starter med en gang),
   // og resten laster ingenting før de kommer nær. En video som først er lastet, beholder det den har.
@@ -59,6 +62,12 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
   const [buffering, setBuffering] = useState(false)
   const [active, setActive] = useState(false)
   const [popped, setPopped] = useState<'up' | 'down' | 'flag' | null>(null)
+  // En video regnes som sett når du har sett 80 % av den, eller den er ferdig. Det lagres bare i nettleseren din.
+  const seenRef = useRef(isSeen(topic.id, i))
+  const markIfSeen = (t: number, d: number) => {
+    if (seenRef.current || !(d > 0)) return
+    if (t / d >= 0.8) { seenRef.current = true; markSeen(topic.id, i); onSeen() }
+  }
   const [reported, setReported] = useState(getReport(id))
   const [note, setNote] = useState<{ text: string; n: number } | null>(null)
   // Observer-callbacken lages bare én gang, så den leser siste tall via ref.
@@ -210,7 +219,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
           // #t=0.1 gjør at første bilde vises som forhåndsvisning før du trykker play.
           src={`${root}${topic.id}/${v.file}#t=0.1`}
           playsInline muted={muted || podOn} controls={fullscreen} controlsList="nofullscreen" preload={preload}
-          onTimeUpdate={e => { if (scrub === null) setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
+          onTimeUpdate={e => { markIfSeen(e.currentTarget.currentTime, e.currentTarget.duration); if (scrub === null) setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
           onLoadedMetadata={e => { e.currentTarget.playbackRate = rate; setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
           // Trykker du play på videoen mens en podkast spiller, tar videoen over: podkasten pauses og videoen får lyd.
           // (Videoene starter aldri av seg selv mens en podkast spiller, så dette er alltid et bevisst trykk.)
@@ -220,7 +229,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
             if (isPodcastPlaying()) { enableSound(); player.pause() }
           }}
           onPause={() => { setPlaying(false); onPlayState(pos, false) }}
-          onEnded={() => onEnded(pos)}
+          onEnded={() => { markIfSeen(1, 1); onEnded(pos) }}
           onLoadedData={() => setReady(true)}
           onWaiting={() => setBuffering(true)}
           onPlaying={() => setBuffering(false)}
@@ -335,6 +344,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   const [current, setCurrent] = useState(startIdx)
   const [atEnd, setAtEnd] = useState(false)       // sluttsiden er i bildet
   const [picker, setPicker] = useState(false)     // valgarket for videoene i delkapittelet
+  const [, setSeenVer] = useState(0)            // ny verdi når en video blir sett, så markeringene oppdateres
   const [idle, setIdle] = useState(false)         // ingen har rørt noe på en stund
   const feedRef = useRef<HTMLDivElement>(null)
   const ready = useRef(false)
@@ -478,7 +488,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
       onPointerDown={onTap} onPointerMove={onMove} onWheel={poke} onKeyDown={poke}
     >
       <div className="segs" aria-hidden>
-        {slides.map((_, k) => <i key={k} className={`seg${k < current ? ' done' : k === current ? ' cur' : ''}`} />)}
+        {slides.map((sl, k) => <i key={k} className={`seg${k === current ? ' cur' : isSeen(sl.topic.id, sl.i) ? ' done' : ''}`} />)}
       </div>
       <div className="feed" ref={feedRef} onScroll={poke}>
         {slides.map((s, pos) => (
@@ -486,7 +496,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
             key={`${s.topic.id}:${s.i}`}
             topic={s.topic} root={root} i={s.i} pos={pos}
             mode={pos === current ? 'active' : pos === current + 1 ? 'next' : 'far'}
-            stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report} onPlayState={onPlayState} onEnded={onEnded}
+            stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report} onPlayState={onPlayState} onEnded={onEnded} onSeen={() => setSeenVer(v => v + 1)}
           />
         ))}
         <EndSlide chapterKey={chapter} topics={topics} onDone={done} onVisible={setAtEnd} />
@@ -529,6 +539,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
                       <span className="sheet-title">{s.topic.videos[s.i].title}</span>
                       {s.pos === current && <span className="sheet-now">Spiller nå</span>}
                     </span>
+                    {isSeen(s.topic.id, s.i) && <span className="sheet-seen" title="Sett"><CheckIcon /></span>}
                   </button>
                 </li>
               ))}

@@ -1,4 +1,5 @@
 import type { Topic } from './types'
+import { seenIn } from './storage'
 
 export interface Chapter {
   /** Brukes i adressen: #/kap/<key> */
@@ -39,4 +40,6 @@ export function buildChapters(topics: Topic[], empty: EmptyChapter[] = []): Chap
 }
 
 export const podcastCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + (t.podcasts?.length ?? 0), 0)
+/** Hvor mange videoer i kapitlet du har sett (lagres bare i nettleseren din). */
+export const seenCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + seenIn(t.id, t.videos.length), 0)
 export const videoCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + t.videos.length, 0)

@@ -93,6 +93,11 @@ export const CalcIcon = () => (
   </svg>
 )
 
+/** Hake: video du har sett. */
+export const CheckIcon = () => (
+  <svg {...base} width={18} height={18} {...line} strokeWidth={2.4}><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>
+)
+
 /** Stjerne for vurdering. Fylt når den er valgt. */
 export const StarIcon = ({ filled }: { filled?: boolean }) => (
   <svg {...base} fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">

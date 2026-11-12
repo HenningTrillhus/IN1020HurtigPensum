@@ -5,6 +5,9 @@ function write(key: string, value: unknown) {
   try { localStorage.setItem(key, JSON.stringify(value)) } catch { /* ignore */ }
 }
 export const getSeen = (topic: string): number[] => read(`seen:${topic}`, [])
+/** Antall sette videoer i et tema (bare de som fortsatt finnes). */
+export const seenIn = (topic: string, videos: number): number => getSeen(topic).filter(i => i < videos).length
+export const isSeen = (topic: string, i: number): boolean => getSeen(topic).includes(i)
 export const markSeen = (topic: string, i: number) => {
   const s = new Set(getSeen(topic)); s.add(i); write(`seen:${topic}`, [...s])
 }

@@ -6,6 +6,8 @@ import ChapterSearch from '../ChapterSearch'
 import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
 import { ChapterRating } from '../Rating'
+import { seenIn } from '../storage'
+import { CheckIcon } from '../Icons'
 
 // «6.2 Bryteren …» -> { num: '6.2', text: 'Bryteren …' }
 function splitTitle(title: string) {
@@ -40,6 +42,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
         <div className="grid">
           {chapter.topics.map((t, i) => {
             const n = t.videos.length
+            const seen = seenIn(t.id, n)
             const { num, text } = splitTitle(t.title)
             const hasPods = (t.podcasts?.length ?? 0) > 0
             const main = (
@@ -50,6 +53,11 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
                   {t.description && <p>{t.description}</p>}
                   <small>
                     <span>{n} {n === 1 ? 'video' : 'videoer'}</span>
+                    {seen > 0 && (
+                      <span className={`seen-tag${seen === n ? ' all' : ''}`}>
+                        · {seen === n ? <><CheckIcon /> Alle sett</> : `${seen} av ${n} sett`}
+                      </span>
+                    )}
                     {n === 0 && <span className="badge">Work in progress</span>}
                   </small>
                 </div>
