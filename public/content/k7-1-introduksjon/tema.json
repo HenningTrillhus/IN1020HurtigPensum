@@ -1,0 +1,21 @@
+{
+  "id": "k7-1-introduksjon",
+  "chapter": "Kapittel 7 – Minnehierarki og pipeline",
+  "title": "7.1 Introduksjon",
+  "description": "To løkker som gjør like mye arbeid, men der den ene er over tretti ganger tregere, og de to triksene som forklarer hvorfor.",
+  "videos": [
+    {
+      "title": "7.1 Introduksjon",
+      "file": "video1.mp4",
+      "summary": "Samme tall og samme addisjoner, men 13 mot 441 millisekunder. Rekkefølgen avgjør."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Hvorfor radvis løkke er tretti ganger raskere",
+      "file": "podkast-mann-dame.m4a",
+      "icon": "mann",
+      "duration": 122
+    }
+  ]
+}
