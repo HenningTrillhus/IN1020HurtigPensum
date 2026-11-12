@@ -66,6 +66,10 @@
       "title": "Nettverk",
       "slug": "nettverk",
       "sort": 1.5
+    },
+    {
+      "n": 8,
+      "title": "Moderne maskiner"
     }
   ],
   "courseUrl": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/",

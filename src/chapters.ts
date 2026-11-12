@@ -24,7 +24,7 @@ export interface Chapter {
  */
 export interface EmptyChapter { n?: number; key?: string; label?: string; slug?: string; sort?: number; title: string }
 
-const hasIcon = (n: number | null) => n !== null && n >= 2 && n <= 7
+const hasIcon = (n: number | null) => n !== null && n >= 2 && n <= 8
 
 const RE = /^Kapittel\s+(\d+)\s*[–-]\s*(.*)$/
 

@@ -656,6 +656,7 @@ html.swipe-in-from-left .shell { animation: swipeInFromLeft .3s var(--ease) both
 [data-ch="5"] { --ch: #a67bb0 }
 [data-ch="6"] { --ch: #d1a843 }
 [data-ch="7"] { --ch: #6f9f72 }
+[data-ch="8"] { --ch: #5ba9b4 }
 [data-ch="datasikkerhet"] { --ch: #c8605c }
 [data-ch="nettverk"] { --ch: #cf86ab }
 
