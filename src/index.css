@@ -644,3 +644,39 @@ html.swipe-in-from-left .shell { animation: swipeInFromLeft .3s var(--ease) both
 }
 .scrub-tip strong { font-size: 14px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden }
 .scrub-tip small { font-size: 12px; color: #d4d4d4; font-variant-numeric: tabular-nums }
+
+/* ============ Kapittelfarger ============
+   Hvert kapittel har en dempet farge hentet fra ikonet sitt. Den blandes bare inn i svært liten grad i flater og kanter,
+   så siden holder seg rolig og fungerer likt i mørkt og lyst tema. --tint er hvor mye farge som slippes inn. */
+:root { --tint: 9% }
+:root[data-theme="light"] { --tint: 13% }
+[data-ch="2"] { --ch: #5b7bc0 }
+[data-ch="3"] { --ch: #d98a55 }
+[data-ch="4"] { --ch: #4a8a88 }
+[data-ch="5"] { --ch: #a67bb0 }
+[data-ch="6"] { --ch: #d1a843 }
+[data-ch="7"] { --ch: #6f9f72 }
+
+.card[data-ch],
+[data-ch] .card {
+  background: color-mix(in srgb, var(--ch) var(--tint), var(--surface));
+  border-color: color-mix(in srgb, var(--ch) 28%, var(--line));
+}
+.card[data-ch]:hover,
+[data-ch] .card:hover {
+  background: color-mix(in srgb, var(--ch) calc(var(--tint) + 5%), var(--surface));
+  border-color: color-mix(in srgb, var(--ch) 50%, var(--line-strong));
+}
+[data-ch] .card .num {
+  background: color-mix(in srgb, var(--ch) 20%, var(--surface2));
+  border-color: color-mix(in srgb, var(--ch) 35%, var(--line));
+}
+.ch-icon { flex: none; width: 56px; height: 56px; object-fit: contain; user-select: none }
+.ch-icon.lg { width: 72px; height: 72px }
+.chapter-head { display: flex; align-items: center; gap: 16px; margin: 0 0 14px }
+.chapter-head .chapter-title { margin-bottom: 0 }
+[data-ch] .terms-link, [data-ch] .rating, [data-ch] .term {
+  border-color: color-mix(in srgb, var(--ch) 28%, var(--line));
+}
+[data-ch] .term { border-left: 3px solid color-mix(in srgb, var(--ch) 60%, var(--line)) }
+[data-ch] .completion i { background: color-mix(in srgb, var(--ch) 70%, var(--fg)) }

@@ -45,7 +45,7 @@ export default function ChapterTerms({ chapter }: { chapter: Chapter }) {
 
   return (
     // Dra fingeren mot høyre for å gå tilbake til kapittelet.
-    <div className="shell" {...swipeHandlers(swipe, undefined, () => { location.hash = back })}>
+    <div className="shell" data-ch={chapter.n ?? undefined} {...swipeHandlers(swipe, undefined, () => { location.hash = back })}>
       <nav className="tabs">
         <a href={back}>← {chapter.label}</a>
         <BugButton className="push" />

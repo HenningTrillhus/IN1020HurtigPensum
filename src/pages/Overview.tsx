@@ -49,8 +49,11 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
               className={`card${v === 0 ? ' wip' : ''}`}
               style={{ '--i': Math.min(i, 10) } as CSSProperties}
               href={`#/kap/${c.key}`}
+              data-ch={c.n ?? undefined}
             >
-              <span className="num">{c.n ?? '•'}</span>
+              {c.n && c.n >= 2 && c.n <= 7
+                ? <img className="ch-icon" src={`/chapter-icons/ch${c.n}.png`} alt="" width={56} height={56} draggable={false} />
+                : <span className="num">{c.n ?? '•'}</span>}
               <div className="body">
                 <h2>{c.title || c.label}</h2>
                 <small>

@@ -52,12 +52,7 @@
     "k7-5-pipelinen",
     "k7-6-nar-pipelinen-stopper"
   ],
-  "emptyChapters": [
-    {
-      "n": 1,
-      "title": ""
-    }
-  ],
+  "emptyChapters": [],
   "courseUrl": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/",
   "compendia": {
     "2": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap02-digrep.pdf",

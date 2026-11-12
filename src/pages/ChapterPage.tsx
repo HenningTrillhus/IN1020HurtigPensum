@@ -24,15 +24,22 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
   const termsHref = `#/kap/${chapter.key}/begreper`
   return (
     // Dra fingeren mot venstre for å gå til alle fagbegrepene i kapitlet, og mot høyre for å gå tilbake til forsiden.
-    <div className="shell" {...swipeHandlers(swipe, termCount > 0 ? () => { location.hash = termsHref } : undefined, () => { location.hash = '#/' })}>
+    <div className="shell" data-ch={chapter.n ?? undefined} {...swipeHandlers(swipe, termCount > 0 ? () => { location.hash = termsHref } : undefined, () => { location.hash = '#/' })}>
       <nav className="tabs">
         <a href="#/">← Alle kapitler</a>
         <BugButton className="push" />
         <CalcButton />
         <ThemeToggle />
       </nav>
-      <span className="chapter-label">{chapter.label}</span>
-      <h1 className="chapter-title">{chapter.title || chapter.label}</h1>
+      <div className="chapter-head">
+        {chapter.n && chapter.n >= 2 && chapter.n <= 7 && (
+          <img className="ch-icon lg" src={`/chapter-icons/ch${chapter.n}.png`} alt="" width={72} height={72} draggable={false} />
+        )}
+        <div>
+          <span className="chapter-label">{chapter.label}</span>
+          <h1 className="chapter-title">{chapter.title || chapter.label}</h1>
+        </div>
+      </div>
       <Disclaimer compact compendiumUrl={compendiumUrl} chapterLabel={chapter.label} />
       {termCount > 0 && (
         <a className="terms-link" href={termsHref}>
