@@ -767,3 +767,10 @@ button.total-progress:hover { border-color: var(--line-strong) }
 .prog-main small { color: var(--mut); font-size: 12.5px }
 .prog-row .completion i { animation: barGrow .8s var(--ease) .1s backwards }
 button.total-progress .completion { display: block }
+
+/* Fremdriftssiden kan dras ned for å lukke den */
+.sheet-grab { flex: none; width: 40px; height: 4px; border-radius: 99px; margin: 9px auto 0; background: var(--line-strong) }
+.prog-sheet .calc-head { padding-top: 8px }
+.calc-backdrop.settled:not(.closing) { animation: none }
+.calc-backdrop:not(.closing) .prog-sheet.settled { animation: none }
+.prog-sheet { touch-action: pan-y; will-change: transform }
