@@ -7,9 +7,8 @@
     <meta name="color-scheme" content="dark" />
     <script>
       (function () {
-        var t = 'dark';
-        try { if (localStorage.getItem('theme') === 'light') t = 'light'; } catch (e) {}
-        document.documentElement.setAttribute('data-theme', t);
+        // Appen er alltid mørk.
+        document.documentElement.setAttribute('data-theme', 'dark');
       })();
     </script>
     <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
@@ -31,10 +30,6 @@
       .loader-text { margin: 0 }
       .loader.error { text-align: center; padding: 24px }
       .loader.error button { font: inherit; color: #000000; background: #ffffff; border: 0; border-radius: 99px; padding: 12px 24px; font-weight: 600; cursor: pointer }
-      html[data-theme="light"], html[data-theme="light"] body { background: #ffffff; }
-      html[data-theme="light"] .loader { color: #5a7289; }
-      html[data-theme="light"] .loader-spinner { border-color: #d2e4f5; border-top-color: #5db4f7; }
-      html[data-theme="light"] .loader.error button { color: #06263f; background: #8cc9ff; }
       @keyframes loaderIn { from { opacity: 0 } to { opacity: 1 } }
       @keyframes loaderSpin { to { transform: rotate(360deg) } }
       @media (prefers-reduced-motion: reduce) { .loader-spinner { animation-duration: 2.4s } }

@@ -3,7 +3,6 @@ import type { Chapter } from '../chapters'
 import { swipeHandlers, type SwipeStart } from '../swipe'
 import SearchField from '../SearchField'
 import { norm } from '../search'
-import { ThemeToggle } from '../theme'
 import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
 
@@ -50,7 +49,6 @@ export default function ChapterTerms({ chapter }: { chapter: Chapter }) {
         <a href={back}>← {chapter.label}</a>
         <BugButton className="push" />
         <CalcButton />
-        <ThemeToggle />
       </nav>
       <span className="chapter-label">{chapter.label}</span>
       <h1 className="chapter-title">Fagbegreper</h1>

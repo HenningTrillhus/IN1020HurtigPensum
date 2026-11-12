@@ -1,7 +1,6 @@
 import { useRef, type CSSProperties } from 'react'
 import type { Chapter } from '../chapters'
 import PodButtons from '../PodButtons'
-import { ThemeToggle } from '../theme'
 import ChapterSearch from '../ChapterSearch'
 import { CalcButton } from '../Calculator'
 import Disclaimer from '../Disclaimer'
@@ -29,7 +28,6 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
         <a href="#/">← Alle kapitler</a>
         <BugButton className="push" />
         <CalcButton />
-        <ThemeToggle />
       </nav>
       <div className="chapter-head">
         {chapter.icon && <img className="ch-icon lg" src={chapter.icon} alt="" width={72} height={72} draggable={false} />}

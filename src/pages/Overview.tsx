@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
 import { podcastCount, seenCount, videoCount, type Chapter } from '../chapters'
 import Disclaimer from '../Disclaimer'
-import { ThemeToggle } from '../theme'
 import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
 import { RatingLine } from '../Rating'
@@ -60,12 +59,11 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   return (
     <div className="shell">
       {exam && <ExamCountdown exam={exam} />}
-      {/* Verktøyrad under nedtellingen: feilmelding, søkefelt, kalkulator og tema. Søkefeltet fyller resten av bredden. */}
+      {/* Verktøyrad under nedtellingen: feilmelding til venstre, kalkulator til høyre. Søkefeltet fyller resten av bredden. */}
       <div className="tool-row">
         <BugButton />
         <GlobalSearchBox q={q} setQ={setQ} />
         <CalcButton />
-        <ThemeToggle />
       </div>
       <header className="hero">
         <h1>IN1020 Hurtigpensum</h1>
