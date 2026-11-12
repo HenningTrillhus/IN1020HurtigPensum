@@ -67,7 +67,7 @@ export function ChapterRating({ chapterKey, topics }: { chapterKey: string; topi
     resumeRating(chapterKey)
     let alive = true
     const sent = getSentRating(chapterKey)
-    fetchRatings([chapterKey]).then(r => {
+    fetchRatings([chapterKey], true).then(r => {
       if (alive && r?.[chapterKey]) { setData(r[chapterKey]); setSentAtFetch(sent) }
     })
     return () => { alive = false }

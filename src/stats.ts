@@ -36,10 +36,26 @@ const post = (path: string, body: unknown, keepalive = false) =>
   fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), keepalive })
 
 // Alle kall feiler stille: lokalt (uten API) og ved nettfeil skal siden fungere som før.
+// Serveren vet ikke om det du har gitt de siste 30 sekundene. Vi legger det til selv, så tallene
+// aldri hopper tilbake når du bytter side eller laster på nytt før det er sendt.
+const clampN = (n: number) => Math.min(CAP, Math.max(0, n))
+function withOwn(id: string, s: Stat): Stat {
+  const own = getVote(id), sent = getSentVote(id), rep = getReport(id), repSent = getSentReport(id)
+  if (own === sent && rep === repSent) return s
+  return {
+    ...s,
+    likes: s.likes >= CAP ? s.likes : clampN(s.likes + (own === 'up' ? 1 : 0) - (sent === 'up' ? 1 : 0)),
+    dislikes: s.dislikes >= CAP ? s.dislikes : clampN(s.dislikes + (own === 'down' ? 1 : 0) - (sent === 'down' ? 1 : 0)),
+    reports: (s.reports ?? 0) >= CAP ? s.reports : clampN((s.reports ?? 0) + (rep ? 1 : 0) - (repSent ? 1 : 0)),
+  }
+}
+
 export async function fetchStats(ids: string[]): Promise<Record<string, Stat> | null> {
   try {
     const r = await fetch(`/api/stats?ids=${encodeURIComponent(ids.join(','))}`)
-    return r.ok ? await r.json() : null
+    if (!r.ok) return null
+    const data: Record<string, Stat> = await r.json()
+    return Object.fromEntries(Object.entries(data).map(([id, s]) => [id, withOwn(id, s)]))
   } catch { return null }
 }
 
@@ -139,10 +155,25 @@ export const getRating = (ch: string): number => Number(read(`rate:${ch}`)) || 0
 export const getSentRating = (ch: string): number => Number(read(`ratesent:${ch}`)) || 0
 const pendingRatings = new Map<string, ReturnType<typeof setTimeout>>()
 
-export async function fetchRatings(ids: string[]): Promise<Record<string, Rating> | null> {
+/** Legger til din egen vurdering som serveren ikke har fått ennå. */
+export function ratingWithOwn(ch: string, base?: Rating): Rating | undefined {
+  const own = getRating(ch), sent = getSentRating(ch)
+  if (own === sent) return base
+  const b = base ?? { avg: 0, count: 0 }
+  const count = Math.max(0, b.count + (own > 0 ? 1 : 0) - (sent > 0 ? 1 : 0))
+  return { avg: count > 0 ? (b.avg * b.count + own - sent) / count : 0, count }
+}
+
+// raw=true gir serverens tall uten din egen usendte vurdering (kapittelsiden regner det ut selv).
+export async function fetchRatings(ids: string[], raw = false): Promise<Record<string, Rating> | null> {
   try {
     const r = await fetch(`/api/ratings?ids=${encodeURIComponent(ids.join(','))}`)
-    return r.ok ? await r.json() : null
+    if (!r.ok) return null
+    const data: Record<string, Rating> = await r.json()
+    if (raw) return data
+    const out: Record<string, Rating> = { ...data }
+    for (const id of ids) { const v = ratingWithOwn(id, data[id]); if (v) out[id] = v }
+    return out
   } catch { return null }
 }
 
