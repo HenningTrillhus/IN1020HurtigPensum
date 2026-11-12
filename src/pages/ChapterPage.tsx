@@ -4,6 +4,7 @@ import PodButtons from '../PodButtons'
 import { ThemeToggle } from '../theme'
 import ChapterSearch from '../ChapterSearch'
 import { CalcButton } from '../Calculator'
+import BugButton from '../BugButton'
 
 // «6.2 Bryteren …» -> { num: '6.2', text: 'Bryteren …' }
 function splitTitle(title: string) {
@@ -17,7 +18,8 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
     <div className="shell">
       <nav className="tabs">
         <a href="#/">← Alle kapitler</a>
-        <CalcButton className="push" />
+        <BugButton className="push" />
+        <CalcButton />
         <ThemeToggle />
       </nav>
       <span className="chapter-label">{chapter.label}</span>

@@ -93,6 +93,14 @@ export const CalcIcon = () => (
   </svg>
 )
 
+/** Bille: «meld en feil». */
+export const BugIcon = () => (
+  <svg {...base} {...line}>
+    <path d="M9 7.5a3 3 0 0 1 6 0M8 8h8v6a4 4 0 0 1-8 0V8Z" />
+    <path d="M12 12v6M8 11H4M16 11h4M8 15H5M16 15h3M9 5 7.5 3.5M15 5l1.5-1.5" />
+  </svg>
+)
+
 export const ChevronUp = () => (
   <svg {...base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
     <path d="m6 15 6-6 6 6" />

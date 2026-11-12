@@ -3,6 +3,7 @@ import { videoCount, type Chapter } from '../chapters'
 import Disclaimer from '../Disclaimer'
 import { ThemeToggle } from '../theme'
 import { CalcButton } from '../Calculator'
+import BugButton from '../BugButton'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
 
 // Forsiden: bare kapitlene. Trykk på et kapittel for å se delkapitlene.
@@ -11,6 +12,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
     <div className="shell">
       <div className="top-row">
         {exam && <ExamCountdown exam={exam} />}
+        <BugButton />
         <CalcButton />
         <ThemeToggle />
       </div>
