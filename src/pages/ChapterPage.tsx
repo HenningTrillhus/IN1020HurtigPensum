@@ -5,6 +5,7 @@ import { ThemeToggle } from '../theme'
 import ChapterSearch from '../ChapterSearch'
 import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
+import { ChapterRating } from '../Rating'
 
 // «6.2 Bryteren …» -> { num: '6.2', text: 'Bryteren …' }
 function splitTitle(title: string) {
@@ -69,6 +70,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
           })}
         </div>
       )}
+      {chapter.topics.length > 0 && <ChapterRating chapterKey={chapter.key} />}
     </div>
   )
 }

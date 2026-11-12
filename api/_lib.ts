@@ -9,6 +9,8 @@ export const redis = url && token ? new Redis({ url, token }) : null
 
 // Videoid: <tema-id>:<indeks>, f.eks. k6-4-inverter:0
 export const ID_RE = /^[a-z0-9-]{1,60}:\d{1,3}$/
+// Kapittelnøkkel: «5», «6» eller «andre»
+export const CHAPTER_RE = /^[a-z0-9-]{1,20}$/
 // Anonym enhets-id (tilfeldig, lagres i nettleseren): 32 hex-tegn
 export const DEVICE_RE = /^[a-f0-9]{32}$/
 

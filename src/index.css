@@ -184,7 +184,8 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 .sound, .fs-btn, .top-actions .speed-btn {
   background: #000b; backdrop-filter: blur(6px); border-color: #ffffff2a; color: #fff;
 }
-.sound { gap: 8px; padding: 0 16px; min-height: 48px; border-radius: 99px }
+.sound { width: 52px; height: 52px; min-height: 52px; padding: 0; border-radius: 50% }
+.sound svg { width: 26px; height: 26px }
 .fs-btn { width: 52px; height: 52px; min-height: 52px; padding: 0; border-radius: 50% }
 .fs-btn svg { width: 26px; height: 26px }
 .speed-btn { font-variant-numeric: tabular-nums; font-weight: 700; cursor: pointer }
@@ -559,3 +560,15 @@ select.calc-input { padding: 0 10px; cursor: pointer }
 .calc-table.tt .out { border-left: 1px solid var(--line-strong); font-weight: 700 }
 .calc-table.tt tr.one td.out { background: var(--surface2) }
 @media (max-width: 380px) { .calc-two { grid-template-columns: minmax(0, 1fr) } }
+
+/* ============ Vurdering av kapittel ============ */
+.rating { margin: 28px 0 8px; padding: 22px 18px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--line); text-align: center }
+.rating h2 { margin: 0 0 12px; font-size: 18px; letter-spacing: -.01em }
+.stars { display: flex; justify-content: center; gap: 4px }
+.stars button { width: 52px; height: 52px; min-height: 52px; padding: 0; border-radius: 50%; background: transparent; border: 0; color: var(--mut); transition: transform .15s var(--ease), color .15s }
+.stars button svg { width: 34px; height: 34px }
+.stars button.on { color: var(--fg) }
+.stars button:hover { transform: scale(1.12); color: var(--fg) }
+.rating-sum { margin: 10px 0 0; min-height: 20px; font-size: 14px; color: var(--txt2) }
+.rating-line { display: inline-flex; align-items: center; gap: 4px; color: var(--fg); font-weight: 600 }
+.rating-line svg { width: 14px; height: 14px }

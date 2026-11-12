@@ -38,4 +38,5 @@ export function buildChapters(topics: Topic[], empty: EmptyChapter[] = []): Chap
   return [...map.values()].sort((a, b) => (a.n ?? 1e9) - (b.n ?? 1e9))
 }
 
+export const podcastCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + (t.podcasts?.length ?? 0), 0)
 export const videoCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + t.videos.length, 0)

@@ -93,6 +93,13 @@ export const CalcIcon = () => (
   </svg>
 )
 
+/** Stjerne for vurdering. Fylt når den er valgt. */
+export const StarIcon = ({ filled }: { filled?: boolean }) => (
+  <svg {...base} fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round">
+    <path d="m12 3.2 2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.5l6.1-.7L12 3.2Z" />
+  </svg>
+)
+
 /** Bille: «meld en feil». */
 export const BugIcon = () => (
   <svg {...base} {...line}>

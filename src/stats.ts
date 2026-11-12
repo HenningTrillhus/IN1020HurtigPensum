@@ -130,10 +130,55 @@ export function resumeReport(id: string): void {
   if (getReport(id) !== getSentReport(id)) queueReport(id, getReport(id))
 }
 
+// ---- Vurdering av kapitler (1–5 stjerner): samme mønster. Du kan endre eller fjerne den, og den sendes først etter ro. ----
+
+export interface Rating { avg: number; count: number }
+/** Hva brukeren har gitt (0 = ingen). Vises med en gang. */
+export const getRating = (ch: string): number => Number(read(`rate:${ch}`)) || 0
+/** Hva serveren sist fikk vite. */
+export const getSentRating = (ch: string): number => Number(read(`ratesent:${ch}`)) || 0
+const pendingRatings = new Map<string, ReturnType<typeof setTimeout>>()
+
+export async function fetchRatings(ids: string[]): Promise<Record<string, Rating> | null> {
+  try {
+    const r = await fetch(`/api/ratings?ids=${encodeURIComponent(ids.join(','))}`)
+    return r.ok ? await r.json() : null
+  } catch { return null }
+}
+
+async function flushRating(ch: string, keepalive = false): Promise<void> {
+  const t = pendingRatings.get(ch)
+  if (t === undefined) return
+  clearTimeout(t)
+  pendingRatings.delete(ch)
+  const want = getRating(ch), sent = getSentRating(ch)
+  if (want === sent) return
+  write(`ratesent:${ch}`, want ? String(want) : null)
+  try {
+    const r = await post('/api/rate', { id: ch, rating: want, device: deviceId() }, keepalive)
+    if (!r.ok) write(`ratesent:${ch}`, sent ? String(sent) : null)
+  } catch {
+    write(`ratesent:${ch}`, sent ? String(sent) : null)
+  }
+}
+
+export function queueRating(ch: string, n: number): void {
+  write(`rate:${ch}`, n ? String(n) : null)
+  const old = pendingRatings.get(ch)
+  if (old !== undefined) clearTimeout(old)
+  pendingRatings.set(ch, setTimeout(() => { void flushRating(ch) }, VOTE_DELAY_MS))
+}
+
+export function resumeRating(ch: string): void {
+  if (pendingRatings.has(ch)) return
+  if (getRating(ch) !== getSentRating(ch)) queueRating(ch, getRating(ch))
+}
+
 /** Send alt som venter nå, f.eks. når fanen lukkes, så ingenting går tapt i ventetiden. */
 export function flushAllVotes(): void {
   for (const id of [...pending.keys()]) void flushVote(id, true)
   for (const id of [...pendingReports.keys()]) void flushReport(id, true)
+  for (const id of [...pendingRatings.keys()]) void flushRating(id, true)
 }
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {

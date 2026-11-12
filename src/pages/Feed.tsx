@@ -251,8 +251,9 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
               className="sound"
               onPointerDown={e => e.stopPropagation()} onTouchStart={e => e.stopPropagation()}
               onClick={() => { enableSound(); vid.current?.play().catch(() => {}) }}
+              aria-label="Slå på lyden" title="Slå på lyden"
             >
-              <MutedIcon /> Trykk for lyd
+              <MutedIcon />
             </button>
           )}
           <SpeedButton />
