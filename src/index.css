@@ -611,3 +611,8 @@ select.calc-input { padding: 0 10px; cursor: pointer }
 @keyframes swipeInFromLeft { from { transform: translateX(-32%); opacity: 0 } to { transform: none; opacity: 1 } }
 html.swipe-in-from-right .shell { animation: swipeInFromRight .3s var(--ease) both }
 html.swipe-in-from-left .shell { animation: swipeInFromLeft .3s var(--ease) both }
+
+/* Søk på forsiden */
+.global-search { margin: 0 0 16px }
+.hit-def { margin: 6px 0 0; color: var(--txt2); font-size: 14px; line-height: 1.5 }
+.grid[hidden] { display: none }

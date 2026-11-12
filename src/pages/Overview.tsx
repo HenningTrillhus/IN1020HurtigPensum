@@ -5,6 +5,7 @@ import { ThemeToggle } from '../theme'
 import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
 import { RatingLine } from '../Rating'
+import { GlobalSearchBox, GlobalSearchResults } from '../GlobalSearch'
 import { fetchRatings, type Rating } from '../stats'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
 
@@ -12,6 +13,7 @@ import ExamCountdown, { type Exam } from '../ExamCountdown'
 export default function Overview({ chapters, courseUrl, exam }: { chapters: Chapter[]; courseUrl?: string; exam?: Exam }) {
   // Snitt på vurderingene av hvert kapittel, vist ved siden av antall videoer og podkaster.
   const [ratings, setRatings] = useState<Record<string, Rating>>({})
+  const [q, setQ] = useState('')
   useEffect(() => {
     let alive = true
     const ids = chapters.filter(c => c.topics.length > 0).map(c => c.key)
@@ -32,7 +34,10 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
         <p className="sub">Pensum i korte klipp. Velg et kapittel.</p>
       </header>
       <Disclaimer courseUrl={courseUrl} />
-      <div className="grid">
+      <GlobalSearchBox q={q} setQ={setQ} />
+      <GlobalSearchResults chapters={chapters} q={q} courseUrl={courseUrl} />
+      {/* Mens du søker, vises treffene i stedet for kapittellisten. */}
+      <div className="grid" hidden={!!q.trim()}>
         {chapters.map((c, i) => {
           const v = videoCount(c)
           const d = c.topics.length
