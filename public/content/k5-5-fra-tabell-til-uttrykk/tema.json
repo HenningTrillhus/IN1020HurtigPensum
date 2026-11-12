@@ -3,6 +3,7 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.5 Fra tabell til uttrykk",
   "description": "Fra en tabell til et uttrykk: ett ledd per rad med 1, og hvorfor vi ser på ettallene.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "5.5.1 Vi leter etter ettallene",
@@ -23,6 +24,14 @@
       "title": "5.5.4 Og hvis vi hadde tatt nullene?",
       "file": "video4.mp4",
       "summary": "Produkt av summer: det kan lønne seg når det er færre nuller enn ettall."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Fra tabell til uttrykk",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-7",
+      "duration": 793
     }
   ],
   "terms": [
@@ -49,14 +58,6 @@
     {
       "term": "Kostnaden før forenkling",
       "def": "Med tre innganger og fire ettall får du fire ledd og tolv bokstaver. Bygger du uttrykket rett fram, trenger du tre invertere, fire AND-porter med tre innganger og en OR-port med fire: åtte porter for noe som skal vise seg å trenge to. Vi må ha uttrykket først, før vi kan forenkle det."
-    }
-  ],
-  "podcasts": [
-    {
-      "title": "Fra tabell til uttrykk",
-      "file": "podkast-dame-mann.m4a",
-      "icon": "dame-mann-7",
-      "duration": 793
     }
   ]
 }

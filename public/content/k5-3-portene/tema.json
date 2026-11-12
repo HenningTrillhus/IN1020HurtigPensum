@@ -3,6 +3,7 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.3 Portene",
   "description": "Alle sju portene: IKKE, AND, OR, XOR og de tre med boble, og feilene som koster flest poeng.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "5.3 Portene (del 1)",

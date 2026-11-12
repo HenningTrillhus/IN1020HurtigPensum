@@ -3,6 +3,7 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.6 Forenkling",
   "description": "Reglene for å gjøre et uttrykk mindre, absorpsjon, De Morgan, og å vite når du er ferdig.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "5.6.1 Reglene for forenkling",
@@ -33,6 +34,14 @@
       "title": "5.6.5 Hvor langt er langt nok",
       "file": "video6.mp4",
       "summary": "Du vet ikke sikkert når du er ferdig, så gå gjennom reglene én gang til."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Forenkling av boolske uttrykk",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-8",
+      "duration": 1444
     }
   ],
   "terms": [
@@ -79,14 +88,6 @@
     {
       "term": "Karnaugh-diagram",
       "def": "En systematisk metode som garanterer at du er i mål for små uttrykk, og som gjør samme arbeid på et rutenett i stedet for i en lang rekke omskrivninger. Står i appendiks B og er ikke pensum."
-    }
-  ],
-  "podcasts": [
-    {
-      "title": "Forenkling av boolske uttrykk",
-      "file": "podkast-dame-mann.m4a",
-      "icon": "dame-mann-8",
-      "duration": 1444
     }
   ]
 }

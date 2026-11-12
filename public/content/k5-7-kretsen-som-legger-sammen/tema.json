@@ -3,6 +3,7 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.7 Kretsen som legger sammen",
   "description": "Hvordan to bit legges sammen: halvadderen og fulladderen, utledet fra tabellen.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "5.7.1 Den svarte boksen",
@@ -30,6 +31,14 @@
       "summary": "To halvaddere og en OR-port, fem porter til sammen."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Kretsen som legger sammen",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-3",
+      "duration": 1271
+    }
+  ],
   "terms": [
     {
       "term": "Mente (carry)",
@@ -54,14 +63,6 @@
     {
       "term": "Prikk i kretstegning",
       "def": "En fylt prikk der to ledninger møtes betyr at de er koblet sammen og fører samme signal. Krysser to streker hverandre uten prikk, går de bare over hverandre uten å røre. Det er den eneste måten en flat tegning kan vise noe som i virkeligheten ligger i flere lag."
-    }
-  ],
-  "podcasts": [
-    {
-      "title": "Kretsen som legger sammen",
-      "file": "podkast-dame-mann.m4a",
-      "icon": "dame-mann-3",
-      "duration": 1271
     }
   ]
 }

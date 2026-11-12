@@ -3,6 +3,7 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.8 Mentekjeden",
   "description": "Fulladdere på rad, hvorfor menten koster tid, hvor C- og V-flagget kommer fra, og subtraksjon.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "5.8.1 Fire på rad",
