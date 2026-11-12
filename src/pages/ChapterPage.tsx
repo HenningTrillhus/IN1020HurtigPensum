@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import { useRef, type CSSProperties } from 'react'
 import type { Chapter } from '../chapters'
 import PodButtons from '../PodButtons'
 import { ThemeToggle } from '../theme'
@@ -7,6 +7,7 @@ import { CalcButton } from '../Calculator'
 import Disclaimer from '../Disclaimer'
 import BugButton from '../BugButton'
 import { ChapterRating } from '../Rating'
+import { swipeHandlers, type SwipeStart } from '../swipe'
 import { seenIn } from '../storage'
 import { CheckIcon } from '../Icons'
 
@@ -18,8 +19,12 @@ function splitTitle(title: string) {
 
 // Ett kapittel: alle delkapitlene.
 export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapter; compendiumUrl?: string }) {
+  const swipe = useRef<SwipeStart | null>(null)
+  const termCount = chapter.topics.reduce((n, t) => n + (t.terms?.length ?? 0), 0)
+  const termsHref = `#/kap/${chapter.key}/begreper`
   return (
-    <div className="shell">
+    // Dra fingeren mot venstre for å gå til alle fagbegrepene i kapitlet.
+    <div className="shell" {...swipeHandlers(swipe, () => { if (termCount > 0) location.hash = termsHref })}>
       <nav className="tabs">
         <a href="#/">← Alle kapitler</a>
         <BugButton className="push" />
@@ -29,6 +34,13 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
       <span className="chapter-label">{chapter.label}</span>
       <h1 className="chapter-title">{chapter.title || chapter.label}</h1>
       <Disclaimer compact compendiumUrl={compendiumUrl} chapterLabel={chapter.label} />
+      {termCount > 0 && (
+        <a className="terms-link" href={termsHref}>
+          <span>Fagbegreper</span>
+          <small>Alle {termCount} begrepene i kapitlet, A til Å</small>
+          <span aria-hidden>›</span>
+        </a>
+      )}
       {chapter.topics.length > 0 && <ChapterSearch topics={chapter.topics} compendiumUrl={compendiumUrl} />}
       {chapter.topics.length === 0 ? (
         <div className="wip-page">

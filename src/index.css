@@ -591,3 +591,17 @@ select.calc-input { padding: 0 10px; cursor: pointer }
 .rating-seen { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 14px; color: var(--txt2) }
 .rating-seen.all { color: var(--fg); font-weight: 600 }
 .rating-seen svg { width: 16px; height: 16px }
+
+/* Alle fagbegreper i et kapittel */
+.terms-link {
+  display: flex; align-items: center; gap: 12px; margin: 0 0 14px; padding: 14px 16px; border-radius: var(--r);
+  background: var(--surface); border: 1px solid var(--line); color: inherit; text-decoration: none; transition: border-color .2s;
+}
+.terms-link:hover { border-color: var(--line-strong) }
+.terms-link span:first-child { font-weight: 700; font-size: 16px }
+.terms-link small { flex: 1; color: var(--txt2); font-size: 13px }
+.terms-link span:last-child { color: var(--mut); font-size: 22px; line-height: 1 }
+.chapter-terms section { margin-bottom: 8px }
+.terms-letter { margin: 18px 4px 8px; font-size: 14px; letter-spacing: .08em; color: var(--mut) }
+.term-from { display: inline-block; margin-top: 8px; font-size: 12px; color: var(--mut); text-decoration: underline; text-decoration-color: var(--underline); text-underline-offset: 3px }
+.term-from:hover { color: var(--fg) }

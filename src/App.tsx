@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type TouchEvent } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Topic } from './types'
 import { buildChapters, chapterInfo, type EmptyChapter } from './chapters'
 import { Loader, LoadError } from './Loader'
@@ -10,6 +10,8 @@ import PodButtons from './PodButtons'
 import type { Exam } from './ExamCountdown'
 import { MiniPlayer, PlayerProvider } from './player'
 import Wip from './pages/Wip'
+import ChapterTerms from './pages/ChapterTerms'
+import { swipeHandlers, type SwipeStart } from './swipe'
 
 const base = import.meta.env.BASE_URL + 'content/'
 const SITE = 'IN1020 Hurtigpensum'
@@ -51,7 +53,7 @@ function AppInner() {
   const [error, setError] = useState(false)
   const [attempt, setAttempt] = useState(0)
   // Start på et sveip, for å bytte mellom videoer og fagbegreper på mobil.
-  const swipe = useRef<{ x: number; y: number; t: number } | null>(null)
+  const swipe = useRef<SwipeStart | null>(null)
 
   // Lasteanimasjonen vises minst en kort stund første gang i en økt, så den ikke bare blinker forbi.
   const [minDone, setMinDone] = useState(() => {
@@ -93,11 +95,11 @@ function AppInner() {
   // Sidetittel per side, og start øverst ved sidebytte.
   useEffect(() => {
     if (!topics) return
-    const [, a, b] = hash.replace('#', '').split('/')
+    const [, a, b, sub] = hash.replace('#', '').split('/')
     let title = SITE
     if (a === 'kap') {
       const c = chapters.find(x => x.key === b)
-      if (c) title = `${c.label}${c.title ? ` – ${c.title}` : ''} · ${SITE}`
+      if (c) title = `${sub === 'begreper' ? 'Fagbegreper i ' : ''}${c.label}${c.title ? ` – ${c.title}` : ''} · ${SITE}`
     } else {
       const t = topics.find(x => x.id === a)
       if (t) title = `${t.title} · ${SITE}`
@@ -109,10 +111,11 @@ function AppInner() {
   if (error) return <LoadError onRetry={() => { setError(false); setAttempt(n => n + 1) }} />
   if (!topics || !minDone) return <Loader />
 
-  // Adresser: #/ (forsiden), #/kap/<n> (ett kapittel), #/<tema>/<feed|begreper> (ett tema)
-  const [, a, b] = hash.replace('#', '').split('/')
+  // Adresser: #/ (forsiden), #/kap/<n> (ett kapittel), #/kap/<n>/begreper (alle fagbegreper i kapitlet), #/<tema>/<feed|begreper> (ett tema)
+  const [, a, b, c] = hash.replace('#', '').split('/')
   if (a === 'kap') {
-    const chapter = chapters.find(c => c.key === b)
+    const chapter = chapters.find(ch => ch.key === b)
+    if (chapter && c === 'begreper') return <ChapterTerms chapter={chapter} />
     return chapter
       ? <ChapterPage chapter={chapter} compendiumUrl={compendia[chapter.key]} />
       : <Overview chapters={chapters} courseUrl={courseUrl} exam={exam} />
@@ -140,26 +143,14 @@ function AppInner() {
   // Sveip på mobil, bare inne i et tema (ikke på forsiden eller kapittelsiden). Dra fingeren mot venstre for å gå videre
   // til fagbegrepene. Dra mot høyre for å gå tilbake: fra fagbegrepene til videoene, og fra videoene ut til kapittelet.
   const hasTerms = !!topic.terms?.length
-  const onTouchStart = (e: TouchEvent) => {
-    const t = e.touches[0]
-    // Spolelinja, fanene, valgarket og kalkulatoren bruker sidelengs dra selv, og flere fingre er zoom.
-    const skip = (e.target as Element).closest('input[type="range"], .tabs, .sheet, .sheet-backdrop, .calc, .calc-backdrop')
-    swipe.current = e.touches.length === 1 && !skip ? { x: t.clientX, y: t.clientY, t: Date.now() } : null
-  }
-  const onTouchEnd = (e: TouchEvent) => {
-    const s = swipe.current
-    swipe.current = null
-    if (!s) return
-    const t = e.changedTouches[0]
-    const dx = t.clientX - s.x, dy = t.clientY - s.y
-    // Tydelig sidelengs og raskt, så vanlig rulling opp og ned ikke regnes som sveip.
-    if (Math.abs(dx) < 70 || Math.abs(dx) < Math.abs(dy) * 1.8 || Date.now() - s.t > 900) return
-    if (dx < 0 && view !== 'begreper' && hasTerms) location.hash = `#/${topic.id}/begreper`
-    else if (dx > 0) location.hash = view === 'begreper' ? `#/${topic.id}/feed` : chapterHref
-  }
+  const swipeProps = swipeHandlers(
+    swipe,
+    () => { if (view !== 'begreper' && hasTerms) location.hash = `#/${topic.id}/begreper` },
+    () => { location.hash = view === 'begreper' ? `#/${topic.id}/feed` : chapterHref },
+  )
 
   return (
-    <div className="shell topic" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+    <div className="shell topic" {...swipeProps}>
       <nav className="tabs">
         <a href={chapterHref}>← {info.label}</a>
         <a className={!view || view === 'feed' ? 'on' : ''} href={`#/${topic.id}/feed`}>Videoer</a>
