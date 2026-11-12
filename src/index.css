@@ -789,3 +789,12 @@ button.total-progress .completion { display: block }
 .has-banner > * { position: relative; z-index: 1 }
 /* Kapittelhodet blir et eget banner øverst på kapittelsiden */
 .chapter-head.has-banner { position: relative; padding: 14px 16px; border-radius: var(--r); border: 1px solid color-mix(in srgb, var(--ch, var(--line)) 22%, var(--line)); background: color-mix(in srgb, var(--ch, var(--surface)) 7%, var(--surface)) }
+
+/* Høyere bakgrunn til delkapittelkortene: enda svakere, mønsteret ligger nede til høyre */
+.card.del-banner::before {
+  background-position: right bottom; opacity: .3;
+  -webkit-mask-image: linear-gradient(115deg, transparent 30%, #000 95%); mask-image: linear-gradient(115deg, transparent 30%, #000 95%);
+}
+/* Fremdriftssiden bruker de vanlige kapittelbannerne, tonet ut mot venstre */
+.prog-row.has-banner { position: relative; overflow: hidden }
+.prog-row.has-banner::before { opacity: .38 }

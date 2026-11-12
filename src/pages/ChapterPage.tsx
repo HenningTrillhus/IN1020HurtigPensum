@@ -1,5 +1,5 @@
 import { useRef, type CSSProperties } from 'react'
-import { bannerOf, type Chapter } from '../chapters'
+import { bannerOf, delBannerOf, type Chapter } from '../chapters'
 import PodButtons from '../PodButtons'
 import ChapterSearch from '../ChapterSearch'
 import { CalcButton } from '../Calculator'
@@ -81,8 +81,9 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
                 <span className="chev" aria-hidden>›</span>
               </>
             )
-            const style = { '--i': Math.min(i, 10) } as CSSProperties
-            const cls = `card${n === 0 ? ' wip' : ''}`
+            const del = delBannerOf(chapter)
+            const style = { '--i': Math.min(i, 10), '--banner': del ? `url(${del})` : undefined } as CSSProperties
+            const cls = `card${n === 0 ? ' wip' : ''}${del ? ' has-banner del-banner' : ''}`
             // Kort med podkast: knappene ligger under beskrivelsen og kan ikke ligge inni selve lenken.
             return hasPods ? (
               <div key={t.id} className={`${cls} split`} style={style}>

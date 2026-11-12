@@ -59,6 +59,10 @@ export function buildChapters(topics: Topic[], empty: EmptyChapter[] = []): Chap
 /** Bakgrunnsbildet til kapitlet (følger ikonets navn). */
 export const bannerOf = (c: Chapter) => c.icon?.replace('/chapter-icons/', '/chapter-banners/').replace(/\.png$/, '.webp')
 
+/** Høyere bakgrunn til delkapittelkortene inne i kapitlet (finnes for noen kapitler). */
+export const DEL_BANNERS = new Set([5, 6, 7])
+export const delBannerOf = (c: Chapter) => (c.n !== null && DEL_BANNERS.has(c.n) ? `/chapter-banners/del${c.n}.webp` : undefined)
+
 export const podcastCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + (t.podcasts?.length ?? 0), 0)
 /** Hvor mange videoer i kapitlet du har sett (lagres bare i nettleseren din). */
 export const seenCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + seenIn(t.id, t.videos.length), 0)
