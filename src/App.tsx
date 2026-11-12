@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type TouchEvent } from 'react'
 import type { Topic } from './types'
 import { buildChapters, chapterInfo, type EmptyChapter } from './chapters'
 import { Loader, LoadError } from './Loader'
@@ -50,6 +50,8 @@ function AppInner() {
   const [hash, setHash] = useState(location.hash)
   const [error, setError] = useState(false)
   const [attempt, setAttempt] = useState(0)
+  // Start på et sveip, for å bytte mellom videoer og fagbegreper på mobil.
+  const swipe = useRef<{ x: number; y: number; t: number } | null>(null)
 
   // Lasteanimasjonen vises minst en kort stund første gang i en økt, så den ikke bare blinker forbi.
   const [minDone, setMinDone] = useState(() => {
@@ -135,8 +137,29 @@ function AppInner() {
     history.replaceState(null, '', `#/${activeId}/feed`)
     setHash(location.hash)
   }
+  // Sveip på mobil mellom videoene og fagbegrepene, bare inne i et tema (ikke på forsiden eller kapittelsiden):
+  // til høyre for å se fagbegrepene, til venstre for å gå tilbake til videoene.
+  const hasTerms = !!topic.terms?.length
+  const onTouchStart = (e: TouchEvent) => {
+    const t = e.touches[0]
+    // Spolelinja, fanene, valgarket og kalkulatoren bruker sidelengs dra selv, og flere fingre er zoom.
+    const skip = (e.target as Element).closest('input[type="range"], .tabs, .sheet, .sheet-backdrop, .calc, .calc-backdrop')
+    swipe.current = e.touches.length === 1 && !skip ? { x: t.clientX, y: t.clientY, t: Date.now() } : null
+  }
+  const onTouchEnd = (e: TouchEvent) => {
+    const s = swipe.current
+    swipe.current = null
+    if (!s) return
+    const t = e.changedTouches[0]
+    const dx = t.clientX - s.x, dy = t.clientY - s.y
+    // Tydelig sidelengs og raskt, så vanlig rulling opp og ned ikke regnes som sveip.
+    if (Math.abs(dx) < 70 || Math.abs(dx) < Math.abs(dy) * 1.8 || Date.now() - s.t > 900) return
+    if (dx > 0 && view !== 'begreper' && hasTerms) location.hash = `#/${topic.id}/begreper`
+    else if (dx < 0 && view === 'begreper') location.hash = `#/${topic.id}/feed`
+  }
+
   return (
-    <div className="shell topic">
+    <div className="shell topic" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
       <nav className="tabs">
         <a href={chapterHref}>← {info.label}</a>
         <a className={!view || view === 'feed' ? 'on' : ''} href={`#/${topic.id}/feed`}>Videoer</a>
