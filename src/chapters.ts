@@ -10,10 +10,21 @@ export interface Chapter {
   /** «Transistor, strøm og spenning» (kan være tom) */
   title: string
   topics: Topic[]
+  /** Ikonet til kapitlet, hvis det har et. */
+  icon?: string
+  /** Fargenøkkel (data-ch i CSS): kapittelnummeret, eller et navn for kapitler uten nummer. */
+  color?: string
+  /** Rekkefølge på forsiden. */
+  sort: number
 }
 
-/** Kapittel uten temaer ennå (f.eks. når kompendiet ikke er lagt inn). Settes i content/index.json. */
-export interface EmptyChapter { n: number; title: string }
+/**
+ * Kapittel uten temaer ennå (f.eks. når kompendiet ikke er lagt inn). Settes i content/index.json.
+ * Enten med nummer (n), eller med eget navn (key, label, slug) for kapitler som ikke har et eget nummer.
+ */
+export interface EmptyChapter { n?: number; key?: string; label?: string; slug?: string; sort?: number; title: string }
+
+const hasIcon = (n: number | null) => n !== null && n >= 2 && n <= 7
 
 const RE = /^Kapittel\s+(\d+)\s*[–-]\s*(.*)$/
 
@@ -29,14 +40,20 @@ export function buildChapters(topics: Topic[], empty: EmptyChapter[] = []): Chap
   for (const t of topics) {
     const info = chapterInfo(t)
     let c = map.get(info.key)
-    if (!c) { c = { ...info, topics: [] }; map.set(info.key, c) }
+    if (!c) { c = { ...info, topics: [], sort: info.n ?? 1e9, icon: hasIcon(info.n) ? `/chapter-icons/ch${info.n}.png` : undefined, color: info.n ? String(info.n) : undefined }; map.set(info.key, c) }
     c.topics.push(t)
   }
   for (const e of empty) {
-    const key = String(e.n)
-    if (!map.has(key)) map.set(key, { key, n: e.n, label: `Kapittel ${e.n}`, title: e.title, topics: [] })
+    const key = e.key ?? String(e.n)
+    if (map.has(key)) continue
+    const n = e.n ?? null
+    map.set(key, {
+      key, n, label: e.label ?? `Kapittel ${e.n}`, title: e.title, topics: [], sort: e.sort ?? n ?? 1e9,
+      icon: e.slug ? `/chapter-icons/${e.slug}.png` : hasIcon(n) ? `/chapter-icons/ch${n}.png` : undefined,
+      color: e.slug ?? (n ? String(n) : undefined),
+    })
   }
-  return [...map.values()].sort((a, b) => (a.n ?? 1e9) - (b.n ?? 1e9))
+  return [...map.values()].sort((a, b) => a.sort - b.sort)
 }
 
 export const podcastCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + (t.podcasts?.length ?? 0), 0)

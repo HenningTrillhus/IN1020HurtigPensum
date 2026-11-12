@@ -52,7 +52,22 @@
     "k7-5-pipelinen",
     "k7-6-nar-pipelinen-stopper"
   ],
-  "emptyChapters": [],
+  "emptyChapters": [
+    {
+      "key": "datasikkerhet",
+      "label": "Kapittel 1",
+      "title": "Datasikkerhet",
+      "slug": "datasikkerhet",
+      "sort": 1.0
+    },
+    {
+      "key": "nettverk",
+      "label": "Kapittel 1",
+      "title": "Nettverk",
+      "slug": "nettverk",
+      "sort": 1.5
+    }
+  ],
   "courseUrl": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/",
   "compendia": {
     "2": "https://www.uio.no/studier/emner/matnat/ifi/IN1020/h26/undervisningsmateriell/kap02-digrep.pdf",
