@@ -80,5 +80,13 @@
       "term": "Karnaugh-diagram",
       "def": "En systematisk metode som garanterer at du er i mål for små uttrykk, og som gjør samme arbeid på et rutenett i stedet for i en lang rekke omskrivninger. Står i appendiks B og er ikke pensum."
     }
+  ],
+  "podcasts": [
+    {
+      "title": "Forenkling av boolske uttrykk",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-8",
+      "duration": 1444
+    }
   ]
 }
