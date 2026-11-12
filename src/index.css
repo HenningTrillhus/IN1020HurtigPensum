@@ -399,7 +399,9 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 .bug-toggle svg { width: 26px; height: 26px }
 .bug-toggle { display: inline-grid; place-items: center; text-decoration: none; box-sizing: border-box }
 .theme-toggle svg { width: 24px; height: 24px }
-.tabs .theme-toggle { width: 40px; height: 40px; min-height: 40px }
+/* Samme størrelse som verktøyknappene på forsiden. Lenke-stilen til fanene (padding, høyde) skal ikke gjelde dem. */
+.tabs { align-items: center }
+.tabs .theme-toggle, .tabs a.theme-toggle { display: inline-grid; place-items: center; width: 48px; height: 48px; min-height: 48px; padding: 0 }
 .tabs .push { margin-left: auto }
 
 /* Alt oppå videoen er alltid hvitt på mørkt, uansett tema. Sluttsiden og plassholderen følger temaet. */
