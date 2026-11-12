@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type PointerEvent } from 'react'
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
 import { CAP, fetchStats, getReport, getVote, hasViewed, queueReport, queueVote, resumeReport, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
@@ -34,11 +34,13 @@ interface SlideProps {
   onActive: (topicId: string, pos: number) => void
   /** Meldes når videoen starter eller stopper, så feeden vet når tekst og knapper kan tones ned. */
   onPlayState: (pos: number, playing: boolean) => void
+  /** Meldes når videoen er ferdig, så feeden kan gå videre til neste. */
+  onEnded: (pos: number) => void
 }
 
 const fmt = (n: number) => (n >= CAP ? `${CAP}+` : String(n))
 
-function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState }: SlideProps) {
+function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState, onEnded }: SlideProps) {
   const v = topic.videos[i]
   // Aktiv video laster fritt, neste henter bare første bilde (så neste sveip starter med en gang),
   // og resten laster ingenting før de kommer nær. En video som først er lastet, beholder det den har.
@@ -206,7 +208,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
           ref={vid}
           // #t=0.1 gjør at første bilde vises som forhåndsvisning før du trykker play.
           src={`${root}${topic.id}/${v.file}#t=0.1`}
-          loop playsInline muted={muted || podOn} controls={fullscreen} controlsList="nofullscreen" preload={preload}
+          playsInline muted={muted || podOn} controls={fullscreen} controlsList="nofullscreen" preload={preload}
           onTimeUpdate={e => { if (scrub === null) setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
           onLoadedMetadata={e => { e.currentTarget.playbackRate = rate; setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
           // Trykker du play på videoen mens en podkast spiller, tar videoen over: podkasten pauses og videoen får lyd.
@@ -217,6 +219,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState 
             if (isPodcastPlaying()) { enableSound(); player.pause() }
           }}
           onPause={() => { setPlaying(false); onPlayState(pos, false) }}
+          onEnded={() => onEnded(pos)}
           onLoadedData={() => setReady(true)}
           onWaiting={() => setBuffering(true)}
           onPlaying={() => setBuffering(false)}
@@ -397,12 +400,37 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
     if (feed) feed.scrollBy({ top: dir * feed.clientHeight, behavior: 'smooth' })
   }, [])
 
+  // Når en video er ferdig, går feeden videre til neste av seg selv. Lyd og stumming er felles for alle videoene
+  // (sound.ts), så valget følger med. Etter den aller siste blir den stående.
+  const slideCount = slides.length
+  const onEnded = useCallback((pos: number) => {
+    if (pos !== currentRef.current || pos >= slideCount - 1) return
+    step(1)
+  }, [step, slideCount])
+
   // Delkapitler med flere videoer (som 6.10): hvilken del du er på, og hopp til en annen uten å scrolle.
   const cur = slides[current]
   const siblings = cur ? slides.map((s, pos) => ({ ...s, pos })).filter(s => s.topic.id === cur.topic.id) : []
   const multi = siblings.length > 1
   // Skjul bare mens videoen faktisk spiller. Pauset video, åpent valgark og sluttsiden viser alltid alt.
   const uiHidden = idle && !picker && !atEnd
+
+  // Trykk på et tomt sted mens teksten og knappene vises: tone dem bort med en gang. Trykk på tekst, en knapp eller
+  // spolelinja gjør bare at de blir værende. Er alt skjult, henter et trykk det fram igjen.
+  const lastTapHide = useRef(0)
+  const onTap = (e: PointerEvent<HTMLDivElement>) => {
+    const t = e.target as Element
+    const interactive = !!t.closest('button, a, input, label, .caption, .count, .views, .part-chip, .report-note, .sheet')
+    if (!uiHidden && !interactive && !picker && !atEnd) {
+      window.clearTimeout(idleTimer.current)
+      setIdle(true)
+      lastTapHide.current = Date.now()
+      return
+    }
+    poke()
+  }
+  // Musen rører seg ofte rett etter et klikk. Da skal ikke teksten dukke opp igjen med en gang.
+  const onMove = () => { if (Date.now() - lastTapHide.current > 800) poke() }
 
   // Hopper rett til videoen uten å sveipe forbi de mellom. Ellers ville de telt som sett.
   // For at det ikke skal føles brått, toner feeden kort ned, hopper, og kommer mykt inn igjen.
@@ -448,7 +476,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   return (
     <div
       className={`feed-wrap${uiHidden ? ' ui-hidden' : ''}`}
-      onPointerDown={poke} onPointerMove={poke} onTouchStart={poke} onWheel={poke} onKeyDown={poke}
+      onPointerDown={onTap} onPointerMove={onMove} onWheel={poke} onKeyDown={poke}
     >
       <div className="segs" aria-hidden>
         {slides.map((_, k) => <i key={k} className={`seg${k < current ? ' done' : k === current ? ' cur' : ''}`} />)}
@@ -459,7 +487,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
             key={`${s.topic.id}:${s.i}`}
             topic={s.topic} root={root} i={s.i} pos={pos}
             mode={pos === current ? 'active' : pos === current + 1 ? 'next' : 'far'}
-            stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report} onPlayState={onPlayState}
+            stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report} onPlayState={onPlayState} onEnded={onEnded}
           />
         ))}
         <EndSlide onDone={done} onVisible={setAtEnd} />
