@@ -30,6 +30,14 @@
       "summary": "Effektiv aksesstid: 90 prosent treff gir 10,9 ns, 99 prosent gir 1,99 ns."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Hvorfor datamaskinen din har et minnehierarki",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-3",
+      "duration": 932
+    }
+  ],
   "terms": [
     {
       "term": "Minnehierarki",

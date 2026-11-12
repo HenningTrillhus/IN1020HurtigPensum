@@ -3,7 +3,36 @@
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.6 Når pipelinen stopper",
   "description": "Hasarder: data, kontroll og struktur, og hva de koster i tapte sykluser.",
-  "videos": [],
+  "videos": [
+    {
+      "title": "7.6.1 Tre ting som kan gå galt",
+      "file": "video1.mp4",
+      "summary": "Tre måter oppvasken kan stoppe på, og forskjellen på avhengighet og hasard."
+    },
+    {
+      "title": "7.6.2 Datahasard",
+      "file": "video2.mp4",
+      "summary": "ADD venter på LDA: bobler, og tre instruksjoner som bruker ti sykluser."
+    },
+    {
+      "title": "7.6.3 Kontrollhasard",
+      "file": "video3.mp4",
+      "summary": "Et hopp som tas kaster to instruksjoner og tømmer pipelinen."
+    },
+    {
+      "title": "7.6.4 Strukturhasard og to måter å stå stille på",
+      "file": "video4.mp4",
+      "summary": "To trinn vil ha samme minne, og prosessoren kan vente på minnet eller på seg selv."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Hasardene som stanser prosessorens samlebånd",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-5",
+      "duration": 1426
+    }
+  ],
   "terms": [
     {
       "term": "Hasard",

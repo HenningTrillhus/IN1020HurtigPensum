@@ -15,6 +15,14 @@
       "summary": "Samme arbeid, over tretti ganger forskjellig fart."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Hvorfor radvis lesing er tretti ganger raskere",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-4",
+      "duration": 820
+    }
+  ],
   "terms": [
     {
       "term": "Lokalitet",

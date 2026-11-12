@@ -30,6 +30,14 @@
       "summary": "Cache-koherens, og at cachen er usynlig for programmet."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Hvorfor cachen gjør koden 30 ganger raskere",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-8",
+      "duration": 1124
+    }
+  ],
   "terms": [
     {
       "term": "Cachelinje",

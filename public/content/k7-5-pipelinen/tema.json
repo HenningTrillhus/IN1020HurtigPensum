@@ -20,6 +20,14 @@
       "summary": "Tre pluss antall instruksjoner, og gevinsten nærmer seg fire."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Slik fungerer pipelining i prosessorer",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-6",
+      "duration": 1303
+    }
+  ],
   "terms": [
     {
       "term": "Pipeline (samlebånd)",
