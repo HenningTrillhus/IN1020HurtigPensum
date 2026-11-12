@@ -2,6 +2,6 @@
   "id": "k7-6-nar-pipelinen-stopper",
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.6 Når pipelinen stopper",
-  "description": "",
+  "description": "Hasarder: data, kontroll og struktur, og hva de koster i tapte sykluser.",
   "videos": []
 }

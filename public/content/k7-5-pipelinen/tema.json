@@ -2,6 +2,22 @@
   "id": "k7-5-pipelinen",
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.5 Pipelinen",
-  "description": "",
-  "videos": []
+  "description": "Pipelinen som samlebånd: de fire trinnene og regnestykket for hvor mye den sparer.",
+  "videos": [
+    {
+      "title": "7.5.1 Tre som tar oppvasken",
+      "file": "video1.mp4",
+      "summary": "90 minutter blir 32: ide og gevinst i en pipeline."
+    },
+    {
+      "title": "7.5.2 De fire trinnene",
+      "file": "video2.mp4",
+      "summary": "IF, DE, EX og WB, med og uten pipeline."
+    },
+    {
+      "title": "7.5.3 Regnestykket",
+      "file": "video3.mp4",
+      "summary": "Tre pluss antall instruksjoner, og gevinsten nærmer seg fire."
+    }
+  ]
 }

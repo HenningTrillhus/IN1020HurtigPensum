@@ -2,6 +2,17 @@
   "id": "k7-3-lokalitet",
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.3 Lokalitet",
-  "description": "",
-  "videos": []
+  "description": "Hvorfor cachen virker: nylig og naboen, og rekkefølgen du går gjennom data i.",
+  "videos": [
+    {
+      "title": "7.3.2 To mønstre, to navn",
+      "file": "video1.mp4",
+      "summary": "Tidslokalitet og stedslokalitet: nylig og naboen."
+    },
+    {
+      "title": "7.3.3 Radvis mot kolonnevis",
+      "file": "video2.mp4",
+      "summary": "Samme arbeid, over tretti ganger forskjellig fart."
+    }
+  ]
 }

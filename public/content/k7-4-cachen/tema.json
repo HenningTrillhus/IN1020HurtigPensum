@@ -2,6 +2,32 @@
   "id": "k7-4-cachen",
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.4 Cachen",
-  "description": "",
-  "videos": []
+  "description": "Cachelinjer, treff og bom, nivåene L1 til L3, og hva som skjer når du skriver.",
+  "videos": [
+    {
+      "title": "7.4.1 Cachelinja",
+      "file": "video1.mp4",
+      "summary": "Prosessoren ber om fire byte og får 64."
+    },
+    {
+      "title": "7.4.2 Treff og bom",
+      "file": "video2.mp4",
+      "summary": "Hva en bom utløser, og å regne treffrate."
+    },
+    {
+      "title": "7.4.3 Hvorfor det er flere nivåer",
+      "file": "video3.mp4",
+      "summary": "L1, L2 og L3, og hvorfor L1 er delt i to."
+    },
+    {
+      "title": "7.4.4 Hva skjer når du skriver",
+      "file": "video4.mp4",
+      "summary": "Gjennomskriving mot tilbakeskriving."
+    },
+    {
+      "title": "7.4.5 Når flere kjerner har hver sin kopi",
+      "file": "video5.mp4",
+      "summary": "Cache-koherens, og at cachen er usynlig for programmet."
+    }
+  ]
 }

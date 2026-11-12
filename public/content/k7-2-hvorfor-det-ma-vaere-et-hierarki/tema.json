@@ -2,11 +2,32 @@
   "id": "k7-2-hvorfor-det-ma-vaere-et-hierarki",
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.2 Hvorfor det må være et hierarki",
-  "description": "Hvorfor maskinen din har en minnepyramide: register, cache, minne og disk.",
+  "description": "Hvorfor minnet er delt i lag: ventetid, avstand, pris og effektiv aksesstid.",
   "videos": [
     {
-      "title": "Hvorfor maskinen din har en minnepyramide",
-      "file": "video1.mp4"
+      "title": "7.2.1 Hvor lenge prosessoren venter",
+      "file": "klipp-1.mp4",
+      "summary": "Fra L1 til harddisk: 4 sykluser mot 24 millioner."
+    },
+    {
+      "title": "7.2.2 Avstand koster tid",
+      "file": "klipp-2.mp4",
+      "summary": "Lange ledninger og store dekodere gjør stort minne tregt."
+    },
+    {
+      "title": "7.2.3 Raskt, stort og billig: velg to",
+      "file": "klipp-3.mp4",
+      "summary": "SRAM mot DRAM, og hvorfor du ikke får alle tre."
+    },
+    {
+      "title": "7.2.4 Løsningen: flere lag",
+      "file": "klipp-4.mp4",
+      "summary": "Pulten, hylla og biblioteket, og minnepyramiden."
+    },
+    {
+      "title": "7.2.6 Hva bommene koster",
+      "file": "klipp-5.mp4",
+      "summary": "Effektiv aksesstid: 90 prosent treff gir 10,9 ns, 99 prosent gir 1,99 ns."
     }
   ]
 }
