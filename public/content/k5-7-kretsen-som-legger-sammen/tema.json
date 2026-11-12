@@ -3,7 +3,33 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.7 Kretsen som legger sammen",
   "description": "Hvordan to bit legges sammen: halvadderen og fulladderen, utledet fra tabellen.",
-  "videos": [],
+  "videos": [
+    {
+      "title": "5.7.1 Den svarte boksen",
+      "file": "video1.mp4",
+      "summary": "To bit inn, og svaret trenger to utganger: sum og mente."
+    },
+    {
+      "title": "5.7.2 Tabellen, og det du kjenner igjen",
+      "file": "video2.mp4",
+      "summary": "Sum er XOR og mente er AND."
+    },
+    {
+      "title": "5.7.3 Halvadderen",
+      "file": "video3.mp4",
+      "summary": "En XOR og en AND, men uten plass til mente inn."
+    },
+    {
+      "title": "5.7.5 Fulladderen, utledet",
+      "file": "video4.mp4",
+      "summary": "Formlene for sum og mente ut regnet ut fra en tabell med åtte rader."
+    },
+    {
+      "title": "5.7.6 Fulladderen, tegnet",
+      "file": "video5.mp4",
+      "summary": "To halvaddere og en OR-port, fem porter til sammen."
+    }
+  ],
   "terms": [
     {
       "term": "Mente (carry)",

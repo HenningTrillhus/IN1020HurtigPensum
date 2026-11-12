@@ -3,7 +3,38 @@
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.8 Mentekjeden",
   "description": "Fulladdere på rad, hvorfor menten koster tid, hvor C- og V-flagget kommer fra, og subtraksjon.",
-  "videos": [],
+  "videos": [
+    {
+      "title": "5.8.1 Fire på rad",
+      "file": "video1.mp4",
+      "summary": "Én fulladder per bit, med menten koblet videre."
+    },
+    {
+      "title": "5.8.2 Hvorfor bare det første svaret er riktig med en gang",
+      "file": "video2.mp4",
+      "summary": "Hver posisjon må vente på menten fra posisjonen til høyre."
+    },
+    {
+      "title": "5.8.3 Hva mentekjeden koster",
+      "file": "video3.mp4",
+      "summary": "Tiden vokser lineært med antall bit: T ≈ n · t."
+    },
+    {
+      "title": "5.8.4 Her kommer C-flagget fra",
+      "file": "video4.mp4",
+      "summary": "Mente ut av den venstre fulladderen."
+    },
+    {
+      "title": "5.8.5 Og her kommer V-flagget fra",
+      "file": "video5.mp4",
+      "summary": "Én XOR-port på de to menteledningene i øverste posisjon."
+    },
+    {
+      "title": "5.8.6 Subtraksjon, gratis",
+      "file": "video6.mp4",
+      "summary": "Bytt NOT med XOR og styr med ledningen M."
+    }
+  ],
   "terms": [
     {
       "term": "Mentekjede (ripple carry adder)",
