@@ -310,7 +310,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
 // Siste «video» i feeden. Sveiper du ned hit, går du tilbake til forsiden.
 // Siste «video» i feeden. Når du sveiper ned hit, kommer vurderingen opp (samme som nederst i kapitlet, og den samme
 // vurderingen: du kan ikke gi to, bare endre den). Du blir ikke sendt tilbake av deg selv, så du rekker å gi stjerner.
-function EndSlide({ chapterKey, onDone, onVisible }: { chapterKey: string; onDone: () => void; onVisible: (v: boolean) => void }) {
+function EndSlide({ chapterKey, topics, onDone, onVisible }: { chapterKey: string; topics: Topic[]; onDone: () => void; onVisible: (v: boolean) => void }) {
   const ref = useRef<HTMLElement>(null)
   useEffect(() => {
     const el = ref.current!
@@ -321,7 +321,7 @@ function EndSlide({ chapterKey, onDone, onVisible }: { chapterKey: string; onDon
   return (
     <section className="slide end" ref={ref}>
       <p className="end-title">Ferdig med kapitlet</p>
-      <ChapterRating chapterKey={chapterKey} />
+      <ChapterRating chapterKey={chapterKey} topics={topics} />
       <button onClick={onDone}>Tilbake til kapitlet</button>
     </section>
   )
@@ -489,7 +489,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
             stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report} onPlayState={onPlayState} onEnded={onEnded}
           />
         ))}
-        <EndSlide chapterKey={chapter} onDone={done} onVisible={setAtEnd} />
+        <EndSlide chapterKey={chapter} topics={topics} onDone={done} onVisible={setAtEnd} />
       </div>
 
       {multi && !atEnd && (

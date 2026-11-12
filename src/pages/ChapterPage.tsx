@@ -70,7 +70,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
           })}
         </div>
       )}
-      {chapter.topics.length > 0 && <ChapterRating chapterKey={chapter.key} />}
+      {chapter.topics.length > 0 && <ChapterRating chapterKey={chapter.key} topics={chapter.topics} />}
     </div>
   )
 }

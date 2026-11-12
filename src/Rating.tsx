@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import { StarIcon } from './Icons'
-import { CAP, fetchRatings, getRating, getSentRating, queueRating, resumeRating, type Rating } from './stats'
+import type { Topic } from './types'
+import { Eye, StarIcon, ThumbDown, ThumbUp } from './Icons'
+import { CAP, fetchRatings, fetchStats, videoId, getRating, getSentRating, queueRating, resumeRating, type Rating } from './stats'
 
 const fmtAvg = (n: number) => n.toFixed(1).replace('.', ',')
 // Antallet stopper på samme tak som likes og vises som «999+».
@@ -16,8 +17,45 @@ export function RatingLine({ r }: { r?: Rating }) {
   )
 }
 
+const nf = (n: number) => n.toLocaleString('nb-NO')
+
+/** Summen av visninger, likes og tommel ned for alle videoene i kapitlet. Vises bare sammen med vurderingen. */
+function Totals({ topics }: { topics: Topic[] }) {
+  const [t, setT] = useState<{ views: number; likes: number; dislikes: number } | null>(null)
+  const ids = topics.flatMap(tp => tp.videos.map((_, i) => videoId(tp.id, i)))
+  const key = ids.join(',')
+
+  useEffect(() => {
+    if (!ids.length) return
+    let alive = true
+    ;(async () => {
+      const sum = { views: 0, likes: 0, dislikes: 0 }
+      // API-et tar maks 30 videoer per kall.
+      for (let k = 0; k < ids.length; k += 30) {
+        const r = await fetchStats(ids.slice(k, k + 30))
+        if (!r) return
+        for (const st of Object.values(r)) { sum.views += st.views; sum.likes += st.likes; sum.dislikes += st.dislikes }
+      }
+      if (alive) setT(sum)
+    })()
+    return () => { alive = false }
+  }, [key])
+
+  if (!t) return null
+  return (
+    <div className="rating-totals" aria-label="Totalt for videoene i kapitlet">
+      <small>Totalt for videoene i kapitlet</small>
+      <div>
+        <span title="Visninger"><Eye /> {nf(t.views)}</span>
+        <span title="Tommel opp"><ThumbUp /> {nf(t.likes)}</span>
+        <span title="Tommel ned"><ThumbDown /> {nf(t.dislikes)}</span>
+      </div>
+    </div>
+  )
+}
+
 /** Nederst i et kapittel: gi 1 til 5 stjerner. Trykk på samme stjerne igjen for å fjerne vurderingen. */
-export function ChapterRating({ chapterKey }: { chapterKey: string }) {
+export function ChapterRating({ chapterKey, topics }: { chapterKey: string; topics: Topic[] }) {
   const [own, setOwn] = useState(getRating(chapterKey))
   const [data, setData] = useState<Rating | null>(null)
   // Hva serveren visste om oss da tallene ble hentet. Brukes til å regne ut snittet med vår egen vurdering med en gang.
@@ -68,6 +106,7 @@ export function ChapterRating({ chapterKey }: { chapterKey: string }) {
       <p className="rating-sum" aria-live="polite">
         {note ? note.text : count > 0 ? `Snitt ${fmtAvg(avg)} av 5 · ${fmtCount(count)} ${count === 1 ? 'vurdering' : 'vurderinger'}` : 'Bli den første til å vurdere'}
       </p>
+      <Totals topics={topics} />
     </section>
   )
 }

@@ -573,3 +573,9 @@ select.calc-input { padding: 0 10px; cursor: pointer }
 .rating-line { display: inline-flex; align-items: center; gap: 4px; color: var(--fg); font-weight: 600 }
 .rating-line svg { width: 14px; height: 14px }
 .slide.end .rating { width: 100%; max-width: 420px; margin: 4px 0 8px; background: var(--bg) }
+
+.rating-totals { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); display: grid; gap: 8px }
+.rating-totals small { color: var(--mut); font-size: 12px }
+.rating-totals > div { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 22px }
+.rating-totals span { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums }
+.rating-totals svg { width: 18px; height: 18px }
