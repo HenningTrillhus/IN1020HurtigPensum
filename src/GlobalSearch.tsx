@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import type { Chapter } from './chapters'
 import { norm } from './search'
 import SearchField from './SearchField'
+import { SearchIcon } from './Icons'
 
 interface Hit {
   term: string
@@ -20,8 +21,8 @@ const snippet = (s: string, n = 130) => (s.length > n ? `${s.slice(0, n).replace
 export function GlobalSearchBox({ q, setQ, onClose }: { q: string; setQ: (v: string) => void; onClose?: () => void }) {
   return (
     <SearchField
-      className="global-search" value={q} onChange={setQ} onClose={onClose} autoFocus
-      placeholder="Søk etter et fagbegrep i alle kapitler" label="Søk etter fagbegrep i alle kapitler"
+      className="global-search tool-search" value={q} onChange={setQ} onClose={onClose} icon={<SearchIcon />}
+      placeholder="Søk i fagbegreper" label="Søk etter fagbegrep i alle kapitler"
     />
   )
 }

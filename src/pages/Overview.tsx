@@ -6,7 +6,8 @@ import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
 import { RatingLine } from '../Rating'
 import { GlobalSearchBox, GlobalSearchResults } from '../GlobalSearch'
-import { PlayIcon, SearchIcon } from '../Icons'
+import { PlayIcon } from '../Icons'
+import ProgressSheet from '../ProgressSheet'
 import { getLast } from '../storage'
 import { fetchRatings, type Rating } from '../stats'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
@@ -34,7 +35,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   // Snitt på vurderingene av hvert kapittel, vist ved siden av antall videoer og podkaster.
   const [ratings, setRatings] = useState<Record<string, Rating>>({})
   const [q, setQ] = useState('')
-  const [searchOpen, setSearchOpen] = useState(false)
+  const [progressOpen, setProgressOpen] = useState(false)
   // Siste video du så på, så du kan fortsette der du slapp.
   const last = useMemo(() => {
     const l = getLast()
@@ -49,7 +50,6 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   const totalSeen = chapters.reduce((n, c) => n + seenCount(c), 0)
   const pct = totalVideos ? Math.round((totalSeen / totalVideos) * 100) : 0
   const shownPct = useCountUp(pct)
-  const closeSearch = () => { setQ(''); setSearchOpen(false) }
   useEffect(() => {
     let alive = true
     const ids = chapters.filter(c => c.topics.length > 0).map(c => c.key)
@@ -60,19 +60,13 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   return (
     <div className="shell">
       {exam && <ExamCountdown exam={exam} />}
-      {/* Verktøyrad under nedtellingen: feilmelding, søk, kalkulator og tema. */}
+      {/* Verktøyrad under nedtellingen: feilmelding, søkefelt, kalkulator og tema. Søkefeltet fyller resten av bredden. */}
       <div className="tool-row">
         <BugButton />
-        <button
-          className={`theme-toggle search-toggle${searchOpen ? ' on' : ''}`} onClick={() => (searchOpen ? closeSearch() : setSearchOpen(true))}
-          aria-label="Søk etter fagbegrep" aria-expanded={searchOpen} title="Søk etter fagbegrep"
-        >
-          <SearchIcon />
-        </button>
+        <GlobalSearchBox q={q} setQ={setQ} />
         <CalcButton />
         <ThemeToggle />
       </div>
-      {searchOpen && <GlobalSearchBox q={q} setQ={setQ} onClose={closeSearch} />}
       <header className="hero">
         <h1>IN1020 Hurtigpensum</h1>
         <p className="sub">Pensum i korte klipp. Velg et kapittel.</p>
@@ -131,12 +125,13 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
         })}
       </div>
       {!q.trim() && totalVideos > 0 && (
-        <section className="total-progress" aria-label="Total fremdrift">
-          <div className="tp-head"><span>Total fremdrift</span><strong>{shownPct} %</strong></div>
-          <div className="completion" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}><i style={{ width: `${pct}%` }} /></div>
-          <small>Du har sett {totalSeen} av {totalVideos} videoer</small>
-        </section>
+        <button type="button" className="total-progress" onClick={() => setProgressOpen(true)} aria-haspopup="dialog" aria-label="Se fremdrift per kapittel">
+          <span className="tp-head"><span>Total fremdrift</span><strong>{shownPct} %</strong></span>
+          <span className="completion" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}><i style={{ width: `${pct}%` }} /></span>
+          <small><span>Du har sett {totalSeen} av {totalVideos} videoer</span><span className="tp-more">Per kapittel ›</span></small>
+        </button>
       )}
+      {progressOpen && <ProgressSheet chapters={chapters} onClose={() => setProgressOpen(false)} />}
     </div>
   )
 }

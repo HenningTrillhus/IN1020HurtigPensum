@@ -736,3 +736,34 @@ html.swipe-in-from-left .shell { animation: swipeInFromLeft .3s var(--ease) both
   .card:hover .ch-icon { transform: scale(1.06) }
 }
 .ch-icon { transition: transform .25s var(--ease) }
+
+/* Søkefeltet i verktøyraden: fyller resten av bredden mellom knappene */
+.tool-row .search-field { flex: 1 1 0; min-width: 0; margin: 0 }
+.search-field.with-icon .terms-search { padding-left: 46px }
+.search-ic { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); display: grid; place-items: center; color: var(--mut); pointer-events: none }
+.search-ic svg { width: 20px; height: 20px }
+.tool-search .terms-search { height: 48px; min-height: 48px; border-radius: 99px; padding-right: 50px }
+.tool-search .search-clear { right: 5px; width: 36px; height: 36px; min-height: 36px }
+
+/* Fremdriftskortet er en knapp som åpner en liten side per kapittel */
+button.total-progress { display: block; width: 100%; text-align: left; font: inherit; color: inherit; cursor: pointer; transition: border-color .2s, transform .15s var(--ease) }
+button.total-progress:hover { border-color: var(--line-strong) }
+.total-progress small { display: flex; justify-content: space-between; gap: 12px }
+.tp-more { flex: none; color: var(--txt2) }
+.prog-total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 4px 2px 14px; color: var(--mut); font-size: 14px }
+.prog-total strong { font-size: 30px; letter-spacing: -.02em; color: var(--fg) }
+.prog-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px }
+.prog-row {
+  display: flex; align-items: center; gap: 12px; padding: 12px 12px; border-radius: 14px; color: inherit; text-decoration: none;
+  border: 1px solid var(--line); background: color-mix(in srgb, var(--ch, var(--surface2)) var(--tint, 10%), var(--surface));
+}
+.prog-row:hover { border-color: var(--line-strong) }
+.prog-ic { flex: none; width: 32px; height: 32px; object-fit: contain }
+.prog-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px }
+.prog-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px }
+.prog-name { font-weight: 600; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.prog-top strong { flex: none; font-size: 14px }
+.prog-main .completion { height: 8px }
+.prog-main small { color: var(--mut); font-size: 12.5px }
+.prog-row .completion i { animation: barGrow .8s var(--ease) .1s backwards }
+button.total-progress .completion { display: block }
