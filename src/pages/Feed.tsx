@@ -247,7 +247,8 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
           ref={vid}
           // #t=0.1 gjør at første bilde vises som forhåndsvisning før du trykker play.
           src={`${root}${topic.id}/${v.file}#t=0.1`}
-          poster={`${root}${topic.id}/${v.file.replace(/\.mp4$/i, '.jpg')}`}
+          // Stillbilde bare for den aktive, de nærmeste og de som allerede har vært nær. Sparer data på lange kapitler.
+          poster={mode !== 'far' || warm ? `${root}${topic.id}/${v.file.replace(/\.mp4$/i, '.jpg')}` : undefined}
           playsInline muted={muted || podOn} controls={fullscreen} controlsList="nofullscreen" preload={preload}
           onTimeUpdate={e => { markIfSeen(e.currentTarget.currentTime, e.currentTarget.duration); if (scrub === null) setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
           onLoadedMetadata={e => { e.currentTarget.playbackRate = rate; setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}

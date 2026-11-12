@@ -8,7 +8,7 @@ import Disclaimer from '../Disclaimer'
 import BugButton from '../BugButton'
 import { ChapterRating } from '../Rating'
 import { swipeHandlers, type SwipeStart } from '../swipe'
-import { seenIn } from '../storage'
+import { isSeen, seenIn } from '../storage'
 import { CheckIcon } from '../Icons'
 
 // «6.2 Bryteren …» -> { num: '6.2', text: 'Bryteren …' }
@@ -57,6 +57,9 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
           {chapter.topics.map((t, i) => {
             const n = t.videos.length
             const seen = seenIn(t.id, n)
+            // Har du sett noen, men ikke alle, hopper kortet rett til første video du ikke har sett.
+            const firstNew = seen > 0 && seen < n ? t.videos.findIndex((_, k) => !isSeen(t.id, k)) : 0
+            const href = `#/${t.id}/feed${firstNew > 0 ? `/${firstNew + 1}` : ''}`
             const { num, text } = splitTitle(t.title)
             const hasPods = (t.podcasts?.length ?? 0) > 0
             const main = (
@@ -83,11 +86,11 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
             // Kort med podkast: knappene ligger under beskrivelsen og kan ikke ligge inni selve lenken.
             return hasPods ? (
               <div key={t.id} className={`${cls} split`} style={style}>
-                <a className="card-main" href={`#/${t.id}/feed`}>{main}</a>
+                <a className="card-main" href={href}>{main}</a>
                 <div className="card-pods"><PodButtons topic={t} /></div>
               </div>
             ) : (
-              <a key={t.id} className={cls} style={style} href={`#/${t.id}/feed`}>{main}</a>
+              <a key={t.id} className={cls} style={style} href={href}>{main}</a>
             )
           })}
         </div>

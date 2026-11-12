@@ -723,3 +723,14 @@ html.swipe-in-from-left .shell { animation: swipeInFromLeft .3s var(--ease) both
 .tp-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; font-size: 14px; color: var(--mut) }
 .tp-head strong { font-size: 18px; color: var(--fg) }
 .total-progress small { display: block; margin-top: 8px; color: var(--mut); font-size: 12.5px }
+
+/* Ring og bar fyller seg opp når siden vises */
+@keyframes ringGrow { from { stroke-dasharray: 0 100 } }
+@keyframes barGrow { from { width: 0 } }
+.ring-fill { animation: ringGrow .9s var(--ease) .15s backwards }
+.total-progress .completion i { animation: barGrow .9s var(--ease) .25s backwards }
+.card:hover .ring-fill { stroke: color-mix(in srgb, var(--ch, var(--acc)) 90%, var(--fg)) }
+@media (hover: hover) {
+  .card:hover .ch-icon { transform: scale(1.06) }
+}
+.ch-icon { transition: transform .25s var(--ease) }

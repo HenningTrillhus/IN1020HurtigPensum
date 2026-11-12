@@ -16,6 +16,14 @@ import { swipeHandlers, type SwipeStart } from './swipe'
 const base = import.meta.env.BASE_URL + 'content/'
 const SITE = 'IN1020 Hurtigpensum'
 
+/** Forsiden (0), et kapittel (1), og alt dypere som videoer og fagbegreper (2). Brukes til å huske hvor du var i lista. */
+const pageOf = (hash: string): { key: string | null; depth: number } => {
+  const [, a, b, c] = hash.replace('#', '').split('/')
+  if (!a) return { key: 'home', depth: 0 }
+  if (a === 'kap' && b && !c) return { key: `kap/${b}`, depth: 1 }
+  return { key: null, depth: 2 }
+}
+
 interface Index {
   topics: string[]
   emptyChapters?: EmptyChapter[]
@@ -68,8 +76,17 @@ function AppInner() {
     return () => window.clearTimeout(t)
   }, [])
 
+  // Hvor langt ned du hadde scrollet på forsiden og i kapitlene, så du havner samme sted når du går tilbake.
+  const scrollMem = useRef<Record<string, number>>({})
+  const lastHash = useRef(location.hash)
+  const lastDepth = useRef(pageOf(location.hash).depth)
   useEffect(() => {
-    const on = () => setHash(location.hash)
+    const on = () => {
+      const old = pageOf(lastHash.current)
+      if (old.key) scrollMem.current[old.key] = window.scrollY
+      lastHash.current = location.hash
+      setHash(location.hash)
+    }
     window.addEventListener('hashchange', on)
     return () => window.removeEventListener('hashchange', on)
   }, [])
@@ -105,7 +122,13 @@ function AppInner() {
       if (t) title = `${t.title} · ${SITE}`
     }
     document.title = title
-    window.scrollTo(0, 0)
+    // Går du ut av en video eller et kapittel, kommer du tilbake dit du var. Ellers starter siden øverst.
+    const here = pageOf(hash)
+    const back = here.depth < lastDepth.current
+    lastDepth.current = here.depth
+    lastHash.current = location.hash
+    const y = back && here.key ? scrollMem.current[here.key] : undefined
+    window.scrollTo(0, y ?? 0)
   }, [hash, topics, chapters])
 
   if (error) return <LoadError onRetry={() => { setError(false); setAttempt(n => n + 1) }} />

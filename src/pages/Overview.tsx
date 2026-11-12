@@ -11,6 +11,24 @@ import { getLast } from '../storage'
 import { fetchRatings, type Rating } from '../stats'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
 
+/** Teller opp fra 0 til verdien, så tallet «lever» når siden vises. */
+function useCountUp(target: number, ms = 800) {
+  const [v, setV] = useState(0)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setV(target); return }
+    const t0 = performance.now()
+    let raf = 0
+    const tick = (t: number) => {
+      const k = Math.min(1, (t - t0) / ms)
+      setV(Math.round(target * (1 - Math.pow(1 - k, 3))))
+      if (k < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [target, ms])
+  return v
+}
+
 // Forsiden: bare kapitlene. Trykk på et kapittel for å se delkapitlene.
 export default function Overview({ chapters, courseUrl, exam }: { chapters: Chapter[]; courseUrl?: string; exam?: Exam }) {
   // Snitt på vurderingene av hvert kapittel, vist ved siden av antall videoer og podkaster.
@@ -30,6 +48,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   const totalVideos = chapters.reduce((n, c) => n + videoCount(c), 0)
   const totalSeen = chapters.reduce((n, c) => n + seenCount(c), 0)
   const pct = totalVideos ? Math.round((totalSeen / totalVideos) * 100) : 0
+  const shownPct = useCountUp(pct)
   const closeSearch = () => { setQ(''); setSearchOpen(false) }
   useEffect(() => {
     let alive = true
@@ -113,7 +132,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
       </div>
       {!q.trim() && totalVideos > 0 && (
         <section className="total-progress" aria-label="Total fremdrift">
-          <div className="tp-head"><span>Total fremdrift</span><strong>{pct} %</strong></div>
+          <div className="tp-head"><span>Total fremdrift</span><strong>{shownPct} %</strong></div>
           <div className="completion" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}><i style={{ width: `${pct}%` }} /></div>
           <small>Du har sett {totalSeen} av {totalVideos} videoer</small>
         </section>
