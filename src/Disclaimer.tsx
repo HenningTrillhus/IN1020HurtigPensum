@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 interface Props {
   compact?: boolean
   /** Forsiden: lenke til emnesiden med undervisningsmateriell. */
@@ -13,6 +15,7 @@ const link = (href: string, text: string) => (
 )
 
 export default function Disclaimer({ compact = false, courseUrl, compendiumUrl, chapterLabel }: Props) {
+  const [open, setOpen] = useState(false)
   if (compact) {
     return (
       <p className="notice compact">
@@ -24,11 +27,20 @@ export default function Disclaimer({ compact = false, courseUrl, compendiumUrl, 
       </p>
     )
   }
+  // Forsiden: en liten linje som du kan trykke på for å lese hele, så kapitlene er i fokus.
   return (
-    <aside className="notice">
-      <strong>Merk:</strong> Alle videoer og podkaster her er AI-generert og bygger på kompendiet i IN1020.
-      Ta dem med en liten klype salt, og sjekk alltid mot kompendiet.
-      {courseUrl && <> Kompendiet og alt annet undervisningsmateriell finner du på {link(courseUrl, 'emnesiden til IN1020')}.</>}
+    <aside className={`notice slim${open ? ' open' : ''}`}>
+      <button type="button" className="notice-toggle" onClick={() => setOpen(o => !o)} aria-expanded={open}>
+        <span><strong>Merk:</strong> AI-generert innhold. Ta det med en klype salt.</span>
+        <span className="notice-chev" aria-hidden>{open ? '˄' : '˅'}</span>
+      </button>
+      {open && (
+        <p>
+          Alle videoer og podkaster her er AI-generert og bygger på kompendiet i IN1020. Ta dem med en liten klype salt,
+          og sjekk alltid mot kompendiet.
+          {courseUrl && <> Kompendiet og alt annet undervisningsmateriell finner du på {link(courseUrl, 'emnesiden til IN1020')}.</>}
+        </p>
+      )}
     </aside>
   )
 }

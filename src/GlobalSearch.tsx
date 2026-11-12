@@ -17,10 +17,10 @@ const MAX = 30
 const snippet = (s: string, n = 130) => (s.length > n ? `${s.slice(0, n).replace(/\s+\S*$/, '')} …` : s)
 
 /** Søkefelt på forsiden som finner fagbegreper i alle kapitler. Et treff tar deg rett til delkapittelet. */
-export function GlobalSearchBox({ q, setQ }: { q: string; setQ: (v: string) => void }) {
+export function GlobalSearchBox({ q, setQ, onClose }: { q: string; setQ: (v: string) => void; onClose?: () => void }) {
   return (
     <SearchField
-      className="global-search" value={q} onChange={setQ}
+      className="global-search" value={q} onChange={setQ} onClose={onClose} autoFocus
       placeholder="Søk etter et fagbegrep i alle kapitler" label="Søk etter fagbegrep i alle kapitler"
     />
   )

@@ -683,3 +683,16 @@ html.swipe-in-from-left .shell { animation: swipeInFromLeft .3s var(--ease) both
 }
 [data-ch] .term { border-left: 3px solid color-mix(in srgb, var(--ch) 60%, var(--line)) }
 [data-ch] .completion i { background: color-mix(in srgb, var(--ch) 70%, var(--fg)) }
+
+/* Forsiden: verktøyrad under nedtellingen, og en liten Merk-linje som kan utvides */
+.tool-row { display: flex; align-items: center; gap: 10px; margin: 0 0 14px }
+.search-toggle.on { border-color: var(--line-strong); background: var(--surface2) }
+.shell > .exam { margin-bottom: 12px }
+.notice.slim { padding: 0; margin: 12px 0; font-size: 12.5px }
+.notice-toggle {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 38px; padding: 6px 12px;
+  background: transparent; border: 0; border-radius: inherit; color: var(--mut); font: inherit; text-align: left; cursor: pointer;
+}
+.notice-toggle strong { color: var(--txt2) }
+.notice-chev { flex: none; font-size: 15px; line-height: 1 }
+.notice.slim p { margin: 0; padding: 0 12px 12px; line-height: 1.55; color: var(--mut) }

@@ -6,6 +6,7 @@ import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
 import { RatingLine } from '../Rating'
 import { GlobalSearchBox, GlobalSearchResults } from '../GlobalSearch'
+import { SearchIcon } from '../Icons'
 import { fetchRatings, type Rating } from '../stats'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
 
@@ -14,6 +15,8 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   // Snitt på vurderingene av hvert kapittel, vist ved siden av antall videoer og podkaster.
   const [ratings, setRatings] = useState<Record<string, Rating>>({})
   const [q, setQ] = useState('')
+  const [searchOpen, setSearchOpen] = useState(false)
+  const closeSearch = () => { setQ(''); setSearchOpen(false) }
   useEffect(() => {
     let alive = true
     const ids = chapters.filter(c => c.topics.length > 0).map(c => c.key)
@@ -23,18 +26,25 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
 
   return (
     <div className="shell">
-      <div className="top-row">
-        {exam && <ExamCountdown exam={exam} />}
+      {exam && <ExamCountdown exam={exam} />}
+      {/* Verktøyrad under nedtellingen: feilmelding, søk, kalkulator og tema. */}
+      <div className="tool-row">
         <BugButton />
+        <button
+          className={`theme-toggle search-toggle${searchOpen ? ' on' : ''}`} onClick={() => (searchOpen ? closeSearch() : setSearchOpen(true))}
+          aria-label="Søk etter fagbegrep" aria-expanded={searchOpen} title="Søk etter fagbegrep"
+        >
+          <SearchIcon />
+        </button>
         <CalcButton />
         <ThemeToggle />
       </div>
+      {searchOpen && <GlobalSearchBox q={q} setQ={setQ} onClose={closeSearch} />}
       <header className="hero">
         <h1>IN1020 Hurtigpensum</h1>
         <p className="sub">Pensum i korte klipp. Velg et kapittel.</p>
       </header>
       <Disclaimer courseUrl={courseUrl} />
-      <GlobalSearchBox q={q} setQ={setQ} />
       <GlobalSearchResults chapters={chapters} q={q} courseUrl={courseUrl} />
       {/* Mens du søker, vises treffene i stedet for kapittellisten. */}
       <div className="grid" hidden={!!q.trim()}>

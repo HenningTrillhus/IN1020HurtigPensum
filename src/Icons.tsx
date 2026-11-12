@@ -105,6 +105,11 @@ export const StarIcon = ({ filled }: { filled?: boolean }) => (
   </svg>
 )
 
+/** Forstørrelsesglass: søk. */
+export const SearchIcon = () => (
+  <svg {...base} {...line}><circle cx="11" cy="11" r="6.5" /><path d="m16.2 16.2 4.3 4.3" /></svg>
+)
+
 /** Bille: «meld en feil». Fyller hele ruten, så den ser like stor ut som de andre ikonene. */
 export const BugIcon = () => (
   <svg {...base} {...line}>
