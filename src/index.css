@@ -605,3 +605,9 @@ select.calc-input { padding: 0 10px; cursor: pointer }
 .terms-letter { margin: 18px 4px 8px; font-size: 14px; letter-spacing: .08em; color: var(--mut) }
 .term-from { display: inline-block; margin-top: 8px; font-size: 12px; color: var(--mut); text-decoration: underline; text-decoration-color: var(--underline); text-underline-offset: 3px }
 .term-from:hover { color: var(--fg) }
+
+/* Sveip mellom sider: den nye siden glir inn fra siden der fingeren kom fra. */
+@keyframes swipeInFromRight { from { transform: translateX(32%); opacity: 0 } to { transform: none; opacity: 1 } }
+@keyframes swipeInFromLeft { from { transform: translateX(-32%); opacity: 0 } to { transform: none; opacity: 1 } }
+html.swipe-in-from-right .shell { animation: swipeInFromRight .3s var(--ease) both }
+html.swipe-in-from-left .shell { animation: swipeInFromLeft .3s var(--ease) both }

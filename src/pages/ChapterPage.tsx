@@ -24,7 +24,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
   const termsHref = `#/kap/${chapter.key}/begreper`
   return (
     // Dra fingeren mot venstre for å gå til alle fagbegrepene i kapitlet.
-    <div className="shell" {...swipeHandlers(swipe, () => { if (termCount > 0) location.hash = termsHref })}>
+    <div className="shell" {...swipeHandlers(swipe, termCount > 0 ? () => { location.hash = termsHref } : undefined)}>
       <nav className="tabs">
         <a href="#/">← Alle kapitler</a>
         <BugButton className="push" />

@@ -145,7 +145,7 @@ function AppInner() {
   const hasTerms = !!topic.terms?.length
   const swipeProps = swipeHandlers(
     swipe,
-    () => { if (view !== 'begreper' && hasTerms) location.hash = `#/${topic.id}/begreper` },
+    view !== 'begreper' && hasTerms ? () => { location.hash = `#/${topic.id}/begreper` } : undefined,
     () => { location.hash = view === 'begreper' ? `#/${topic.id}/feed` : chapterHref },
   )
 
