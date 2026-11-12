@@ -56,6 +56,9 @@ export function buildChapters(topics: Topic[], empty: EmptyChapter[] = []): Chap
   return [...map.values()].sort((a, b) => a.sort - b.sort)
 }
 
+/** Bakgrunnsbildet til kapitlet (følger ikonets navn). */
+export const bannerOf = (c: Chapter) => c.icon?.replace('/chapter-icons/', '/chapter-banners/').replace(/\.png$/, '.webp')
+
 export const podcastCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + (t.podcasts?.length ?? 0), 0)
 /** Hvor mange videoer i kapitlet du har sett (lagres bare i nettleseren din). */
 export const seenCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + seenIn(t.id, t.videos.length), 0)

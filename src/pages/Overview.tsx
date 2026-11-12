@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type CSSProperties } from 'react'
-import { podcastCount, seenCount, videoCount, type Chapter } from '../chapters'
+import { bannerOf, podcastCount, seenCount, videoCount, type Chapter } from '../chapters'
 import Disclaimer from '../Disclaimer'
 import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
@@ -92,8 +92,8 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
           return (
             <a
               key={c.key}
-              className={`card${v === 0 ? ' wip' : ''}`}
-              style={{ '--i': Math.min(i, 10) } as CSSProperties}
+              className={`card${v === 0 ? ' wip' : ''}${bannerOf(c) ? ' has-banner' : ''}`}
+              style={{ '--i': Math.min(i, 10), '--banner': bannerOf(c) ? `url(${bannerOf(c)})` : undefined } as CSSProperties}
               href={`#/kap/${c.key}`}
               data-ch={c.color}
             >

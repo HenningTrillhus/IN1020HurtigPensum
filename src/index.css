@@ -779,12 +779,13 @@ button.total-progress .completion { display: block }
 .topic-ic { flex: none; width: 56px; height: 56px; object-fit: contain; user-select: none; -webkit-user-drag: none }
 .sec-num { margin-right: 8px; color: var(--mut); font-weight: 600; font-variant-numeric: tabular-nums }
 
-/* Bakgrunnsbilde bak kapittelkortet (prøve med kapittel 5). Svakt, og tones ut mot venstre der ikon og tekst ligger. */
-.card[data-ch="5"]::before {
+/* Bakgrunnsbilde bak kapittelkortet og kapittelhodet. Svakt, og tones ut mot venstre der ikon og tekst ligger. */
+.has-banner::before {
   content: ''; position: absolute; inset: 0; z-index: 0; border-radius: inherit; pointer-events: none;
-  background: url(/chapter-banners/ch5.webp) right center / cover no-repeat;
+  background: var(--banner) right center / cover no-repeat;
   opacity: .42;
   -webkit-mask-image: linear-gradient(90deg, transparent 8%, #000 85%); mask-image: linear-gradient(90deg, transparent 8%, #000 85%);
 }
-:root[data-theme="light"] .card[data-ch="5"]::before { opacity: .11 }
-.card[data-ch="5"] > * { position: relative; z-index: 1 }
+.has-banner > * { position: relative; z-index: 1 }
+/* Kapittelhodet blir et eget banner øverst på kapittelsiden */
+.chapter-head.has-banner { position: relative; padding: 14px 16px; border-radius: var(--r); border: 1px solid color-mix(in srgb, var(--ch, var(--line)) 22%, var(--line)); background: color-mix(in srgb, var(--ch, var(--surface)) 7%, var(--surface)) }

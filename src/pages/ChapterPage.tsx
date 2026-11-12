@@ -1,5 +1,5 @@
 import { useRef, type CSSProperties } from 'react'
-import type { Chapter } from '../chapters'
+import { bannerOf, type Chapter } from '../chapters'
 import PodButtons from '../PodButtons'
 import ChapterSearch from '../ChapterSearch'
 import { CalcButton } from '../Calculator'
@@ -29,7 +29,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
         <BugButton className="push" />
         <CalcButton />
       </nav>
-      <div className="chapter-head">
+      <div className={`chapter-head${bannerOf(chapter) ? ' has-banner' : ''}`} style={{ '--banner': bannerOf(chapter) ? `url(${bannerOf(chapter)})` : undefined } as CSSProperties}>
         {chapter.icon && <img className="ch-icon lg" src={chapter.icon} alt="" width={72} height={72} draggable={false} />}
         <div>
           <span className="chapter-label">{chapter.label}</span>
