@@ -8,7 +8,7 @@ export interface SwipeStart {
 
 const MIN_DX = 70      // hvor langt fingeren må dras for at det teller som sveip
 const MAX_MS = 900     // og hvor raskt
-const SKIP = 'input[type="range"], .tabs, .sheet, .sheet-backdrop, .calc, .calc-backdrop'
+const SKIP = 'input[type="range"], .segs-hit, .tabs, .sheet, .sheet-backdrop, .calc, .calc-backdrop'
 
 const clear = (el: HTMLElement) => { el.style.transform = ''; el.style.opacity = ''; el.style.transition = '' }
 

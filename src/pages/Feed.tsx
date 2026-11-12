@@ -344,6 +344,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   const [current, setCurrent] = useState(startIdx)
   const [atEnd, setAtEnd] = useState(false)       // sluttsiden er i bildet
   const [picker, setPicker] = useState(false)     // valgarket for videoene i delkapittelet
+  const [scrub, setScrub] = useState<{ idx: number; x: number } | null>(null) // du drar i baren øverst
   const [, setSeenVer] = useState(0)            // ny verdi når en video blir sett, så markeringene oppdateres
   const [idle, setIdle] = useState(false)         // ingen har rørt noe på en stund
   const feedRef = useRef<HTMLDivElement>(null)
@@ -422,14 +423,14 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
   const siblings = cur ? slides.map((s, pos) => ({ ...s, pos })).filter(s => s.topic.id === cur.topic.id) : []
   const multi = siblings.length > 1
   // Skjul bare mens videoen faktisk spiller. Pauset video, åpent valgark og sluttsiden viser alltid alt.
-  const uiHidden = idle && !picker && !atEnd
+  const uiHidden = idle && !picker && !atEnd && !scrub
 
   // Trykk på et tomt sted mens teksten og knappene vises: tone dem bort med en gang. Trykk på tekst, en knapp eller
   // spolelinja gjør bare at de blir værende. Er alt skjult, henter et trykk det fram igjen.
   const lastTapHide = useRef(0)
   const onTap = (e: PointerEvent<HTMLDivElement>) => {
     const t = e.target as Element
-    const interactive = !!t.closest('button, a, input, label, .caption, .count, .views, .part-chip, .report-note, .sheet')
+    const interactive = !!t.closest('button, a, input, label, .caption, .count, .views, .part-chip, .report-note, .sheet, .segs-hit')
     if (!uiHidden && !interactive && !picker && !atEnd) {
       window.clearTimeout(idleTimer.current)
       setIdle(true)
@@ -482,14 +483,54 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
     return () => window.removeEventListener('keydown', onKey)
   }, [step, picker])
 
+  // Baren øverst: ta tak i den og dra for å velge video. Teksten viser hvilken du er over, og du hopper dit når du slipper.
+  const barIndex = (e: PointerEvent<HTMLDivElement>) => {
+    const r = e.currentTarget.getBoundingClientRect()
+    const idx = Math.min(slides.length - 1, Math.max(0, Math.floor(((e.clientX - r.left) / r.width) * slides.length)))
+    return { idx, x: e.clientX - r.left, w: r.width }
+  }
+  const scrubStart = (e: PointerEvent<HTMLDivElement>) => {
+    try { e.currentTarget.setPointerCapture(e.pointerId) } catch { /* ingen aktiv peker, f.eks. i test */ }
+    const { idx, x } = barIndex(e)
+    setScrub({ idx, x })
+    poke()
+  }
+  const scrubMove = (e: PointerEvent<HTMLDivElement>) => {
+    if (!scrub) return
+    const { idx, x } = barIndex(e)
+    if (idx !== scrub.idx || Math.abs(x - scrub.x) > 1) setScrub({ idx, x })
+    poke()
+  }
+  const scrubEnd = (e: PointerEvent<HTMLDivElement>) => {
+    if (!scrub) return
+    const { idx } = barIndex(e)
+    setScrub(null)
+    if (e.type === 'pointerup' && idx !== currentRef.current) jump({ topic: slides[idx].topic, i: slides[idx].i, pos: idx })
+  }
+  const scrubSlide = scrub ? slides[scrub.idx] : null
+
   return (
     <div
-      className={`feed-wrap${uiHidden ? ' ui-hidden' : ''}`}
+      className={`feed-wrap${uiHidden ? ' ui-hidden' : ''}${scrub ? ' scrubbing' : ''}`}
       onPointerDown={onTap} onPointerMove={onMove} onWheel={poke} onKeyDown={poke}
     >
       <div className="segs" aria-hidden>
-        {slides.map((sl, k) => <i key={k} className={`seg${k === current ? ' cur' : isSeen(sl.topic.id, sl.i) ? ' done' : ''}`} />)}
+        {slides.map((sl, k) => (
+          <i key={k} className={`seg${scrub?.idx === k ? ' target' : k === current ? ' cur' : isSeen(sl.topic.id, sl.i) ? ' done' : ''}`} />
+        ))}
       </div>
+      {/* Selve «håndtaket»: usynlig, litt høyere enn streken så den er lett å treffe. Du kan ta tak i den når som helst. */}
+      <div
+        className="segs-hit" role="slider" aria-label="Velg video i kapitlet" aria-valuemin={1} aria-valuemax={slides.length}
+        aria-valuenow={(scrub?.idx ?? current) + 1}
+        onPointerDown={scrubStart} onPointerMove={scrubMove} onPointerUp={scrubEnd} onPointerCancel={scrubEnd}
+      />
+      {scrub && scrubSlide && (
+        <div className="scrub-tip" style={{ left: `${Math.min(Math.max(scrub.x + 14, 90), Math.max(90, (feedRef.current?.clientWidth ?? 400) - 90))}px` }} aria-hidden>
+          <strong>{scrubSlide.topic.videos[scrubSlide.i].title}</strong>
+          <small>{scrub.idx + 1} av {slides.length}</small>
+        </div>
+      )}
       <div className="feed" ref={feedRef} onScroll={poke}>
         {slides.map((s, pos) => (
           <Slide
