@@ -588,9 +588,13 @@ select.calc-input { padding: 0 10px; cursor: pointer }
 .sheet-seen { flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; border: 1px solid #555; color: #fff }
 .sheet-seen svg { width: 15px; height: 15px }
 
-.rating-seen { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--line); font-size: 14px; color: var(--txt2) }
-.rating-seen.all { color: var(--fg); font-weight: 600 }
+.rating-seen { margin: 14px 0 0; padding-top: 14px; border-top: 1px solid var(--line) }
+.rating-seen p { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 0 0 10px; font-size: 14px; color: var(--txt2); flex-wrap: wrap }
+.rating-seen p b { margin-left: 6px; color: var(--fg); font-variant-numeric: tabular-nums }
+.rating-seen.all p { color: var(--fg); font-weight: 600 }
 .rating-seen svg { width: 16px; height: 16px }
+.completion { height: 10px; border-radius: 99px; background: var(--surface2); border: 1px solid var(--line); overflow: hidden }
+.completion i { display: block; height: 100%; border-radius: 99px; background: var(--fg); transition: width .5s var(--ease) }
 
 /* Alle fagbegreper i et kapittel */
 .terms-link {

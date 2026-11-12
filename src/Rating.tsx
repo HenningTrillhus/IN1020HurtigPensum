@@ -94,6 +94,7 @@ export function ChapterRating({ chapterKey, topics }: { chapterKey: string; topi
   // Hvor mange av videoene i kapitlet du har sett. Lagres bare i nettleseren din.
   const totalVideos = topics.reduce((n, t) => n + t.videos.length, 0)
   const seenVideos = topics.reduce((n, t) => n + seenIn(t.id, t.videos.length), 0)
+  const pct = totalVideos > 0 ? Math.round((seenVideos / totalVideos) * 100) : 0
 
   return (
     <section className="rating" aria-label="Vurder kapitlet">
@@ -112,9 +113,18 @@ export function ChapterRating({ chapterKey, topics }: { chapterKey: string; topi
         {note ? note.text : count > 0 ? `Snitt ${fmtAvg(avg)} av 5 · ${fmtCount(count)} ${count === 1 ? 'vurdering' : 'vurderinger'}` : 'Bli den første til å vurdere'}
       </p>
       {totalVideos > 0 && (
-        <p className={`rating-seen${seenVideos === totalVideos ? ' all' : ''}`}>
-          <CheckIcon /> Du har sett {seenVideos} av {totalVideos} {totalVideos === 1 ? 'video' : 'videoer'} i kapitlet
-        </p>
+        <div className={`rating-seen${seenVideos === totalVideos ? ' all' : ''}`}>
+          <p>
+            <CheckIcon /> Du har sett {seenVideos} av {totalVideos} {totalVideos === 1 ? 'video' : 'videoer'} i kapitlet
+            <b>{pct} %</b>
+          </p>
+          <div
+            className="completion" role="progressbar" aria-label="Sette videoer i kapitlet"
+            aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}
+          >
+            <i style={{ width: `${pct}%` }} />
+          </div>
+        </div>
       )}
       <Totals topics={topics} />
     </section>
