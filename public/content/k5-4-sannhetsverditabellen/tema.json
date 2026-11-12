@@ -2,7 +2,7 @@
   "id": "k5-4-sannhetsverditabellen",
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.4 Sannhetsverditabellen",
-  "description": "",
+  "description": "Alle kombinasjoner av innganger, trikset for å ikke glemme noen rad, og å lese en krets forlengs og baklengs.",
   "videos": [
     {
       "title": "5.4 Sannhetsverditabellen og antall rader",

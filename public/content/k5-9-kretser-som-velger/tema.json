@@ -2,7 +2,7 @@
   "id": "k5-9-kretser-som-velger",
   "chapter": "Kapittel 5 – Porter og logiske funksjoner",
   "title": "5.9 Kretser som velger",
-  "description": "",
+  "description": "Dekoderen som gjør opkoden til et styresignal, og multiplekseren som velger blant flere innganger.",
   "videos": [],
   "terms": [
     {

@@ -385,6 +385,11 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 /* ============ Tema-bryter ============ */
 .top-row { display: flex; align-items: flex-start; gap: 10px; margin: 0 0 18px }
 .top-row .exam { flex: 1; margin: 0; min-width: 0 }
+/* Smal skjerm: nedtellingen får hele bredden på egen rad under knappene, i stedet for å bli klemt mellom dem. */
+@media (max-width: 560px) {
+  .top-row { flex-wrap: wrap; justify-content: flex-end }
+  .top-row .exam { order: 2; flex: 1 1 100% }
+}
 .theme-toggle {
   flex: none; width: 48px; height: 48px; min-height: 48px; padding: 0; border-radius: 50%;
   background: var(--surface); border: 1px solid var(--line); color: var(--fg);
