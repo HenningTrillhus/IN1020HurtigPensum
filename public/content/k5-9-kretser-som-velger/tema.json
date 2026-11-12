@@ -4,7 +4,31 @@
   "title": "5.9 Kretser som velger",
   "description": "Dekoderen som gjør opkoden til et styresignal, og multiplekseren som velger blant flere innganger.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "5.9.1 Dekoderen",
+      "file": "video1.mp4",
+      "summary": "Ett AND-ledd per rad i tabellen, alle på én gang: nøyaktig én utgang er på."
+    },
+    {
+      "title": "5.9.2 Opkoden inn, styresignalet ut",
+      "file": "video2.mp4",
+      "summary": "LDA 42 blir et bitmønster, og én port som får fire ettall inn åpner veiene i datastien."
+    },
+    {
+      "title": "5.9.3 Multiplekseren",
+      "file": "video3.mp4",
+      "summary": "F = (ikke S)·A + S·B: en bryter bygget av AND-porter som grinder."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Slik styrer dekodere og multipleksere prosessoren",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-6",
+      "duration": 1411
+    }
+  ],
   "terms": [
     {
       "term": "Dekoder",

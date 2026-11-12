@@ -4,7 +4,31 @@
   "title": "5.10 Kretsen som husker",
   "description": "Kretser med tilbakekobling som kan huske: kombinatoriske mot sekvensielle kretser.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "5.10.1 Kretsen uten fortid",
+      "file": "video1.mp4",
+      "summary": "Kombinatoriske kretser følger inngangene hele tiden, og kan derfor ikke huske."
+    },
+    {
+      "title": "5.10.2 Utgangen tilbake til inngangen",
+      "file": "video2.mp4",
+      "summary": "Koble utgangen tilbake: to NOR-porter som mater hverandre holder én bit."
+    },
+    {
+      "title": "5.10.3 Kombinatorisk eller sekvensiell",
+      "file": "video3.mp4",
+      "summary": "Uten tilbakekobling regner kretsen, med tilbakekobling husker den."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Slik lagrer to NOR-porter én bit",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-5",
+      "duration": 640
+    }
+  ],
   "terms": [
     {
       "term": "Kombinatorisk krets",

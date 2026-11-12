@@ -1,0 +1,22 @@
+{
+  "id": "k5-11-oppsummering",
+  "chapter": "Kapittel 5 – Porter og logiske funksjoner",
+  "title": "5.11 Oppsummering",
+  "description": "Ideen som kom igjen fire ganger, og hvorfor portene egentlig ikke finnes.",
+  "icon": "icon.png",
+  "videos": [
+    {
+      "title": "5.11 Oppsummering",
+      "file": "video1.mp4",
+      "summary": "Det du skriver ned, er ikke det du bygger. Og porten er et symbol for noe som egentlig er små brytere."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Logiske porter finnes egentlig ikke",
+      "file": "podkast-mann-dame.m4a",
+      "icon": "dame-mann-7",
+      "duration": 218
+    }
+  ]
+}

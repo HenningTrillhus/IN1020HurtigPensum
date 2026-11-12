@@ -4,7 +4,7 @@ Samme opplegg som kapittel 7 (`kap07-ikoner.md`), men i kapittel 5 sin lilla far
 Stilreferanse: `public/chapter-icons/ch5.png` (rund, dempet lilla medalje med logiske porter). Legg det ved hver gang du genererer.
 Lag ett bilde om gangen: først hovedprompten, så motivet for delkapittelet.
 
-Appen har i dag 9 delkapitler i kapittel 5 (5.2 til 5.10). Det tiende er 5.11 Oppsummering, bare bruk det hvis du vil ha et bilde der også.
+Appen har 9 delkapitler i kapittel 5 (5.2 til 5.10), og 5.1 Introduksjon og 5.11 Oppsummering kommer. Motivene til de to nye er 5.1 først og 5.11 sist i filen.
 
 ---
 
@@ -28,6 +28,12 @@ MOTIV
 ```
 
 ---
+
+## 5.1 Introduksjon
+
+```
+Motiv: en enkel linje med kode til venstre, tegnet som to korte vannrette streker (som en if-setning, uten lesbar tekst), og en pil til høyre som peker mot en enkelt liten AND-port. Over porten et lite spørsmålstegn. Viser spørsmålet «hva er AND egentlig?». To symboler, balansert, med god luft.
+```
 
 ## 5.2 Det begynner med en bryter
 
@@ -83,7 +89,7 @@ Motiv: en liten trekant eller trakt som slipper inn to linjer og velger én ut (
 Motiv: to porter (NOR-porter) som er koblet i en sløyfe, der utgangen fra hver går tilbake til inngangen til den andre, tegnet som en ryddig kryssende sløyfe. Midt i sløyfen en liten lys krem firkant som en «lagret bit» med tallet 1.
 ```
 
-## 5.11 Oppsummering (bare hvis du vil ha et tiende bilde)
+## 5.11 Oppsummering
 
 ```
 Motiv: tre små symboler i en trekantstilling: en AND-port, en liten tabell og en boks merket «+», som viser at kapitlet gikk fra porter via tabeller til en krets som regner. Balansert og ryddig, ingen tekst utover «+».

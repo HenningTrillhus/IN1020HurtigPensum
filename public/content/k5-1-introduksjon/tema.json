@@ -1,0 +1,22 @@
+{
+  "id": "k5-1-introduksjon",
+  "chapter": "Kapittel 5 – Porter og logiske funksjoner",
+  "title": "5.1 Introduksjon",
+  "description": "Hvordan vet maskinen hva AND betyr? Fra if-linja til bryteren og lampa, og hva kapitlet bygger.",
+  "icon": "icon.png",
+  "videos": [
+    {
+      "title": "5.1 Introduksjon",
+      "file": "video1.mp4",
+      "summary": "Maskinen er laget av sand, metall og strøm, men AND blir riktig hver gang. Fra bryter og lampe til en krets som legger sammen."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Slik fungerer AND fysisk i maskinen",
+      "file": "podkast-mann-dame.m4a",
+      "icon": "dame-mann",
+      "duration": 279
+    }
+  ]
+}

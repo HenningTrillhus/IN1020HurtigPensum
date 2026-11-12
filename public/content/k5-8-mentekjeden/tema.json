@@ -36,6 +36,14 @@
       "summary": "Bytt NOT med XOR og styr med ledningen M."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Slik fungerer mentekjeden i prosessoren",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-4",
+      "duration": 571
+    }
+  ],
   "terms": [
     {
       "term": "Mentekjede (ripple carry adder)",
