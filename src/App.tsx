@@ -137,8 +137,8 @@ function AppInner() {
     history.replaceState(null, '', `#/${activeId}/feed`)
     setHash(location.hash)
   }
-  // Sveip på mobil mellom videoene og fagbegrepene, bare inne i et tema (ikke på forsiden eller kapittelsiden):
-  // til høyre for å se fagbegrepene, til venstre for å gå tilbake til videoene.
+  // Sveip på mobil, bare inne i et tema (ikke på forsiden eller kapittelsiden). Dra fingeren mot venstre for å gå videre
+  // til fagbegrepene. Dra mot høyre for å gå tilbake: fra fagbegrepene til videoene, og fra videoene ut til kapittelet.
   const hasTerms = !!topic.terms?.length
   const onTouchStart = (e: TouchEvent) => {
     const t = e.touches[0]
@@ -154,8 +154,8 @@ function AppInner() {
     const dx = t.clientX - s.x, dy = t.clientY - s.y
     // Tydelig sidelengs og raskt, så vanlig rulling opp og ned ikke regnes som sveip.
     if (Math.abs(dx) < 70 || Math.abs(dx) < Math.abs(dy) * 1.8 || Date.now() - s.t > 900) return
-    if (dx > 0 && view !== 'begreper' && hasTerms) location.hash = `#/${topic.id}/begreper`
-    else if (dx < 0 && view === 'begreper') location.hash = `#/${topic.id}/feed`
+    if (dx < 0 && view !== 'begreper' && hasTerms) location.hash = `#/${topic.id}/begreper`
+    else if (dx > 0) location.hash = view === 'begreper' ? `#/${topic.id}/feed` : chapterHref
   }
 
   return (
