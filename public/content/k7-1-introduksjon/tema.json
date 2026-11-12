@@ -3,6 +3,7 @@
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.1 Introduksjon",
   "description": "To løkker som gjør like mye arbeid, men der den ene er over tretti ganger tregere, og de to triksene som forklarer hvorfor.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "7.1 Introduksjon",

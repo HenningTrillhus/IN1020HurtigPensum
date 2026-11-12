@@ -774,3 +774,7 @@ button.total-progress .completion { display: block }
 .calc-backdrop.settled:not(.closing) { animation: none }
 .calc-backdrop:not(.closing) .prog-sheet.settled { animation: none }
 .prog-sheet { touch-action: pan-y; will-change: transform }
+
+/* Delkapittel med eget bilde: bildet erstatter nummerboksen, nummeret står foran tittelen */
+.topic-ic { flex: none; width: 56px; height: 56px; object-fit: contain; user-select: none; -webkit-user-drag: none }
+.sec-num { margin-right: 8px; color: var(--mut); font-weight: 600; font-variant-numeric: tabular-nums }

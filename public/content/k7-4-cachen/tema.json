@@ -3,6 +3,7 @@
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.4 Cachen",
   "description": "Cachelinjer, treff og bom, nivåene L1 til L3, og hva som skjer når du skriver.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "7.4.1 Cachelinja",

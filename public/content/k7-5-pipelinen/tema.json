@@ -3,6 +3,7 @@
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.5 Pipelinen",
   "description": "Pipelinen som samlebånd: de fire trinnene og regnestykket for hvor mye den sparer.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "7.5.1 Tre som tar oppvasken",

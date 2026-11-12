@@ -3,6 +3,7 @@
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.2 Hvorfor det må være et hierarki",
   "description": "Hvorfor minnet er delt i lag: ventetid, avstand, pris og effektiv aksesstid.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "7.2.1 Hvor lenge prosessoren venter",

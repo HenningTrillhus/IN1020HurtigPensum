@@ -3,6 +3,7 @@
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.3 Lokalitet",
   "description": "Hvorfor cachen virker: nylig og naboen, og rekkefølgen du går gjennom data i.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "7.3.2 To mønstre, to navn",

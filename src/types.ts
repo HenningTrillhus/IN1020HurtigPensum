@@ -19,6 +19,8 @@ export interface Topic {
   chapter?: string
   title: string
   description: string
+  /** Lite rundt bilde for delkapittelet (filnavn i delkapittelets mappe). */
+  icon?: string
   videos: Video[]
   podcasts?: Podcast[]
   /** Fagbegreper i delkapittelet (vises i fanen «Fagbegreper»). */

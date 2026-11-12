@@ -3,6 +3,7 @@
   "chapter": "Kapittel 7 – Minnehierarki og pipeline",
   "title": "7.6 Når pipelinen stopper",
   "description": "Hasarder: data, kontroll og struktur, og hva de koster i tapte sykluser.",
+  "icon": "icon.png",
   "videos": [
     {
       "title": "7.6.1 Tre ting som kan gå galt",

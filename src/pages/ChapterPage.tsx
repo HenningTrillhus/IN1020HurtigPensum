@@ -64,9 +64,11 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
             const hasPods = (t.podcasts?.length ?? 0) > 0
             const main = (
               <>
-                <span className="num sm">{num}</span>
+                {t.icon
+                  ? <img className="topic-ic" src={`/content/${t.id}/${t.icon}`} alt="" width={56} height={56} loading="lazy" draggable={false} />
+                  : <span className="num sm">{num}</span>}
                 <div className="body">
-                  <h2>{text}</h2>
+                  <h2>{t.icon && <span className="sec-num">{num}</span>}{text}</h2>
                   {t.description && <p>{t.description}</p>}
                   <small>
                     <span>{n} {n === 1 ? 'video' : 'videoer'}</span>
