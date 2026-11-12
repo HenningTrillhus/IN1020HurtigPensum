@@ -5,6 +5,7 @@ import { CAP, fetchStats, getReport, getVote, hasViewed, queueReport, queueVote,
 import { ChevronDown, ChevronUp, CloseIcon, Eye, FlagIcon, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ThumbDown, ThumbUp } from '../Icons'
 import { usePlayer } from '../player'
 import { SpeedButton, useSpeed } from '../speed'
+import { ChapterRating } from '../Rating'
 
 interface P {
   /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
@@ -307,23 +308,20 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
 }
 
 // Siste «video» i feeden. Sveiper du ned hit, går du tilbake til forsiden.
-function EndSlide({ onDone, onVisible }: { onDone: () => void; onVisible: (v: boolean) => void }) {
+// Siste «video» i feeden. Når du sveiper ned hit, kommer vurderingen opp (samme som nederst i kapitlet, og den samme
+// vurderingen: du kan ikke gi to, bare endre den). Du blir ikke sendt tilbake av deg selv, så du rekker å gi stjerner.
+function EndSlide({ chapterKey, onDone, onVisible }: { chapterKey: string; onDone: () => void; onVisible: (v: boolean) => void }) {
   const ref = useRef<HTMLElement>(null)
   useEffect(() => {
     const el = ref.current!
-    let timer: number | undefined
-    const io = new IntersectionObserver(([e]) => {
-      window.clearTimeout(timer)
-      onVisible(e.isIntersecting)
-      if (e.isIntersecting) timer = window.setTimeout(onDone, 700)
-    }, { threshold: 0.7 })
+    const io = new IntersectionObserver(([e]) => onVisible(e.isIntersecting), { threshold: 0.7 })
     io.observe(el)
-    return () => { io.disconnect(); window.clearTimeout(timer) }
+    return () => io.disconnect()
   }, [])
   return (
     <section className="slide end" ref={ref}>
       <p className="end-title">Ferdig med kapitlet</p>
-      <small>Tar deg tilbake til kapitlet …</small>
+      <ChapterRating chapterKey={chapterKey} />
       <button onClick={onDone}>Tilbake til kapitlet</button>
     </section>
   )
@@ -491,7 +489,7 @@ export default function Feed({ topics, root, startId, chapter, exitHash, onActiv
             stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report} onPlayState={onPlayState} onEnded={onEnded}
           />
         ))}
-        <EndSlide onDone={done} onVisible={setAtEnd} />
+        <EndSlide chapterKey={chapter} onDone={done} onVisible={setAtEnd} />
       </div>
 
       {multi && !atEnd && (

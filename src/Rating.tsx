@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react'
 import { StarIcon } from './Icons'
-import { fetchRatings, getRating, getSentRating, queueRating, resumeRating, type Rating } from './stats'
+import { CAP, fetchRatings, getRating, getSentRating, queueRating, resumeRating, type Rating } from './stats'
 
 const fmtAvg = (n: number) => n.toFixed(1).replace('.', ',')
+// Antallet stopper på samme tak som likes og vises som «999+».
+const fmtCount = (n: number) => (n >= CAP ? `${CAP}+` : String(n))
 
 /** Liten stjerne med snitt og antall, brukes på forsiden ved siden av antall videoer og podkaster. */
 export function RatingLine({ r }: { r?: Rating }) {
   if (!r || r.count === 0) return null
   return (
     <span className="rating-line" title={`${fmtAvg(r.avg)} av 5 fra ${r.count} ${r.count === 1 ? 'vurdering' : 'vurderinger'}`}>
-      <StarIcon filled /> {fmtAvg(r.avg)} ({r.count})
+      <StarIcon filled /> {fmtAvg(r.avg)} ({fmtCount(r.count)})
     </span>
   )
 }
@@ -64,7 +66,7 @@ export function ChapterRating({ chapterKey }: { chapterKey: string }) {
         ))}
       </div>
       <p className="rating-sum" aria-live="polite">
-        {note ? note.text : count > 0 ? `Snitt ${fmtAvg(avg)} av 5 · ${count} ${count === 1 ? 'vurdering' : 'vurderinger'}` : 'Bli den første til å vurdere'}
+        {note ? note.text : count > 0 ? `Snitt ${fmtAvg(avg)} av 5 · ${fmtCount(count)} ${count === 1 ? 'vurdering' : 'vurderinger'}` : 'Bli den første til å vurdere'}
       </p>
     </section>
   )
