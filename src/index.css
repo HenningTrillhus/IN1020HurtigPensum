@@ -396,6 +396,7 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
   background: var(--surface); border: 1px solid var(--line); color: var(--fg);
 }
 .theme-toggle:hover { border-color: var(--line-strong) }
+.bug-toggle svg { width: 26px; height: 26px }
 .bug-toggle { display: inline-grid; place-items: center; text-decoration: none; box-sizing: border-box }
 .theme-toggle svg { width: 24px; height: 24px }
 .tabs .theme-toggle { width: 40px; height: 40px; min-height: 40px }

@@ -100,11 +100,11 @@ export const StarIcon = ({ filled }: { filled?: boolean }) => (
   </svg>
 )
 
-/** Bille: «meld en feil». */
+/** Bille: «meld en feil». Fyller hele ruten, så den ser like stor ut som de andre ikonene. */
 export const BugIcon = () => (
   <svg {...base} {...line}>
-    <path d="M9 7.5a3 3 0 0 1 6 0M8 8h8v6a4 4 0 0 1-8 0V8Z" />
-    <path d="M12 12v6M8 11H4M16 11h4M8 15H5M16 15h3M9 5 7.5 3.5M15 5l1.5-1.5" />
+    <path d="M12 20.5c-3 0-5.5-2.4-5.5-5.5v-3A4.5 4.5 0 0 1 11 7.5h2a4.5 4.5 0 0 1 4.5 4.5v3c0 3.1-2.5 5.5-5.5 5.5Z" />
+    <path d="M12 11v9.5M9.2 7.4V6.6a2.8 2.8 0 0 1 5.6 0v.8M8.5 3l1.3 1.3M15.5 3l-1.3 1.3M6.5 12.5h-4M6.5 16.5H3M17.5 12.5h4M17.5 16.5H21M7 20l-2.2 2M17 20l2.2 2" />
   </svg>
 )
 
