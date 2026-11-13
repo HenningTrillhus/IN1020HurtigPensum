@@ -19,6 +19,8 @@ export interface Topic {
   chapter?: string
   title: string
   description: string
+  /** Tas ikke med når du blander videoer (f.eks. en lang video som dekker hele kapitlet). */
+  noShuffle?: boolean
   /** Lite rundt bilde for delkapittelet (filnavn i delkapittelets mappe). */
   icon?: string
   videos: Video[]

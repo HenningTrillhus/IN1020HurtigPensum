@@ -11,6 +11,7 @@ import type { Exam } from './ExamCountdown'
 import { MiniPlayer, PlayerProvider } from './player'
 import Wip from './pages/Wip'
 import ChapterTerms from './pages/ChapterTerms'
+import Shuffle from './pages/Shuffle'
 import { swipeHandlers, type SwipeStart } from './swipe'
 
 const base = import.meta.env.BASE_URL + 'content/'
@@ -114,7 +115,9 @@ function AppInner() {
     if (!topics) return
     const [, a, b, sub] = hash.replace('#', '').split('/')
     let title = SITE
-    if (a === 'kap') {
+    if (a === 'shuffle') {
+      title = `Bland videoer · ${SITE}`
+    } else if (a === 'kap') {
       const c = chapters.find(x => x.key === b)
       if (c) title = `${sub === 'begreper' ? 'Fagbegreper i ' : ''}${c.label}${c.title ? ` – ${c.title}` : ''} · ${SITE}`
     } else {
@@ -143,6 +146,8 @@ function AppInner() {
       ? <ChapterPage chapter={chapter} compendiumUrl={compendia[chapter.key]} />
       : <Overview chapters={chapters} courseUrl={courseUrl} exam={exam} />
   }
+
+  if (a === 'shuffle') return <Shuffle topics={topics} root={base} />
 
   const topic = topics.find(t => t.id === a)
   if (!topic) return <Overview chapters={chapters} courseUrl={courseUrl} exam={exam} />

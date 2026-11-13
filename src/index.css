@@ -396,8 +396,8 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
   background: var(--surface); border: 1px solid var(--line); color: var(--fg);
 }
 .theme-toggle:hover { border-color: var(--line-strong) }
-.bug-toggle svg { width: 26px; height: 26px }
-.bug-toggle { display: inline-grid; place-items: center; text-decoration: none; box-sizing: border-box }
+.bug-toggle svg, .shuffle-toggle svg { width: 26px; height: 26px }
+.bug-toggle, .shuffle-toggle { display: inline-grid; place-items: center; text-decoration: none; box-sizing: border-box }
 .theme-toggle svg { width: 24px; height: 24px }
 /* Samme størrelse som verktøyknappene på forsiden. Lenke-stilen til fanene (padding, høyde) skal ikke gjelde dem. */
 .tabs { align-items: center }
@@ -802,3 +802,7 @@ button.total-progress .completion { display: block }
 /* «Fortsett der du slapp» har kapittelets banner, men grått og dempet så kortet skiller seg fra kapittelkortene */
 .resume.has-banner { position: relative; background: color-mix(in srgb, var(--ch, var(--acc)) 4%, var(--surface)) }
 .resume.has-banner::before { filter: grayscale(.7); opacity: .36 }
+
+/* Bland: hvilket delkapittel videoen kommer fra, og en rolig andreknapp på sluttsiden */
+.caption .from-topic { display: block; margin: 0 0 3px; font-size: 12.5px; letter-spacing: .01em; color: #b8b8b8; text-shadow: 0 1px 8px #000a }
+.slide.end .end-secondary { background: transparent; color: var(--txt2); border: 1px solid var(--line-strong) }

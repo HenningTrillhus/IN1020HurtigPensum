@@ -10,5 +10,6 @@
       "file": "video1.mp4",
       "summary": "Minnehierarki, lokalitet, cachen og pipelinen i én sammenhengende gjennomgang."
     }
-  ]
+  ],
+  "noShuffle": true
 }

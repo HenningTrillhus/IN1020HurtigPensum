@@ -100,6 +100,17 @@ export const CalcIcon = () => (
   </svg>
 )
 
+/** Bland: to kryssende piler. */
+export const ShuffleIcon = () => (
+  <svg {...base} {...line}>
+    <path d="M16 3.5h4.5V8" />
+    <path d="M3.5 19.5 20.5 3.5" />
+    <path d="M20.5 16v4.5H16" />
+    <path d="M14.5 14.5 20.5 20.5" />
+    <path d="M3.5 4.5 9 10" />
+  </svg>
+)
+
 /** Hake: video du har sett. */
 export const CheckIcon = () => (
   <svg {...base} width={18} height={18} {...line} strokeWidth={2.4}><path d="m5 12.5 4.5 4.5L19 7.5" /></svg>

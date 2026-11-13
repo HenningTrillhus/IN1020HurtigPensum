@@ -23,6 +23,8 @@ interface P {
   exitHash: string
   /** Meldes når en video fra et nytt tema kommer i bildet. */
   onActive: (topicId: string) => void
+  /** Blandet feed: egen liste med videoer på tvers av kapitler, og en sluttside der du kan blande på nytt. */
+  shuffle?: { slides: { topic: Topic; i: number }[]; onAgain: () => void }
 }
 
 interface SlideProps {
@@ -42,11 +44,13 @@ interface SlideProps {
   onEnded: (pos: number) => void
   /** Meldes første gang videoen regnes som sett. */
   onSeen: () => void
+  /** Vis hvilket delkapittel videoen hører til (i en blandet feed). */
+  showTopic?: boolean
 }
 
 const fmt = (n: number) => (n >= CAP ? `${CAP}+` : String(n))
 
-function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState, onEnded, onSeen }: SlideProps) {
+function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState, onEnded, onSeen, showTopic }: SlideProps) {
   const v = topic.videos[i]
   // Aktiv video laster fritt, neste henter bare første bilde (så neste sveip starter med en gang),
   // og resten laster ingenting før de kommer nær. En video som først er lastet, beholder det den har.
@@ -345,6 +349,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
       )}
       {!fullscreen && (
         <div className="caption">
+          {showTopic && <small className="from-topic">{topic.title}</small>}
           <h3>{v.title}</h3>
           {v.summary && <p>{v.summary}</p>}
         </div>
@@ -356,7 +361,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
 // Siste «video» i feeden. Sveiper du ned hit, går du tilbake til forsiden.
 // Siste «video» i feeden. Når du sveiper ned hit, kommer vurderingen opp (samme som nederst i kapitlet, og den samme
 // vurderingen: du kan ikke gi to, bare endre den). Du blir ikke sendt tilbake av deg selv, så du rekker å gi stjerner.
-function EndSlide({ chapterKey, topics, onDone, onVisible }: { chapterKey: string; topics: Topic[]; onDone: () => void; onVisible: (v: boolean) => void }) {
+function EndSlide({ chapterKey, topics, onDone, onVisible, shuffle }: { chapterKey: string; topics: Topic[]; onDone: () => void; onVisible: (v: boolean) => void; shuffle?: () => void }) {
   const ref = useRef<HTMLElement>(null)
   useEffect(() => {
     const el = ref.current!
@@ -366,15 +371,25 @@ function EndSlide({ chapterKey, topics, onDone, onVisible }: { chapterKey: strin
   }, [])
   return (
     <section className="slide end" ref={ref}>
-      <p className="end-title">Ferdig med kapitlet</p>
-      <ChapterRating chapterKey={chapterKey} topics={topics} />
-      <button onClick={onDone}>Tilbake til kapitlet</button>
+      {shuffle ? (
+        <>
+          <p className="end-title">Ferdig med denne blandingen</p>
+          <button onClick={shuffle}>Bland nye videoer</button>
+          <button className="end-secondary" onClick={onDone}>Tilbake til forsiden</button>
+        </>
+      ) : (
+        <>
+          <p className="end-title">Ferdig med kapitlet</p>
+          <ChapterRating chapterKey={chapterKey} topics={topics} />
+          <button onClick={onDone}>Tilbake til kapitlet</button>
+        </>
+      )}
     </section>
   )
 }
 
-export default function Feed({ topics, root, startId, startI = 0, chapter, exitHash, onActive }: P) {
-  const slides = topics.flatMap(t => t.videos.map((_, i) => ({ topic: t, i })))
+export default function Feed({ topics, root, startId, startI = 0, chapter, exitHash, onActive, shuffle }: P) {
+  const slides = shuffle ? shuffle.slides : topics.flatMap(t => t.videos.map((_, i) => ({ topic: t, i })))
   const startIdx = Math.max(0, slides.findIndex(s => s.topic.id === startId && s.i === startI))
 
   const [stats, setStats] = useState<Record<string, Stat>>({})
@@ -464,7 +479,7 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
   // Delkapitler med flere videoer (som 6.10): hvilken del du er på, og hopp til en annen uten å scrolle.
   const cur = slides[current]
   const siblings = cur ? slides.map((s, pos) => ({ ...s, pos })).filter(s => s.topic.id === cur.topic.id) : []
-  const multi = siblings.length > 1
+  const multi = !shuffle && siblings.length > 1
   // Skjul bare mens videoen faktisk spiller. Pauset video, åpent valgark og sluttsiden viser alltid alt.
   const uiHidden = idle && !picker && !atEnd && !scrub
 
@@ -581,9 +596,10 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
             topic={s.topic} root={root} i={s.i} pos={pos}
             mode={pos === current ? 'active' : pos === current + 1 ? 'next' : 'far'}
             stat={stats[videoId(s.topic.id, s.i)]} onStat={onStat} onActive={report} onPlayState={onPlayState} onEnded={onEnded} onSeen={() => setSeenVer(v => v + 1)}
+            showTopic={!!shuffle}
           />
         ))}
-        <EndSlide chapterKey={chapter} topics={topics} onDone={done} onVisible={setAtEnd} />
+        <EndSlide chapterKey={chapter} topics={topics} onDone={done} onVisible={setAtEnd} shuffle={shuffle?.onAgain} />
       </div>
 
       {multi && !atEnd && (

@@ -3,6 +3,7 @@ import { bannerOf, podcastCount, seenCount, videoCount, type Chapter } from '../
 import Disclaimer from '../Disclaimer'
 import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
+import ShuffleButton from '../ShuffleButton'
 import { RatingLine } from '../Rating'
 import { GlobalSearchBox, GlobalSearchResults } from '../GlobalSearch'
 import { PlayIcon } from '../Icons'
@@ -59,10 +60,11 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   return (
     <div className="shell">
       {exam && <ExamCountdown exam={exam} />}
-      {/* Verktøyrad under nedtellingen: feilmelding til venstre, kalkulator til høyre. Søkefeltet fyller resten av bredden. */}
+      {/* Verktøyrad under nedtellingen: feilmelding til venstre, så søk, bland og kalkulator til høyre. Søkefeltet fyller resten av bredden. */}
       <div className="tool-row">
         <BugButton />
         <GlobalSearchBox q={q} setQ={setQ} />
+        <ShuffleButton />
         <CalcButton />
       </div>
       <header className="hero">
