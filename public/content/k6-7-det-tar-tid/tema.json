@@ -3,13 +3,8 @@
   "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.7 Det tar tid",
   "description": "Badekaret, kapasitans og portforsinkelse: ingenting er momentant.",
-  "videos": [
-    {
-      "title": "6.7 Det tar tid",
-      "file": "video1.mp4",
-      "summary": "Hver utgang er et badekar som må fylles og tømmes."
-    }
-  ],
+  "icon": "icon.png",
+  "videos": [],
   "terms": [
     {
       "term": "Kapasitans",

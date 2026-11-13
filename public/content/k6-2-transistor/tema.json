@@ -3,25 +3,27 @@
   "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.2 Bryteren som ikke trenger en finger",
   "description": "Fra lysbryter til transistor: en bryter styrt av et signal. nMOS og pMOS.",
+  "icon": "icon.png",
   "videos": [
     {
-      "title": "6.2 Bryteren som ikke trenger en finger",
+      "title": "6.2.1 Noen må trykke på bryteren",
       "file": "video1.mp4",
-      "summary": "En datamaskin har ingen fingre. Hvem trykker på bryterne?"
-    }
-  ],
-  "podcasts": [
-    {
-      "title": "Slik fungerer transistoren",
-      "file": "podkast-dame.m4a",
-      "icon": "dame",
-      "duration": 88
+      "summary": "En bryter trenger en finger, men en datamaskin har ingen. Utgangen fra én port må trykke på den neste."
     },
     {
-      "title": "Transistoren er bryteren uten fingre",
-      "file": "podkast-dame-mann.m4a",
-      "icon": "dame-mann",
-      "duration": 404
+      "title": "6.2.2 En tredje ledning",
+      "file": "video2.mp4",
+      "summary": "Spenning på en tredje ledning avgjør om bryteren leder, uten finger."
+    },
+    {
+      "title": "6.2.3 Og en som gjør det motsatte",
+      "file": "video3.mp4",
+      "summary": "To slags brytere: en som leder ved 1 og en som leder ved 0, og ordene leder og stengt."
+    },
+    {
+      "title": "6.2.4 Den heter transistor",
+      "file": "video4.mp4",
+      "summary": "En bryter styrt av et signal. nMOS leder ved 1, pMOS ved 0."
     }
   ],
   "terms": [

@@ -3,13 +3,8 @@
   "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.9 Klokka",
   "description": "Klokkeperiode, frekvens og hvorfor perioden må romme den kritiske veien.",
-  "videos": [
-    {
-      "title": "6.9 Klokka",
-      "file": "video1.mp4",
-      "summary": "Klokka er en avtale om når det er trygt å se."
-    }
-  ],
+  "icon": "icon.png",
+  "videos": [],
   "terms": [
     {
       "term": "Klokke (klokkesignal)",

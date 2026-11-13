@@ -3,13 +3,8 @@
   "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.6 Null og ett er områder, ikke tall",
   "description": "Støymargin og signalgjenoppretting: hvorfor digitale signaler tåler støy.",
-  "videos": [
-    {
-      "title": "6.6 Null og ett er områder, ikke tall",
-      "file": "video1.mp4",
-      "summary": "Hvorfor kan en fil kopieres tusen ganger uten tap, men ikke en kassett?"
-    }
-  ],
+  "icon": "icon.png",
+  "videos": [],
   "terms": [
     {
       "term": "Analogt signal",

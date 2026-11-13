@@ -3,13 +3,8 @@
   "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.4 Inverteren",
   "description": "Den første porten vi bygger: to transistorer, og et ettall som ikke kommer fra inngangen.",
-  "videos": [
-    {
-      "title": "6.4 Inverteren",
-      "file": "video1.mp4",
-      "summary": "Hvor kommer ettallet fra? Ikke fra inngangen."
-    }
-  ],
+  "icon": "icon.png",
+  "videos": [],
   "terms": [
     {
       "term": "Inverter (NOT-port)",

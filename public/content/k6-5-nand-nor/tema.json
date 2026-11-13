@@ -3,13 +3,8 @@
   "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.5 NAND, NOR og hvorfor AND er dyrere",
   "description": "Serie og parallell i silisium, og regnskapet i transistorer.",
-  "videos": [
-    {
-      "title": "6.5 NAND, NOR og hvorfor AND er dyrere",
-      "file": "video1.mp4",
-      "summary": "AND føles enklest. I silisium er det motsatt."
-    }
-  ],
+  "icon": "icon.png",
+  "videos": [],
   "terms": [
     {
       "term": "NAND",

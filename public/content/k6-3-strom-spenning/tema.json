@@ -3,11 +3,27 @@
   "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.3 Strøm, spenning og jord",
   "description": "Hvorfor en port trenger strøm, og hvor 0 og 1 egentlig kommer fra: VDD og GND.",
+  "icon": "icon.png",
   "videos": [
     {
-      "title": "6.3 Strøm, spenning og jord",
+      "title": "6.3.1 Hvorfor en port trenger strøm",
       "file": "video1.mp4",
-      "summary": "En bok trenger ingen strøm for å huske tekst. Det gjør en datamaskin."
+      "summary": "Et bit er en spenning som må holdes oppe, og en port lager et nytt signal, som koster energi."
+    },
+    {
+      "title": "6.3.2 Spenning er høyde, strøm er mengde",
+      "file": "video2.mp4",
+      "summary": "Vannbildet: spenning er høydeforskjellen og strøm er mengden vann som renner."
+    },
+    {
+      "title": "6.3.3 Toppen og bunnen",
+      "file": "video3.mp4",
+      "summary": "VDD er logisk 1 og GND er logisk 0, og jord er en stabil nullstrek."
+    },
+    {
+      "title": "6.3.4 To tall, og ingenmannsland imellom",
+      "file": "video4.mp4",
+      "summary": "Spenningen kan være hva som helst mellom 0 og 0,8 volt, men 0 og 1 får hvert sitt område."
     }
   ],
   "terms": [

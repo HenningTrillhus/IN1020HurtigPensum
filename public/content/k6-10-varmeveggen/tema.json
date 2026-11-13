@@ -3,18 +3,8 @@
   "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.10 Hvorfor klokka stoppet på rundt 3 GHz",
   "description": "Moores lov, varme, varmeveggen og veien til flere kjerner.",
-  "videos": [
-    {
-      "title": "6.10 Hvorfor klokka stoppet på rundt 3 GHz (del 1)",
-      "file": "video1.mp4",
-      "summary": "Hvert badekar som fylles og tømmes koster en slurk som blir til varme."
-    },
-    {
-      "title": "6.10 Hvorfor klokka stoppet på rundt 3 GHz (del 2)",
-      "file": "video2.mp4",
-      "summary": "Rundt 2004 stoppet fart. Svaret ble flere kjerner."
-    }
-  ],
+  "icon": "icon.png",
+  "videos": [],
   "terms": [
     {
       "term": "Moores lov",

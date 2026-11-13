@@ -3,13 +3,8 @@
   "chapter": "Kapittel 6 – Transistor, strøm og spenning",
   "title": "6.8 Den lengste veien",
   "description": "Kritisk vei: hvorfor fem porter ikke tar fem ganger så lang tid.",
-  "videos": [
-    {
-      "title": "6.8 Den lengste veien",
-      "file": "video1.mp4",
-      "summary": "Fem porter à 5 ps. Hvor lang tid? Ikke 25."
-    }
-  ],
+  "icon": "icon.png",
+  "videos": [],
   "terms": [
     {
       "term": "Kritisk vei",
