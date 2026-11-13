@@ -17,6 +17,8 @@ export interface Term { term: string; def: string }
 export interface Topic {
   id: string
   chapter?: string
+  /** For kapitler uten eget nummer (Datasikkerhet, Nettverk): nøkkelen til kapitlet, f.eks. «nettverk». */
+  chapterKey?: string
   title: string
   description: string
   /** Tas ikke med når du blander videoer (f.eks. en lang video som dekker hele kapitlet). */

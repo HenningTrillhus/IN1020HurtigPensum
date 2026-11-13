@@ -1,5 +1,16 @@
 {
   "topics": [
+    "ds-1-er-det-sa-viktig",
+    "ds-2-sikkerhetsmal",
+    "ds-3-hvordan-hackes-vi",
+    "ds-4-kryptografi",
+    "ds-5-trygg-infrastruktur",
+    "ds-6-trygge-digitale-tjenester",
+    "nv-1-datakommunikasjon",
+    "nv-2-lagdeling",
+    "nv-3-hjemmeruteren",
+    "nv-4-operativsystemer",
+    "nv-5-tjenester-i-internett",
     "k2-1-introduksjon",
     "k2-2-bit-byggesteinen",
     "k2-3-posisjonssystemer",
@@ -62,7 +73,15 @@
     "k7-3-lokalitet",
     "k7-4-cachen",
     "k7-5-pipelinen",
-    "k7-6-nar-pipelinen-stopper"
+    "k7-6-nar-pipelinen-stopper",
+    "k8-1-maskinen-og-sporsmalene",
+    "k8-2-gjetting-og-spekulasjon",
+    "k8-3-kjerner-og-trader",
+    "k8-4-bufferen-og-minnet",
+    "k8-5-tre-slags-regneenheter",
+    "k8-6-avbrudd-og-virtuelt-minne",
+    "k8-7-spectre",
+    "k8-8-hele-stabelen"
   ],
   "emptyChapters": [
     {

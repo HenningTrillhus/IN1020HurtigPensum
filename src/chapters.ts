@@ -30,6 +30,8 @@ const RE = /^Kapittel\s+(\d+)\s*[–-]\s*(.*)$/
 
 export function chapterInfo(t: Topic): { key: string; n: number | null; label: string; title: string } {
   const name = t.chapter ?? 'Temaer'
+  // Kapitler uten eget nummer (Datasikkerhet og Nettverk) peker til kapitlet med en nøkkel.
+  if (t.chapterKey) return { key: t.chapterKey, n: null, label: name, title: '' }
   const m = RE.exec(name)
   if (m) return { key: m[1], n: Number(m[1]), label: `Kapittel ${m[1]}`, title: m[2] }
   return { key: 'andre', n: null, label: name, title: '' }
@@ -37,10 +39,20 @@ export function chapterInfo(t: Topic): { key: string; n: number | null; label: s
 
 export function buildChapters(topics: Topic[], empty: EmptyChapter[] = []): Chapter[] {
   const map = new Map<string, Chapter>()
+  const emptyByKey = new Map(empty.map(e => [e.key ?? String(e.n), e]))
   for (const t of topics) {
     const info = chapterInfo(t)
     let c = map.get(info.key)
-    if (!c) { c = { ...info, topics: [], sort: info.n ?? 1e9, icon: hasIcon(info.n) ? `/chapter-icons/ch${info.n}.png` : undefined, color: info.n ? String(info.n) : undefined }; map.set(info.key, c) }
+    if (!c) {
+      const e = emptyByKey.get(info.key)
+      if (info.n === null && e?.key) {
+        // Kapittel uten nummer: navn, ikon, farge og rekkefølge hentes fra index.json.
+        c = { key: info.key, n: null, label: e.label ?? info.label, title: e.title, topics: [], sort: e.sort ?? 1e9, icon: e.slug ? `/chapter-icons/${e.slug}.png` : undefined, color: e.slug }
+      } else {
+        c = { ...info, topics: [], sort: info.n ?? 1e9, icon: hasIcon(info.n) ? `/chapter-icons/ch${info.n}.png` : undefined, color: info.n ? String(info.n) : undefined }
+      }
+      map.set(info.key, c)
+    }
     c.topics.push(t)
   }
   for (const e of empty) {

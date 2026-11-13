@@ -12,7 +12,7 @@ import { CheckIcon } from '../Icons'
 
 // «6.2 Bryteren …» -> { num: '6.2', text: 'Bryteren …' }
 function splitTitle(title: string) {
-  const m = /^(\d+(?:\.\d+)*)\s+(.*)$/.exec(title)
+  const m = /^([A-ZÆØÅ]?\d+(?:\.\d+)*)\s+(.*)$/.exec(title)
   return m ? { num: m[1], text: m[2] } : { num: '•', text: title }
 }
 
