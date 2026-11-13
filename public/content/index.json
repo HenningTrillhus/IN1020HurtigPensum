@@ -1,5 +1,6 @@
 {
   "topics": [
+    "k2-1-introduksjon",
     "k2-2-bit-byggesteinen",
     "k2-3-posisjonssystemer",
     "k2-4-konvertering-mellom-baser",
@@ -11,6 +12,8 @@
     "k2-10-flyttall-og-presisjon",
     "k2-11-bilde",
     "k2-12-lyd",
+    "k2-13-oppsummering",
+    "k3-1-introduksjon",
     "k3-2-fra-sprak-til-maskin",
     "k3-3-rommet-med-hundre-postkasser",
     "k3-4-ordren-som-et-tall",
@@ -19,6 +22,8 @@
     "k3-7-assembler-navn-i-stedet-for-tall",
     "k3-8-kontrollflyt",
     "k3-9-adresser-etiketter-og-data",
+    "k3-10-oppsummering",
+    "k4-1-introduksjon",
     "k4-2-to-ord-for-den-samme-maskinen",
     "k4-3-ordren-som-bitmonster",
     "k4-4-registrene",
@@ -28,6 +33,7 @@
     "k4-8-flaggene",
     "k4-9-kontrollenheten-og-datastien",
     "k4-10-modellen-som-binder-det-sammen",
+    "k4-11-oppsummering",
     "k5-1-introduksjon",
     "k5-2-det-begynner-med-en-bryter",
     "k5-3-portene",
