@@ -21,7 +21,7 @@ STIL
 - Nøyaktig samme fargefamilie og bakgrunnsfarge som det vedlagte banneret, i tre toner: en mørk, dyp bakgrunnsfarge, en litt lysere linjefarge og en svak lys aksent. Alt har LAVT kontrast mot bakgrunnen, så det fungerer som en subtil tekstur. Ingen knall-farger, ingen andre fargefamilier.
 - Bare konturer og tynne linjer, litt prikker i knutepunkter. Ingen utfylte flater.
 - Komposisjon: den øvre venstre halvdelen og hele den venstre tredjedelen er rolige og nesten tomme (der nummer, tittel og tekst skal ligge). Mønsteret ligger i en bue langs høyre kant og nederst til høyre, og blir tettere og tydeligere mot nedre høyre hjørne. Mønsteret skal ikke dekke midten av bildet.
-- Ingen tekst, ingen tall, ingen bokstaver, ingen mennesker, ingen emojis.
+- ABSOLUTT INGEN TEKST: ingen ord, ingen bokstaver, ingen tall, ingen sifre (heller ikke 0 og 1), ingen symboler som ligner bokstaver, ingen etiketter, ingen logoer, ingen vannmerke, ingen kodelinjer. Alle firkanter og bokser er helt tomme eller har bare en enkel strek eller prikk inni. Der noe skulle vært skrift, tegn en tynn vannrett strek i stedet. Ingen mennesker, ingen emojis.
 
 UTRYKK
 Rolig, ryddig og lowkey. Skal passe bak hvit tekst uten å forstyrre. Skal ligne kapittelbanneret så mye at det tydelig hører sammen med det, men bruke litt andre deler av det samme motivet (andre porter, andre linjer) slik at det ikke er en ren utstrekking.
@@ -35,14 +35,14 @@ MOTIV
 
 ```
 Fargefamilie: dempet blå (samme som kapittelbanneret: linjer omtrent RGB 96, 130, 200 mot en mørk marineblå bakgrunn omtrent RGB 24, 38, 68).
-Motiv: bit og representasjon. Rader av små firkanter som er tomme eller har en liten strek (bit), en tynn sinuskurve og en trappekurve som viser sampling, et lite pikselrutenett der noen ruter er uthevet, og noen få tynne kretslinjer. Mønsteret samler seg langs høyre kant og i nedre høyre hjørne.
+Motiv: bit og representasjon. Rader av små tomme firkanter, noen med en enkel prikk eller strek inni (bit), en tynn sinuskurve og en trappekurve som viser sampling, et lite pikselrutenett der noen ruter er uthevet, og noen få tynne kretslinjer. Mønsteret samler seg langs høyre kant og i nedre høyre hjørne.
 ```
 
 ## Kapittel 3: Fra språk til maskin (LMC og assembler)
 
 ```
 Fargefamilie: dempet oransje/kobber (samme som kapittelbanneret: linjer omtrent RGB 200, 120, 70 mot en mørk, varm brun bakgrunn omtrent RGB 47, 28, 18).
-Motiv: instruksjoner og flyt. Lange rader av små, like firkanter som postkasser (noen med en liten strek), tynne piler som hopper mellom dem, små flytskjemaer med en rombe og en løkkepil, og stiplede korte linjer som antyder kode. Mønsteret ligger langs høyre kant og nederst til høyre.
+Motiv: instruksjoner og flyt. Lange rader av små, like firkanter som postkasser (noen med en liten strek), tynne piler som hopper mellom dem, små flytskjemaer av tomme bokser med en rombe og en løkkepil, og stiplede korte linjer. Mønsteret ligger langs høyre kant og nederst til høyre.
 ```
 
 ## Kapittel 4: Arkitektur og ALU
@@ -70,11 +70,11 @@ Motiv: et nettverk. Noder forbundet med tynne linjer i et stort, uregelmessig ne
 
 ```
 Fargefamilie: dempet rød (samme som kapittelbanneret: linjer omtrent RGB 200, 80, 80 mot en mørk vinrød bakgrunn omtrent RGB 60, 11, 19).
-Motiv: sikkerhet. Tynne konturer av hengelåser, nøkler og skjold med hake, rader av små binære sifre som prikker og streker (uten lesbare tall), og et stort fingeravtrykk av konsentriske linjer i høyre hjørne. Kretslinjer forbinder dem. Alt samler seg langs høyre kant og nederst til høyre.
+Motiv: sikkerhet. Tynne konturer av hengelåser, nøkler og skjold med hake, rader av små prikker og korte streker som antyder data (ingen sifre, ingen tall), og et stort fingeravtrykk av konsentriske linjer i høyre hjørne. Kretslinjer forbinder dem. Alt samler seg langs høyre kant og nederst til høyre.
 ```
 
 ---
 
 ## Etter generering
 
-Send bildene til meg (`KapBanners/DelKapBanner`-mappen går fint), gjerne som `Del2.jpeg`, `Del3.jpeg`, `Del4.jpeg`, `Del8.jpeg`, `DelNettverk.jpeg` og `DelSikkerhet.jpeg`. Jeg komprimerer dem og legger dem bak delkapittelkortene med samme lave synlighet som i kapittel 5 til 7.
+Send bildene til meg (`KapBanners/DelKapBanner`-mappen går fint), gjerne som `Del2.jpeg`, `Del3.jpeg`, `Del4.jpeg`, `Del8.jpeg`, `DelNettverk.jpeg` og `DelSikkerhet.jpeg`. Er det fortsatt tekst i bildet, send det på nytt med «ingen tekst» først i prompten. Jeg komprimerer dem og legger dem bak delkapittelkortene med samme lave synlighet som i kapittel 5 til 7.
