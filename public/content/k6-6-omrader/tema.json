@@ -4,7 +4,28 @@
   "title": "6.6 Null og ett er områder, ikke tall",
   "description": "Støymargin og signalgjenoppretting: hvorfor digitale signaler tåler støy.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "6.6.1 Verden er analog, og det er et problem",
+      "file": "video1.mp4",
+      "summary": "En ledning kan ha hva som helst mellom 0 og 0,8 volt, men logikken kjenner bare 0 og 1."
+    },
+    {
+      "title": "6.6.2 Svaret: gi hvert tall et rom å bo i",
+      "file": "video2.mp4",
+      "summary": "0 og 1 er områder med et belte imellom. Støymargin er med vilje."
+    },
+    {
+      "title": "6.6.3 Hver port vasker signalet rent",
+      "file": "video3.mp4",
+      "summary": "Porten leser signalet og lager et nytt, skarpt fra VDD eller GND."
+    },
+    {
+      "title": "6.6.4 Derfor overlever en kopi av en kopi",
+      "file": "video4.mp4",
+      "summary": "Digitalt er ikke mer nøyaktig, men det retter seg selv i hver port."
+    }
+  ],
   "terms": [
     {
       "term": "Analogt signal",

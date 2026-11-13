@@ -4,7 +4,23 @@
   "title": "6.5 NAND, NOR og hvorfor AND er dyrere",
   "description": "Serie og parallell i silisium, og regnskapet i transistorer.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "6.5.1 To i serie, eller to i parallell",
+      "file": "video1.mp4",
+      "summary": "NAND: nMOS i serie nede og pMOS i parallell oppe. NOR er speilvendt."
+    },
+    {
+      "title": "6.5.2 Hvert trinn snur signalet",
+      "file": "video2.mp4",
+      "summary": "Et trinn snur alltid signalet, så AND er en NAND med en inverter etter."
+    },
+    {
+      "title": "6.5.3 Regnskapet",
+      "file": "video3.mp4",
+      "summary": "Inverter 2, NAND 4 og AND 6 transistorer. NAND er den enkle porten."
+    }
+  ],
   "terms": [
     {
       "term": "NAND",

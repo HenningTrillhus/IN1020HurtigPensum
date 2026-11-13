@@ -4,7 +4,28 @@
   "title": "6.4 Inverteren",
   "description": "Den første porten vi bygger: to transistorer, og et ettall som ikke kommer fra inngangen.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "6.4.1 To brytere i serie",
+      "file": "video1.mp4",
+      "summary": "NOT-porten: to transistortyper mellom VDD og GND, med utgangen midt imellom."
+    },
+    {
+      "title": "6.4.2 Begge tilfellene, i ro og mak",
+      "file": "video2.mp4",
+      "summary": "Inn med 0 gir 1, inn med 1 gir 0. Bare én av de to veiene er åpen om gangen."
+    },
+    {
+      "title": "6.4.3 Det som er lett å gå glipp av",
+      "file": "video3.mp4",
+      "summary": "Ettallet kommer fra forsyningen, ikke fra inngangen. Inngangen åpner bare en kran."
+    },
+    {
+      "title": "6.4.4 Aldri begge samtidig",
+      "file": "video4.mp4",
+      "summary": "I ro går det nesten ingen strøm, bare skiftet koster. Derav CMOS."
+    }
+  ],
   "terms": [
     {
       "term": "Inverter (NOT-port)",
