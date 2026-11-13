@@ -4,7 +4,38 @@
   "title": "2.5 Heksadesimal og oktal",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.5.1 Hvorfor kortskrift",
+      "file": "video1.mp4",
+      "summary": "Lange rader av bit er uleselige, så vi grupperer dem, som i et mobilnummer."
+    },
+    {
+      "title": "2.5.2 Heksadesimal",
+      "file": "video2.mp4",
+      "summary": "Seksten er to opphøyd i fire, så ett siffer er nøyaktig fire bit. Konvertering er bare oppslag."
+    },
+    {
+      "title": "2.5.3 Når det ikke går opp i fire",
+      "file": "video3.mp4",
+      "summary": "Grupper fra høyre og fyll på med nuller foran. Nuller til venstre koster ingenting."
+    },
+    {
+      "title": "2.5.4 0x og fella med desimal",
+      "file": "video4.mp4",
+      "summary": "Hvorfor prefikset 0x finnes, og hvorfor du aldri skal gå via desimal."
+    },
+    {
+      "title": "2.5.5 Heksadesimal i fargene",
+      "file": "video5.mp4",
+      "summary": "En nettfarge er tre byte skrevet som seks heksadesimale siffer."
+    },
+    {
+      "title": "2.5.6 Oktal og filrettigheter",
+      "file": "video6.mp4",
+      "summary": "Ett oktalt siffer er tre bit. Det overlever i chmod fordi ni rettighetsbit blir tre siffer."
+    }
+  ],
   "terms": [
     {
       "term": "Heksadesimalt",

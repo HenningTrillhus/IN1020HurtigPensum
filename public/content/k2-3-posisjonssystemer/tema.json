@@ -4,7 +4,28 @@
   "title": "2.3 Posisjonssystemer",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.3.1 Hva 527 egentlig betyr",
+      "file": "video1.mp4",
+      "summary": "Hvert siffer har en vekt som kommer av posisjonen: basen opphøyd i plassen, telt fra null."
+    },
+    {
+      "title": "2.3.2 Telling i binær",
+      "file": "video2.mp4",
+      "summary": "Etter 1 er sifrene brukt opp, så sifferet nullstilles og naboen økes. Tallene blir fort lange."
+    },
+    {
+      "title": "2.3.3 Vekt i en hvilken som helst base",
+      "file": "video3.mp4",
+      "summary": "Et binært tall er en beskjed om hvilke sedler du tar med: 1, 2, 4, 8, 16 og så videre."
+    },
+    {
+      "title": "2.3.4 Hvilken base mener du",
+      "file": "video4.mp4",
+      "summary": "1001 kan være 9 eller ett tusen og én. Skriv basen som et lite tall nede til høyre."
+    }
+  ],
   "terms": [
     {
       "term": "Posisjonssystem",

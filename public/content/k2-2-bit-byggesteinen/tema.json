@@ -4,7 +4,23 @@
   "title": "2.2 Bit – byggesteinen",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.2.1 Hva er et bit",
+      "file": "video1.mp4",
+      "summary": "Et bit er noe med to tilstander, og navnene er tilfeldige. I maskinen er det en transistor, og en mobil har rundt hundre milliarder."
+    },
+    {
+      "title": "2.2.2 Hvorfor akkurat to",
+      "file": "video2.mp4",
+      "summary": "To tilstander tåler støy, varme og aldring. Ti nivåer måtte måles presist."
+    },
+    {
+      "title": "2.2.3 Samme mønster, fire betydninger",
+      "file": "video3.mp4",
+      "summary": "01000001 kan være tallet 65, bokstaven A, en mørk rødtone eller en instruksjon. Betydningen ligger aldri i bitene."
+    }
+  ],
   "terms": [
     {
       "term": "Bit",

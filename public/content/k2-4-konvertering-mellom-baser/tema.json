@@ -4,7 +4,33 @@
   "title": "2.4 Konvertering mellom baser",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.4.1 Vektmetoden",
+      "file": "video1.mp4",
+      "summary": "Gang hvert siffer med vekten og legg sammen. Ta alltid et overslag først."
+    },
+    {
+      "title": "2.4.2 Gjentatt multiplikasjon",
+      "file": "video2.mp4",
+      "summary": "Gang med basen og legg til neste siffer, fra venstre mot høyre. Ingen tabell over vekter."
+    },
+    {
+      "title": "2.4.3 Største vekt som får plass",
+      "file": "video3.mp4",
+      "summary": "Som å veksle et beløp i sedler: ta den største vekten som får plass, trekk fra og gjenta."
+    },
+    {
+      "title": "2.4.4 Divisjonsmetoden",
+      "file": "video4.mp4",
+      "summary": "Del på basen og skriv ned resten. Les restene nedenfra og opp."
+    },
+    {
+      "title": "2.4.5 Hvorfor divisjonsmetoden virker",
+      "file": "video5.mp4",
+      "summary": "Resten er alltid et gyldig siffer, og første rest er enerplassen."
+    }
+  ],
   "terms": [
     {
       "term": "Fra binært til desimalt",
