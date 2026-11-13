@@ -4,5 +4,27 @@
   "title": "2.5 Heksadesimal og oktal",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Heksadesimalt",
+      "def": "Base 16, med sifrene 0–9 og A–F. Fire bit blir ett siffer, så lange bitmønstre blir korte og lesbare."
+    },
+    {
+      "term": "Oktalt",
+      "def": "Base 8. Tre bit blir ett siffer. Brukes blant annet i filrettigheter på Unix."
+    },
+    {
+      "term": "Nibble",
+      "def": "Fire bit. Nøyaktig ett heksadesimalt siffer."
+    },
+    {
+      "term": "Gruppering av bit",
+      "def": "Heksadesimalt og oktalt er bare binært skrevet kortere. Du konverterer ved å dele bitene i grupper på fire eller tre, uten regning."
+    },
+    {
+      "term": "0x-prefiks",
+      "def": "Skrivemåten for heksadesimale tall i de fleste programmeringsspråk, som 0xFF. Uten prefikset er det umulig å se om 10 betyr ti eller seksten."
+    }
+  ]
 }

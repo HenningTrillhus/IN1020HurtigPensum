@@ -3,5 +3,23 @@
   "chapter": "Kapittel 8 – Moderne maskiner",
   "title": "8.3 Kjerner og tråder",
   "description": "Hvorfor åtte kjerner, SMT, prosesser og tråder, og Amdahls lov.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Kjerne",
+      "def": "En fullstendig prosessor. Flere kjerner kan gjøre flere ting samtidig."
+    },
+    {
+      "term": "Tråd",
+      "def": "En kjørende sekvens av ordre. Kjerner kan ha flere tråder."
+    },
+    {
+      "term": "Parallellitet",
+      "def": "Å gjøre flere ting samtidig for å få mer gjort på samme tid."
+    },
+    {
+      "term": "Samtidighetsfeil",
+      "def": "Feil som oppstår når flere tråder bruker de samme dataene uten å koordinere."
+    }
+  ]
 }

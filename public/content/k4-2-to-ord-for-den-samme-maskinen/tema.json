@@ -4,5 +4,27 @@
   "title": "4.2 To ord for den samme maskinen",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "ISA (instruksjonssettarkitektur)",
+      "def": "Svaret på hva en maskin kan gjøre: hvilke ordrer den forstår, hvor mange registre den har og hvordan en ordre er bygd opp. Den er avtalen mellom programvaren og maskinvaren."
+    },
+    {
+      "term": "Mikroarkitektur",
+      "def": "Svaret på hvordan maskinen gjør det: hvor mange kretser som ligger bak en addisjon, hvor mange klokkeslag en ordre tar. Den er den faktiske byggingen."
+    },
+    {
+      "term": "Rattet og motoren",
+      "def": "ISA er rattet og pedalene, grensesnittet du kan lære én gang. Mikroarkitekturen er motoren. To biler kan ha samme betjening og helt ulike motorer."
+    },
+    {
+      "term": "Kompatible maskiner",
+      "def": "Når to maskiner kalles kompatible, har de samme ISA. Det sier ingenting om hva som er inni."
+    },
+    {
+      "term": "Ny generasjon, gammel ISA",
+      "def": "En ny prosessorgenerasjon er som regel en ny mikroarkitektur på en gammel ISA. Den er raskere og bruker mindre strøm, men forstår de samme ordrene, så programvaren overlever."
+    }
+  ]
 }

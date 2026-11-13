@@ -3,5 +3,15 @@
   "chapter": "Kapittel 8 – Moderne maskiner",
   "title": "8.8 Hele stabelen",
   "description": "Alle lagene fra kode til transistorer satt sammen. Ingen av dem er magi lenger.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Abstraksjonslag",
+      "def": "Hvert lag skjuler detaljene under. Lagene gjør maskinen forståelig, men feil og ytelse kan sitte hvor som helst."
+    },
+    {
+      "term": "Avveininger",
+      "def": "Alt i en maskin er et valg mellom fart, plass, strøm, pris og sikkerhet."
+    }
+  ]
 }

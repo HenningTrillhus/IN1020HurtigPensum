@@ -4,5 +4,31 @@
   "title": "2.6 Byte, verdiområde og designvalg",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Byte",
+      "def": "Åtte bit. Den minste enheten de fleste maskiner kan adressere i minnet."
+    },
+    {
+      "term": "Verdiområde",
+      "def": "Alle tall et gitt antall bit kan representere. n bit gir 2^n verdier, fra 0 til 2^n − 1 uten fortegn."
+    },
+    {
+      "term": "Ord (word)",
+      "def": "Den naturlige enheten en prosessor regner med, for eksempel 32 eller 64 bit."
+    },
+    {
+      "term": "Kilo, mega, giga",
+      "def": "Desimale prefikser: 1 kB er 1000 byte, 1 MB er 10^6, 1 GB er 10^9."
+    },
+    {
+      "term": "Kibi, mebi, gibi",
+      "def": "Binære prefikser: 1 KiB er 1024 byte, 1 MiB er 2^20, 1 GiB er 2^30. Forskjellen vokser for hvert prefiks."
+    },
+    {
+      "term": "Designvalg",
+      "def": "Antall bit er alltid et valg: flere bit gir større område og mer nøyaktighet, men koster plass og tid."
+    }
+  ]
 }

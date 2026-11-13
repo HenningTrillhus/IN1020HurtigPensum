@@ -3,5 +3,23 @@
   "chapter": "Kapittel 8 – Moderne maskiner",
   "title": "8.6 Avbrudd og virtuelt minne",
   "description": "Hvordan et tastetrykk avbryter et program uten at det merker det, og hvordan hvert program får sitt eget adresserom.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Avbrudd",
+      "def": "Et signal som stopper det prosessoren gjør, så den kan håndtere noe som haster, som tastetrykk eller nettverkspakke."
+    },
+    {
+      "term": "Virtuelt minne",
+      "def": "Hvert program får tro at det har sitt eget store minne. Operativsystemet oversetter til ekte adresser."
+    },
+    {
+      "term": "Sideskifte",
+      "def": "Operativsystemet flytter deler av minnet mellom RAM og disk for å få plass til mer enn det fysisk finnes."
+    },
+    {
+      "term": "Isolasjon",
+      "def": "Programmer kan ikke se eller skrive til hverandres minne."
+    }
+  ]
 }

@@ -4,5 +4,23 @@
   "title": "2.4 Konvertering mellom baser",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Fra binært til desimalt",
+      "def": "Legg sammen posisjonsverdiene der det står en 1. 1011 er 8 + 2 + 1 = 11."
+    },
+    {
+      "term": "Divisjonsmetoden",
+      "def": "Del tallet på grunntallet om og om igjen og skriv opp restene. Restene leses nedenfra og opp og gir tallet i den nye basen."
+    },
+    {
+      "term": "Toerpotenser",
+      "def": "1, 2, 4, 8, 16, 32, 64, 128, 256 og så videre. De er verdt å kunne utenat, siden alle binære konverteringer bygger på dem."
+    },
+    {
+      "term": "Rest",
+      "def": "Det som blir igjen når du deler. Hver rest er ett siffer i den nye basen."
+    }
+  ]
 }

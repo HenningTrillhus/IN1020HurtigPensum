@@ -4,5 +4,39 @@
   "title": "4.10 Modellen som binder det sammen",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Von Neumann-arkitekturen",
+      "def": "Et sett retningslinjer for hvordan en datamaskin bygges, skrevet ned rundt 1945. Program og data deler minne, og de deler veien dit."
+    },
+    {
+      "term": "Lagret program",
+      "def": "Regel 1 og den viktigste: minnet holder både program og data. Det er regelen som gjør det mulig at et program kan redigere seg selv."
+    },
+    {
+      "term": "Lineær adressering",
+      "def": "Regel 2: hver plass i minnet har ett nummer, og numrene går i rekkefølge."
+    },
+    {
+      "term": "Adressen sier ingenting om innholdet",
+      "def": "Regel 3: plass 42 er plass 42 enten det ligger en ordre eller et tall der."
+    },
+    {
+      "term": "Ordrer i rekkefølge",
+      "def": "Regel 4: ordrene utføres i rekkefølge, til noe får maskinen til å hoppe."
+    },
+    {
+      "term": "Kjøkkenet",
+      "def": "Oppskriften ligger i en perm, og råvarene i samme skap. Oppskrift og råvarer behandles likt, begge er ting i et skap. Derfor kan samme maskin kjøre en tekstbehandler og spille musikk: du bytter bare permen."
+    },
+    {
+      "term": "Von Neumann-flaskehalsen",
+      "def": "Program og data deler samme vei inn til prosessoren, så hver ordre og hvert tall må hentes over samme buss. Prosessoren kan gjøres aldri så rask, men alt må gjennom den ene åpningen. Navnet står ikke i pensumboka, men er vanlig i faget."
+    },
+    {
+      "term": "Navnet på arkitekturen",
+      "def": "Rapporten kom i juni 1945 ved University of Pennsylvania med von Neumann som eneste navngitte forfatter. Arbeidet bygde på en hel gruppe, blant andre J. Presper Eckert og John Mauchly."
+    }
+  ]
 }

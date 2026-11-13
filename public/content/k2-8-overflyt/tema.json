@@ -4,5 +4,31 @@
   "title": "2.8 Overflyt",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Overflyt",
+      "def": "Resultatet passer ikke i antall bit som er satt av. Maskinen kaster det som ikke får plass, og svaret blir feil uten at noe varsler."
+    },
+    {
+      "term": "Stille overflyt",
+      "def": "Overflyt gir ingen feilmelding i C og i maskinvaren. Programmet fortsetter med feil tall."
+    },
+    {
+      "term": "Wraparound",
+      "def": "Tallet går rundt som en kilometerteller: etter største verdi kommer minste verdi."
+    },
+    {
+      "term": "Heltall uten fast bredde",
+      "def": "Python lar heltall vokse så langt minnet rekker. Det er trygt, men tregere, og forsvinner når du regner i C-biblioteker som NumPy."
+    },
+    {
+      "term": "Ariane 5",
+      "def": "I 1996 ble en 64-bits hastighet konvertert til et 16-bits tall som ikke rommet verdien. Raketten ble ødelagt 37 sekunder etter oppskyting."
+    },
+    {
+      "term": "Arvet antakelse",
+      "def": "Koden hadde virket på Ariane 4, der hastigheten aldri ble stor nok. Feilen var at forutsetningen forsvant, ikke at noen regnet galt."
+    }
+  ]
 }

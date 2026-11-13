@@ -1,8 +1,38 @@
 {
   "id": "ds-4-kryptografi",
   "chapter": "Datasikkerhet",
-  "chapterKey": "datasikkerhet",
   "title": "S4 Kryptografi",
   "description": "Nøkkelen til digital samhandling: klartekst og kryptert tekst, hemmelig og offentlig nøkkel, hash og kryptering på flere lag.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Kryptografi",
+      "def": "Å gjøre informasjon uleselig for alle unntatt de som har riktig nøkkel."
+    },
+    {
+      "term": "Kryptering og dekryptering",
+      "def": "Kryptering gjør klartekst om til chiffertekst. Dekryptering gjør det motsatte."
+    },
+    {
+      "term": "Symmetrisk kryptering",
+      "def": "Samme nøkkel brukes til å låse og låse opp. Raskt, men nøkkelen må deles trygt."
+    },
+    {
+      "term": "Asymmetrisk kryptering",
+      "def": "Et nøkkelpar: en offentlig nøkkel som låser og en privat nøkkel som låser opp."
+    },
+    {
+      "term": "Hashing",
+      "def": "En enveisfunksjon som gjør data om til en fast kort verdi. Brukes til passord og til å oppdage endringer."
+    },
+    {
+      "term": "Digital signatur",
+      "def": "Bevis på hvem som har laget en melding og at den ikke er endret."
+    },
+    {
+      "term": "Sertifikat",
+      "def": "Et dokument som knytter en offentlig nøkkel til en identitet, utstedt av en pålitelig tredjepart."
+    }
+  ],
+  "chapterKey": "datasikkerhet"
 }

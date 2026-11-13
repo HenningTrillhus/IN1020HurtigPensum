@@ -1,8 +1,34 @@
 {
   "id": "ds-5-trygg-infrastruktur",
   "chapter": "Datasikkerhet",
-  "chapterKey": "datasikkerhet",
   "title": "S5 Trygg infrastruktur og sikre datasystemer",
   "description": "Trusler mot trådløse og kablede nett, systemsikkerhet, buffer-utnyttelser og digitale verdikjeder.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Brannmur",
+      "def": "Filtrerer nettverkstrafikk etter regler og stopper det som ikke skal slippe gjennom."
+    },
+    {
+      "term": "Segmentering",
+      "def": "Å dele nettverket i soner så et angrep ikke sprer seg overalt."
+    },
+    {
+      "term": "Minste privilegium",
+      "def": "Hver bruker og hvert program får bare de rettighetene det trenger."
+    },
+    {
+      "term": "Sikkerhetskopi",
+      "def": "En kopi av dataene et annet sted, som gjør at du kan komme deg etter tap eller løsepengevirus."
+    },
+    {
+      "term": "Oppdatering",
+      "def": "Å rette kjente sårbarheter. Utsatte oppdateringer er en av de vanligste inngangene for angripere."
+    },
+    {
+      "term": "Forsvar i dybden",
+      "def": "Flere lag med beskyttelse, så ett lag som svikter ikke åpner alt."
+    }
+  ],
+  "chapterKey": "datasikkerhet"
 }

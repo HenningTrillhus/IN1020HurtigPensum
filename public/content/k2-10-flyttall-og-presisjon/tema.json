@@ -4,5 +4,39 @@
   "title": "2.10 Flyttall og presisjon",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Flyttall",
+      "def": "Måten maskinen lagrer desimaltall på: som fortegn, eksponent og mantisse, omtrent som vitenskapelig skrivemåte."
+    },
+    {
+      "term": "Mantisse",
+      "def": "Sifrene i tallet, normalisert så den starter med en 1. I et 32-bits flyttall er det 23 bit."
+    },
+    {
+      "term": "Eksponent",
+      "def": "Forteller hvor mye tallet skal flyttes, altså hvor kommaet står. Gir stort verdiområde for få bit."
+    },
+    {
+      "term": "IEEE 754",
+      "def": "Standarden som beskriver flyttall på nesten alle maskiner. Float er 32 bit og double er 64 bit."
+    },
+    {
+      "term": "Presisjon",
+      "def": "Hvor mange gjeldende sifre tallet har. Flyttall har et endelig antall, så de fleste desimaltall blir avrundet."
+    },
+    {
+      "term": "Avrundingsfeil",
+      "def": "0,1 kan ikke lagres nøyaktig i binært, på samme måte som 1/3 ikke kan skrives nøyaktig i desimalt. Derfor er 0,1 + 0,2 ikke akkurat 0,3."
+    },
+    {
+      "term": "Feil som hoper seg opp",
+      "def": "Hver regneoperasjon legger på en liten feil, og mange operasjoner i rekke kan summere seg til noe merkbart."
+    },
+    {
+      "term": "Sammenligne flyttall",
+      "def": "Test aldri om to flyttall er helt like. Sjekk om forskjellen er mindre enn en liten toleranse."
+    }
+  ]
 }

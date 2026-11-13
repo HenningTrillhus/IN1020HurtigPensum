@@ -1,8 +1,30 @@
 {
   "id": "nv-5-tjenester-i-internett",
   "chapter": "Nettverk",
-  "chapterKey": "nettverk",
   "title": "N5 Tjenester i Internett",
   "description": "TCP med flyt- og metningskontroll, DNS, web og HTTP, videostrømming og tingenes internett.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Klient og tjener",
+      "def": "Klienten ber om noe, og tjeneren svarer."
+    },
+    {
+      "term": "HTTP",
+      "def": "Protokollen nettlesere bruker til å hente nettsider."
+    },
+    {
+      "term": "Skytjeneste",
+      "def": "Datakraft og lagring du leier over nettet i stedet for å eie selv."
+    },
+    {
+      "term": "CDN",
+      "def": "Et nett av tjenere rundt om i verden som holder kopier av innhold nær brukerne."
+    },
+    {
+      "term": "Lastbalansering",
+      "def": "Å fordele forespørsler på flere tjenere."
+    }
+  ],
+  "chapterKey": "nettverk"
 }

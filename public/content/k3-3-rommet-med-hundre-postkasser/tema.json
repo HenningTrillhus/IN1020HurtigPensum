@@ -4,5 +4,51 @@
   "title": "3.3 Rommet med hundre postkasser",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Little Man Computer (LMC)",
+      "def": "En lekemaskin laget av Stuart Madnick ved MIT. Den regner i titallssystemet, så du kan se hvordan instruksjoner virker uten å tenke på bit. Simulatoren er laget av Peter Higginson."
+    },
+    {
+      "term": "Postkasse",
+      "def": "En av hundre plasser nummerert 00 til 99. Hver rommer én lapp med et tresifret tall. Det er maskinens minne."
+    },
+    {
+      "term": "Kontoristen",
+      "def": "Den som arbeider i rommet. Har en kalkulator, en teller, en innkurv og en utkurv, og kan bare det som finnes i rommet."
+    },
+    {
+      "term": "Kalkulator",
+      "def": "Kan legge sammen og trekke fra, med et display på tre sifre. Har plass til ett tall om gangen."
+    },
+    {
+      "term": "Teller",
+      "def": "Viser to sifre. Kontoristen kan klikke den ett hakk opp eller stille den direkte, og nullstilleren setter den til 00."
+    },
+    {
+      "term": "Innkurv og utkurv",
+      "def": "Her går tall inn og ut av rommet. Alt som går inn og ut, er tresifrede tall."
+    },
+    {
+      "term": "Adresse og innhold",
+      "def": "Postkasse 42 er et sted, og tallet 42 er en verdi. De har ingenting med hverandre å gjøre. Postkasse 42 kan inneholde 542, og tallet 42 kan ligge i hvilken som helst postkasse."
+    },
+    {
+      "term": "ADD 99",
+      "def": "99 er en adresse, ikke et tall. Instruksjonen betyr «legg til det som ligger i postkasse 99». Skal du legge til tallet 99, må det først ligge i en postkasse."
+    },
+    {
+      "term": "Ordre eller verdi",
+      "def": "Hva et tall i en postkasse er, avgjøres av om kontoristen kommer dit for å hente en ordre eller en verdi. Ikke av tallet. Regelen går igjen gjennom hele kapitlet."
+    },
+    {
+      "term": "Hvorfor hundre postkasser",
+      "def": "Fordi en adresse skal få plass i to sifre. 00 til 99 er hundre muligheter, og flere postkasser ville krevd et tredje siffer og tatt plass fra resten av instruksjonen."
+    },
+    {
+      "term": "Run, Step og Reset",
+      "def": "Run kjører programmet, Step kjører ett steg om gangen, og Reset starter på nytt. Glemmer du Reset mellom to kjøringer, starter maskinen der forrige kjøring sluttet."
+    }
+  ]
 }

@@ -1,8 +1,34 @@
 {
   "id": "nv-4-operativsystemer",
   "chapter": "Nettverk",
-  "chapterKey": "nettverk",
   "title": "N4 Introduksjon til operativsystemer",
   "description": "Hva et operativsystem er, hvorfor vi trenger det, og hva det styrer i maskinvaren.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Operativsystem",
+      "def": "Programmet som styrer maskinvaren og deler den mellom programmene."
+    },
+    {
+      "term": "Kjerne",
+      "def": "Den delen av operativsystemet som har full tilgang til maskinvaren."
+    },
+    {
+      "term": "Prosess",
+      "def": "Et program som kjører, med eget minne."
+    },
+    {
+      "term": "Systemkall",
+      "def": "Måten et program ber kjernen om å gjøre noe det ikke selv har lov til."
+    },
+    {
+      "term": "Filsystem",
+      "def": "Organiserer filer og mapper på lagringsmediet."
+    },
+    {
+      "term": "Virtualisering",
+      "def": "Å la flere operativsystemer kjøre på samme maskin, hver i sin egen avgrensede verden."
+    }
+  ],
+  "chapterKey": "nettverk"
 }

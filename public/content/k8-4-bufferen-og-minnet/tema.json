@@ -3,5 +3,23 @@
   "chapter": "Kapittel 8 – Moderne maskiner",
   "title": "8.4 Bufferen og minnet",
   "description": "Hvorfor maskinen har en stor delt buffer når minnet er mye tregere.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Hurtigbuffer (cache)",
+      "def": "Lite og raskt minne nær prosessoren, som holder kopier av data som brukes ofte."
+    },
+    {
+      "term": "Treff og bom",
+      "def": "Treff når dataene ligger i hurtigbufferen. Bom når de må hentes fra hovedminnet."
+    },
+    {
+      "term": "Lokalitet",
+      "def": "Programmer bruker gjerne data i nærheten av det de nettopp brukte, og samme data igjen. Derfor virker hurtigbuffere."
+    },
+    {
+      "term": "Minnehierarki",
+      "def": "Registre, hurtigbuffer, hovedminne og disk. Jo nærmere prosessoren, jo raskere og mindre."
+    }
+  ]
 }

@@ -4,5 +4,39 @@
   "title": "2.9 Tekst og tegn",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Tegnkode",
+      "def": "En tabell som gir hvert tegn et nummer. Teksten lagres som en rekke tall."
+    },
+    {
+      "term": "ASCII",
+      "def": "Den gamle standarden med 128 tegn og 7 bit. Dekker engelsk alfabet, sifre og kontrolltegn, men ingen æ, ø og å."
+    },
+    {
+      "term": "Unicode",
+      "def": "En felles tabell som gir hvert tegn i verdens skriftspråk et unikt nummer, kalt kodepunkt."
+    },
+    {
+      "term": "Kodepunkt",
+      "def": "Nummeret til ett tegn i Unicode, skrevet U+0041 for A. Et kodepunkt er ikke det samme som bytene det lagres som."
+    },
+    {
+      "term": "UTF-8",
+      "def": "Måten å lagre Unicode på som de fleste bruker. Hvert tegn tar 1 til 4 byte, og engelsk tekst tar like mye plass som i ASCII."
+    },
+    {
+      "term": "Prefiksbit",
+      "def": "De første bitene i en UTF-8-byte forteller om den er begynnelsen på et tegn eller en fortsettelse. Derfor kan du hoppe midt inn i en tekst og finne tegngrensen."
+    },
+    {
+      "term": "Kontrolltegn",
+      "def": "Tegn som ikke vises, men styrer, som linjeskift og tabulator."
+    },
+    {
+      "term": "Mojibake",
+      "def": "Rotete tegn som æ blir til Ã¦. Oppstår når en tekst lagres med én tegnkode og leses med en annen."
+    }
+  ]
 }

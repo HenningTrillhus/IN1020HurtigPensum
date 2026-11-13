@@ -4,5 +4,55 @@
   "title": "2.12 Lyd",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Lydbølge",
+      "def": "Trykkvariasjoner i luft. En mikrofon gjør dem om til en varierende elektrisk spenning."
+    },
+    {
+      "term": "Sampling (lyd)",
+      "def": "Å måle signalet med jevne mellomrom. Deler opp tidsaksen."
+    },
+    {
+      "term": "Kvantisering",
+      "def": "Å runde hver måling til et av et endelig antall nivåer. Deler opp styrkeaksen."
+    },
+    {
+      "term": "Samplingsfrekvens",
+      "def": "Antall målinger per sekund, målt i hertz. Tettere måling gir bedre lyd og større fil."
+    },
+    {
+      "term": "Bitdybde",
+      "def": "Antall bit per sample. 16 bit gir 65 536 nivåer."
+    },
+    {
+      "term": "Nyquist-kriteriet",
+      "def": "For å gjenskape et signal må du sample med minst dobbelt så høy frekvens som den høyeste frekvensen i det."
+    },
+    {
+      "term": "Aliasing",
+      "def": "Sampler du for sakte, dukker høye toner opp som lave toner som aldri var der. Samme effekt gjør at hjul ser ut til å snurre baklengs på film."
+    },
+    {
+      "term": "CD-lyd",
+      "def": "44 100 Hz, 16 bit, to kanaler. Det blir 1 411 200 bit i sekundet, og 74 minutter fyller 783 MB."
+    },
+    {
+      "term": "Feilkorreksjon",
+      "def": "Ekstra data som lar en CD tåle riper. Kommer på toppen av lyddataene."
+    },
+    {
+      "term": "Differanse",
+      "def": "Lagrer endringen fra forrige verdi i stedet for hele verdien. Et lite tall tar få bit, men du må vite hvor du starter."
+    },
+    {
+      "term": "FLAC",
+      "def": "Tapsfri lydkomprimering. Utnytter likhet mellom kanalene og mellom nabomålinger."
+    },
+    {
+      "term": "MP3 og AAC",
+      "def": "Lydformater med tap som kaster det vi ikke hører, som toner under 20 Hz eller over 20 000 Hz."
+    }
+  ]
 }

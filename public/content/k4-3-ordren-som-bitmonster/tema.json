@@ -4,5 +4,51 @@
   "title": "4.3 Ordren som bitmønster",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Ordre som bitmønster",
+      "def": "I en ekte maskin er en ordre bit, ikke sifre. LDA 42 er 542 i LMC og 0101 00101010 som tolv bit: opkoden 5 blir 0101 og adressen 42 blir 00101010. Mellomrommet finnes bare for lesbarheten."
+    },
+    {
+      "term": "Feltbredde",
+      "def": "Antall bit hvert felt i ordren har. Maskinen vet hvor skillet mellom feltene går fordi bredden er bestemt én gang for alle, ikke fordi noe markerer det."
+    },
+    {
+      "term": "Avveiningen mellom opkode og adresse",
+      "def": "Ordet har fast bredde, så hver bit du gir til opkoden, tar du fra adressen. Flere bit til opkoden gir flere ordrer, og flere bit til adressen gir mer minne. En maskin må klare begge deler samtidig."
+    },
+    {
+      "term": "Å regne baklengs",
+      "def": "En arkitekt starter med hva maskinen skal klare, og regner seg fram til ordbredden. 40 ordrer krever 6 bit opkode, og 1 megabyte minne krever 20 bit adresse. Summen på 26 bit rundes opp til 32 bit, en hel byte."
+    },
+    {
+      "term": "Helt antall byte",
+      "def": "Nesten alle velger et ordlengde som er et helt antall byte, og lever med at noen bit står tomme. Ellers ville ordrer begynt midt i en byte, og maskinen måtte regnet ut hvor hver enkelt starter."
+    },
+    {
+      "term": "MIPS",
+      "def": "En instruksjonssettarkitektur som brukes mye i undervisning fordi den er ryddig. Alle ordrene er 32 bit og starter med 6 bit opkode, i tre formater."
+    },
+    {
+      "term": "R-, I- og J-format",
+      "def": "De tre instruksjonsformatene i MIPS. R-formatet har tre registerfelt og ingen minneadresse, I-formatet har en konstant, og J-formatet har en adresse."
+    },
+    {
+      "term": "Registernummer",
+      "def": "Fem bit peker på ett av 32 registre, mens en full minneadresse koster 32 bit. Det er derfor moderne maskiner har mange registre: det er billig å peke på dem."
+    },
+    {
+      "term": "Implisitt og eksplisitt operand",
+      "def": "I LMC er akkumulatoren underforstått, altså implisitt. R-formatet har tre eksplisitte operander, to kilder og ett mål, og trenger derfor tre felt."
+    },
+    {
+      "term": "Fast og variabel ordlengde",
+      "def": "Fast lengde (MIPS, ARM, RISC-V) gjør at maskinen alltid vet hvor neste ordre begynner, men sløser litt plass. Variabel lengde (x86, fra én til femten byte) sparer plass, men lengden må regnes ut først."
+    },
+    {
+      "term": "Telleren øker med fire",
+      "def": "En ekte maskin adresserer minnet i byte, og en 32-bits ordre er fire byte. Ligger en ordre på adresse 1000, ligger neste på 1004. Regelen er den samme som i LMC: telleren peker på neste ordre."
+    }
+  ]
 }

@@ -4,5 +4,31 @@
   "title": "2.3 Posisjonssystemer",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Posisjonssystem",
+      "def": "Et tallsystem der et siffers verdi avhenger av hvor det står. I 352 betyr 3 hundrer, 5 tiere og 2 enere."
+    },
+    {
+      "term": "Grunntall (base)",
+      "def": "Antall ulike siffer i systemet, og tallet hver posisjon ganges opp med. 10 for desimalt, 2 for binært, 16 for heksadesimalt."
+    },
+    {
+      "term": "Posisjonsverdi",
+      "def": "Grunntallet opphøyd i posisjonsnummeret, telt fra null på høyre side. I binært er det 1, 2, 4, 8, 16 og så videre."
+    },
+    {
+      "term": "Desimalt",
+      "def": "Titallssystemet, base 10. Det vi bruker til daglig, sannsynligvis fordi vi har ti fingre."
+    },
+    {
+      "term": "Binærtall",
+      "def": "Tall skrevet med bare 0 og 1, base 2. Hver posisjon er en toerpotens."
+    },
+    {
+      "term": "Mest og minst signifikante bit",
+      "def": "Biten lengst til venstre teller mest og kalles MSB. Biten lengst til høyre teller minst og kalles LSB."
+    }
+  ]
 }

@@ -4,5 +4,43 @@
   "title": "3.4 Ordren som et tall",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Instruksjon",
+      "def": "I LMC er en instruksjon et tresifret tall som leses i to deler: hva som skal gjøres, og hvor."
+    },
+    {
+      "term": "Opkode (operasjonskode)",
+      "def": "Det første sifferet i instruksjonen. Sier hva som skal gjøres. Hvilket tall som betyr hva, er et valg den som designer maskinen har tatt."
+    },
+    {
+      "term": "Adressedel",
+      "def": "De to siste sifrene. Sier hvor, når instruksjonen trenger en postkasse."
+    },
+    {
+      "term": "Stoppinstruksjon",
+      "def": "000 stopper maskinen. Adressedelen brukes ikke, så alle tall som begynner på null stopper like effektivt."
+    },
+    {
+      "term": "Utvidet opkode",
+      "def": "Opkode 9 brukes til tre instruksjoner. Adressedelen (01, 02 og 22) skiller dem fra hverandre og peker ikke på noen postkasse: 901 leser fra innkurven, 902 skriver til utkurven og 922 skriver ett tegn."
+    },
+    {
+      "term": "Enhetsnummer",
+      "def": "I en ekte maskin inneholder adressefeltet i en inn- eller ut-instruksjon gjerne nummeret til en enhet. Skjermen har ett nummer og disken et annet. Adressen peker fortsatt på noe, bare ikke på minnet."
+    },
+    {
+      "term": "Instruksjonene i LMC",
+      "def": "Ni opkoder (0, 1, 2, 3, 5, 6, 7, 8 og 9) gir til sammen elleve instruksjoner, fordi opkode 9 dekker tre. En ekte prosessor har flere tusen."
+    },
+    {
+      "term": "Kraft fra enkelhet",
+      "def": "Kraften i en datamaskin kommer ikke av at operasjonene er avanserte, men av at svært enkle operasjoner utføres svært mange ganger i sekundet. Alt det kompliserte ligger i rekkefølgen."
+    },
+    {
+      "term": "Opkode og adresse i bit",
+      "def": "I en ekte maskin er de to feltene grupper av bit. Flere bit til opkoden gir flere instruksjoner, og flere bit til adressen gir mer minne å peke på."
+    }
+  ]
 }

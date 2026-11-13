@@ -4,5 +4,23 @@
   "title": "2.2 Bit – byggesteinen",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Bit",
+      "def": "Den minste informasjonsmengden: ett valg mellom to muligheter, 0 eller 1. Alt i en datamaskin er til slutt bit."
+    },
+    {
+      "term": "Binært",
+      "def": "Et system med to tilstander. Maskinen bruker det fordi to tilstander, som lav og høy spenning, er lette å skille fra hverandre og vanskelige å forveksle."
+    },
+    {
+      "term": "Informasjon",
+      "def": "Det som reduserer usikkerhet. n bit kan skille mellom 2^n ulike muligheter."
+    },
+    {
+      "term": "Representasjon",
+      "def": "En avtale om hva et bitmønster betyr. Samme bit kan være tall, tekst eller farge, avhengig av avtalen."
+    }
+  ]
 }

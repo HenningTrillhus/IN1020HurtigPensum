@@ -3,5 +3,15 @@
   "chapter": "Kapittel 8 – Moderne maskiner",
   "title": "8.1 Maskinen og de tre spørsmålene",
   "description": "En moderne maskin med åtte kjerner, buffer, minne, grafikk og nevral motor, og tre spørsmål kapitlet svarer på.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Hele stabelen",
+      "def": "Fra transistor til program: hvert lag bygger på det under. Kapittel 8 kobler dem sammen."
+    },
+    {
+      "term": "Ytelse",
+      "def": "Hvor fort en maskin gjør en oppgave. Avhenger av klokkefrekvens, antall ordre per takt og hvor lenge man venter på minnet."
+    }
+  ]
 }

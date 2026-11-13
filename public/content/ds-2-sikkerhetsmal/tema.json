@@ -1,8 +1,34 @@
 {
   "id": "ds-2-sikkerhetsmal",
   "chapter": "Datasikkerhet",
-  "chapterKey": "datasikkerhet",
   "title": "S2 Å innfri sikkerhetsmål",
   "description": "Autorisert og uautorisert tilgang: entitet, identitet, autentisering, autorisering og tilgangskontroll.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Konfidensialitet",
+      "def": "Bare de som har lov, skal få se informasjonen."
+    },
+    {
+      "term": "Integritet",
+      "def": "Informasjonen skal ikke kunne endres uten at det oppdages."
+    },
+    {
+      "term": "Tilgjengelighet",
+      "def": "Systemet og dataene skal være tilgjengelige når de trengs."
+    },
+    {
+      "term": "CIA-triaden",
+      "def": "De tre sikkerhetsmålene til sammen: confidentiality, integrity og availability."
+    },
+    {
+      "term": "Autentisering",
+      "def": "Å bevise at du er den du sier du er."
+    },
+    {
+      "term": "Autorisasjon",
+      "def": "Å avgjøre hva en bekreftet bruker har lov til å gjøre."
+    }
+  ],
+  "chapterKey": "datasikkerhet"
 }

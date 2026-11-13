@@ -4,5 +4,43 @@
   "title": "3.6 Instruksjonssettet og de første programmene",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Instruksjonssett",
+      "def": "Alle ordrene en maskin forstår. LMC har elleve, fra HLT til OTC, og en ekte prosessor har flere tusen."
+    },
+    {
+      "term": "Mnemonics",
+      "def": "De korte navnene på instruksjonene (ADD, SUB, STA, LDA, BRA og så videre). De er bare en lesehjelp for mennesker."
+    },
+    {
+      "term": "ADD og SUB",
+      "def": "ADD legger verdien i postkasse xx til akkumulatoren, og SUB trekker den fra. De leser postkassen, men tømmer den ikke."
+    },
+    {
+      "term": "LDA og STA",
+      "def": "LDA henter verdien i postkasse xx til akkumulatoren. STA lagrer akkumulatoren i postkasse xx. Akkumulatoren er en arbeidsbenk, ikke et lager."
+    },
+    {
+      "term": "INP, OUT og OTC",
+      "def": "INP leser et tall fra innkurven. OUT skriver akkumulatoren til utkurven. OTC skriver den som ett ASCII-tegn."
+    },
+    {
+      "term": "HLT",
+      "def": "Stopper kjøringen. Å glemme HLT på slutten er den vanligste feilen: kontoristen fortsetter inn i dataene og utfører dem."
+    },
+    {
+      "term": "Les, legg til, lagre",
+      "def": "Mønsteret i addisjonsprogrammene: les et tall, legg det til, lagre resultatet tilbake. Det er samme mønster en løkke bruker."
+    },
+    {
+      "term": "Hvor dataene ligger",
+      "def": "Data må ligge utenfor programmet. Legger du dem i en postkasse der det står en instruksjon, blir instruksjonen borte, og det som da utføres, kan ingen forutsi."
+    },
+    {
+      "term": "Samme tall, to betydninger",
+      "def": "Tallet 104 er både bokstaven h i ASCII og ordren «legg til det som ligger i 04». Ingenting i tallet avgjør hvilken av delene det er."
+    }
+  ]
 }

@@ -3,5 +3,19 @@
   "chapter": "Kapittel 8 – Moderne maskiner",
   "title": "8.7 Spectre: når maskinen røper et passord",
   "description": "Hvordan spekulasjon og cache sammen lar tiden avsløre en hemmelighet, uten at noen regel er brutt.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Spectre",
+      "def": "En sårbarhet som utnytter spekulativ kjøring for å lese data et program ikke har lov til å se."
+    },
+    {
+      "term": "Sidekanal",
+      "def": "Å lese hemmelig informasjon fra bivirkninger, som hvor lang tid noe tok, i stedet for direkte."
+    },
+    {
+      "term": "Ytelse mot sikkerhet",
+      "def": "Spectre viste at optimaliseringer som gjør maskinen rask, også kan åpne for lekkasje."
+    }
+  ]
 }

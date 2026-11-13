@@ -1,8 +1,30 @@
 {
   "id": "nv-1-datakommunikasjon",
   "chapter": "Nettverk",
-  "chapterKey": "nettverk",
   "title": "N1 Introduksjon til datakommunikasjon",
   "description": "Pakkesvitsjing mot telefonnett, komponentene i et nettverk, klient-tjener og peer-to-peer, og nettverkstopologier.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Datakommunikasjon",
+      "def": "Utveksling av data mellom maskiner over et medium."
+    },
+    {
+      "term": "Pakke",
+      "def": "Data deles i biter som sendes hver for seg, hver med en adresse."
+    },
+    {
+      "term": "Båndbredde",
+      "def": "Hvor mye data som kan sendes per sekund."
+    },
+    {
+      "term": "Forsinkelse (latens)",
+      "def": "Tiden fra noe sendes til det kommer fram."
+    },
+    {
+      "term": "Protokoll",
+      "def": "Avtalte regler for hvordan to maskiner snakker sammen."
+    }
+  ],
+  "chapterKey": "nettverk"
 }

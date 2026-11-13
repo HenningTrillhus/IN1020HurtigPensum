@@ -1,8 +1,34 @@
 {
   "id": "nv-3-hjemmeruteren",
   "chapter": "Nettverk",
-  "chapterKey": "nettverk",
   "title": "N3 Din hjemmeruter: lagene spiller sammen",
   "description": "Hvordan applikasjon, transport, IP og link virker sammen: porter, IP-adresser, MAC-adresser og subnett.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Ruter",
+      "def": "Sender pakker videre mot riktig nettverk."
+    },
+    {
+      "term": "IP-adresse",
+      "def": "Adressen til en maskin i et nettverk."
+    },
+    {
+      "term": "NAT",
+      "def": "Lar mange enheter på hjemmenettet dele én offentlig IP-adresse."
+    },
+    {
+      "term": "DHCP",
+      "def": "Deler automatisk ut IP-adresser til enheter som kobler seg på."
+    },
+    {
+      "term": "DNS",
+      "def": "Oversetter navn som uio.no til IP-adresser."
+    },
+    {
+      "term": "Wi-Fi",
+      "def": "Trådløst nettverk mellom enheten og ruteren."
+    }
+  ],
+  "chapterKey": "nettverk"
 }

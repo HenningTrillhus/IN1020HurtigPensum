@@ -1,8 +1,26 @@
 {
   "id": "ds-1-er-det-sa-viktig",
   "chapter": "Datasikkerhet",
-  "chapterKey": "datasikkerhet",
   "title": "S1 Datasikkerhet, er det så viktig?",
   "description": "Hvorfor sikkerhet angår alle som bruker eller bygger datasystemer.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Informasjonssikkerhet",
+      "def": "Å beskytte informasjon mot uautorisert tilgang, endring og tap."
+    },
+    {
+      "term": "Digital avhengighet",
+      "def": "Samfunnet bygger på digitale systemer, så feil og angrep får store konsekvenser."
+    },
+    {
+      "term": "Sårbarhet",
+      "def": "En svakhet i et system som kan utnyttes."
+    },
+    {
+      "term": "Trussel",
+      "def": "Noe eller noen som kan utnytte en sårbarhet og gjøre skade."
+    }
+  ],
+  "chapterKey": "datasikkerhet"
 }

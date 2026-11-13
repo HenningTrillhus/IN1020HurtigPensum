@@ -1,8 +1,38 @@
 {
   "id": "ds-3-hvordan-hackes-vi",
   "chapter": "Datasikkerhet",
-  "chapterKey": "datasikkerhet",
   "title": "S3 Hvordan hackes vi?",
   "description": "Trusselaktører og angrepsvektorer: sårbarheter, skadevare, SQL-injeksjon, XSS og sosial manipulasjon.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Phishing",
+      "def": "Å lure noen til å oppgi passord eller trykke på noe skadelig, vanligvis via falske meldinger."
+    },
+    {
+      "term": "Sosial manipulering",
+      "def": "Å angripe mennesket i stedet for maskinen, ved å utnytte tillit, hast eller frykt."
+    },
+    {
+      "term": "Skadevare",
+      "def": "Program laget for å gjøre skade, som virus, ormer og løsepengevirus."
+    },
+    {
+      "term": "Løsepengevirus",
+      "def": "Skadevare som krypterer filene dine og krever betaling for å låse dem opp."
+    },
+    {
+      "term": "Brute force",
+      "def": "Å prøve alle mulige passord til ett virker."
+    },
+    {
+      "term": "DDoS",
+      "def": "Å oversvømme en tjeneste med trafikk fra mange maskiner så den blir utilgjengelig."
+    },
+    {
+      "term": "Nulldagssårbarhet",
+      "def": "En sårbarhet som angriperen kjenner, men som utvikleren ikke har rukket å rette."
+    }
+  ],
+  "chapterKey": "datasikkerhet"
 }

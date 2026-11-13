@@ -4,5 +4,23 @@
   "title": "2.13 Oppsummering",
   "description": "Hva som egentlig var nytt i kapitlet: alt er bit, og avtalen om hva bitene betyr.",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Alt er bit",
+      "def": "Tall, tekst, bilder og lyd lagres som bitmønstre. Det som skiller dem, er avtalen om hva bitene betyr."
+    },
+    {
+      "term": "Diskret og kontinuerlig",
+      "def": "Tall og tekst er diskrete. Bilder og lyd er kontinuerlige og må gjøres diskrete med sampling."
+    },
+    {
+      "term": "Valg gir avveininger",
+      "def": "Flere bit gir mer nøyaktighet og større filer. Komprimering sparer plass og koster regnekraft."
+    },
+    {
+      "term": "Forutsetninger",
+      "def": "Hver representasjon og hver komprimeringsmetode bygger på en antakelse om dataene, og feiler når antakelsen ikke holder."
+    }
+  ]
 }

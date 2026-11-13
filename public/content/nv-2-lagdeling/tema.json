@@ -1,8 +1,38 @@
 {
   "id": "nv-2-lagdeling",
   "chapter": "Nettverk",
-  "chapterKey": "nettverk",
   "title": "N2 Lagdeling og protokoller",
   "description": "Hva en protokoll er, hvorfor kommunikasjon deles i lag, og TCP/IP-modellen.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Lagdeling",
+      "def": "Nettverket er delt i lag, der hvert lag gjør én jobb og bruker laget under."
+    },
+    {
+      "term": "Innkapsling",
+      "def": "Hvert lag legger sin egen hodedel foran dataene fra laget over."
+    },
+    {
+      "term": "Applikasjonslaget",
+      "def": "Det programmene snakker: web, e-post, filer."
+    },
+    {
+      "term": "Transportlaget",
+      "def": "Sørger for at data kommer fram til riktig program. TCP og UDP hører til her."
+    },
+    {
+      "term": "Nettlaget",
+      "def": "Finner veien mellom nettverk. IP-adresser og ruting hører til her."
+    },
+    {
+      "term": "Linklaget",
+      "def": "Flytter bit mellom to maskiner som er direkte koblet sammen."
+    },
+    {
+      "term": "TCP og UDP",
+      "def": "TCP gir pålitelig levering i riktig rekkefølge. UDP er raskere, men gir ingen garanti."
+    }
+  ],
+  "chapterKey": "nettverk"
 }

@@ -1,8 +1,30 @@
 {
   "id": "ds-6-trygge-digitale-tjenester",
   "chapter": "Datasikkerhet",
-  "chapterKey": "datasikkerhet",
   "title": "S6 Å skape trygge digitale tjenester",
   "description": "Lovpålagte krav som GDPR, trusselmodellering og risikoanalyse, og systematisk sikkerhetsarbeid.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "HTTPS",
+      "def": "HTTP med kryptering. Beskytter trafikken mellom nettleser og tjener."
+    },
+    {
+      "term": "Tofaktorautentisering",
+      "def": "Pålogging med to ulike bevis, for eksempel passord og en kode fra telefonen."
+    },
+    {
+      "term": "Passordbehandler",
+      "def": "Program som lager og husker unike passord, så du ikke gjenbruker dem."
+    },
+    {
+      "term": "Personvern",
+      "def": "Retten til å bestemme over egne opplysninger. I Europa er den regulert av GDPR."
+    },
+    {
+      "term": "GDPR",
+      "def": "EUs personvernforordning. Gir deg rettigheter over hvordan opplysninger om deg brukes."
+    }
+  ],
+  "chapterKey": "datasikkerhet"
 }

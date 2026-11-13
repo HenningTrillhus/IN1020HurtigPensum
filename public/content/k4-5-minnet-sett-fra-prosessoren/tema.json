@@ -4,5 +4,43 @@
   "title": "4.5 Minnet sett fra prosessoren",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "MAR (minneadresseregisteret)",
+      "def": "Holder adressen minnet skal slå opp. En ekte maskin bruker det to ganger i ordrer som rører minnet: først for å hente selve ordren, så for å hente det ordren peker på."
+    },
+    {
+      "term": "MDR (minnedataregisteret)",
+      "def": "Holder verdien som er på vei inn eller ut av minnet. Det går begge veier: ved skriving fra et register ut i minnet, ved lesing fra minnet videre til et register."
+    },
+    {
+      "term": "MAR er enveis",
+      "def": "Adresser kopieres alltid inn i MAR og aldri ut, for prosessoren bestemmer selv hvilken adresse som skal brukes og har nettopp lagt den dit."
+    },
+    {
+      "term": "Lese/skriv-linja",
+      "def": "En ledning som bestemmer retningen: i den ene stillingen sendes innholdet i cellen ut til MDR, i den andre skrives MDR inn i cellen."
+    },
+    {
+      "term": "Aktiveringslinja",
+      "def": "En ledning som bestemmer tidspunktet. Den venter til adressen i MAR har falt til ro, for underveis kan flere rader stå halvveis påslått."
+    },
+    {
+      "term": "Hvorfor 32 bit stoppet på fire gigabyte",
+      "def": "MAR er k bit bredt og kan inneholde 2^k adresser. 32 bit gir fire gigabyte, uansett hvor mange brikker du plugger inn. Det var slutten på tallene, ikke en vilkårlig grense."
+    },
+    {
+      "term": "Bredden på MAR",
+      "def": "16 bit gir 64 kilobyte, 20 bit gir 1 megabyte, 32 bit gir 4 gigabyte, 48 bit gir 256 terabyte og 64 bit gir 16 exabyte. Hver bit du legger til, dobler antall adresser."
+    },
+    {
+      "term": "Adressefelt og MAR er forskjellige",
+      "def": "Bredden på MAR bestemmer hvor mye minne maskinen kan ha, en hard grense. Bredden på adressefeltet bestemmer hvor mye en enkelt ordre kan peke på direkte, og kan omgås."
+    },
+    {
+      "term": "Adresseringsmåter",
+      "def": "De ulike måtene å angi hvor noe ligger. Direkte adressering, den enkleste, har adressen rett i ordren. Alternativet er å la ordren peke på et register som inneholder adressen."
+    }
+  ]
 }

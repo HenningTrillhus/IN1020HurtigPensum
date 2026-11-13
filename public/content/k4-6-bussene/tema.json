@@ -4,5 +4,39 @@
   "title": "4.6 Bussene",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Buss",
+      "def": "Et knippe ledninger som frakter signaler fra ett sted til et annet. Hver enkelt ledning kalles en linje. Ordet kommer fra latin omnibus, «for alle»."
+    },
+    {
+      "term": "Adressebuss",
+      "def": "Bærer hvilken postkasse, altså adressen. Her snakker MAR."
+    },
+    {
+      "term": "Databuss",
+      "def": "Bærer hva som ligger i den, altså verdien. Her snakker MDR."
+    },
+    {
+      "term": "Kontrollbuss",
+      "def": "Bærer når og hvilken vei, med lese/skriv-linja og aktiveringslinja. Den bærer ingen tall, bare beskjeder om rekkefølge og retning."
+    },
+    {
+      "term": "Bussbredde",
+      "def": "Antall ledninger. 64 bit data og en 32-bits adresse krever 96 ledninger, uten å telle kontrolllinjene. Bredere buss gir mer data per overføring."
+    },
+    {
+      "term": "Skjevhet",
+      "def": "Små forskjeller i hvor lang tid signalene bruker på ulike ledninger. Maskinen må vente til det tregeste signalet er framme, så jo flere ledninger, jo større skjevhet, og det setter et tak på hvor fort en bred buss kan klokkes."
+    },
+    {
+      "term": "Seriell buss",
+      "def": "Sender bitene etter hverandre på ett ledningspar i stedet for ved siden av hverandre på mange. Da finnes det ingen skjevhet å vente på, og farten kan skrus langt opp. USB og PCI Express er serielle."
+    },
+    {
+      "term": "Minnebussen",
+      "def": "Det store unntaket: avstanden er kort, og båndbredden betyr så mye at den fortsatt er bred og parallell. Inne i prosessoren er avstandene så korte at nesten alt er parallelt."
+    }
+  ]
 }

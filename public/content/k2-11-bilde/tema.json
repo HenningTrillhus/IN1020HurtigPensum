@@ -4,5 +4,67 @@
   "title": "2.11 Bilde",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Piksel",
+      "def": "Ett bildepunkt, fra engelsk picture element. Et bilde er et rutenett av piksler."
+    },
+    {
+      "term": "RGB",
+      "def": "Fargemodellen skjermer bruker: rød, grønn og blå lys som legges sammen. Alle tre på full styrke gir hvitt."
+    },
+    {
+      "term": "CMYK",
+      "def": "Fargemodellen for trykk: cyan, magenta, gult og svart. Blekk trekker fra lys, mens skjermen legger til."
+    },
+    {
+      "term": "Fargedybde",
+      "def": "Antall bit per piksel. 24 bit, én byte per RGB-komponent, gir 16 777 216 farger."
+    },
+    {
+      "term": "Sampling",
+      "def": "Å legge et rutenett over noe kontinuerlig og lagre én verdi per rute. Det som lå mellom rutene, er borte."
+    },
+    {
+      "term": "Oppløsning",
+      "def": "Antall piksler i bildet. Dobler du det i begge retninger, firedobles filstørrelsen."
+    },
+    {
+      "term": "Fargetabell (palett)",
+      "def": "En liste over fargene i bildet. Hver piksel lagrer bare nummeret, så få farger gir stor besparelse."
+    },
+    {
+      "term": "Løpelengdekoding",
+      "def": "Lagrer «gress 5» i stedet for fem gress-piksler. Virker godt på store ensfargede flater."
+    },
+    {
+      "term": "Komprimering",
+      "def": "Å lagre samme informasjon i færre bit ved å utnytte mønstre. Virker bare så lenge dataene har det mønsteret."
+    },
+    {
+      "term": "Tapsfri komprimering",
+      "def": "Bildet kommer tilbake bit for bit likt. PNG og GIF bruker løpelengdekoding og lignende."
+    },
+    {
+      "term": "Komprimering med tap",
+      "def": "Kaster informasjon øyet knapt merker. JPEG gjør det og gir mye mindre filer."
+    },
+    {
+      "term": "JPEG",
+      "def": "Format for fotografier. Deler bildet i blokker og kaster de raskeste fargevariasjonene."
+    },
+    {
+      "term": "Generasjonstap",
+      "def": "Hver gang du lagrer et JPEG-bilde på nytt, kastes litt mer. Derfor lagres arkiv og bevismateriale tapsfritt."
+    },
+    {
+      "term": "Rastergrafikk",
+      "def": "Bilder lagret som rutenett av piksler. Blir hakkete når du zoomer."
+    },
+    {
+      "term": "Vektorgrafikk",
+      "def": "Lagrer oppskriften på å tegne bildet, ikke pikslene. Skarpt uansett størrelse, men passer bare for logoer, ikoner og diagrammer."
+    }
+  ]
 }

@@ -4,5 +4,47 @@
   "title": "3.8 Kontrollflyt",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Kontrollflyt",
+      "def": "Muligheten til å velge. Den er bygd av én ting: å kunne sette programtelleren til hva som helst. En maskin som bare kan kjøre rett fram, er en kalkulator."
+    },
+    {
+      "term": "BRA (ubetinget hopp)",
+      "def": "Setter telleren til xx, alltid. Brukt alene i en løkke gir det en løkke som aldri stopper."
+    },
+    {
+      "term": "BRZ",
+      "def": "Setter telleren til xx hvis akkumulatoren er null. Ellers skjer ingenting."
+    },
+    {
+      "term": "BRP",
+      "def": "Setter telleren til xx hvis akkumulatoren er null eller positiv. Null regnes som positivt, og det er en klassisk felle."
+    },
+    {
+      "term": "Betinget hopp",
+      "def": "Et veiskille. Maskinen tar den ene veien eller den andre, og valget avhenger bare av tallet i akkumulatoren, satt av en tidligere instruksjon."
+    },
+    {
+      "term": "Test og det som testes",
+      "def": "BRZ og BRP ser bare på akkumulatoren, ikke på instruksjonen over. Mellom testen og det som testes, kan det stå hva som helst. Skriver du en LDA mellom dem, tester du på noe helt annet enn du trodde."
+    },
+    {
+      "term": "Sammenligning er subtraksjon og hopp",
+      "def": "Vil du teste om et tall er 7, trekker du fra 7 og tester mot null. Alle sammenligninger blir en subtraksjon etterfulgt av et hopp, også i ekte maskiner, som derfor har et eget nullflagg."
+    },
+    {
+      "term": "Løkke",
+      "def": "Nedtellingen bruker BRP for å hoppe tilbake så lenge akkumulatoren er null eller større, og faller gjennom til HLT når den blir negativ. Én while-linje er tre instruksjoner."
+    },
+    {
+      "term": "If-else",
+      "def": "Linje for test, else-gren og et hopp forbi den: er svaret allerede positivt, hopper vi rett forbi else-grenen. Én if er to instruksjoner."
+    },
+    {
+      "term": "Feil som bare viser seg for noen inndata",
+      "def": "Uten HLT fortsetter maskinen inn i dataene, og hva som skjer, avhenger av hva brukeren tastet inn. Det er den verste typen feil som finnes."
+    }
+  ]
 }

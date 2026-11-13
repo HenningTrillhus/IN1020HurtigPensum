@@ -4,5 +4,51 @@
   "title": "4.9 Kontrollenheten og datastien",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Kontrollenhet",
+      "def": "Delen som får de andre delene til å samarbeide. Den leser opkoden og slår på de riktige ledningene."
+    },
+    {
+      "term": "Dekoder",
+      "def": "En krets som tar inn noen få bit og har én utgang per mulig kombinasjon, der nøyaktig én utgang er på. Fire bit opkode gir seksten utganger. Opkoden 0101 slår på LDA-linja."
+    },
+    {
+      "term": "Datasti (datapath)",
+      "def": "Samlingen av veier data kan ta inne i prosessoren: registrene, ALU-en, minnegrensesnittet og bryterne mellom dem. Kontrollenheten bygger ingen nye veier, den velger hvilke som er åpne i hvert øyeblikk."
+    },
+    {
+      "term": "MAR brukes to ganger",
+      "def": "Først får MAR adressen fra programtelleren for å hente selve ordren, så adressen fra ordrens eget adressefelt for å hente det ordren peker på."
+    },
+    {
+      "term": "LDA 42 steg for steg",
+      "def": "1: telleren går til MAR, ordren hentes til MDR og telleren klikkes fram. 2: ordren kopieres til instruksjonsregisteret. 3: opkoden går til kontrollenheten og adressedelen til MAR. 4: verdien hentes til MDR. 5: verdien kopieres til akkumulatoren."
+    },
+    {
+      "term": "Det meste er flytting",
+      "def": "Tre av de fem stegene kopierer bare mellom registre, og to er minneoppslag. Det eneste regnestykket er at telleren økes med én. En prosessor er for det meste en maskin som flytter tall."
+    },
+    {
+      "term": "ADD og STA",
+      "def": "ADD er lik LDA bortsett fra steg 5, der verdien og akkumulatoren går inn i ALU-en. STA er lik til og med steg 3, så snur retningen: akkumulatoren sender verdien til MDR og lese/skriv-linja settes til skriv."
+    },
+    {
+      "term": "Hopp",
+      "def": "I et hopp (BRZ) går adressedelen til programtelleren i stedet for MAR. Minnet røres ikke etter at ordren er hentet, så et hopp trenger fire steg i stedet for fem. Det er derfor telleren må klikkes fram allerede i steg 1."
+    },
+    {
+      "term": "Klokka",
+      "def": "Et signal som veksler mellom null og ett i fast tempo. Hvert slag slipper neste steg løs. Slagene må ligge langt nok fra hverandre til at det tregeste steget rekker over."
+    },
+    {
+      "term": "Klokkefrekvens",
+      "def": "Antall slag per sekund, grovt sett antall steg. Den tidlige hjemmedatamaskinen hadde 4,77 MHz, mens en bærbar i dag har 1,5 til 5,5 GHz. Det er et dårlig mål på hvor rask en maskin er."
+    },
+    {
+      "term": "Startadresse",
+      "def": "Ved oppstart står programtelleren på en fast adresse, bygd inn i maskinvaren. Der ligger et lite program i et minne som ikke glemmer, som sjekker maskinvaren og laster inn operativsystemet."
+    }
+  ]
 }

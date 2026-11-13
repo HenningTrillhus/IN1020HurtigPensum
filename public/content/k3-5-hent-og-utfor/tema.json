@@ -4,5 +4,43 @@
   "title": "3.5 Hent og utfør",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Hent-utfør-syklusen",
+      "def": "Løkka kontoristen gjør om og om igjen, uten å variere: hent instruksjonen, del den i to, utfør den, og gjenta. Den stopper bare når opkoden er 0."
+    },
+    {
+      "term": "De fire stegene",
+      "def": "1: bruk telleren som adresse, hent instruksjonen og klikk telleren fram. 2: del instruksjonen, opkoden i instruksjonsregisteret og adressedelen i adresseregisteret. 3: gjør det opkoden sier. 4: begynn på nytt."
+    },
+    {
+      "term": "Register",
+      "def": "En liten lagringsplass inne i prosessoren, langt raskere å nå enn en postkasse. En moderne prosessor har fra tjue til et par hundre registre som programmet kan se."
+    },
+    {
+      "term": "Akkumulator",
+      "def": "Kalkulatoren. Her ligger tallet det regnes med, og hit kommer svaret."
+    },
+    {
+      "term": "Programteller",
+      "def": "Telleren. Den sier hvilken instruksjon som skal hentes neste gang. Den peker aldri på instruksjonen som utføres nå, bare på den neste."
+    },
+    {
+      "term": "Instruksjonsregister",
+      "def": "Holder koden til instruksjonen som utføres nå. Ordren må huskes fra den hentes til den er utført."
+    },
+    {
+      "term": "Adresseregister",
+      "def": "Holder adressedelen av den samme instruksjonen."
+    },
+    {
+      "term": "Telleren klikkes under hentingen",
+      "def": "Telleren klikkes fram i steg 1, samtidig med hentingen, ikke etterpå. Da virker hopp: ordren setter telleren til noe nytt, og klikket blir bare overskrevet."
+    },
+    {
+      "term": "Syklusen spør aldri",
+      "def": "Steg 1 henter et tall, og steg 3 gjør det tallet sier. Ingen steg sjekker om tallet var ment som en ordre. Legger du data der neste ordre hentes, blir dataene utført."
+    }
+  ]
 }

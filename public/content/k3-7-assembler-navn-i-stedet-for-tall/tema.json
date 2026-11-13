@@ -4,5 +4,31 @@
   "title": "3.7 Assembler: navn i stedet for tall",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Maskinkode er ikke laget for mennesker",
+      "def": "Fire grunner til at tall er tungvint: du må huske hva hvert tall betyr, du ser ikke hva programmet gjør, du ser ikke hva som er data og hva som er kode, og setter du inn én instruksjon, forskyves alle adressene."
+    },
+    {
+      "term": "Assembler",
+      "def": "Programmet som bytter navnene på instruksjonene tilbake til tall. Språket heter assemblerspråk."
+    },
+    {
+      "term": "Én-til-én-oversettelse",
+      "def": "Hver linje du skriver i assembler blir nøyaktig én postkasse i minnet. Ingen linjer legges til, og ingen fjernes."
+    },
+    {
+      "term": "Assembler mot kompilator",
+      "def": "En kompilator kan gjøre én linje Python til hundre maskininstruksjoner, eller til null hvis linja var overflødig. En assembler gjør ingen slike valg."
+    },
+    {
+      "term": "Maskinen kjenner ikke LDA",
+      "def": "Maskinen har aldri sett de bokstavene. LDA er noe vi skriver, og assembleren fjerner det før maskinen får se noe. Grensesnittet er navnene, og implementasjonen er tallene."
+    },
+    {
+      "term": "Det ligger alltid bare tall der",
+      "def": "Selv om vi skriver navn, er det tall som ligger i postkassene. Det er verdt å huske hver gang du leser et assemblerprogram."
+    }
+  ]
 }

@@ -4,5 +4,31 @@
   "title": "2.7 Negative tall",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Fortegn og størrelse",
+      "def": "Den enkleste ideen: én bit for fortegn og resten for tallet. Gir to nuller, +0 og −0, og krever egen krets for subtraksjon."
+    },
+    {
+      "term": "Toerkomplement",
+      "def": "Standardmåten å lagre heltall med fortegn. Inverter alle bit og legg til 1 for å bytte fortegn."
+    },
+    {
+      "term": "Fortegnsbit",
+      "def": "Biten lengst til venstre i toerkomplement. 1 betyr negativt, men den teller også som −2^(n−1), ikke bare som et flagg."
+    },
+    {
+      "term": "Ett nullpunkt",
+      "def": "I toerkomplement finnes bare én null, og den vanlige addisjonskretsen virker for både positive og negative tall."
+    },
+    {
+      "term": "Asymmetrisk område",
+      "def": "Med n bit går tallene fra −2^(n−1) til 2^(n−1) − 1. Det finnes ett negativt tall mer enn positive."
+    },
+    {
+      "term": "Fortegnsutvidelse",
+      "def": "Når du gjør et tall bredere, kopieres fortegnsbiten inn fra venstre. Da beholder tallet verdien sin."
+    }
+  ]
 }

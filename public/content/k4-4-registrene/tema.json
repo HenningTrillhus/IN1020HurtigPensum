@@ -4,5 +4,47 @@
   "title": "4.4 Registrene",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Register",
+      "def": "En fast lagringsplass inne i prosessoren, viet til én bestemt oppgave. Registre varierer fra én enkelt bit til 128 bit."
+    },
+    {
+      "term": "Lommer, ikke garderobe",
+      "def": "Minnet er en garderobe med nummererte knagger, der du trenger nummeret. Registre er lommer: hver har sin ting, du stikker hånda ned dit det pleier å være."
+    },
+    {
+      "term": "Kablet til sin rolle",
+      "def": "Hvert register har en størrelse, en plassering og et sett operasjoner som følger av hva det skal brukes til. Registre har ingen adresse og slås ikke opp, kontrollenheten snakker direkte til dem."
+    },
+    {
+      "term": "De fire registrene",
+      "def": "Akkumulatoren holder tallet det regnes med, programtelleren holder adressen til neste ordre, instruksjonsregisteret holder ordren som utføres nå, og adresseregisteret holder adressedelen av ordren."
+    },
+    {
+      "term": "Generelle registre",
+      "def": "Registre programmet kan bruke til hva det vil, i stedet for ett register til regning. RISC-V har 32, ARM i 64-bits utgave har 31 og x86-64 har 16."
+    },
+    {
+      "term": "Registerfil",
+      "def": "Samlingen av de generelle registrene."
+    },
+    {
+      "term": "Registre og ordrebredde",
+      "def": "32 registre krever fem bit å peke på, og seksten krever fire. Flere registre gjør programmene raskere, men hvert ekstra registernummer spiser plass fra de andre feltene i ordren."
+    },
+    {
+      "term": "Hvorfor registre",
+      "def": "Å hente en verdi fra minnet krever at adressen legges ut, at dekoderen finner riktig rad og at verdien sendes tilbake. Å flytte noe mellom registre hopper over alt dette. I ARM og RISC-V er det bare to slags ordrer som rører minnet: hent inn i et register, og skriv ut igjen."
+    },
+    {
+      "term": "Minneoppslag i en løkke",
+      "def": "Å telle ned med LDA, SUB og STA koster seks turer til minnet: tre for å hente ordrene og tre for dataene. Ligger telleren i et register, trengs én ordre, SUB r5, r5, 1, og én tur."
+    },
+    {
+      "term": "Registerallokering",
+      "def": "Arbeidet en kompilator gjør med å bestemme hvilke variabler som skal bo i et register. Variabler programmet rører ofte, særlig inne i en løkke, gir mest igjen."
+    }
+  ]
 }

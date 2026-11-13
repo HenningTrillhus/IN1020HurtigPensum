@@ -4,5 +4,55 @@
   "title": "3.9 Adresser, etiketter og data",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Talladresser skalerer ikke",
+      "def": "Setter du inn én instruksjon, forskyves alt under, og adressene i resten av programmet peker feil. Det kommer ingen feilmelding, programmet gjør bare noe annet enn det skal."
+    },
+    {
+      "term": "Etikett",
+      "def": "Et navn på en adresse. Du skriver navnet i venstre kolonne for å døpe en postkasse og i høyre kolonne for å peke på den. Assembleren regner ut adressene på nytt hver gang, og etiketten forsvinner når den er ferdig."
+    },
+    {
+      "term": "Etikett mot variabel",
+      "def": "En variabel i Python er et navn på en verdi som kan flytte seg. En etikett er et navn på en adresse, og adressen ligger fast. Det er stedet som har navn, ikke innholdet."
+    },
+    {
+      "term": "DAT",
+      "def": "Ikke en instruksjon, maskinen har ingen opkode for den. Det er en beskjed til assembleren: sett av en postkasse her, og legg eventuelt et starttall i den."
+    },
+    {
+      "term": "Pseudoinstruksjon",
+      "def": "En beskjed til assembleren som ikke blir en instruksjon i maskinen, slik DAT er det."
+    },
+    {
+      "term": "Initialiser dataene",
+      "def": "En DAT uten starttall inneholder det som lå der fra forrige kjøring. Programmet virker kanskje første gang og feiler andre gang."
+    },
+    {
+      "term": "En etikett er bare et tall",
+      "def": "I peker DAT en står adressen til postkassen en, og i hent LDA en står 500. Forskjellen mellom data og instruksjon er sifferet lengst til venstre, og ingenting annet."
+    },
+    {
+      "term": "Selvmodifiserende kode",
+      "def": "Et program som skriver om sine egne instruksjoner, for eksempel ved å legge til én på LDA 12 for å få LDA 13. Det er fortsatt bare en adressedel som økes, ikke verdien på adressen. Teknikken avslører hva en maskin er, men er nesten umulig å feilsøke."
+    },
+    {
+      "term": "Indirekte adressering",
+      "def": "Det en ekte prosessor gjør i stedet: indeksregistre. Instruksjonen sier «hent fra adressen som står i registeret», og du teller opp registeret i stedet for instruksjonen. Programmet ligger i ro."
+    },
+    {
+      "term": "Skrivbart eller kjørbart",
+      "def": "Moderne operativsystemer merker minnet ditt: en side kan være skrivbar eller kjørbar, som hovedregel ikke begge deler. Da kan ikke et program uforvarende skrive nye instruksjoner til seg selv."
+    },
+    {
+      "term": "Just-in-time-kompilering",
+      "def": "Nettleseren oversetter JavaScript til maskinkode mens siden kjører, skriver koden i minnet og hopper til den. Java og C# gjør det samme."
+    },
+    {
+      "term": "Skriving til feil adresse",
+      "def": "Et program som skriver til feil adresse, overskriver noe som tilfeldigvis lå der. Er det en instruksjon, kjører maskinen noe annet, og kan en utenforstående påvirke adressen, kan vedkommende bestemme hva som blir kjørt. Det ligger under mange sikkerhetshull."
+    }
+  ]
 }

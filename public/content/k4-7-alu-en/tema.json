@@ -4,5 +4,39 @@
   "title": "4.7 ALU-en",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "ALU (aritmetisk-logisk enhet)",
+      "def": "Stedet der to tall blir til ett. Den tegnes tradisjonelt som en bred V. I LMC var den kalkulatoren på pulten."
+    },
+    {
+      "term": "Tre inn, to ut",
+      "def": "ALU-en har tre innganger: to data fra siden og ett styresignal ovenfra. Ut kommer resultatet og flaggene."
+    },
+    {
+      "term": "Styresignal",
+      "def": "Beskjeden om hva ALU-en skal gjøre (legg sammen, trekk fra, sammenlign bit for bit). Det kommer fra opkoden og er ikke et tall som skal regnes med."
+    },
+    {
+      "term": "Hva ALU-en kan",
+      "def": "Addisjon og subtraksjon, logiske operasjoner bit for bit (OG, ELLER, IKKE, ENTEN-ELLER), og skift og rotasjon. Multiplikasjon og divisjon står ikke på lista i den klassiske ALU-en."
+    },
+    {
+      "term": "Subtraksjon som addisjon",
+      "def": "a − b regnes som a + (−b) når negative tall skrives i toerkomplement. Maskinen trenger ingen egen subtraksjonskrets, den inverterer og legger til."
+    },
+    {
+      "term": "Multiplikasjon og divisjon fra addisjon",
+      "def": "Multiplikasjon kan gjøres med gjentatt addisjon (i praksis med skift og addisjon). Heltallsdivisjon kan gjøres med gjentatt subtraksjon."
+    },
+    {
+      "term": "Flyttallsenhet",
+      "def": "En egen enhet ved siden av ALU-en. Desimaltall, kvadratrøtter og trigonometri lar seg ikke løse med heltallsaddisjon på noen praktisk måte."
+    },
+    {
+      "term": "Mange små, satt sammen",
+      "def": "En 64-bits ALU består av 64 enheter som behandler én bit hver. For addisjon må menten videre fra posisjon til posisjon, og det gir en kjede. Logiske operasjoner regnes bit for bit, helt uavhengig, så alle posisjoner blir ferdige samtidig."
+    }
+  ]
 }

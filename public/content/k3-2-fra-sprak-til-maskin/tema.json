@@ -4,5 +4,43 @@
   "title": "3.2 Fra språk til maskin",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Høynivåspråk",
+      "def": "Språk laget for mennesker, som Python, Java og C. Du skriver svar = a + b, ikke hvor a ligger i minnet."
+    },
+    {
+      "term": "Assemblerspråk",
+      "def": "Maskinkode med navn på. I stedet for tallet 5 skriver du LDA. Ett navn per instruksjon."
+    },
+    {
+      "term": "Maskinkode",
+      "def": "Programmet som tall. Det er det eneste prosessoren faktisk leser, og tallene er til slutt bit."
+    },
+    {
+      "term": "Nedstigningen",
+      "def": "Den samme beregningen på fire nivåer: høynivåspråk, assemblerspråk, maskinkode og bit. Hvert trinn ned fjerner et navn og legger til et tall."
+    },
+    {
+      "term": "Kompilator",
+      "def": "Oversetter hele programmet én gang, før det kjøres. Resultatet er en fil med maskinkode. C og Rust gjør det slik."
+    },
+    {
+      "term": "Tolk",
+      "def": "Tar programmet linje for linje mens det kjører. Python gjør i hovedsak det. Det finnes aldri maskinkode for din Python-linje, bare for tolken som adlyder den."
+    },
+    {
+      "term": "Bytekode",
+      "def": "Mellomformen Python først oversetter kildekoden til. Selve tolken leser bytekoden og gjør det den sier."
+    },
+    {
+      "term": "Abstraksjoner lekker",
+      "def": "Når Python-programmet ditt er uforklarlig tregt eller krasjer med en feilmelding om minne, ligger svaret under. Det er en av grunnene til at vi går helt ned."
+    },
+    {
+      "term": "Simula",
+      "def": "Språket Ole-Johan Dahl og Kristen Nygaard utviklet i Oslo på 1960-tallet. Klasser, objekter og arv kom derfra og gikk videre til blant annet C++, Java og Python."
+    }
+  ]
 }

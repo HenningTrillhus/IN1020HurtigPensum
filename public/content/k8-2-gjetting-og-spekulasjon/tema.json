@@ -3,5 +3,19 @@
   "chapter": "Kapittel 8 – Moderne maskiner",
   "title": "8.2 Gjetting og spekulasjon",
   "description": "Videresending, forgreningsprediksjon, spekulativ utføring, superskalar og utføring ute av rekkefølge.",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Pipeline (samlebånd)",
+      "def": "Prosessoren starter neste ordre før forrige er ferdig, som et samlebånd."
+    },
+    {
+      "term": "Forgreningsprediksjon",
+      "def": "Prosessoren gjetter hvilken vei et hopp tar, så samlebåndet ikke stopper og venter."
+    },
+    {
+      "term": "Spekulativ kjøring",
+      "def": "Prosessoren begynner å utføre ordre før den vet om de trengs, og kaster resultatet hvis gjettingen var feil."
+    }
+  ]
 }

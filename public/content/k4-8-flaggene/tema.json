@@ -4,5 +4,55 @@
   "title": "4.8 Flaggene",
   "description": "",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "terms": [
+    {
+      "term": "Flagg",
+      "def": "Et register på nøyaktig én bit: enten oppe eller nede, ett eller null, ja eller nei. Flaggene ligger samlet i et statusregister og settes på nytt hver gang ALU-en regner."
+    },
+    {
+      "term": "Statusregister",
+      "def": "Registeret som samler flaggene."
+    },
+    {
+      "term": "Z (null)",
+      "def": "Settes når resultatet ble null."
+    },
+    {
+      "term": "N (negativ)",
+      "def": "Settes når resultatet ble negativt, altså når øverste bit er 1."
+    },
+    {
+      "term": "C (mente)",
+      "def": "Settes når det ble mente ut av øverste posisjon."
+    },
+    {
+      "term": "V (overflyt)",
+      "def": "Settes når svaret ikke fikk plass og fortegnet ble feil."
+    },
+    {
+      "term": "Betinget hopp i en ekte maskin",
+      "def": "Spør om et flagg, ikke om et tall. Du sammenligner ved å trekke ett tall fra et annet og se på flaggene som ble satt. Ble Z satt, var tallene like. Er de ulike, må du se på N og V sammen."
+    },
+    {
+      "term": "Hvorfor V må være med",
+      "def": "Overflyt snur fortegnsbitet, og da lyver N. Sammenligner du +7 med −2 i fire bit, blir svaret negativt selv om sju er størst."
+    },
+    {
+      "term": "Mente er ikke overflyt",
+      "def": "Mente alene er ufarlig: i toerkomplement kastes den ofte, og svaret er riktig. Overflyt betyr alltid feil svar. Ved addisjon kan overflyt bare skje når begge tallene har samme fortegn, og svaret har motsatt fortegn."
+    },
+    {
+      "term": "Ingen sjekker flagget",
+      "def": "Maskinen gjør ingenting med overflyt-flagget av seg selv. Den legger det gale svaret i akkumulatoren og går videre. Python sier fra fordi noen har skrevet kode som leser flagget."
+    },
+    {
+      "term": "Hva mente brukes til",
+      "def": "Skal en maskin med 32-bits ALU legge sammen to 64-bits tall, må den gjøre det i to omganger, og menten fra den første må med inn i den andre."
+    },
+    {
+      "term": "Sammenlign-ordre",
+      "def": "Ordrer som trekker fra, kaster svaret og beholder flaggene. De heter gjerne noe med «sammenlign»."
+    }
+  ]
 }
