@@ -845,3 +845,16 @@ button.total-progress .completion { display: block }
 .adm-table tr:last-child td { border-bottom: 0 }
 .adm-all { margin-top: 18px }
 .adm-all summary { cursor: pointer; color: var(--txt2); padding: 8px 0 }
+
+/* Melding om ny adresse, bare på de gamle vercel.app-adressene. Ligger øverst så den ikke krasjer med samtykkebanneret nederst. */
+.moved {
+  position: fixed; left: 12px; right: 12px; top: max(12px, env(safe-area-inset-top)); z-index: 90; margin: 0 auto; max-width: 460px;
+  padding: 14px 16px; border-radius: 18px; background: var(--surface2); border: 1px solid var(--line-strong); color: var(--fg);
+  box-shadow: 0 12px 40px #000a; animation: movedIn .4s var(--ease) both;
+}
+@keyframes movedIn { from { opacity: 0; transform: translateY(-16px) } to { opacity: 1; transform: none } }
+.moved-title { margin: 0 0 4px; font-weight: 700; font-size: 15px }
+.moved-text { margin: 0 0 12px; color: var(--txt2); font-size: 14px; line-height: 1.5 }
+.moved-actions { display: flex; flex-wrap: wrap; gap: 10px }
+.moved-actions .consent-btn { display: inline-flex; align-items: center; text-decoration: none }
+@media (prefers-reduced-motion: reduce) { .moved { animation-duration: .01s } }
