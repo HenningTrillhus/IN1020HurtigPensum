@@ -9,6 +9,7 @@ interface AdminData {
   reporters: number
   raters: number
   viewKeys: number
+  counts: { views: number; votes: number; reports: number; ratings: number }
   perVideo: Record<string, number>
 }
 interface Stat { likes: number; dislikes: number; views: number; reports: number }
@@ -82,6 +83,24 @@ export default function Admin({ topics, secret }: { topics: Topic[]; secret: str
   const top = [...rows].sort((a, b) => b.views - a.views).slice(0, 15)
   const problems = [...rows].filter(r => r.dislikes > 0 || r.reports > 0).sort((a, b) => (b.reports * 3 + b.dislikes) - (a.reports * 3 + a.dislikes)).slice(0, 10)
 
+  // Grovt anslag på forbruk siste 30 dager. Tallene er kommandoer per handling, talt fra API-koden:
+  // visning ≈ 7, stemme ≈ 9, feilmelding ≈ 9, vurdering ≈ 10. Lesing av tall (ca. 30 kommandoer og 8 kall per besøk)
+  // kan ikke måles, så den er en gjetning ut fra antall enheter og tre besøk hver.
+  const usage = admin ? (() => {
+    const c = admin.counts
+    const visits = admin.devices.total * 3
+    const rows = [
+      { label: 'Visninger', n: c.views, per: 7, calls: c.views },
+      { label: 'Stemmer', n: c.votes, per: 9, calls: c.votes },
+      { label: 'Feilmeldinger', n: c.reports, per: 9, calls: c.reports },
+      { label: 'Stjernevurderinger', n: c.ratings, per: 10, calls: c.ratings },
+      { label: 'Lesing av tall (gjetning)', n: visits, per: 30, calls: visits * 8 },
+    ].map(r => ({ ...r, cmds: r.n * r.per }))
+    const cmds = rows.reduce((n, r) => n + r.cmds, 0)
+    const calls = rows.reduce((n, r) => n + r.calls, 0)
+    return { rows, cmds, calls }
+  })() : null
+
   if (state === 'denied') {
     return <div className="shell"><div className="wip-page"><h2>Ingen tilgang</h2><p>Lenken mangler riktig nøkkel.</p></div></div>
   }
@@ -110,6 +129,28 @@ export default function Admin({ topics, secret }: { topics: Topic[]; secret: str
             Enheter telles bare for de som har godtatt lagring, siden enhets-ID-en ellers aldri sendes. Hver teller stopper på 999 per video, så
             summene kan være lavere enn virkeligheten for de mest sette videoene. Én person med to nettlesere teller som to enheter.
           </p>
+
+          {usage && (
+            <>
+              <h2 className="adm-h">Forbruk, grovt anslag (30 dager)</h2>
+              <div className="adm-cards">
+                <div><small>Redis-kommandoer</small><strong>ca. {nf(Math.round(usage.cmds / 100) * 100)}</strong><em>{(usage.cmds / 5000).toFixed(usage.cmds < 5000 ? 1 : 0).replace('.', ',')} % av gratis 500 000</em></div>
+                <div><small>Funksjonskall</small><strong>ca. {nf(Math.round(usage.calls / 100) * 100)}</strong><em>{(usage.calls / 10000).toFixed(1).replace('.', ',')} % av gratis 1 million</em></div>
+              </div>
+              <div className="adm-scroll"><table className="adm-table">
+                <thead><tr><th>Handling</th><th>Antall</th><th>Kmd. hver</th><th>Kommandoer</th></tr></thead>
+                <tbody>{usage.rows.map(r => (
+                  <tr key={r.label}><td>{r.label}</td><td>{nf(r.n)}</td><td>{r.per}</td><td>{nf(r.cmds)}</td></tr>
+                ))}</tbody>
+              </table></div>
+              <p className="adm-note">
+                Anslaget regner bare med besøkende som har godtatt lagring (de andre er usynlige her, men bruker litt lesing). Stemmer, feilmeldinger og
+                stjerner er alle som er lagret siden start. Grensene er omtrent: Upstash gratis 500 000 kommandoer i måneden, og Vercel Hobby 1 million funksjonskall.
+                Over grensen koster Upstash ca. 0,2 USD per 100 000 kommandoer. Denne siden bruker selv noen hundre kommandoer hver gang den åpnes. Sjekk
+                de nøyaktige tallene i dashbordene til Upstash og Vercel.
+              </p>
+            </>
+          )}
 
           <h2 className="adm-h">Per kapittel</h2>
           <div className="adm-scroll"><table className="adm-table">

@@ -93,6 +93,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     reporters: distinct(reportKeys),
     raters: distinct(rateKeys),
     viewKeys: viewKeys.length,
+    counts: { views: viewKeys.length, votes: voteKeys.length, reports: reportKeys.length, ratings: rateKeys.length },
     perVideo,
   })
 }
