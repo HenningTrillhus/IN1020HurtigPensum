@@ -16,7 +16,8 @@ interface Stat { likes: number; dislikes: number; views: number; reports: number
 interface Rating { avg: number; count: number }
 
 const nf = (n: number) => n.toLocaleString('nb-NO')
-const avgf = (n: number) => n.toFixed(1).replace('.', ',')
+const gb = (b: number) => (b >= 1e9 ? `${(b / 1e9).toFixed(2).replace('.', ',')} GB` : `${Math.round(b / 1e6)} MB`)
+const avgf =(n: number) => n.toFixed(1).replace('.', ',')
 
 // Henter åpne tall (maks 30 id-er per kall) rått, uten at egne usendte valg regnes med.
 async function getStats(ids: string[]): Promise<Record<string, Stat>> {
@@ -33,6 +34,7 @@ export default function Admin({ topics, secret }: { topics: Topic[]; secret: str
   const [admin, setAdmin] = useState<AdminData | null>(null)
   const [stats, setStats] = useState<Record<string, Stat>>({})
   const [ratings, setRatings] = useState<Record<string, Rating>>({})
+  const [storage, setStorage] = useState<{ total: number; video: number; audio: number; image: number; files: number } | null>(null)
   const [state, setState] = useState<'loading' | 'ok' | 'denied' | 'error'>('loading')
 
   const videos = useMemo(() => topics.flatMap(t => t.videos.map((v, i) => ({
@@ -52,6 +54,7 @@ export default function Admin({ topics, secret }: { topics: Topic[]; secret: str
         fetch(`/api/ratings?ids=${encodeURIComponent(chapterKeys.join(','))}`).then(x => (x.ok ? x.json() : {})),
       ])
       setStats(s); setRatings(rr)
+      fetch('/storage.json', { cache: 'no-store' }).then(x => (x.ok ? x.json() : null)).then(setStorage).catch(() => {})
       setState('ok')
     } catch { setState('error') }
   }, [secret, videos, chapterKeys])
@@ -129,6 +132,23 @@ export default function Admin({ topics, secret }: { topics: Topic[]; secret: str
             Enheter telles bare for de som har godtatt lagring, siden enhets-ID-en ellers aldri sendes. Hver teller stopper på 999 per video, så
             summene kan være lavere enn virkeligheten for de mest sette videoene. Én person med to nettlesere teller som to enheter.
           </p>
+
+          {storage && (
+            <>
+              <h2 className="adm-h">Lagring på serveren</h2>
+              <div className="adm-cards">
+                <div><small>Totalt</small><strong>{gb(storage.total)}</strong><em>{nf(storage.files)} filer</em></div>
+                <div><small>Videoer</small><strong>{gb(storage.video)}</strong></div>
+                <div><small>Podkaster</small><strong>{gb(storage.audio)}</strong></div>
+                <div><small>Bilder og ikoner</small><strong>{gb(storage.image)}</strong></div>
+              </div>
+              <p className="adm-note">
+                Det er størrelsen på selve siden. Hver ny utgivelse lagres som en egen kopi hos Vercel (Hobby har 10 GB totalt), og
+                deploy-skriptet sletter de gamle, så vanligvis ligger det én til to kopier der: ca. {gb(storage.total * 2)} i bruk.
+                Hver besøkende som ser alt, laster ned opptil {gb(storage.video + storage.audio)} (av 100 GB overføring i måneden).
+              </p>
+            </>
+          )}
 
           {usage && (
             <>
