@@ -10,7 +10,6 @@ interface AdminData {
   raters: number
   viewKeys: number
   counts: { views: number; votes: number; reports: number; ratings: number }
-  time: { totalSec: number; sessions: number; devices: number; since: string | null }
   perVideo: Record<string, number>
 }
 interface Stat { likes: number; dislikes: number; views: number; reports: number }
@@ -18,8 +17,6 @@ interface Rating { avg: number; count: number }
 
 const nf = (n: number) => n.toLocaleString('nb-NO')
 const avgf = (n: number) => n.toFixed(1).replace('.', ',')
-// Minutter med én desimal under ti, ellers hele.
-const mins = (sec: number) => { const m = sec / 60; return m < 10 ? avgf(m) : nf(Math.round(m)) }
 
 // Henter åpne tall (maks 30 id-er per kall) rått, uten at egne usendte valg regnes med.
 async function getStats(ids: string[]): Promise<Record<string, Stat>> {
@@ -126,15 +123,11 @@ export default function Admin({ topics, secret }: { topics: Topic[]; secret: str
             <div><small>Tommel opp</small><strong>{nf(sum(r => r.likes))}</strong><em>{nf(admin.voters)} enheter har stemt</em></div>
             <div><small>Tommel ned</small><strong>{nf(sum(r => r.dislikes))}</strong></div>
             <div><small>Feilmeldinger</small><strong>{nf(sum(r => r.reports))}</strong><em>{nf(admin.reporters)} enheter</em></div>
-            <div><small>Tid på siden, totalt</small><strong>{mins(admin.time.totalSec)}</strong><em>minutter{admin.time.totalSec >= 3600 ? ` (${avgf(admin.time.totalSec / 3600)} timer)` : ''}</em></div>
-            <div><small>Snitt per enhet</small><strong>{admin.time.devices ? mins(admin.time.totalSec / admin.time.devices) : '–'}</strong><em>minutter, {nf(admin.time.devices)} {admin.time.devices === 1 ? 'enhet' : 'enheter'}</em></div>
-            <div><small>Snitt per besøk</small><strong>{admin.time.sessions ? mins(admin.time.totalSec / admin.time.sessions) : '–'}</strong><em>minutter, {nf(admin.time.sessions)} {admin.time.sessions === 1 ? 'besøk' : 'besøk'}</em></div>
             <div><small>Stjernevurderinger</small><strong>{nf(Object.values(ratings).reduce((n, r) => n + r.count, 0))}</strong><em>{nf(admin.raters)} enheter</em></div>
           </div>
           <p className="adm-note">
             Enheter telles bare for de som har godtatt lagring, siden enhets-ID-en ellers aldri sendes. Hver teller stopper på 999 per video, så
             summene kan være lavere enn virkeligheten for de mest sette videoene. Én person med to nettlesere teller som to enheter.
-            {admin.time.since ? ` Tidsmålingen startet ${new Date(admin.time.since).toLocaleDateString('nb-NO')} og teller bare aktiv tid mens siden er synlig, for besøkende som har godtatt lagring.` : ' Tidsmålingen har ikke fått noen data ennå. Den teller bare aktiv tid mens siden er synlig, for besøkende som har godtatt lagring.'}
           </p>
 
           {usage && (

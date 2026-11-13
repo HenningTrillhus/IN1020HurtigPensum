@@ -40,10 +40,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const given = String(req.headers['x-admin-key'] ?? '')
   if (!given || !keyOk(given, secret)) return res.status(401).json({ error: 'no access' })
 
-  const [viewKeys, voteKeys, reportKeys, rateKeys, timeKeys] = await Promise.all([
-    scanKeys('dv-view:*'), scanKeys('dv:*'), scanKeys('dr:*'), scanKeys('rt:*'), scanKeys('tdev:*'),
+  const [viewKeys, voteKeys, reportKeys, rateKeys] = await Promise.all([
+    scanKeys('dv-view:*'), scanKeys('dv:*'), scanKeys('dr:*'), scanKeys('rt:*'),
   ])
-  const [tsum, tses, tstart] = await Promise.all([redis.get<number>('tsum'), redis.get<number>('tses'), redis.get<string>('tstart')])
 
   const dev = (k: string) => k.slice(k.lastIndexOf(':') + 1)
   const vid = (k: string) => k.slice(k.indexOf(':') + 1, k.lastIndexOf(':'))
@@ -95,7 +94,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     raters: distinct(rateKeys),
     viewKeys: viewKeys.length,
     counts: { views: viewKeys.length, votes: voteKeys.length, reports: reportKeys.length, ratings: rateKeys.length },
-    time: { totalSec: Number(tsum ?? 0), sessions: Number(tses ?? 0), devices: timeKeys.length, since: tstart ?? null },
     perVideo,
   })
 }
