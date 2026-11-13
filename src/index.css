@@ -826,3 +826,22 @@ button.total-progress .completion { display: block }
 .consent-more-btn { margin-left: auto; background: none; border: 0; color: var(--mut); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; padding: 8px 4px }
 .consent-link { display: block; margin: 18px auto 8px; background: none; border: 0; color: var(--mut); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; padding: 8px }
 @media (prefers-reduced-motion: reduce) { .consent, .consent.leaving { animation-duration: .01s } }
+
+/* Skjult statistikkside */
+.adm { padding-bottom: 60px }
+.adm-refresh { margin-left: 8px; background: none; border: 1px solid var(--line-strong); color: var(--fg); border-radius: 99px; padding: 4px 12px; font: inherit; font-size: 13px; cursor: pointer }
+.adm-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 16px 0 8px }
+.adm-cards > div { padding: 14px 14px 12px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); display: flex; flex-direction: column; gap: 2px }
+.adm-cards small { color: var(--mut); font-size: 12.5px }
+.adm-cards strong { font-size: 28px; letter-spacing: -.02em; font-variant-numeric: tabular-nums }
+.adm-cards em { font-style: normal; color: var(--mut); font-size: 12px }
+.adm-note { color: var(--mut); font-size: 13px; line-height: 1.5; margin: 6px 0 18px }
+.adm-h { font-size: 17px; margin: 22px 0 8px }
+.adm-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px }
+.adm-table { width: 100%; border-collapse: collapse; font-size: 13.5px; font-variant-numeric: tabular-nums }
+.adm-table th, .adm-table td { padding: 8px 10px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line) }
+.adm-table th:first-child, .adm-table td:first-child { text-align: left; white-space: normal; min-width: 150px }
+.adm-table th { color: var(--mut); font-weight: 600; font-size: 12px }
+.adm-table tr:last-child td { border-bottom: 0 }
+.adm-all { margin-top: 18px }
+.adm-all summary { cursor: pointer; color: var(--txt2); padding: 8px 0 }

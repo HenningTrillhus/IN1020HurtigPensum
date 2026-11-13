@@ -7,6 +7,8 @@ export default function ConsentBanner() {
   const [leaving, setLeaving] = useState(false)
   const [more, setMore] = useState(false)
   useEffect(() => { if (choice === null) { setLeaving(false); setMore(false) } }, [choice])
+  // Ikke på den skjulte statistikksiden.
+  if (location.hash.startsWith('#/admin')) return null
   if (choice !== null && !leaving) return null
 
   // Banneret tones ut før valget lagres og det fjernes.

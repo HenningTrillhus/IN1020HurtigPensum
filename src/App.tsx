@@ -13,6 +13,7 @@ import Wip from './pages/Wip'
 import ChapterTerms from './pages/ChapterTerms'
 import Shuffle from './pages/Shuffle'
 import ConsentBanner from './ConsentBanner'
+import Admin from './pages/Admin'
 import { swipeHandlers, type SwipeStart } from './swipe'
 
 const base = import.meta.env.BASE_URL + 'content/'
@@ -117,7 +118,9 @@ function AppInner() {
     if (!topics) return
     const [, a, b, sub] = hash.replace('#', '').split('/')
     let title = SITE
-    if (a === 'shuffle') {
+    if (a === 'admin') {
+      title = 'Statistikk'
+    } else if (a === 'shuffle') {
       title = `Bland videoer · ${SITE}`
     } else if (a === 'kap') {
       const c = chapters.find(x => x.key === b)
@@ -149,6 +152,8 @@ function AppInner() {
       : <Overview chapters={chapters} courseUrl={courseUrl} exam={exam} />
   }
 
+  // Skjult statistikkside. Finnes bare som lenke (#/admin/<nøkkel>), og nøkkelen sjekkes på serveren.
+  if (a === 'admin') return <Admin topics={topics} secret={b ?? ''} />
   if (a === 'shuffle') return <Shuffle topics={topics} root={base} />
 
   const topic = topics.find(t => t.id === a)
