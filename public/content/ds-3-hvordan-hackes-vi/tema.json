@@ -3,6 +3,7 @@
   "chapter": "Datasikkerhet",
   "title": "S3 Hvordan hackes vi?",
   "description": "Trusselaktører og angrepsvektorer: sårbarheter, skadevare, SQL-injeksjon, XSS og sosial manipulasjon.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {

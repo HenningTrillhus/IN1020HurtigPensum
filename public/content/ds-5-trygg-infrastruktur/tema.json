@@ -3,6 +3,7 @@
   "chapter": "Datasikkerhet",
   "title": "S5 Trygg infrastruktur og sikre datasystemer",
   "description": "Trusler mot trådløse og kablede nett, systemsikkerhet, buffer-utnyttelser og digitale verdikjeder.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {

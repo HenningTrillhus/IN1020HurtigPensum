@@ -3,6 +3,7 @@
   "chapter": "Kapittel 8 – Moderne maskiner",
   "title": "8.3 Kjerner og tråder",
   "description": "Hvorfor åtte kjerner, SMT, prosesser og tråder, og Amdahls lov.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {

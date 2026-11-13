@@ -3,6 +3,7 @@
   "chapter": "Datasikkerhet",
   "title": "S6 Å skape trygge digitale tjenester",
   "description": "Lovpålagte krav som GDPR, trusselmodellering og risikoanalyse, og systematisk sikkerhetsarbeid.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {

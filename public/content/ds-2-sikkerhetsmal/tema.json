@@ -3,6 +3,7 @@
   "chapter": "Datasikkerhet",
   "title": "S2 Å innfri sikkerhetsmål",
   "description": "Autorisert og uautorisert tilgang: entitet, identitet, autentisering, autorisering og tilgangskontroll.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {

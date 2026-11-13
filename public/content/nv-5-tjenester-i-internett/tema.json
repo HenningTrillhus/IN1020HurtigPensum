@@ -3,6 +3,7 @@
   "chapter": "Nettverk",
   "title": "N5 Tjenester i Internett",
   "description": "TCP med flyt- og metningskontroll, DNS, web og HTTP, videostrømming og tingenes internett.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {

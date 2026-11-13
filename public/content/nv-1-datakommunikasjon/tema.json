@@ -3,6 +3,7 @@
   "chapter": "Nettverk",
   "title": "N1 Introduksjon til datakommunikasjon",
   "description": "Pakkesvitsjing mot telefonnett, komponentene i et nettverk, klient-tjener og peer-to-peer, og nettverkstopologier.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {

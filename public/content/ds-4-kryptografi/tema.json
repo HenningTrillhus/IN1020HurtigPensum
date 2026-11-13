@@ -3,6 +3,7 @@
   "chapter": "Datasikkerhet",
   "title": "S4 Kryptografi",
   "description": "Nøkkelen til digital samhandling: klartekst og kryptert tekst, hemmelig og offentlig nøkkel, hash og kryptering på flere lag.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {

@@ -3,6 +3,7 @@
   "chapter": "Nettverk",
   "title": "N2 Lagdeling og protokoller",
   "description": "Hva en protokoll er, hvorfor kommunikasjon deles i lag, og TCP/IP-modellen.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {

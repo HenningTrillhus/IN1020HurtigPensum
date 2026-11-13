@@ -3,6 +3,7 @@
   "chapter": "Nettverk",
   "title": "N3 Din hjemmeruter: lagene spiller sammen",
   "description": "Hvordan applikasjon, transport, IP og link virker sammen: porter, IP-adresser, MAC-adresser og subnett.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {

@@ -3,6 +3,7 @@
   "chapter": "Kapittel 8 – Moderne maskiner",
   "title": "8.6 Avbrudd og virtuelt minne",
   "description": "Hvordan et tastetrykk avbryter et program uten at det merker det, og hvordan hvert program får sitt eget adresserom.",
+  "icon": "icon.png",
   "videos": [],
   "terms": [
     {
