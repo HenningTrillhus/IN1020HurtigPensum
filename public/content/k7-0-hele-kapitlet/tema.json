@@ -1,0 +1,14 @@
+{
+  "id": "k7-0-hele-kapitlet",
+  "chapter": "Kapittel 7 – Minnehierarki og pipeline",
+  "title": "7 Hele kapitlet i én video",
+  "description": "Hele kapittel 7 i én lengre video, fra minnehierarkiet til pipelinen og hasardene.",
+  "icon": "icon.png",
+  "videos": [
+    {
+      "title": "7 Hele kapitlet i én video",
+      "file": "video1.mp4",
+      "summary": "Minnehierarki, lokalitet, cachen og pipelinen i én sammenhengende gjennomgang."
+    }
+  ]
+}
