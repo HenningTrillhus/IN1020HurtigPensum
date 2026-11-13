@@ -858,3 +858,34 @@ button.total-progress .completion { display: block }
 .moved-actions { display: flex; flex-wrap: wrap; gap: 10px }
 .moved-actions .consent-btn { display: inline-flex; align-items: center; text-decoration: none }
 @media (prefers-reduced-motion: reduce) { .moved { animation-duration: .01s } }
+
+/* ============ Kapittelfarge i feeden ============
+   Fremdriftslinja, spolelinja, tommel og avspilling tar fargen til kapitlet videoen hører til (i blandet feed følger den hver video). */
+:where(.feed-wrap, .slide) { --ch: #ffffff }
+.feed-wrap[data-ch] .seg.done { background: color-mix(in srgb, var(--ch) 55%, #ffffff55) }
+.feed-wrap[data-ch] .seg.cur { background: var(--ch) }
+.feed-wrap[data-ch].scrubbing .seg.target { background: var(--ch) }
+.feed-wrap[data-ch].scrubbing .seg.cur { background: color-mix(in srgb, var(--ch) 50%, transparent) }
+.slide[data-ch] .seek::-webkit-slider-runnable-track { background: linear-gradient(to right, var(--ch) var(--p), #fff5 var(--p)) }
+.slide[data-ch] .seek::-moz-range-progress { background: var(--ch) }
+.slide[data-ch] .seek::-webkit-slider-thumb { background: var(--ch) }
+.slide[data-ch] .seek::-moz-range-thumb { background: var(--ch) }
+.slide[data-ch] .vote.on { color: var(--ch); border-color: var(--ch); background: color-mix(in srgb, var(--ch) 22%, transparent) }
+.slide[data-ch] .caption { background: linear-gradient(transparent, #000d 60%), linear-gradient(transparent 40%, color-mix(in srgb, var(--ch) 16%, transparent)) }
+
+/* ============ Sideoverganger ============
+   Der nettleseren støtter det, glir sidene inn fra siden: fremover fra høyre, tilbake fra venstre. */
+html.vt .shell, html.vt .pad { animation: none }
+::view-transition-group(root) { animation-duration: .3s; animation-timing-function: var(--ease) }
+::view-transition-old(root) { animation: .3s var(--ease) both vtOut }
+::view-transition-new(root) { animation: .3s var(--ease) both vtIn }
+html[data-nav="back"]::view-transition-old(root) { animation-name: vtOutBack }
+html[data-nav="back"]::view-transition-new(root) { animation-name: vtInBack }
+html[data-nav="same"]::view-transition-old(root) { animation-name: fadeOut }
+html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
+@keyframes vtOut { to { opacity: 0; transform: translateX(-28px) } }
+@keyframes vtIn { from { opacity: 0; transform: translateX(44px) } }
+@keyframes vtOutBack { to { opacity: 0; transform: translateX(28px) } }
+@keyframes vtInBack { from { opacity: 0; transform: translateX(-44px) } }
+@keyframes fadeOut { to { opacity: 0 } }
+@media (prefers-reduced-motion: reduce) { ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important } }

@@ -6,6 +6,7 @@ import { ChevronDown, ChevronUp, CloseIcon, Eye, CheckIcon, FlagIcon, Fullscreen
 import { usePlayer } from '../player'
 import { SpeedButton, useSpeed } from '../speed'
 import { ChapterRating } from '../Rating'
+import { chColor } from '../chapters'
 import { isSeen, markSeen, setLast } from '../storage'
 
 interface P {
@@ -243,7 +244,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
   const cls = ['slide', !missing && !ready && 'loading', ready && 'ready', active && 'active'].filter(Boolean).join(' ')
 
   return (
-    <section className={cls} ref={ref} data-topic={topic.id} data-index={i}>
+    <section className={cls} ref={ref} data-topic={topic.id} data-index={i} data-ch={chColor(topic)}>
       {missing ? (
         <div className="placeholder"><p>Video mangler</p><small>{v.file}</small></div>
       ) : (
@@ -569,7 +570,7 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
 
   return (
     <div
-      className={`feed-wrap${uiHidden ? ' ui-hidden' : ''}${scrub ? ' scrubbing' : ''}`}
+      className={`feed-wrap${uiHidden ? ' ui-hidden' : ''}${scrub ? ' scrubbing' : ''}`} data-ch={cur ? chColor(cur.topic) : undefined}
       onPointerDown={onTap} onPointerMove={onMove} onWheel={poke} onKeyDown={poke}
     >
       <div className="segs" aria-hidden>

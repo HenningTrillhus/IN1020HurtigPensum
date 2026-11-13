@@ -28,6 +28,9 @@ const hasIcon = (n: number | null) => n !== null && n >= 2 && n <= 8
 
 const RE = /^Kapittel\s+(\d+)\s*[–-]\s*(.*)$/
 
+/** Kapittelfargen til et delkapittel (samme navn som data-ch i CSS). */
+export const chColor = (t: Topic) => { const c = chapterInfo(t); return c.n !== null ? String(c.n) : c.key }
+
 export function chapterInfo(t: Topic): { key: string; n: number | null; label: string; title: string } {
   const name = t.chapter ?? 'Temaer'
   // Kapitler uten eget nummer (Datasikkerhet og Nettverk) peker til kapitlet med en nøkkel.

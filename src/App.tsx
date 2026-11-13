@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { flushSync } from 'react-dom'
 import type { Topic } from './types'
 import { buildChapters, chapterInfo, type EmptyChapter } from './chapters'
 import { Loader, LoadError } from './Loader'
@@ -87,11 +88,19 @@ function AppInner() {
   const lastHash = useRef(location.hash)
   const lastDepth = useRef(pageOf(location.hash).depth)
   useEffect(() => {
+    if ('startViewTransition' in document) document.documentElement.classList.add('vt')
     const on = () => {
       const old = pageOf(lastHash.current)
       if (old.key) scrollMem.current[old.key] = window.scrollY
       lastHash.current = location.hash
-      setHash(location.hash)
+      const next = location.hash
+      const vt = (document as Document & { startViewTransition?: (cb: () => void) => unknown }).startViewTransition
+      if (vt && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // Sidene glir inn fra høyre når du går dypere og fra venstre når du går tilbake.
+        const d = pageOf(next).depth - old.depth
+        document.documentElement.dataset.nav = d > 0 ? 'fwd' : d < 0 ? 'back' : 'same'
+        vt.call(document, () => { flushSync(() => setHash(next)) })
+      } else setHash(next)
     }
     window.addEventListener('hashchange', on)
     return () => window.removeEventListener('hashchange', on)
