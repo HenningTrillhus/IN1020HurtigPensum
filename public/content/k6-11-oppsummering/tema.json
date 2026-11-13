@@ -4,5 +4,19 @@
   "title": "6.11 Oppsummering",
   "description": "Den ene ideen som kom igjen fire ganger, og hva som egentlig var nytt i kapitlet.",
   "icon": "icon.png",
-  "videos": []
+  "videos": [
+    {
+      "title": "6.11 Oppsummering",
+      "file": "video1.mp4",
+      "summary": "Det sitter en bryter der, og den flytter ladning. Det forklarer ettall, støy, tid og varme."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Oppsummering av kapittelet",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-6",
+      "duration": 234
+    }
+  ]
 }

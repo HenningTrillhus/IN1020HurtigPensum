@@ -26,6 +26,14 @@
       "summary": "Spenningen kan være hva som helst mellom 0 og 0,8 volt, men 0 og 1 får hvert sitt område."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Strøm, spenning og jord",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-5",
+      "duration": 1281
+    }
+  ],
   "terms": [
     {
       "term": "Spenning",

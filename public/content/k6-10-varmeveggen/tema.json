@@ -4,7 +4,51 @@
   "title": "6.10 Hvorfor klokka stoppet på rundt 3 GHz",
   "description": "Moores lov, varme, varmeveggen og veien til flere kjerner.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "6.10.1 Femti år med krymping",
+      "file": "video1.mp4",
+      "summary": "Moores lov er en selvoppfyllende profeti. Krympingen ga flere og raskere transistorer, til frekvensen flatet ut rundt 2004."
+    },
+    {
+      "title": "6.10.2 Hver eneste vending koster",
+      "file": "video2.mp4",
+      "summary": "Hver gang en utgang fylles og tømmes, koster det en slurk energi som ender som varme."
+    },
+    {
+      "title": "6.10.3 Hva som bestemmer hvor varmt det blir",
+      "file": "video3.mp4",
+      "summary": "Antall kar, spenning (som teller dobbelt) og frekvens. Dobbel fart kan gi nesten tredobbel varme."
+    },
+    {
+      "title": "6.10.4 Triksen som sluttet å virke",
+      "file": "video4.mp4",
+      "summary": "Spenningen kunne ikke falle mer, så hver ny gigahertz ble betalt i varme: varmeveggen."
+    },
+    {
+      "title": "6.10.5 Og krana som drypper",
+      "file": "video5.mp4",
+      "summary": "Stengt er ikke helt stengt: lekkasje løper hele tiden, og blir verre jo mindre transistoren er."
+    },
+    {
+      "title": "6.10.6 Svaret ble flere kjerner",
+      "file": "video6.mp4",
+      "summary": "Flere kjerner i stedet for høyere frekvens, og regningen ble sendt videre til programvaren."
+    },
+    {
+      "title": "6.10.7 Om tallene du leser i nyhetene",
+      "file": "video7.mp4",
+      "summary": "«2 nm» er et generasjonsnavn og ikke et mål, og hva som kommer etter."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Hvorfor prosessorer sluttet å bli raskere",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-5",
+      "duration": 866
+    }
+  ],
   "terms": [
     {
       "term": "Moores lov",

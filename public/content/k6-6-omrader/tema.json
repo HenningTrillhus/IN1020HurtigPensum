@@ -26,6 +26,14 @@
       "summary": "Digitalt er ikke mer nøyaktig, men det retter seg selv i hver port."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Hvorfor alt digitalt egentlig er analogt",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-8",
+      "duration": 798
+    }
+  ],
   "terms": [
     {
       "term": "Analogt signal",

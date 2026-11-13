@@ -21,6 +21,14 @@
       "summary": "Inverter 2, NAND 4 og AND 6 transistorer. NAND er den enkle porten."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Hvorfor AND-porten egentlig er en NAND-port",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-7",
+      "duration": 981
+    }
+  ],
   "terms": [
     {
       "term": "NAND",

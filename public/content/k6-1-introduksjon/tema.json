@@ -4,5 +4,13 @@
   "title": "6.1 Introduksjon",
   "description": "Fra en bryter som må trykkes med fingeren til en bryter som styres av et signal, og hva kapitlet bygger.",
   "icon": "icon.png",
-  "videos": []
+  "videos": [],
+  "podcasts": [
+    {
+      "title": "Hvorfor telefonen blir varm",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann",
+      "duration": 265
+    }
+  ]
 }

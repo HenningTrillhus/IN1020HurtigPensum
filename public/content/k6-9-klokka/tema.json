@@ -36,6 +36,14 @@
       "summary": "Mange porter på rad, margin og varme setter taket. En brikke har også flere klokker."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Slik hindrer klokka kaos i prosessoren",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-4",
+      "duration": 983
+    }
+  ],
   "terms": [
     {
       "term": "Klokke (klokkesignal)",

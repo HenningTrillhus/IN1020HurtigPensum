@@ -26,6 +26,14 @@
       "summary": "En bredere transistor er raskere, men koster plass og strøm og gjør porten foran tregere."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Hvorfor logiske porter fungerer som badekar",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-3",
+      "duration": 1019
+    }
+  ],
   "terms": [
     {
       "term": "Kapasitans",

@@ -26,6 +26,14 @@
       "summary": "En bryter styrt av et signal. nMOS leder ved 1, pMOS ved 0."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Bryteren som ikke trenger en finger",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-4",
+      "duration": 625
+    }
+  ],
   "terms": [
     {
       "term": "Bryter",
