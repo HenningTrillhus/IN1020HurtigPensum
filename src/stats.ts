@@ -1,3 +1,5 @@
+import { hasConsent } from './consent'
+
 // Hver teller stopper her og vises som «999+». Må være lik COUNTER_CAP i api/_lib.ts.
 export const CAP = 999
 export interface Stat { likes: number; dislikes: number; views: number; reports: number }
@@ -61,6 +63,8 @@ export async function fetchStats(ids: string[]): Promise<Record<string, Stat> | 
 
 // network=false: husk det lokalt, men ikke kall serveren (telleren er full).
 export async function sendView(id: string, network = true): Promise<void> {
+  // Uten samtykke sendes ingenting, og visningen merkes ikke, så den kan telles om du godtar senere.
+  if (!hasConsent()) return
   if (hasViewed(id)) return
   write(`viewed:${id}`, '1')
   if (!network) return
@@ -77,6 +81,8 @@ const pending = new Map<string, Pending>()
 async function flushVote(id: string, keepalive = false): Promise<void> {
   const p = pending.get(id)
   if (!p) return
+  // Uten samtykke blir valget bare lokalt. Det sendes ved neste besøk hvis du godtar.
+  if (!hasConsent()) { clearTimeout(p.timer); pending.delete(id); return }
   clearTimeout(p.timer)
   pending.delete(id)
 
@@ -120,6 +126,7 @@ const pendingReports = new Map<string, ReturnType<typeof setTimeout>>()
 async function flushReport(id: string, keepalive = false): Promise<void> {
   const t = pendingReports.get(id)
   if (t === undefined) return
+  if (!hasConsent()) { clearTimeout(t); pendingReports.delete(id); return }
   clearTimeout(t)
   pendingReports.delete(id)
   const want = getReport(id), sent = getSentReport(id)
@@ -180,6 +187,7 @@ export async function fetchRatings(ids: string[], raw = false): Promise<Record<s
 async function flushRating(ch: string, keepalive = false): Promise<void> {
   const t = pendingRatings.get(ch)
   if (t === undefined) return
+  if (!hasConsent()) { clearTimeout(t); pendingRatings.delete(ch); return }
   clearTimeout(t)
   pendingRatings.delete(ch)
   const want = getRating(ch), sent = getSentRating(ch)

@@ -4,6 +4,7 @@ import Disclaimer from '../Disclaimer'
 import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
 import ShuffleButton from '../ShuffleButton'
+import { setConsent } from '../consent'
 import { RatingLine } from '../Rating'
 import { GlobalSearchBox, GlobalSearchResults } from '../GlobalSearch'
 import { PlayIcon } from '../Icons'
@@ -134,6 +135,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
           <small><span>Du har sett {totalSeen} av {totalVideos} videoer</span><span className="tp-more">Per kapittel ›</span></small>
         </button>
       )}
+      <button type="button" className="consent-link" onClick={() => setConsent(null)}>Endre valg for lagring</button>
       {progressOpen && <ProgressSheet chapters={chapters} onClose={() => setProgressOpen(false)} />}
     </div>
   )

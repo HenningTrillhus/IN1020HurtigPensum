@@ -12,6 +12,7 @@ import { MiniPlayer, PlayerProvider } from './player'
 import Wip from './pages/Wip'
 import ChapterTerms from './pages/ChapterTerms'
 import Shuffle from './pages/Shuffle'
+import ConsentBanner from './ConsentBanner'
 import { swipeHandlers, type SwipeStart } from './swipe'
 
 const base = import.meta.env.BASE_URL + 'content/'
@@ -48,6 +49,7 @@ export default function App() {
     <PlayerProvider>
       <AppInner />
       <MiniPlayer />
+      <ConsentBanner />
     </PlayerProvider>
   )
 }

@@ -806,3 +806,23 @@ button.total-progress .completion { display: block }
 /* Bland: hvilket delkapittel videoen kommer fra, og en rolig andreknapp på sluttsiden */
 .caption .from-topic { display: block; margin: 0 0 3px; font-size: 12.5px; letter-spacing: .01em; color: #b8b8b8; text-shadow: 0 1px 8px #000a }
 .slide.end .end-secondary { background: transparent; color: var(--txt2); border: 1px solid var(--line-strong) }
+
+/* Samtykke til lagring: rolig panel nederst, ikke i veien for innholdet */
+.consent {
+  position: fixed; left: 12px; right: 12px; bottom: max(12px, env(safe-area-inset-bottom)); z-index: 80; margin: 0 auto; max-width: 520px;
+  padding: 16px 18px; border-radius: 18px; background: var(--surface2); border: 1px solid var(--line-strong); color: var(--fg);
+  box-shadow: 0 12px 40px #000a; animation: consentIn .4s var(--ease) both;
+}
+.consent.leaving { animation: consentOut .22s ease forwards }
+@keyframes consentIn { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }
+@keyframes consentOut { to { opacity: 0; transform: translateY(24px) } }
+.consent-title { margin: 0 0 6px; font-weight: 700; font-size: 16px }
+.consent-text { margin: 0 0 12px; color: var(--txt2); font-size: 14px; line-height: 1.5 }
+.consent-more { margin-top: -4px; color: var(--mut); font-size: 13px }
+.consent-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px }
+.consent-btn { min-height: 44px; padding: 0 20px; border-radius: 99px; border: 1px solid var(--line-strong); background: transparent; color: var(--fg); font: inherit; font-weight: 600; cursor: pointer }
+.consent-btn.primary { background: var(--acc); color: var(--on-acc); border-color: transparent }
+.consent-btn:hover { border-color: var(--fg) }
+.consent-more-btn { margin-left: auto; background: none; border: 0; color: var(--mut); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; padding: 8px 4px }
+.consent-link { display: block; margin: 18px auto 8px; background: none; border: 0; color: var(--mut); font: inherit; font-size: 13px; text-decoration: underline; cursor: pointer; padding: 8px }
+@media (prefers-reduced-motion: reduce) { .consent, .consent.leaving { animation-duration: .01s } }
