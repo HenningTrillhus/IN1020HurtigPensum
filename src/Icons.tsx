@@ -100,14 +100,14 @@ export const CalcIcon = () => (
   </svg>
 )
 
-/** Bland: to kryssende piler. */
+/** Bland: to baner som krysser hverandre, hver med en pil. */
 export const ShuffleIcon = () => (
   <svg {...base} {...line}>
-    <path d="M16 3.5h4.5V8" />
-    <path d="M3.5 19.5 20.5 3.5" />
-    <path d="M20.5 16v4.5H16" />
-    <path d="M14.5 14.5 20.5 20.5" />
-    <path d="M3.5 4.5 9 10" />
+    <path d="M3 18h1.6c1.4 0 2.6-.7 3.4-1.8l5-7.2c.8-1.1 2-1.8 3.4-1.8H21" />
+    <path d="m17.5 4.5 3.5 3.5-3.5 3.5" />
+    <path d="M3 6h1.9c1.4 0 2.7.7 3.5 1.9" />
+    <path d="M21 18h-4.6c-1.3 0-2.5-.6-3.3-1.7" />
+    <path d="m17.5 14.5 3.5 3.5-3.5 3.5" />
   </svg>
 )
 
