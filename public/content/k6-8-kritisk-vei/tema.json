@@ -4,7 +4,23 @@
   "title": "6.8 Den lengste veien",
   "description": "Kritisk vei: hvorfor fem porter ikke tar fem ganger så lang tid.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "6.8.1 Portene står ikke i kø",
+      "file": "video1.mp4",
+      "summary": "Portene jobber samtidig, så tiden gjennom kretsen er den lengste veien, ikke summen av portene."
+    },
+    {
+      "title": "6.8.2 Fulladderen, målt",
+      "file": "video2.mp4",
+      "summary": "Den kritiske veien XOR1, AND2, OR er 15 ps, og bare den bestemmer hvor rask kretsen er."
+    },
+    {
+      "title": "6.8.3 Og så legger vi dem i rekke",
+      "file": "video3.mp4",
+      "summary": "Mentekjeden er en kø: 64 bit gir 960 ps, eller 645 ps hvis man regner nøyere."
+    }
+  ],
   "terms": [
     {
       "term": "Kritisk vei",

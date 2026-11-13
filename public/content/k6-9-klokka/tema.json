@@ -4,7 +4,38 @@
   "title": "6.9 Klokka",
   "description": "Klokkeperiode, frekvens og hvorfor perioden må romme den kritiske veien.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "6.9.1 Problemet som må løses",
+      "file": "video1.mp4",
+      "summary": "Veiene blir ferdige til ulik tid, så maskinen trenger en avtale om når det er trygt å se: klokka."
+    },
+    {
+      "title": "6.9.2 Alle leverer samtidig",
+      "file": "video2.mp4",
+      "summary": "Som en skriftlig prøve: klokka deler tiden i like biter, og alle svar lagres samtidig."
+    },
+    {
+      "title": "6.9.3 Hvordan et klokkesignal ser ut",
+      "file": "video3.mp4",
+      "summary": "En jevn firkantbølge der perioden måles mellom like flanker, og resultatene lagres på flankene."
+    },
+    {
+      "title": "6.9.4 Fra periode til frekvens",
+      "file": "video4.mp4",
+      "summary": "Frekvens er 1 delt på perioden: 3 GHz gir 333 ps, og 500 ps gir 2 GHz."
+    },
+    {
+      "title": "6.9.5 Hva som setter taket",
+      "file": "video5.mp4",
+      "summary": "Klokkeperioden må være minst like lang som den kritiske veien, ellers regner maskinen feil."
+    },
+    {
+      "title": "6.9.6 Hvorfor ikke 200 GHz?",
+      "file": "video6.mp4",
+      "summary": "Mange porter på rad, margin og varme setter taket. En brikke har også flere klokker."
+    }
+  ],
   "terms": [
     {
       "term": "Klokke (klokkesignal)",
