@@ -4,7 +4,28 @@
   "title": "6.7 Det tar tid",
   "description": "Badekaret, kapasitans og portforsinkelse: ingenting er momentant.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "6.7.1 Badekaret",
+      "file": "video1.mp4",
+      "summary": "Utgangen på en port er et badekar: å fylle og tømme det tar tid."
+    },
+    {
+      "title": "6.7.2 Hvorfor er det et badekar der?",
+      "file": "video2.mp4",
+      "summary": "Badekaret er ledningene og styreledningene som må lades opp. Det kalles kapasitans."
+    },
+    {
+      "title": "6.7.3 Portforsinkelse",
+      "file": "video3.mp4",
+      "summary": "Tiden fra inngang til utgang er noen få pikosekunder. Vi regner med 5 per port."
+    },
+    {
+      "title": "6.7.4 Større kran, raskere port, og en regning",
+      "file": "video4.mp4",
+      "summary": "En bredere transistor er raskere, men koster plass og strøm og gjør porten foran tregere."
+    }
+  ],
   "terms": [
     {
       "term": "Kapasitans",
