@@ -507,10 +507,21 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
   // Trykk på et tomt sted mens teksten og knappene vises: tone dem bort med en gang. Trykk på tekst, en knapp eller
   // spolelinja gjør bare at de blir værende. Er alt skjult, henter et trykk det fram igjen.
   const lastTapHide = useRef(0)
+  const down = useRef<{ x: number; y: number; t: number; id: number } | null>(null)
+  // Et trykk på et tomt sted vises/skjules først når fingeren løftes, og bare hvis den ikke har flyttet seg. Da teller ikke et sveip
+  // som et trykk, og knappene dukker ikke opp midt i bevegelsen. Knapper og tekst holder UI-et oppe med en gang du tar på dem.
   const onTap = (e: PointerEvent<HTMLDivElement>) => {
     const t = e.target as Element
     const interactive = !!t.closest('button, a, input, label, .caption, .count, .views, .part-chip, .report-note, .sheet, .segs-hit')
-    if (!uiHidden && !interactive && !picker && !atEnd) {
+    if (interactive) { down.current = null; poke(); return }
+    down.current = { x: e.clientX, y: e.clientY, t: Date.now(), id: e.pointerId }
+  }
+  const onTapEnd = (e: PointerEvent<HTMLDivElement>) => {
+    const d = down.current
+    down.current = null
+    if (!d || d.id !== e.pointerId) return
+    if (Math.hypot(e.clientX - d.x, e.clientY - d.y) > 10 || Date.now() - d.t > 700) return // sveip eller langt trykk
+    if (!uiHidden && !picker && !atEnd) {
       window.clearTimeout(idleTimer.current)
       idleRef.current = true
       setIdle(true)
@@ -519,8 +530,11 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
     }
     poke()
   }
-  // Musen rører seg ofte rett etter et klikk. Da skal ikke teksten dukke opp igjen med en gang.
-  const onMove = () => { if (Date.now() - lastTapHide.current > 800) poke() }
+  // Musen rører seg ofte rett etter et klikk. Da skal ikke teksten dukke opp igjen med en gang. Berøring (sveip) teller aldri.
+  const onMove = (e: PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== 'mouse') return
+    if (Date.now() - lastTapHide.current > 800) poke()
+  }
 
   // Hopper rett til videoen uten å sveipe forbi de mellom. Ellers ville de telt som sett.
   // For at det ikke skal føles brått, toner feeden kort ned, hopper, og kommer mykt inn igjen.
@@ -592,7 +606,7 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
   return (
     <div
       className={`feed-wrap${uiHidden ? ' ui-hidden' : ''}${scrub ? ' scrubbing' : ''}`} data-ch={cur ? chColor(cur.topic) : undefined}
-      onPointerDown={onTap} onPointerMove={onMove} onWheel={pokeIfShown} onKeyDown={poke}
+      onPointerDown={onTap} onPointerUp={onTapEnd} onPointerCancel={() => { down.current = null }} onPointerMove={onMove} onWheel={pokeIfShown} onKeyDown={poke}
     >
       <div className="segs" aria-hidden>
         {slides.map((sl, k) => (
