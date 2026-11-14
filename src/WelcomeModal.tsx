@@ -9,7 +9,7 @@ const seenBefore = () => {
 }
 
 /**
- * Liten velkomstmelding første gang du åpner siden: hvem som har laget den, og en oppfordring til å dele lenken videre.
+ * Liten melding øverst første gang du åpner siden: hvem som har laget den, og en oppfordring til å dele lenken videre.
  * Vises etter at du har tatt stilling til lagring (så to meldinger ikke ligger oppå hverandre), og ikke på statistikksiden.
  */
 export default function WelcomeModal() {
@@ -44,23 +44,15 @@ export default function WelcomeModal() {
   }
 
   return (
-    <div className="welcome-back" onClick={close}>
-      <div className="welcome" role="dialog" aria-modal="true" aria-label="Velkommen" onClick={e => e.stopPropagation()}>
+    <div className="welcome" role="dialog" aria-label="Velkommen">
+      <p className="welcome-text">
+        <strong>Laget av IN1020-studenter.</strong> Hjelper den deg? Del lenken videre!
+      </p>
+      <div className="welcome-actions">
+        <button className="welcome-share" onClick={share}><ShareIcon /> Del lenken</button>
         <button className="welcome-x" onClick={close} aria-label="Lukk"><CloseIcon /></button>
-        <h2>Hei, og velkommen!</h2>
-        <p>
-          Dette er en liten nettside laget av noen studenter som tar IN1020 akkurat nå. Vi har laget den for å gjøre pensum litt
-          lettere å ta inn, spesielt nå i eksamensperioden.
-        </p>
-        <p>
-          Hjelper den deg? Del lenken med medstudenter som kan trenge den. Jo flere som får den, jo mer nytte gjør den.
-        </p>
-        <div className="welcome-actions">
-          <button className="consent-btn primary welcome-share" onClick={share}><ShareIcon /> Del lenken</button>
-          <button className="consent-btn" onClick={close}>Start å lære</button>
-        </div>
-        {note && <p className="welcome-note" role="status">{note}</p>}
       </div>
+      {note && <p className="welcome-note" role="status">{note}</p>}
     </div>
   )
 }
