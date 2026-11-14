@@ -4,7 +4,68 @@
   "title": "2.10 Flyttall og presisjon",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.10.1 Tallene vi trenger",
+      "file": "video1.mp4",
+      "summary": "Noen få signifikante siffer og en eksponent: mantisse ganger base opphøyd i eksponent."
+    },
+    {
+      "title": "2.10.2 Komma som flyter",
+      "file": "video2.mp4",
+      "summary": "Eksponenten flytter kommaet, og 32 bit er bare omfordelte mønstre: tett nær null og gissent langt ute."
+    },
+    {
+      "title": "2.10.3 IEEE 754: 1, 8 og 23",
+      "file": "video3.mp4",
+      "summary": "En float er ett fortegnsbit, åtte eksponentbit og 23 mantissebit."
+    },
+    {
+      "title": "2.10.4 Forskyvning og skjult bit",
+      "file": "video4.mp4",
+      "summary": "Eksponenten lagres pluss 127, og det ledende ettallet lagres ikke."
+    },
+    {
+      "title": "2.10.5 5,75 bit for bit",
+      "file": "video5.mp4",
+      "summary": "Binært, normalisert og fylt inn i feltene: 5,75 er 0x40B80000."
+    },
+    {
+      "title": "2.10.6 Den andre veien",
+      "file": "video6.mp4",
+      "summary": "Les fortegn, trekk fra 127 og sett inn det skjulte ettallet. Svaret er minus 48,9375."
+    },
+    {
+      "title": "2.10.7 Spesialverdier",
+      "file": "video7.mp4",
+      "summary": "Null, uendelig og NaN har egne mønstre, og NaN er ikke lik seg selv."
+    },
+    {
+      "title": "2.10.8 Hvorfor 0,1 ikke finnes",
+      "file": "video8.mp4",
+      "summary": "0,1 har uendelig mange binære siffer, så maskinen lagrer noe som ligger like ved."
+    },
+    {
+      "title": "2.10.9 0,1 pluss 0,2",
+      "file": "video9.mp4",
+      "summary": "Resultatet er 0,30000000000000004, og det er ikke en feil i språket."
+    },
+    {
+      "title": "2.10.10 Feil som hoper seg opp",
+      "file": "video10.mp4",
+      "summary": "Avrundingsfeil summerer seg, og store og små tall sammen mister det lille."
+    },
+    {
+      "title": "2.10.11 Sammenlign aldri med ==",
+      "file": "video11.mp4",
+      "summary": "Bruk toleranse, og ikke flyttall til penger."
+    },
+    {
+      "title": "2.10.12 Avveiningen",
+      "file": "video12.mp4",
+      "summary": "Rekkevidde mot presisjon, og bfloat16 som et nytt valg for AI-maskinvare."
+    }
+  ],
   "terms": [
     {
       "term": "Flyttall",

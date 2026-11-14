@@ -29,6 +29,11 @@
       "title": "2.8.5 Pythons fella",
       "file": "video5.mp4",
       "summary": "NumPy er skrevet i C og har faste bitbredder. Datatypen avgjør, ikke språket."
+    },
+    {
+      "title": "2.8.6 Ariane 5",
+      "file": "video6.mp4",
+      "summary": "Et 64-bits tall ble konvertert til 16 bit. Koden var feilfri på Ariane 4, men antakelsen holdt ikke lenger."
     }
   ],
   "terms": [

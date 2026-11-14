@@ -4,7 +4,43 @@
   "title": "2.11 Bilde",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.11.1 Piksler og RGB",
+      "file": "video1.mp4",
+      "summary": "Et piksel er tre byte, og skjermer legger til lys mens maling trekker fra."
+    },
+    {
+      "title": "2.11.2 Rutenettet",
+      "file": "video2.mp4",
+      "summary": "Et bilde er et rutenett, og det som lå mellom rutene, er borte for alltid."
+    },
+    {
+      "title": "2.11.3 Hva et bilde koster",
+      "file": "video3.mp4",
+      "summary": "1000 × 1000 piksler er 3 MB, og et mobilbilde er 36 MB rått."
+    },
+    {
+      "title": "2.11.4 Fargetabell",
+      "file": "video4.mp4",
+      "summary": "Sju farger i tre bit sparer sju åttedeler uten tap."
+    },
+    {
+      "title": "2.11.5 Løpelengdekoding",
+      "file": "video5.mp4",
+      "summary": "«Gress 5» i stedet for fem ruter, men støy gjør filen større."
+    },
+    {
+      "title": "2.11.6 JPEG",
+      "file": "video6.mp4",
+      "summary": "JPEG kaster det øyet knapt merker, og tapet er permanent."
+    },
+    {
+      "title": "2.11.7 Vektorgrafikk",
+      "file": "video7.mp4",
+      "summary": "Oppskriften i stedet for bildet: skarpt uansett størrelse."
+    }
+  ],
   "terms": [
     {
       "term": "Piksel",
