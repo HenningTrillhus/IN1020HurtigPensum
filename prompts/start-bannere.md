@@ -13,18 +13,20 @@ Legg ved kapittelbanneret (`public/chapter-banners/ch2.webp` osv.) som stilrefer
 ## Hovedprompt (lim inn først, hver gang)
 
 ```
-Lag et bakgrunnsbilde til en bred, lav knapp i en studieapp. Det skal være i samme visuelle stil, med samme motivfamilie som det vedlagte kapittelbanneret, men i en lysere, mer fargerik utgave.
+Lag et rent mønsterbilde som skal brukes som bakgrunn bak noe annet. Det skal være i samme visuelle stil, med samme motivfamilie som det vedlagte kapittelbanneret, men i en lysere, mer fargerik utgave.
+
+DETTE ER IKKE EN KNAPP OG IKKE ET UI-DESIGN. Tegn ingen knapp, ingen sirkel, ingen ramme, ingen avrundede hjørner, ingen skjerm og ingen mockup. Bildet er bare et flatt mønster som fyller hele flaten helt ut til alle fire kanter.
 
 FORMAT
 - 4:1, 2400 x 600 piksler.
 - Alt viktig ligger i en vannrett stripe midt i bildet, i de midterste 50 prosentene av høyden. Over og under er det bare rolig bakgrunnsfarge, siden bildet beskjæres til en smal stripe.
-- Den venstre tredjedelen er rolig og nesten tom (der hvit tekst og en rund knapp ligger). Mønsteret ligger i høyre halvdel og blir gradvis svakere mot venstre.
+- Den venstre tredjedelen er rolig og nesten tom, bare bakgrunnsfarge og noen svake linjer, uten noen former eller sirkler. Mønsteret ligger i høyre halvdel og blir gradvis svakere mot venstre.
 
 STIL
 - Flat vektorstil, tynne jevne linjer, ingen gradienter, ingen skygger, ingen glans, ingen 3D, ingen fotorealisme.
 - Bakgrunnen er en jevn, middels mørk, dempet farge (se kapittelfargen under), ikke svart. Linjene og symbolene er en lysere variant av samme farge, og noen få små prikker eller detaljer i nesten hvitt. Kontrasten er middels: tydelig synlig, men aldri så sterk at tekst oppå blir vanskelig å lese.
 - Bare konturer og tynne linjer, litt prikker i knutepunkter. Ingen utfylte flater.
-- ABSOLUTT INGEN TEKST: ingen ord, ingen bokstaver, ingen tall, ingen sifre (heller ikke 0 og 1), ingen etiketter, ingen logoer, ingen vannmerke, ingen kodelinjer. Der noe ellers ville vært skrift, tegn en tynn vannrett strek. Ingen mennesker, ingen ansikter, ingen emojis.
+- ABSOLUTT INGEN TEKST, heller ikke plassholdertekst som «button», «study app» eller liknende: ingen ord, ingen bokstaver, ingen tall, ingen sifre (heller ikke 0 og 1), ingen etiketter, ingen logoer, ingen vannmerke, ingen kodelinjer. Der noe ellers ville vært skrift, tegn en tynn vannrett strek. Ingen mennesker, ingen ansikter, ingen emojis.
 
 UTTRYKK
 Innbydende, rolig og litt lysere enn kapittelbanneret. Skal få knappen til å se ut som starten på noe.
