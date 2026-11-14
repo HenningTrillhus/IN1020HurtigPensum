@@ -15,6 +15,7 @@ import ChapterTerms from './pages/ChapterTerms'
 import Shuffle from './pages/Shuffle'
 import ConsentBanner from './ConsentBanner'
 import MovedNotice from './MovedNotice'
+import WelcomeModal from './WelcomeModal'
 import Admin from './pages/Admin'
 import { swipeHandlers, type SwipeStart } from './swipe'
 
@@ -53,6 +54,7 @@ export default function App() {
       <AppInner />
       <MiniPlayer />
       <ConsentBanner />
+      <WelcomeModal />
       <MovedNotice />
     </PlayerProvider>
   )
