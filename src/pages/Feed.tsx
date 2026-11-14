@@ -2,7 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState, type Pointer
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
 import { CAP, fetchStats, getReport, getVote, hasViewed, queueReport, queueVote, resumeReport, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
-import { ChevronDown, ChevronUp, CloseIcon, Eye, CheckIcon, FlagIcon, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ShareIcon, ThumbDown, ThumbUp } from '../Icons'
+import { Back10Icon, Fwd10Icon, ChevronDown, ChevronUp, CloseIcon, Eye, CheckIcon, FlagIcon, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ShareIcon, ThumbDown, ThumbUp } from '../Icons'
 import { usePlayer } from '../player'
 import { SpeedButton, useSpeed } from '../speed'
 import { ChapterRating } from '../Rating'
@@ -203,6 +203,15 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
     if (video.paused) video.play().catch(() => {})
     else video.pause()
   }
+  // 10 sekunder tilbake og fram, på hver side av pauseknappen.
+  const skip = (secs: number) => {
+    const video = vid.current
+    if (!video) return
+    const d = video.duration || 0
+    const t = Math.max(0, Math.min(d || Infinity, video.currentTime + secs))
+    video.currentTime = t
+    setTime({ t, d })
+  }
   const [playing, setPlaying] = useState(false)
   const [time, setTime] = useState({ t: 0, d: 0 })
   const [scrub, setScrub] = useState<number | null>(null)
@@ -278,6 +287,12 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
         <button className="pause-btn" onClick={togglePlay} aria-label={playing ? 'Pause' : 'Spill av'}>
           {playing ? <PauseIcon /> : <PlayIcon />}
         </button>
+      )}
+      {!missing && !fullscreen && (
+        <>
+          <button className="skip-btn back" onClick={() => skip(-10)} aria-label="10 sekunder tilbake" title="10 sekunder tilbake"><Back10Icon /></button>
+          <button className="skip-btn fwd" onClick={() => skip(10)} aria-label="10 sekunder fram" title="10 sekunder fram"><Fwd10Icon /></button>
+        </>
       )}
       {!missing && !fullscreen && (
         <input
@@ -404,6 +419,7 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
   const ready = useRef(false)
   const currentRef = useRef(startIdx)
   const idleTimer = useRef<number | undefined>(undefined)
+  const idleRef = useRef(false)
   const activeRef = useRef(onActive)
   activeRef.current = onActive
 
@@ -413,9 +429,13 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
   const IDLE_MS = 2000
   const poke = useCallback(() => {
     window.clearTimeout(idleTimer.current)
+    idleRef.current = false
     setIdle(false)
-    idleTimer.current = window.setTimeout(() => setIdle(true), IDLE_MS)
+    idleTimer.current = window.setTimeout(() => { idleRef.current = true; setIdle(true) }, IDLE_MS)
   }, [])
+  // Sveip til neste video og automatisk avspilling skal ikke hente fram knappene hvis de var borte. Bare et trykk gjør det.
+  // Var de oppe, blir de stående en stund til som vanlig.
+  const pokeIfShown = useCallback(() => { if (!idleRef.current) poke() }, [poke])
   useEffect(() => { poke(); return () => window.clearTimeout(idleTimer.current) }, [poke])
 
   // Meld bare fra om aktiv video etter at vi har scrollet til startvideoen.
@@ -423,17 +443,17 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
     if (!ready.current) return
     currentRef.current = pos
     setCurrent(pos)
-    poke()
+    pokeIfShown()
     const sl = slides[pos]
     if (sl) setLast(sl.topic.id, sl.i)
     activeRef.current(id)
-  }, [poke])
+  }, [poke, pokeIfShown])
 
   const onPlayState = useCallback((pos: number, _playing: boolean) => {
     if (pos !== currentRef.current) return
-    // Teksten skal være synlig en liten stund etter at videoen starter eller stopper.
-    poke()
-  }, [poke])
+    // Teksten skal være synlig en liten stund etter at videoen starter eller stopper, hvis den var oppe fra før.
+    pokeIfShown()
+  }, [pokeIfShown])
 
   useLayoutEffect(() => {
     const feed = feedRef.current!
@@ -492,6 +512,7 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
     const interactive = !!t.closest('button, a, input, label, .caption, .count, .views, .part-chip, .report-note, .sheet, .segs-hit')
     if (!uiHidden && !interactive && !picker && !atEnd) {
       window.clearTimeout(idleTimer.current)
+      idleRef.current = true
       setIdle(true)
       lastTapHide.current = Date.now()
       return
@@ -571,7 +592,7 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
   return (
     <div
       className={`feed-wrap${uiHidden ? ' ui-hidden' : ''}${scrub ? ' scrubbing' : ''}`} data-ch={cur ? chColor(cur.topic) : undefined}
-      onPointerDown={onTap} onPointerMove={onMove} onWheel={poke} onKeyDown={poke}
+      onPointerDown={onTap} onPointerMove={onMove} onWheel={pokeIfShown} onKeyDown={poke}
     >
       <div className="segs" aria-hidden>
         {slides.map((sl, k) => (
@@ -590,7 +611,7 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
           <small>{scrub.idx + 1} av {slides.length}</small>
         </div>
       )}
-      <div className="feed" ref={feedRef} onScroll={poke}>
+      <div className="feed" ref={feedRef} onScroll={pokeIfShown}>
         {slides.map((s, pos) => (
           <Slide
             key={`${s.topic.id}:${s.i}`}

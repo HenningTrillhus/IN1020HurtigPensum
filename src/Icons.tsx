@@ -34,6 +34,20 @@ export const PauseIcon = () => (
   <svg {...base} width={26} height={26}><rect x="6" y="5" width="4.5" height="14" rx="1.2" /><rect x="13.5" y="5" width="4.5" height="14" rx="1.2" /></svg>
 )
 
+/** 10 sekunder tilbake / fram: sirkelpil med 10 inni. */
+export const Back10Icon = () => (
+  <svg {...base} width={30} height={30} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4.5 12a7.5 7.5 0 1 0 2.4-5.5M4.5 4.5v3.8h3.8" />
+    <text x="12" y="15.6" textAnchor="middle" fontSize="7.4" fontWeight="700" fill="currentColor" stroke="none">10</text>
+  </svg>
+)
+export const Fwd10Icon = () => (
+  <svg {...base} width={30} height={30} fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M19.5 12a7.5 7.5 0 1 1-2.4-5.5M19.5 4.5v3.8h-3.8" />
+    <text x="12" y="15.6" textAnchor="middle" fontSize="7.4" fontWeight="700" fill="currentColor" stroke="none">10</text>
+  </svg>
+)
+
 export const CloseIcon = () => (
   <svg {...base} width={20} height={20} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><path d="m6 6 12 12M18 6 6 18" /></svg>
 )

@@ -462,7 +462,8 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 .seek::-moz-range-progress { height: 4px; border-radius: 2px; background: #fff }
 .seek::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -5px; border-radius: 50%; background: #fff; border: 0 }
 .seek::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 0 }
-.feed-wrap.ui-hidden .pause-btn, .feed-wrap.ui-hidden .seek { opacity: 0; transition: opacity .9s ease }
+.feed-wrap.ui-hidden .pause-btn, .feed-wrap.ui-hidden .seek, .feed-wrap.ui-hidden .skip-btn { opacity: 0; transition: opacity .9s ease }
+.feed-wrap.ui-hidden .skip-btn { pointer-events: none }
 .feed-wrap.ui-hidden .seek { pointer-events: none }
 
 /* Etter noen sekunder uten berøring (mens videoen spiller) tones alt over videoen ned.
@@ -911,3 +912,13 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
   content: ''; position: absolute; inset: 0; z-index: -1; background: var(--banner) right 50% / cover no-repeat; opacity: .75;
   -webkit-mask-image: linear-gradient(90deg, transparent 18%, #000 70%); mask-image: linear-gradient(90deg, transparent 18%, #000 70%);
 }
+
+/* 10 sekunder tilbake og fram, på hver side av pauseknappen */
+.skip-btn {
+  position: absolute; top: 50%; z-index: 3; width: 56px; height: 56px; margin-top: -28px; padding: 0; border-radius: 50%;
+  display: grid; place-items: center; background: #0008; backdrop-filter: blur(6px); color: #fff; border: 0; cursor: pointer;
+  transition: opacity .25s ease, transform .15s var(--ease);
+}
+.skip-btn:active { transform: scale(.92) }
+.skip-btn.back { left: calc(50% - 116px) }
+.skip-btn.fwd { left: calc(50% + 60px) }
