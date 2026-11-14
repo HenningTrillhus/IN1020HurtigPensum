@@ -2,6 +2,7 @@ import { useMemo, useState, type CSSProperties } from 'react'
 import type { Topic } from '../types'
 import { norm } from '../search'
 import SearchField from '../SearchField'
+import { SearchIcon } from '../Icons'
 
 /** Fagbegreper for ett delkapittel, med søk. */
 export default function Terms({ topic }: { topic: Topic }) {
@@ -28,7 +29,7 @@ export default function Terms({ topic }: { topic: Topic }) {
         <small>{all.length} begreper i {topic.title}</small>
       </div>
       {all.length > 5 && (
-        <SearchField value={q} onChange={setQ} placeholder="Søk i begrepene" label="Søk i fagbegreper" />
+        <SearchField className="tool-search" icon={<SearchIcon />} value={q} onChange={setQ} placeholder="Søk i begrepene" label="Søk i fagbegreper" />
       )}
       {shown.length === 0 ? (
         <p className="sub terms-empty">Ingen begreper passer med «{q}».</p>

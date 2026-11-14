@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import type { Topic } from './types'
 import { norm } from './search'
 import SearchField from './SearchField'
+import { SearchIcon } from './Icons'
 
 interface Hit { topic: Topic; terms: { term: string; def: string }[] }
 
@@ -26,7 +27,7 @@ export default function ChapterSearch({ topics, compendiumUrl }: { topics: Topic
 
   return (
     <div className="chap-search">
-      <SearchField value={q} onChange={setQ} placeholder="Søk etter et fagbegrep i dette kapitlet" label="Søk etter fagbegrep" />
+      <SearchField className="tool-search" icon={<SearchIcon />} value={q} onChange={setQ} placeholder="Søk i fagbegreper i kapitlet" label="Søk etter fagbegrep" />
       {n && suggestions.length > 0 && (
         <div className="suggest" role="listbox" aria-label="Forslag">
           {suggestions.map(s => <button key={s} onClick={() => setQ(s)}>{s}</button>)}

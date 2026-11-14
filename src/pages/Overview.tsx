@@ -51,6 +51,11 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   const totalSeen = chapters.reduce((n, c) => n + seenCount(c), 0)
   const pct = totalVideos ? Math.round((totalSeen / totalVideos) * 100) : 0
   const shownPct = useCountUp(pct)
+  // Første video i kurset, til de som er nye her.
+  const first = useMemo(() => {
+    for (const c of chapters) for (const t of c.topics) if (t.videos.length) return { chapter: c, topic: t, video: t.videos[0] }
+    return null
+  }, [chapters])
   useEffect(() => {
     let alive = true
     const ids = chapters.filter(c => c.topics.length > 0).map(c => c.key)
@@ -70,11 +75,23 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
       </div>
       <header className="hero">
         <h1>IN1020 Hurtigpensum</h1>
-        <p className="sub">Pensum i korte klipp. Velg et kapittel.</p>
+        <p className="sub">
+          {totalSeen > 0 ? 'Velkommen tilbake. Fortsett der du slapp, eller velg et kapittel.' : 'Velkommen! Pensum i korte klipp, uten pugging. Trykk på knappen under for å begynne, eller velg et kapittel selv.'}
+        </p>
       </header>
       <Disclaimer courseUrl={courseUrl} />
       <GlobalSearchResults chapters={chapters} q={q} courseUrl={courseUrl} />
       {/* Mens du søker, vises treffene i stedet for kapittellisten. */}
+      {!last && totalSeen === 0 && first && !q.trim() && (
+        <a className="start-btn" href={`#/${first.topic.id}/feed`} data-ch={first.chapter.color}>
+          <span className="start-ic" aria-hidden><PlayIcon /></span>
+          <span className="start-txt">
+            <strong>Ny her? Begynn her</strong>
+            <small>Første klipp: {first.video.title}</small>
+          </span>
+          <span className="chev" aria-hidden>›</span>
+        </a>
+      )}
       {last && !q.trim() && (
         <a
           className={`resume${bannerOf(last.chapter) ? ' has-banner' : ''}`} href={`#/${last.topic.id}/feed/${last.i + 1}`} data-ch={last.chapter.color}
