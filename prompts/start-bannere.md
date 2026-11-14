@@ -29,7 +29,7 @@ STIL
 - ABSOLUTT INGEN TEKST, heller ikke plassholdertekst som «button», «study app» eller liknende: ingen ord, ingen bokstaver, ingen tall, ingen sifre (heller ikke 0 og 1), ingen etiketter, ingen logoer, ingen vannmerke, ingen kodelinjer. Der noe ellers ville vært skrift, tegn en tynn vannrett strek. Ingen mennesker, ingen ansikter, ingen emojis.
 
 UTTRYKK
-Innbydende, rolig og litt lysere enn kapittelbanneret. Skal få knappen til å se ut som starten på noe.
+Innbydende, rolig og litt lysere enn kapittelbanneret. Skal gi en følelse av at noe begynner.
 
 MOTIV OG FARGE
 ```
