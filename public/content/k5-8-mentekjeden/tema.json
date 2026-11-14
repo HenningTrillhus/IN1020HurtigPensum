@@ -34,6 +34,11 @@
       "title": "5.8.6 Subtraksjon, gratis",
       "file": "video6.mp4",
       "summary": "Bytt NOT med XOR og styr med ledningen M."
+    },
+    {
+      "title": "5.8.7 C-flagget når kretsen trekker fra",
+      "file": "video7.mp4",
+      "summary": "Samme ledning og samme krets, men motsatt fortolkning: ved subtraksjon er C 1 når a er større enn eller lik b."
     }
   ],
   "podcasts": [
