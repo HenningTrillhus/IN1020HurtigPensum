@@ -46,7 +46,7 @@ export default function WelcomeModal() {
   return (
     <div className="welcome" role="dialog" aria-label="Velkommen">
       <p className="welcome-text">
-        <strong>Laget av IN1020-studenter.</strong> Hjelper den deg? Del lenken videre!
+        <strong>Laget av IN1020-studenter.</strong> Mer pensum legges inn, ferdig i god tid før eksamen. Del lenken videre!
       </p>
       <div className="welcome-actions">
         <button className="welcome-share" onClick={share}><ShareIcon /> Del lenken</button>

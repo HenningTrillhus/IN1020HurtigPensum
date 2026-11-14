@@ -4,7 +4,63 @@
   "title": "2.9 Tekst og tegn",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.9.1 Tabellen og mojibake",
+      "file": "video1.mp4",
+      "summary": "Maskinen har bare tall, så tegn lagres via en tabell. Er tabellene ulike, blir tekst til søppel."
+    },
+    {
+      "title": "2.9.2 ASCII: sju bit",
+      "file": "video2.mp4",
+      "summary": "ASCII fra 1963 har sju bit og 128 plasser. Den åttende biten var ledig til paritet."
+    },
+    {
+      "title": "2.9.3 Mønstrene i ASCII-tabellen",
+      "file": "video3.mp4",
+      "summary": "Sifrene ligger på 0x30, og store og små bokstaver skiller seg i ett bit."
+    },
+    {
+      "title": "2.9.4 BEL og DEL",
+      "file": "video4.mp4",
+      "summary": "BEL fikk en bjelle til å ringe, og DEL er sju enere fordi hull ikke kunne settes tilbake."
+    },
+    {
+      "title": "2.9.5 Når 128 tegn ikke holder",
+      "file": "video5.mp4",
+      "summary": "Æøå måtte erstatte andre tegn, og Latin-1 flyttet problemet i stedet for å løse det."
+    },
+    {
+      "title": "2.9.6 Kodepunkt er ikke koding",
+      "file": "video6.mp4",
+      "summary": "Unicode deler det i to: hvilket tall tegnet har, og hvordan tallet blir byte."
+    },
+    {
+      "title": "2.9.7 UTF-8: togsettet",
+      "file": "video7.mp4",
+      "summary": "Prefiksbitene i første byte sier hvor langt tegnet er, og 10 betyr at du står midt i et tegn."
+    },
+    {
+      "title": "2.9.8 Hvorfor UTF-8 vant",
+      "file": "video8.mp4",
+      "summary": "ASCII er allerede gyldig UTF-8, og du finner tegngrensen hvor som helst."
+    },
+    {
+      "title": "2.9.10 De andre kodingene",
+      "file": "video10.mp4",
+      "summary": "UTF-8, UTF-16 og UTF-32 er tre kodinger av de samme kodepunktene."
+    },
+    {
+      "title": "2.9.11 Tekst eller tall",
+      "file": "video11.mp4",
+      "summary": "Samme tall på papiret kan være to helt ulike ting i minnet."
+    },
+    {
+      "title": "2.9.12 Tegn er ikke byte",
+      "file": "video12.mp4",
+      "summary": "«Gjøvik» er seks tegn og sju byte. Tell i tegn for mennesker og i byte for filer."
+    }
+  ],
   "terms": [
     {
       "term": "Tegnkode",
