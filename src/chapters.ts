@@ -77,6 +77,10 @@ export const bannerOf = (c: Chapter) => c.icon?.replace('/chapter-icons/', '/cha
 /** Høyere bakgrunn til delkapittelkortene inne i kapitlet: del<navn>.webp ved siden av kapittelbanneret. */
 export const delBannerOf = (c: Chapter) => bannerOf(c)?.replace(/\/([^/]+)\.webp$/, (_, name: string) => `/del${name.replace(/^ch/, '')}.webp`)
 
+/** Bakgrunn til «Kom i gang»-knappen: start<navn>.webp. Legg til kapittelnøkkelen her når bildet finnes. */
+export const START_BANNERS = new Set(['7'])
+export const startBannerOf = (c: Chapter) => (START_BANNERS.has(c.key) ? bannerOf(c)?.replace(/\/([^/]+)\.webp$/, (_, name: string) => `/start${name.replace(/^ch/, '')}.webp`) : undefined)
+
 export const podcastCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + (t.podcasts?.length ?? 0), 0)
 /** Hvor mange videoer i kapitlet du har sett (lagres bare i nettleseren din). */
 export const seenCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + seenIn(t.id, t.videos.length), 0)

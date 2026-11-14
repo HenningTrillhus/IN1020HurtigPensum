@@ -1,5 +1,5 @@
 import { useRef, type CSSProperties } from 'react'
-import { bannerOf, delBannerOf, type Chapter } from '../chapters'
+import { bannerOf, delBannerOf, startBannerOf, type Chapter } from '../chapters'
 import PodButtons from '../PodButtons'
 import ChapterSearch from '../ChapterSearch'
 import { CalcButton } from '../Calculator'
@@ -41,7 +41,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
         </div>
       </div>
       {next && (
-        <a className="start-btn" href={`#/${next.t.id}/feed${next.i > 0 ? `/${next.i + 1}` : ''}`}>
+        <a className={`start-btn${startBannerOf(chapter) ? ' has-banner' : ''}`} style={{ '--banner': startBannerOf(chapter) ? `url(${startBannerOf(chapter)})` : undefined } as CSSProperties} href={`#/${next.t.id}/feed${next.i > 0 ? `/${next.i + 1}` : ''}`}>
           <span className="start-ic" aria-hidden><PlayIcon /></span>
           <span className="start-txt">
             <strong>{seenAny ? 'Fortsett i kapitlet' : 'Kom i gang'}</strong>
