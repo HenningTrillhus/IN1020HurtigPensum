@@ -889,3 +889,18 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 @keyframes vtInBack { from { opacity: 0; transform: translateX(-44px) } }
 @keyframes fadeOut { to { opacity: 0 } }
 @media (prefers-reduced-motion: reduce) { ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important } }
+
+/* «Kom i gang»-knappen øverst i kapitlet */
+.start-btn {
+  display: flex; align-items: center; gap: 14px; min-height: 64px; margin: 0 0 14px; padding: 12px 16px; border-radius: var(--r);
+  background: color-mix(in srgb, var(--ch, var(--acc)) 78%, #000); color: #fff; border: 1px solid color-mix(in srgb, var(--ch, var(--acc)) 60%, #fff);
+  transition: transform .15s var(--ease), filter .2s;
+}
+.start-btn:hover { filter: brightness(1.08) }
+.start-btn:active { transform: scale(.985) }
+.start-ic { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: #ffffff26 }
+.start-ic svg { width: 20px; height: 20px }
+.start-txt { display: flex; flex-direction: column; min-width: 0; gap: 1px }
+.start-txt strong { font-size: 16px }
+.start-txt small { color: #ffffffcc; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.start-btn .chev { margin-left: auto; font-size: 22px; color: #fff }

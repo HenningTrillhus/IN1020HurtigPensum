@@ -8,7 +8,7 @@ import BugButton from '../BugButton'
 import { ChapterRating } from '../Rating'
 import { swipeHandlers, type SwipeStart } from '../swipe'
 import { isSeen, seenIn } from '../storage'
-import { CheckIcon } from '../Icons'
+import { CheckIcon, PlayIcon } from '../Icons'
 
 // «6.2 Bryteren …» -> { num: '6.2', text: 'Bryteren …' }
 function splitTitle(title: string) {
@@ -21,6 +21,10 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
   const swipe = useRef<SwipeStart | null>(null)
   const termCount = chapter.topics.reduce((n, t) => n + (t.terms?.length ?? 0), 0)
   const termsHref = `#/kap/${chapter.key}/begreper`
+  // «Kom i gang»-knappen: første video du ikke har sett i kapitlet. Skjules når kapitlet ikke har videoer, og når du har sett alle.
+  const vids = chapter.topics.flatMap(t => t.videos.map((v, i) => ({ t, i, title: v.title })))
+  const seenAny = vids.some(x => isSeen(x.t.id, x.i))
+  const next = vids.find(x => !isSeen(x.t.id, x.i))
   return (
     // Dra fingeren mot venstre for å gå til alle fagbegrepene i kapitlet, og mot høyre for å gå tilbake til forsiden.
     <div className="shell" data-ch={chapter.color} {...swipeHandlers(swipe, termCount > 0 ? () => { location.hash = termsHref } : undefined, () => { location.hash = '#/' })}>
@@ -36,6 +40,16 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
           <h1 className="chapter-title">{chapter.title || chapter.label}</h1>
         </div>
       </div>
+      {next && (
+        <a className="start-btn" href={`#/${next.t.id}/feed${next.i > 0 ? `/${next.i + 1}` : ''}`}>
+          <span className="start-ic" aria-hidden><PlayIcon /></span>
+          <span className="start-txt">
+            <strong>{seenAny ? 'Fortsett i kapitlet' : 'Kom i gang'}</strong>
+            <small>{seenAny ? 'Neste: ' : 'Start med '}{next.title}</small>
+          </span>
+          <span className="chev" aria-hidden>›</span>
+        </a>
+      )}
       <Disclaimer compact compendiumUrl={compendiumUrl} chapterLabel={chapter.label} />
       {termCount > 0 && (
         <a className="terms-link" href={termsHref}>
