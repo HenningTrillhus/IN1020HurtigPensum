@@ -908,6 +908,6 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 /* Startknapp med banner: mønsteret ligger bak, mørknet mot venstre så teksten leses lett */
 .start-btn.has-banner { position: relative; overflow: hidden; isolation: isolate }
 .start-btn.has-banner::before {
-  content: ''; position: absolute; inset: 0; z-index: -1; background: var(--banner) right 66% / cover no-repeat; opacity: .75;
+  content: ''; position: absolute; inset: 0; z-index: -1; background: var(--banner) right 50% / cover no-repeat; opacity: .75;
   -webkit-mask-image: linear-gradient(90deg, transparent 18%, #000 70%); mask-image: linear-gradient(90deg, transparent 18%, #000 70%);
 }

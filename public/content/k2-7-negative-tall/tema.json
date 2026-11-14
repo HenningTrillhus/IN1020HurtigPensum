@@ -4,7 +4,38 @@
   "title": "2.7 Negative tall",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.7.1 Øverste bit har negativ vekt",
+      "file": "video1.mp4",
+      "summary": "I toerkomplement er alt som før, bortsett fra at øverste bit har negativ vekt."
+    },
+    {
+      "title": "2.7.2 Å snu fortegnet",
+      "file": "video2.mp4",
+      "summary": "Inverter alle bit og legg til 1. Det virker fordi du regner ut 256 minus tallet."
+    },
+    {
+      "title": "2.7.3 Hvorfor addisjon virker uendret",
+      "file": "video3.mp4",
+      "summary": "Maskinen legger sammen som vanlig og kaster menten. Derfor trengs ingen subtraksjonskrets."
+    },
+    {
+      "title": "2.7.4 Tallinja og verdiområdet",
+      "file": "video4.mp4",
+      "summary": "Fra minus 128 til 127, én null, og tallinja er egentlig en ring."
+    },
+    {
+      "title": "2.7.5 De som tapte",
+      "file": "video5.mp4",
+      "summary": "Fortegn og magnitude og enerkomplement har to nuller og mer komplisert addisjon."
+    },
+    {
+      "title": "2.7.6 Hvordan vet du at det er toerkomplement",
+      "file": "video6.mp4",
+      "summary": "Bitene sier ikke om et tall er negativt. Det gjør typen i koden."
+    }
+  ],
   "terms": [
     {
       "term": "Fortegn og størrelse",

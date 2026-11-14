@@ -4,7 +4,33 @@
   "title": "2.8 Overflyt",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.8.1 Kilometertelleren",
+      "file": "video1.mp4",
+      "summary": "Telleren på 999999 ruller til 000000. Det samme skjer i en datamaskin, og heter overflyt."
+    },
+    {
+      "title": "2.8.2 Når en int renner over",
+      "file": "video2.mp4",
+      "summary": "1 million ganger 1 million i en int gir minus 727 379 968. De øverste bitene kastes."
+    },
+    {
+      "title": "2.8.3 Overflyt sier ikke fra",
+      "file": "video3.mp4",
+      "summary": "Ingen feilmelding, bare feil tall. En større type flytter bare grensen."
+    },
+    {
+      "title": "2.8.4 Python og prisen",
+      "file": "video4.mp4",
+      "summary": "Ubegrensede heltall er behagelige, men koster fart."
+    },
+    {
+      "title": "2.8.5 Pythons fella",
+      "file": "video5.mp4",
+      "summary": "NumPy er skrevet i C og har faste bitbredder. Datatypen avgjør, ikke språket."
+    }
+  ],
   "terms": [
     {
       "term": "Overflyt",

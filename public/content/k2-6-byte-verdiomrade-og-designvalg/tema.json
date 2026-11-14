@@ -4,7 +4,38 @@
   "title": "2.6 Byte, verdiområde og designvalg",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.6.1 Hvert bit dobler",
+      "file": "video1.mp4",
+      "summary": "Ett bit rommer to verdier, to bit fire, tre bit åtte. n bit rommer 2 opphøyd i n verdier."
+    },
+    {
+      "title": "2.6.2 Byten",
+      "file": "video2.mp4",
+      "summary": "En byte er åtte bit: 256 verdier fra 0 til 255. Antall bit er alltid et valg med en konsekvens."
+    },
+    {
+      "title": "2.6.3 Byte og oktett",
+      "file": "video3.mp4",
+      "summary": "Åtte bit i en byte er en konvensjon. Oktett er ordet for når du må være helt sikker."
+    },
+    {
+      "title": "2.6.4 Hvor mange bit trenger jeg",
+      "file": "video4.mp4",
+      "summary": "Ti bit er omtrent tusen verdier, og derfra kan du regne deg oppover i hodet."
+    },
+    {
+      "title": "2.6.5 MB eller MiB",
+      "file": "video5.mp4",
+      "summary": "En million og 2 opphøyd i 20 er ikke det samme. Derfor blir en 1 TB-disk til 931 GiB."
+    },
+    {
+      "title": "2.6.6 BCD: når desimal må være desimal",
+      "file": "video6.mp4",
+      "summary": "Fire bit per siffer kaster bort plass, men gir eksakt desimalregning."
+    }
+  ],
   "terms": [
     {
       "term": "Byte",

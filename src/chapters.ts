@@ -78,7 +78,7 @@ export const bannerOf = (c: Chapter) => c.icon?.replace('/chapter-icons/', '/cha
 export const delBannerOf = (c: Chapter) => bannerOf(c)?.replace(/\/([^/]+)\.webp$/, (_, name: string) => `/del${name.replace(/^ch/, '')}.webp`)
 
 /** Bakgrunn til «Kom i gang»-knappen: start<navn>.webp. Legg til kapittelnøkkelen her når bildet finnes. */
-export const START_BANNERS = new Set(['7'])
+export const START_BANNERS = new Set(['2', '3', '4', '5', '6', '7', '8', 'nettverk', 'datasikkerhet'])
 export const startBannerOf = (c: Chapter) => (START_BANNERS.has(c.key) ? bannerOf(c)?.replace(/\/([^/]+)\.webp$/, (_, name: string) => `/start${name.replace(/^ch/, '')}.webp`) : undefined)
 
 export const podcastCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + (t.podcasts?.length ?? 0), 0)
