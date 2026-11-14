@@ -4,7 +4,33 @@
   "title": "2.12 Lyd",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.12.1 Sampling og kvantisering",
+      "file": "video1.mp4",
+      "summary": "Lyd lagres ved å måle i tid og runde i styrke, og det som ligger imellom, går tapt."
+    },
+    {
+      "title": "2.12.2 Hvor tett må vi sample",
+      "file": "video2.mp4",
+      "summary": "Sample minst dobbelt så fort som høyeste frekvens, ellers får du feil toner."
+    },
+    {
+      "title": "2.12.3 CD-en, regnet ut",
+      "file": "video3.mp4",
+      "summary": "En lyd-CD er 783 MB lyd, og en data-CD bruker plassen på tryggere feilkorreksjon."
+    },
+    {
+      "title": "2.12.4 Tapsfri lydkomprimering",
+      "file": "video4.mp4",
+      "summary": "Lagre endringer og differanser, med faste punkter å hoppe til."
+    },
+    {
+      "title": "2.12.5 MP3 og psykoakustikk",
+      "file": "video5.mp4",
+      "summary": "MP3 fjerner det øret ikke hører, og er et sluttformat, ikke et arbeidsformat."
+    }
+  ],
   "terms": [
     {
       "term": "Lydbølge",
