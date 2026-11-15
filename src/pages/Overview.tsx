@@ -100,7 +100,10 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
           className={`resume${bannerOf(last.chapter) ? ' has-banner' : ''}`} href={`#/${last.topic.id}/feed/${last.i + 1}`} data-ch={last.chapter.color}
           style={{ '--banner': bannerOf(last.chapter) ? `url(${bannerOf(last.chapter)})` : undefined } as CSSProperties}
         >
-          <span className="resume-ic" aria-hidden><PlayIcon /></span>
+          <span className="resume-ic" aria-hidden>
+            {last.topic.icon && <img src={`/content/${last.topic.id}/${last.topic.icon}`} alt="" width={44} height={44} draggable={false} />}
+            <span className="start-play"><PlayIcon /></span>
+          </span>
           <span className="resume-txt">
             <small>Fortsett der du slapp</small>
             <strong>{last.video.title}</strong>
