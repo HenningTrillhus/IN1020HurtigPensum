@@ -944,3 +944,9 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 .welcome-x:hover { color: var(--fg) }
 .welcome-note { flex-basis: 100%; margin: 0; font-size: 13px; color: var(--mut); word-break: break-all }
 @media (prefers-reduced-motion: reduce) { .welcome { animation-duration: .01s } }
+
+/* Delkapittelikonet ligger bak avspillingsknappen på «Kom i gang» */
+.start-ic { position: relative; width: 48px; height: 48px; background: #ffffff26; overflow: hidden }
+.start-ic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50% }
+.start-play { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 50%; background: #0000004d }
+.start-play svg { width: 22px; height: 22px; color: #fff; filter: drop-shadow(0 1px 3px #000a) }

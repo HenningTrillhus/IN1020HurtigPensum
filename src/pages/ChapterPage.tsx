@@ -42,7 +42,10 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
       </div>
       {next && (
         <a className={`start-btn${startBannerOf(chapter) ? ' has-banner' : ''}`} style={{ '--banner': startBannerOf(chapter) ? `url(${startBannerOf(chapter)})` : undefined } as CSSProperties} href={`#/${next.t.id}/feed${next.i > 0 ? `/${next.i + 1}` : ''}`}>
-          <span className="start-ic" aria-hidden><PlayIcon /></span>
+          <span className="start-ic" aria-hidden>
+            {next.t.icon && <img src={`/content/${next.t.id}/${next.t.icon}`} alt="" width={48} height={48} draggable={false} />}
+            <span className="start-play"><PlayIcon /></span>
+          </span>
           <span className="start-txt">
             <strong>{seenAny ? 'Fortsett i kapitlet' : 'Kom i gang'}</strong>
             <small>{seenAny ? 'Neste: ' : 'Start med '}{next.title}</small>

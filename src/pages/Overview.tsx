@@ -84,7 +84,10 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
       {/* Mens du søker, vises treffene i stedet for kapittellisten. */}
       {!last && totalSeen === 0 && first && !q.trim() && (
         <a className="start-btn" href={`#/${first.topic.id}/feed`} data-ch={first.chapter.color}>
-          <span className="start-ic" aria-hidden><PlayIcon /></span>
+          <span className="start-ic" aria-hidden>
+            {first.topic.icon && <img src={`/content/${first.topic.id}/${first.topic.icon}`} alt="" width={48} height={48} draggable={false} />}
+            <span className="start-play"><PlayIcon /></span>
+          </span>
           <span className="start-txt">
             <strong>Ny her? Begynn her</strong>
             <small>Første klipp: {first.video.title}</small>
