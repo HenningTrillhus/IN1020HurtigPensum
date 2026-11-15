@@ -4,13 +4,13 @@ Bildeprompter for de nye delkapitlene, i samme stil som de andre delkapittelikon
 
 Det er tre slags:
 
-- **Hele kapitlet** (alle kapitler unntatt kapittel 7): en egen side øverst i kapitlet med én lang video, slik kapittel 7 har. Motivet er en videoskjerm med tre små symboler under, så det kan skilles fra de andre ikonene.
+- **Hele kapitlet** (alle kapitler, også kapittel 7, så alle ser like ut): en egen side øverst i kapitlet med én lang video. Motivet er en videoskjerm med tre små symboler under, så det kan skilles fra de andre ikonene.
 - **Introduksjon og oppsummering** for Sikkerhet.
 - **Oppsummering** (N6) for Nettverk. Nettverk har allerede N1 som introduksjon.
 
-Bilder: 1024 x 1024, legg dem gjerne i `KapIconer/Ekstra/` som `Hele2.jpeg`, `Hele3.jpeg`, `Hele4.jpeg`, `Hele5.jpeg`, `Hele6.jpeg`, `Hele8.jpeg`, `HeleNettverk.jpeg`, `HeleSikkerhet.jpeg`, `SikkerhetIntro.jpeg`, `SikkerhetOppsummering.jpeg` og `NettverkOppsummering.jpeg`. Jeg beskjærer dem til runde 256 x 256, gir alle lik ring og legger dem inn.
+Bilder: 1024 x 1024, legg dem gjerne i `KapIconer/Ekstra/` som `Hele2.jpeg`, `Hele3.jpeg`, `Hele4.jpeg`, `Hele5.jpeg`, `Hele6.jpeg`, `Hele7.jpeg`, `Hele8.jpeg`, `HeleNettverk.jpeg`, `HeleSikkerhet.jpeg`, `SikkerhetIntro.jpeg`, `SikkerhetOppsummering.jpeg` og `NettverkOppsummering.jpeg`. Jeg beskjærer dem til runde 256 x 256, gir alle lik ring og legger dem inn.
 
-Totalt 11 bilder.
+Totalt 12 bilder.
 
 ---
 
@@ -165,6 +165,37 @@ MOTIV
 
 ```
 Motiv: en bred videoskjerm (avrundet rektangel) med en liten avspillingstrekant i midten, og under den en rad med tre små symboler: en transistor, en motstand og en firkantbølge. Viser at hele kapitlet om transistor, strøm og spenning ligger samlet i én video. Ingen tekst.
+```
+
+---
+
+## Kapittel 7: Minnehierarki og pipeline
+
+Referanse: `public/chapter-icons/ch7.png` (rund, dempet grønn medalje med en minnepyramide og et samlebånd). Legg det ved hver gang.
+
+### Hovedprompt (lim inn først)
+
+```
+Lag et lite, rundt app-ikon i samme stil som det vedlagte referansebildet (kapittel 7-ikonet). Følg referansen nøyaktig i stil, farger og linjetykkelse.
+
+STIL
+- Flat vektorillustrasjon, rene former, ingen gradienter, ingen skygger, ingen glans, ingen 3D.
+- Rund medalje: en tykk, mørk dempet skogsgrønn ytterkant (omtrent RGB 56, 96, 70) og en rolig, dempet fyllflate inni, i samme fargefamilie (omtrent RGB 115, 160, 117). Samme toner som referansen, ingen andre fargetoner i selve medaljen.
+- Kanten skal ha samme tykkelse på alle bilder i serien: omtrent 9 prosent av radiusen.
+- Innholdet tegnes med mørk strek (nesten svart i fargefamilien) og fyllflater i lysere toner av samme farge og lys krem/hvit for lyse flater. Ingen knall-farger, ingen rødt, gult, lilla eller blått.
+- Enkle, tydelige symboler med jevn strektykkelse, i samme stil som komponentene i referansen (rette linjer og avrundede hjørner). Maks 2 eller 3 symboler som kan leses ved 48 piksler. Ingen små detaljer.
+- Motivet skal fylle mellom 60 og 75 prosent av bredden til den indre sirkelen, sentrert både vannrett og loddrett, med god luft rundt. Ikke la symbolene bli små i et stort tomt felt.
+- ABSOLUTT INGEN TEKST: ingen ord, ingen bokstaver, ingen tall, ingen sifre (heller ikke 0 og 1), ingen etiketter. Ingen emojis, ingen mennesker, ingen ansikter.
+- Kvadratisk bilde, 1024 x 1024, sirkelen fyller hele bildet, hvit bakgrunn utenfor sirkelen.
+- Rolig, ryddig og dempet. Skal passe visuelt sammen med de andre kapittelikonene.
+
+MOTIV
+```
+
+### Hele kapitlet
+
+```
+Motiv: en bred videoskjerm (avrundet rektangel) med en liten avspillingstrekant i midten, og under den en rad med tre små symboler: en liten trappepyramide (minnelag), et samlebånd av små firkanter og en liten klokke. Viser at hele kapitlet om minnehierarki og pipeline ligger samlet i én video. Ingen tekst.
 ```
 
 ---
