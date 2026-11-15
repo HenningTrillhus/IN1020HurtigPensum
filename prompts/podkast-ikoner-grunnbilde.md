@@ -1,0 +1,101 @@
+# Podkastikoner: ett grunnbilde med 16 unike ikoner, så bytter vi tema og farger
+
+Ny plan, siden første forsøk ga mange like bilder og feil farger:
+
+1. Lag **ett** grunnbilde med 16 helt ulike ikoner (prompten under). Det er hovedjobben, så den må sitte.
+2. Kjør grunnbildet gjennom Gemini én gang per kapittel, med oppfølgingsprompten lenger ned, og bytt bare farger og tema-rekvisitter. Figurene og scenene er da alltid de samme 16, og kapittelsettene blir like gode.
+3. Gi meg de ni bildene, så klipper og fordeler jeg dem som sist. Siden alle sett kommer fra samme 16 figurer, blir det like mange av hver sort i hvert kapittel: 4 damer alene og 12 par.
+
+---
+
+## 1. Grunnprompt (lim inn i Gemini, legg gjerne ved to av de gamle ikonene som stilreferanse)
+
+```
+Lag ett bilde med et rutenett på nøyaktig 4 kolonner og 4 rader, altså nøyaktig 16 runde podkast-ikoner. Hvert ikon er en liten tegneserie-illustrasjon av et podkaststudio i en rund medalje. Alle 16 skal være HELT ULIKE: ingen to ikoner har samme personer, samme frisyre, samme klær, samme vinkel eller samme bakgrunn. Ikke kopier et ikon og endre litt på det. Tegn hvert som en ny, egen scene.
+
+RUTENETT OG FORMAT
+- Kvadratisk bilde, 2048 x 2048 piksler, ren hvit bakgrunn.
+- 16 sirkler i 4 kolonner og 4 rader. Alle sirkler er nøyaktig like store, ligger midt i sin rute og har lik hvit avstand til naboene (omtrent en tiendedel av sirkelens bredde). Ingen overlapp, ingen tekst utenfor sirklene, ingen rammer eller linjer rundt rutenettet.
+- Hver sirkel har en jevn, tykk, ensfarget mørkeblå ytterkant (samme farge og tykkelse i alle 16).
+
+KJØNN OG ANTALL PERSONER (VIKTIG, FØLG NØYAKTIG)
+- Rad 1 (de 4 øverste): NØYAKTIG ÉN DAME ALENE i hvert ikon. Ingen menn, ingen andre personer. Fire ulike damer.
+- Rad 2, 3 og 4 (de 12 nederste): NØYAKTIG ÉN MANN OG NØYAKTIG ÉN DAME i hvert ikon, to personer, aldri to damer og aldri to menn. Tolv ulike par.
+- Ingen andre personer i bakgrunnen. Ingen barn.
+
+STUDIO (like i alle 16)
+- Alle har hodetelefoner og en mikrofon (en på arm eller en på stativ). Alle ser vennlige, avslappede og smilende ut.
+- Damen alene sitter ved et bord, noen med en bærbar PC, noen med notater eller et nettbrett. Parene sitter ved et bord, hver med sin mikrofon.
+
+DE 16 IKONENE (tegn akkurat disse, hver for seg)
+Rad 1, dame alene:
+1. Dame med langt, brunt hår og tealfarget genser, sett rett forfra, bærbar PC, mikrofon på arm. På veggen bak: en rad med lydbølgestolper.
+2. Dame med kort svart bob og gul hettegenser, sett litt fra venstre, holder mikrofonen foran seg med den ene hånden. På veggen: en bokhylle.
+3. Dame med krøllete rødt hår og briller, grønn cardigan, sett litt fra høyre, nettbrett på bordet. En potteplante ved siden av.
+4. Dame med blondt hestehale og grå skjorte, sett litt ovenfra mens hun ser ned på notater. En skrivebordslampe og en popp-filter-mikrofon.
+Rad 2, mann og dame:
+5. Mann med skjegg og rutete skjorte, dame med langt svart hår og rosa bluse. Rundt bord, sett rett forfra, de snakker mot hverandre. Rødt «ON AIR»-skilt på veggen.
+6. Mann med briller og blå hettegenser, dame med blondt hår og grønn genser. Sitter side om side ved et skrivebord og deler en bærbar PC, sett rett forfra.
+7. Mann med skallet hode og mørk hud, oransje skjorte, dame med krøllete brunt hår og hvit bluse. Sitter vendt mot hverandre, sett fra siden som profil, en liten plante mellom dem.
+8. Ung mann med krøllete hår og jeansjakke, dame med rødt hår i knute og gul genser. Sett litt ovenfra, en kopp kaffe på bordet.
+Rad 3, mann og dame:
+9. Eldre mann med grått hår og skjegg, brun cardigan, eldre dame med grå bob og briller, lilla genser. To kaffekopper på bordet, sett rett forfra.
+10. Mann med svart hår i knute, mørkegrønn t-skjorte, dame med flettet hår og lilla topp. En tavle bak dem, sett litt fra venstre.
+11. Mann med kort brunt hår, dressjakke og slips, dame i blazer med mørkt krøllete hår. Treskrivebord og en veggklokke, sett litt fra høyre.
+12. Mann av østasiatisk utseende med kort svart hår og hvit skjorte, dame med lyseblått skjerf over håret og tealfarget genser. Høyttalere bak dem, sett rett forfra.
+Rad 4, mann og dame:
+13. Mann med rødt skjegg og lue, grå genser, dame med glatt mørkebrunt hår og briller, lyseblå skjorte. De sitter i en sofa med en lav kaffebord foran seg, sett litt ovenfra.
+14. Høy mann med afrofrisyre og gul skjorte, dame med kort sølvgrått hår og svart høyhalset genser. To høyttalere bak dem, sett litt nedenfra.
+15. Mann med blondt hår og rød flanellskjorte, dame med langt, bølgete svart hår og mintgrønn cardigan. Et stort vindu med silhuetten av en by bak dem, sett litt fra venstre.
+16. Mann med bart og sixpence-lue, beige jakke, dame med kort blond pixie-frisyre og mørk denim-kjole. De står ved en høy benk med mikrofoner, sett litt fra høyre.
+
+FARGER (viktig for at vi senere skal kunne bytte)
+- Bakgrunnen inni hver sirkel er i ulike toner av ÉN farge: mellomblå, fra mørk til lys. Ingen andre bakgrunnsfarger (ikke grønn, rød, lilla eller oransje i bakgrunnen).
+- Ytterkanten er mørkeblå.
+- Klærne kan ha ulike, dempede farger. Bare bakgrunn og ytterkant er blå.
+
+STIL
+- Flat vektorillustrasjon i tegneseriestil, tykke mørke konturer, rene former, ingen gradienter, ingen glans, ingen fotorealisme. Samme tegnestil og linjetykkelse i alle 16.
+- ABSOLUTT INGEN TEKST i illustrasjonene, bortsett fra det røde «ON AIR»-skiltet i ikon 5. Ingen sifre, ingen andre bokstaver, ingen logoer, ingen vannmerke.
+- Hver sirkel skal kunne leses som et lite ikon på 56 piksler: store figurer, få detaljer, tydelig kontrast mellom figurene og bakgrunnen.
+```
+
+**Sjekk før du går videre:** tell at øverste rad har fire damer og ingen menn, og at hver av de tolv under har én mann og én dame. Hvis noen er feil, be Gemini om å tegne akkurat det ikonet på nytt («tegn ikon nummer 7 på nytt, med én mann og én dame») i stedet for å lage hele bildet om igjen.
+
+---
+
+## 2. Oppfølgingsprompt: bytt farger og tema (kjør én gang per kapittel)
+
+Last opp grunnbildet i en ny samtale og lim inn promptet med kapittelets verdier. Gjør det én gang per kapittel, hver gang fra det samme grunnbildet.
+
+```
+Dette er et bilde med 16 podkast-ikoner. Behold nøyaktig alle 16 figurene, scenene, posisjonene og tegnestilen. Ikke endre personene, klærne, vinklene eller antall personer, og ikke flytt noe.
+
+Endre bare disse tingene:
+1. Bytt alle de blå bakgrunnene til ulike toner av {FARGEFAMILIE}, fra mørk til lys, så de varierer men hører sammen.
+2. Bytt den mørkeblå ytterkanten til {RING}, samme tykkelse i alle.
+3. Legg inn {TEMA} som små dekorelementer på veggen i hver sirkel, ulikt i hver, uten å dekke personene. Bruk bare noen få i hver.
+4. Hold bildet kvadratisk, 2048 x 2048, med hvit bakgrunn og samme rutenett. Ingen ny tekst, ingen sifre, bortsett fra det røde «ON AIR»-skiltet som allerede er der.
+```
+
+Verdier per kapittel:
+
+| Kapittel | {FARGEFAMILIE} | {RING} | {TEMA} |
+|---|---|---|---|
+| 2 | dempet blå (marineblå til lys blå) | mørk marineblå, RGB 47, 72, 140 | rutenett av tomme firkanter (bit), sinusbølge og trappekurve, et pikselbilde i en ramme |
+| 3 | dempet kobber/oransje (terrakotta til lys fersken) | kobberbrun, RGB 181, 99, 51 | postkasser på rad, et flytskjema med en rombe og piler, små minneceller |
+| 4 | dempet petrol/blågrønn | mørk petrol, RGB 33, 85, 88 | en prosessorbrikke, en V-formet ALU-trapes, brede bussbånd, små registerbokser |
+| 5 | dempet lilla (mørk lilla til lys lavendel) | mørk lilla, RGB 119, 68, 126 | logiske porter (AND, OR, NOT), kretslinjer med knekk og prikker, en liten lyspære |
+| 6 | dempet gul/gylden (mørk oker til lys gul) | gyllen, RGB 190, 139, 42 | en transistor, en motstand, et batteri, en firkantbølge, en lyspære |
+| 7 | dempet skogsgrønn (mørk grønn til lys mint) | mørk skogsgrønn, RGB 56, 96, 68 | en trappepyramide, et samlebånd av små firkanter, en klokke, en bokhylle |
+| 8 | dempet turkis (mørk turkis til lys isblå) | turkis, RGB 45, 128, 132 | en sky, en brikke med ben, et hjerneomriss, en laptop og telefon, tannhjul |
+| Nettverk | dempet plomme/rosa (mørk plomme til lys lavendelrosa) | plomme, RGB 145, 69, 116 | et nettverk av noder og linjer, en ruter med antenner, konvolutter, Wi-Fi-buer |
+| Sikkerhet | dempet rød/vinrød (mørk vinrød til lys rosa) | mørk rød, RGB 121, 28, 33 | hengelåser, nøkler, skjold med hake, et fingeravtrykk |
+
+Sjekk i hvert bilde at alle 16 fortsatt har rett antall personer (fire damer alene øverst, tolv par under) og at fargene er innenfor kapittelets fargefamilie. Hvis noen av ikonene fikk feil farge, kjør bare de på nytt.
+
+---
+
+## Når du er ferdig
+
+Legg de ni bildene i `KapIconer/PodkastIkoner/` som `Kap02.jpeg`, `Kap03.jpeg`, `Kap04.jpeg`, `Kap05.jpeg`, `Kap06.jpeg`, `Kap07.jpeg`, `Kap08.jpeg`, `Nettverk.jpeg` og `Sikkerhet.jpeg`, og si fra. Jeg klipper dem, gir alle lik ring og fordeler dem: de korte podkastene får en dame alene, de lange en mann og en dame, og ingen to i samme kapittel får samme ikon. Jeg kan også først rydde bort de gamle ikonene fra forrige runde, hvis du vil.
