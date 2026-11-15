@@ -1,4 +1,4 @@
-# Gemini / NotebookLM-prompter for kapittel 8 «Moderne maskiner» (14 videoer)
+# Gemini / NotebookLM-prompter for kapittel 8 «Moderne maskiner» (13 videoer)
 
 Kilde: lysarkene i kapittel 8, «Moderne maskiner og hele stabelen». Kapittel 8 knytter sammen det som er forklart i kapittel 2 til 7, så det gjentar ikke grunnleggende stoff. Hver video tar for seg to poenger og slutter på dem, uten overgang, spørsmål eller henvisning til noe annet. Lengde: maks ca. 70 sekunder og ca. 130 ord. Heller kutte detaljer enn å fylle på.
 
@@ -8,7 +8,7 @@ Hva som er bevisst **ikke** forklart på nytt, siden det er dekket i tidligere k
 - cache, treffrate, nivåene L1 til L3 og koherens, som 8.4 bare går fort gjennom
 - klokke, kritisk vei og porter
 
-Videoer per del: 8.1: 1, 8.2: 3, 8.3: 2, 8.4: 1 (rask), 8.5: 2, 8.6: 2, 8.7: 2, 8.8: 1.
+Videoer per del: 8.1: 1, 8.2: 3, 8.3: 2, 8.4: 1 (rask), 8.5: 2, 8.6: 2, 8.7: 2. 8.8 «Hele stabelen» lages senere som en lengre oppsummeringsvideo, sammen med de andre oppsummeringene.
 
 1. Maskinen og de tre spørsmålene (8.1.1)
 2. Rekk det over bordet, og gjett riktig (8.2.1)
@@ -23,7 +23,6 @@ Videoer per del: 8.1: 1, 8.2: 3, 8.3: 2, 8.4: 1 (rask), 8.5: 2, 8.6: 2, 8.7: 2, 
 11. Virtuelt minne (8.6.2)
 12. Ingen feil, laget under lekker (8.7.1)
 13. Fem steg og et stoppeur (8.7.2)
-14. Hele stabelen (8.8.1)
 
 Felles regler i alle: ingen henvisninger til andre kapitler, forelesninger eller videoer. Bruk bare tall og eksempler som står i lysarkene. Videonummeret er ikke det samme som lysarkenes sidenummer, så ikke si noe nummer i fortellingen. Les «L3» som «nivå tre», «NPU» som «nevral motor» og «GPU» som «grafikkbrikken». Hver video har en «Ikke nevn»-linje så de ikke tar fra hverandre.
 
@@ -458,39 +457,6 @@ Ikke forklar hvorfor det ikke er noen feil, og ikke nevn at hullet er lappet.
 
 ---
 
-## Video 14: 8.8.1 Hele stabelen
-
-```
-Du lager en kort, visuell forklaringsvideo for en student på IN1020 (Universitetet i Oslo).
-Bruk lysarkene i kapittel 8 («Moderne maskiner og hele stabelen») som kilde, og hold deg bare til delen «Hele stabelen» med tabellen over lagene og til slutt «Ingen av lagene under er magi lenger». Bruk bare tall og eksempler som står der.
-
-TITTEL
-Videoen skal hete akkurat: «8.8.1 Hele stabelen». Vis den som tittel i starten og bruk den som navn på videoen.
-
-POENG (kun disse to)
-1. Fra det du skrev, svar er a pluss b, ned gjennom alle lagene: oversettelsen til LDA, ADD og STA, ordren som et tall med opkode og adressefelt, tallene som bit med toerkomplement og mente, maskineriet som henter og utfører, ALU-en som porter og fulladdere, portene som transistorer, der NAND er fire transistorer, og til slutt ladning som flytter seg, fem pikosekunder per skifte. Over det ligger tiden: cache, pipeline, videresending, gjetting, avbrudd.
-2. Og hver egenskap ved maskinen har en grunn: åtte kjerner fordi klokka ikke kunne gå fortere, 4,0 GHz fordi varmen setter grensen, 12 MB buffer fordi minnet er hundre ganger for tregt, integrert grafikk fordi noen jobber er åtte millioner like biter, og nevral motor fordi å flytte et tall koster mer enn å gange det. Ingen av lagene under er magi lenger.
-
-LENGDE OG FORMAT
-- Maks 70 sekunder og ca. 130 ord fortellertekst. Har du ikke plass, kutt heller en detalj enn å snakke fortere.
-- Vertikal video (9:16) hvis mulig. Stor tekst, maks én figur på skjermen om gangen. Vis en stabel av åtte lag fra «svar = a + b» øverst til «ladning» nederst, hvert med et lite symbol, og tiden som en stripe på siden. Vis så fem egenskaper (8 kjerner, 4,0 GHz, 12 MB, grafikk, nevral motor) hver med en pil og en kort grunn.
-- Norsk bokmål. Muntlig, direkte og presist, som en dyktig medstudent. Ingen hilsen.
-
-STRUKTUR
-1. Krok (0–8 s, ca. 18 ord): spør: «Hva skjer egentlig når du skriver «svar er a pluss b»?»
-2. Poeng 1 (lagene, 8–34 s, ca. 55 ord): fra programmet til assembler, ordre som tall, bit, maskineriet, porter, transistorer og ladning. Tiden følger med fra cache, pipeline og gjetting.
-3. Poeng 2 (grunnene, 34–58 s, ca. 40 ord): åtte kjerner fordi klokka stoppet, 4,0 GHz fordi varmen setter grensen, 12 MB buffer fordi minnet er tregt, grafikk for like biter, nevral motor fordi transport koster.
-4. Avslutning (58–68 s, ca. 12 ord): én setning som gjentar poenget: ingen av lagene er magi, de er valg noen tok av grunner du kan gjøre rede for.
-
-REGLER FOR SLUTTEN
-Slutt på avslutningssetningen. Ikke still et spørsmål, ikke varsle om noe mer, og ikke si «neste», «senere» eller henvis til andre videoer eller kapitler.
-
-AVGRENSNING
-Ikke forklar noen av lagene i detalj, og ikke si kapittelnumre.
-```
-
----
-
 ## Etter generering
 
-Legg videoene i `Kap08/Videoer/` som `8.1.1.mp4`, `8.2.1.mp4`, `8.2.2.mp4`, `8.2.3.mp4`, `8.3.1.mp4`, `8.3.2.mp4`, `8.4.1.mp4`, `8.5.1.mp4`, `8.5.2.mp4`, `8.6.1.mp4`, `8.6.2.mp4`, `8.7.1.mp4`, `8.7.2.mp4` og `8.8.1.mp4`, og gi meg beskjed. Jeg legger dem inn i delkapitlene, lager plakatbilder og oppsummeringer, og sjekker at de starter raskt.
+Legg videoene i `Kap08/Videoer/` som `8.1.1.mp4`, `8.2.1.mp4`, `8.2.2.mp4`, `8.2.3.mp4`, `8.3.1.mp4`, `8.3.2.mp4`, `8.4.1.mp4`, `8.5.1.mp4`, `8.5.2.mp4`, `8.6.1.mp4`, `8.6.2.mp4`, `8.7.1.mp4` og `8.7.2.mp4`, og gi meg beskjed. Jeg legger dem inn i delkapitlene, lager plakatbilder og oppsummeringer, og sjekker at de starter raskt.
