@@ -1,22 +1,22 @@
 {
   "id": "ds-6-trygge-digitale-tjenester",
   "chapter": "Datasikkerhet",
-  "title": "S6 Å skape trygge digitale tjenester",
+  "title": "Sikkerhet 6 Å skape trygge digitale tjenester",
   "description": "Lovpålagte krav som GDPR, trusselmodellering og risikoanalyse, og systematisk sikkerhetsarbeid.",
   "icon": "icon.png",
   "videos": [
     {
-      "title": "S6.1 Lovkrav og innebygd personvern",
+      "title": "Sikkerhet 6.1 Lovkrav og innebygd personvern",
       "file": "video1.mp4",
       "summary": "Loven krever personvern bygd inn fra starten og sikkerhet gjennom hele behandlingen."
     },
     {
-      "title": "S6.2 Trusselmodellering, risiko og administrative tiltak",
+      "title": "Sikkerhet 6.2 Trusselmodellering, risiko og administrative tiltak",
       "file": "video2.mp4",
       "summary": "Sikkerhet styres systematisk ved å vurdere risiko og innføre administrative tiltak."
     },
     {
-      "title": "S6.3 Angrepet mot Lørenskog",
+      "title": "Sikkerhet 6.3 Angrepet mot Lørenskog",
       "file": "video3.mp4",
       "summary": "Ett klikk på en forgiftet nedlasting ble et angrep som kostet 25 millioner kroner."
     }

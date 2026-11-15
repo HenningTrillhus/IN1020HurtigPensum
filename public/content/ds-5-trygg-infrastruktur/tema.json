@@ -1,22 +1,22 @@
 {
   "id": "ds-5-trygg-infrastruktur",
   "chapter": "Datasikkerhet",
-  "title": "S5 Trygg infrastruktur og sikre datasystemer",
+  "title": "Sikkerhet 5 Trygg infrastruktur og sikre datasystemer",
   "description": "Trusler mot trådløse og kablede nett, systemsikkerhet, buffer-utnyttelser og digitale verdikjeder.",
   "icon": "icon.png",
   "videos": [
     {
-      "title": "S5.1 Nettverkssikkerhet",
+      "title": "Sikkerhet 5.1 Nettverkssikkerhet",
       "file": "video1.mp4",
       "summary": "Nettverk trues av avlytting og forstyrrelse, og beskyttes med kryptering, brannmur og overvåking."
     },
     {
-      "title": "S5.2 Systemsikkerhet",
+      "title": "Sikkerhet 5.2 Systemsikkerhet",
       "file": "video2.mp4",
       "summary": "En feil i kjernen eller i minnet kan gi en angriper full kontroll over maskinen."
     },
     {
-      "title": "S5.3 Digitale verdikjeder",
+      "title": "Sikkerhet 5.3 Digitale verdikjeder",
       "file": "video3.mp4",
       "summary": "Å bruke leverandører sparer arbeid, men gir avhengighet og beholdt ansvar."
     }

@@ -1,17 +1,17 @@
 {
   "id": "ds-2-sikkerhetsmal",
   "chapter": "Datasikkerhet",
-  "title": "S2 Å innfri sikkerhetsmål",
+  "title": "Sikkerhet 2 Å innfri sikkerhetsmål",
   "description": "Autorisert og uautorisert tilgang: entitet, identitet, autentisering, autorisering og tilgangskontroll.",
   "icon": "icon.png",
   "videos": [
     {
-      "title": "S2.1 Entitet, identitet og autentisering",
+      "title": "Sikkerhet 2.1 Entitet, identitet og autentisering",
       "file": "video1.mp4",
       "summary": "Identitet er påstanden om hvem du er, og autentisering er å bevise den."
     },
     {
-      "title": "S2.2 Autorisering, tilgangskontroll og sikkerhetsmålene",
+      "title": "Sikkerhet 2.2 Autorisering, tilgangskontroll og sikkerhetsmålene",
       "file": "video2.mp4",
       "summary": "Tilgangskontroll gjør at bare de som skal ha tilgang, får det, og det støtter sikkerhetsmålene."
     }

@@ -1,32 +1,32 @@
 {
   "id": "ds-3-hvordan-hackes-vi",
   "chapter": "Datasikkerhet",
-  "title": "S3 Hvordan hackes vi?",
+  "title": "Sikkerhet 3 Hvordan hackes vi?",
   "description": "Trusselaktører og angrepsvektorer: sårbarheter, skadevare, SQL-injeksjon, XSS og sosial manipulasjon.",
   "icon": "icon.png",
   "videos": [
     {
-      "title": "S3.1 Hva angriperne vil ha",
+      "title": "Sikkerhet 3.1 Hva angriperne vil ha",
       "file": "video1.mp4",
       "summary": "Angriperne vil se, endre eller stenge ute, og de gjør det med tyveri, sårbarheter eller å lure folk."
     },
     {
-      "title": "S3.2 Sårbarhet og angrepsvektor",
+      "title": "Sikkerhet 3.2 Sårbarhet og angrepsvektor",
       "file": "video2.mp4",
       "summary": "Sårbarheten er svakheten, og angrepsvektoren er veien en angriper bruker for å komme inn."
     },
     {
-      "title": "S3.3 Typer skadevare",
+      "title": "Sikkerhet 3.3 Typer skadevare",
       "file": "video3.mp4",
       "summary": "Skadevare har mange typer, og de skiller seg på hva de gjør og hvordan de kommer inn."
     },
     {
-      "title": "S3.4 SQL-injeksjon og XSS",
+      "title": "Sikkerhet 3.4 SQL-injeksjon og XSS",
       "file": "video4.mp4",
       "summary": "SQL-injeksjon og XSS utnytter at applikasjoner stoler på brukerens input."
     },
     {
-      "title": "S3.5 Tiltak og det svakeste leddet",
+      "title": "Sikkerhet 3.5 Tiltak og det svakeste leddet",
       "file": "video5.mp4",
       "summary": "Sikkerhetstiltak støtter hvert sitt mål, og det svakeste leddet bestemmer styrken."
     }

@@ -1,27 +1,27 @@
 {
   "id": "ds-4-kryptografi",
   "chapter": "Datasikkerhet",
-  "title": "S4 Kryptografi",
+  "title": "Sikkerhet 4 Kryptografi",
   "description": "Nøkkelen til digital samhandling: klartekst og kryptert tekst, hemmelig og offentlig nøkkel, hash og kryptering på flere lag.",
   "icon": "icon.png",
   "videos": [
     {
-      "title": "S4.1 Hva er kryptografi, og hvordan knekkes den",
+      "title": "Sikkerhet 4.1 Hva er kryptografi, og hvordan knekkes den",
       "file": "video1.mp4",
       "summary": "Sikkerheten ligger i hvor mye arbeid det er å knekke, ikke i at algoritmen er hemmelig."
     },
     {
-      "title": "S4.2 Symmetrisk kryptering og hash",
+      "title": "Sikkerhet 4.2 Symmetrisk kryptering og hash",
       "file": "video2.mp4",
       "summary": "Symmetrisk kryptering skjuler innholdet med en delt nøkkel, mens hash bare sjekker at det ikke er endret."
     },
     {
-      "title": "S4.3 Asymmetrisk kryptering og digital signatur",
+      "title": "Sikkerhet 4.3 Asymmetrisk kryptering og digital signatur",
       "file": "video3.mp4",
       "summary": "Offentlig nøkkel gir konfidensialitet, og privat nøkkel gir signatur og ubenektelighet."
     },
     {
-      "title": "S4.4 Sertifikater og PKI",
+      "title": "Sikkerhet 4.4 Sertifikater og PKI",
       "file": "video4.mp4",
       "summary": "Sertifikater og en CA lar oss stole på at en offentlig nøkkel hører til den den utgir seg for."
     }

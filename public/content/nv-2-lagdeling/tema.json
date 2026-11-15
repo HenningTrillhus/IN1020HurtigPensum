@@ -1,22 +1,22 @@
 {
   "id": "nv-2-lagdeling",
   "chapter": "Nettverk",
-  "title": "N2 Lagdeling og protokoller",
+  "title": "Nettverk 2 Lagdeling og protokoller",
   "description": "Hva en protokoll er, hvorfor kommunikasjon deles i lag, og TCP/IP-modellen.",
   "icon": "icon.png",
   "videos": [
     {
-      "title": "N2.1 Protokoller og lag",
+      "title": "Nettverk 2.1 Protokoller og lag",
       "file": "video1.mp4",
       "summary": "En protokoll er reglene for beskjedene, og lagdeling gjør det komplekse håndterbart."
     },
     {
-      "title": "N2.2 TCP/IP-modellen",
+      "title": "Nettverk 2.2 TCP/IP-modellen",
       "file": "video2.mp4",
       "summary": "Internett har fem lag, og hver beskjed går ned hos avsenderen og opp hos mottakeren."
     },
     {
-      "title": "N2.3 Hva hvert lag gjør",
+      "title": "Nettverk 2.3 Hva hvert lag gjør",
       "file": "video3.mp4",
       "summary": "Hvert lag har én jobb, og sammen får de en nettside fra A til B."
     }
