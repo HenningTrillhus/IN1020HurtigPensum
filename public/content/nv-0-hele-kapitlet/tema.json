@@ -1,10 +1,24 @@
 {
   "id": "nv-0-hele-kapitlet",
   "chapter": "Nettverk",
+  "chapterKey": "nettverk",
   "title": "Nettverk Hele kapitlet i én video",
   "description": "Hele nettverksdelen i én lengre video, fra pakker og lag til tjenestene i Internett.",
   "icon": "icon.png",
-  "videos": [],
-  "chapterKey": "nettverk",
+  "videos": [
+    {
+      "title": "Nettverk Hele kapitlet i én video",
+      "file": "video1.mp4",
+      "summary": "Fra en pakke på vei ut av maskinen til tjenestene du bruker: lag, adresser, operativsystem, TCP, DNS og HTTP."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Slik reiser en datapakke over internett",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-5",
+      "duration": 1623
+    }
+  ],
   "noShuffle": true
 }

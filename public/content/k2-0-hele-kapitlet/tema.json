@@ -5,5 +5,13 @@
   "description": "Hele kapittel 2 i én lengre video, fra bit og tall til tekst, bilde og lyd.",
   "icon": "icon.png",
   "videos": [],
+  "podcasts": [
+    {
+      "title": "Hvordan datamaskinen tolker nuller og enere",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-3",
+      "duration": 1429
+    }
+  ],
   "noShuffle": true
 }

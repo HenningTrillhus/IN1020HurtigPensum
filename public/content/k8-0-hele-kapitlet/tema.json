@@ -5,5 +5,13 @@
   "description": "Hele kapittel 8 i én lengre video, fra pipeline og kjerner til Spectre.",
   "icon": "icon.png",
   "videos": [],
+  "podcasts": [
+    {
+      "title": "Hvordan utålmodige prosessorer lekker passord",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "dame-mann-4",
+      "duration": 1254
+    }
+  ],
   "noShuffle": true
 }
