@@ -20,7 +20,7 @@ LENGDE OG FORMAT
 - Ca. 10 minutter og ca. 1350 ord fortellertekst. Heller kutte detaljer enn å snakke fortere.
 - Vertikal video (9:16) hvis mulig. Stor tekst, maks én figur på skjermen om gangen. Bruk figurene og tallene fra lysarkene.
 - Norsk bokmål. Muntlig, direkte og presist, som en dyktig medstudent. Ingen hilsen.
-- Rød tråd: en melding på vei fra din maskin til en tjener. Vis den som en liten konvolutt i hjørnet som får flere «konvolutter» (headere) rundt seg for hvert lag den går gjennom, og som peles av på andre siden. La konvolutten markere hvor i reisen vi er.
+- Rød tråd: en melding på vei fra din maskin til en tjener. Vis den som en liten konvolutt i hjørnet som får flere «konvolutter» (headere) rundt seg for hvert lag den går gjennom, og som pakkes ut igjen på andre siden. La konvolutten markere hvor i reisen vi er.
 
 STRUKTUR (følg denne rekkefølgen)
 1. Åpning (0:00–0:40, ca. 80 ord): spør «hva skjer egentlig fra kabelen i veggen til svaret kommer?». Vis veien fra din maskin via hjemmeruteren og leverandøren til en tjener langt unna.
