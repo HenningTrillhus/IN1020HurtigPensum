@@ -13,6 +13,8 @@ Ny plan, siden første forsøk ga mange like bilder og feil farger:
 ```
 Lag ett bilde med et rutenett på nøyaktig 4 kolonner og 4 rader, altså nøyaktig 16 runde podkast-ikoner. Hvert ikon er en liten tegneserie-illustrasjon inne i et podkaststudio (rom med akustikkpaneler, studiolamper og mikrofoner) i en rund medalje, i samme stil som de vedlagte referanseikonene. Alle 16 skal være HELT ULIKE: ingen to ikoner har samme personer, samme frisyre, samme klær eller samme vinkel, og detaljene i studioet varierer fra ikon til ikon. Ikke kopier et ikon og endre litt på det. Tegn hvert som en ny, egen scene.
 
+HOVEDREGEL: Alle 16 ikoner viser personer som SITTER i et podkaststudio, hver med en synlig mikrofon foran seg. Dette gjelder uten unntak.
+
 RUTENETT OG FORMAT
 - Kvadratisk bilde, 2048 x 2048 piksler, ren hvit bakgrunn.
 - 16 sirkler i 4 kolonner og 4 rader. Alle sirkler er nøyaktig like store, ligger midt i sin rute og har lik hvit avstand til naboene (omtrent en tiendedel av sirkelens bredde). Ingen overlapp, ingen tekst utenfor sirklene, ingen rammer eller linjer rundt rutenettet.
@@ -27,7 +29,7 @@ STUDIO (VIKTIG: ALLE 16 SKAL VÆRE INNE I ET PODKASTROM, i samme stil som refera
 - Hver scene er et lydisolert podkaststudio sett innenfra: akustikkpaneler (skumplater med ribbemønster) på veggene, studiolamper i taket, og gjerne et rødt «ON AIR»-skilt, en lydbølge på veggen, lyd-miksere, høyttalere eller en lyddempet bakvegg. Ingen kjøkken, stue, kafé, utendørs eller by i bakgrunnen.
 - Alle har hodetelefoner og en kondensatormikrofon (på arm eller på bordstativ) foran seg. Alle ser vennlige, avslappede og smilende ut, og snakker eller gestikulerer.
 - Damen alene sitter ved et skrivebord i studioet, noen med en bærbar PC, noen med notater eller et nettbrett. Parene sitter ved samme bord, hver med sin mikrofon, vendt mot hverandre eller mot kamera.
-- Alle står eller sitter ved et bord med mikrofoner. Ingen sofaer, ingen stående benker.
+- ALLE 16 IKONER: ALLE PERSONENE SITTER på stoler ved et bord inne i podkaststudioet, og HVER ENESTE PERSON har en tydelig synlig mikrofon rett foran munnen (på arm eller stativ) og hodetelefoner på hodet. Ingen står, ingen sitter i sofa, ingen mangler mikrofon, og mikrofonen må være stor nok til å sees i et lite ikon.
 
 DE 16 IKONENE (tegn akkurat disse, hver for seg, alle i et podkaststudio)
 Rad 1, dame alene:
@@ -36,7 +38,7 @@ Rad 1, dame alene:
 3. Dame med krøllete rødt hår og briller, grønn cardigan, sett litt fra høyre, nettbrett på bordet. En lyd-mikser på bordet, akustikkpaneler bak og en studiolampe i taket.
 4. Dame med blond hestehale og grå skjorte, sett litt ovenfra mens hun ser ned på notater. Skrivebordslampe, popp-filter foran mikrofonen og lydskumvegg bak.
 Rad 2, mann og dame:
-5. Mann med skjegg og rutete skjorte, dame med langt svart hår og rosa bluse. Rundt bord, sett rett forfra, de snakker mot hverandre. Rødt «ON AIR»-skilt på veggen og lydbølge.
+5. Mann med skjegg og rutete skjorte, dame med langt svart hår og rosa bluse. Rundt bord, sett rett forfra, de snakker mot hverandre, hver med sin mikrofon. Rødt «ON AIR»-skilt på veggen og lydbølge.
 6. Mann med briller og blå hettegenser, dame med blondt hår og grønn genser. Sitter side om side ved et skrivebord og deler en bærbar PC, sett rett forfra. Akustikkpaneler bak og to studiolamper i taket.
 7. Mann med skallet hode og mørk hud, oransje skjorte, dame med krøllete brunt hår og hvit bluse. Sitter vendt mot hverandre, sett fra siden som profil. Lydskumvegg og en liten plante på bordet mellom dem.
 8. Ung mann med krøllete hår og jeansjakke, dame med rødt hår i knute og gul genser. Sett litt ovenfra, en kaffekopp på bordet. Lyd-mikser og akustikkpaneler bak.
@@ -46,10 +48,10 @@ Rad 3, mann og dame:
 11. Mann med kort brunt hår, dressjakke og slips, dame i blazer med mørkt krøllete hår. Sett litt fra høyre. Rødt «ON AIR»-skilt og to studiolamper i taket.
 12. Mann av østasiatisk utseende med kort svart hår og hvit skjorte, dame med lyseblått skjerf over håret og tealfarget genser. Høyttalere og lydbølge på veggen bak, sett rett forfra.
 Rad 4, mann og dame:
-13. Mann med rødt skjegg og lue, grå genser, dame med glatt mørkebrunt hår og briller, lyseblå skjorte. Sett litt ovenfra, ved et rundt bord med to mikrofoner. Lydskumvegg bak.
+13. Mann med rødt skjegg og lue, grå genser, dame med glatt mørkebrunt hår og briller, lyseblå skjorte. Sett litt ovenfra, sittende ved et rundt bord med to mikrofoner. Lydskumvegg bak.
 14. Høy mann med afrofrisyre og gul skjorte, dame med kort sølvgrått hår og svart høyhalset genser. To høyttalere og akustikkpaneler bak, sett litt nedenfra.
 15. Mann med blondt hår og rød flanellskjorte, dame med langt, bølgete svart hår og mintgrønn cardigan. Sett litt fra venstre. Lyd-mikser og lydbølge på veggen, studiolamper i taket.
-16. Mann med bart og sixpence-lue, beige jakke, dame med kort blond pixie-frisyre og mørk denim-kjole. Sett litt fra høyre, ved et bord med to mikrofoner. Rødt «ON AIR»-skilt og akustikkpaneler bak.
+16. Mann med bart og sixpence-lue, beige jakke, dame med kort blond pixie-frisyre og mørk denim-kjole. Sett litt fra høyre, sittende ved et bord med to mikrofoner. Rødt «ON AIR»-skilt og akustikkpaneler bak.
 
 FARGER (viktig for at vi senere skal kunne bytte)
 - Bakgrunnen inni hver sirkel er i ulike toner av ÉN farge: mellomblå, fra mørk til lys. Ingen andre bakgrunnsfarger (ikke grønn, rød, lilla eller oransje i bakgrunnen).
