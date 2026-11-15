@@ -1,0 +1,14 @@
+{
+  "id": "k7-7-oppsummering",
+  "chapter": "Kapittel 7 – Minnehierarki og pipeline",
+  "title": "7.7 Oppsummering",
+  "description": "Cachen og pipelinen er den samme ideen to ganger: de nekter å vente.",
+  "icon": "icon.png",
+  "videos": [
+    {
+      "title": "7.7 Oppsummering",
+      "file": "video1.mp4",
+      "summary": "Begge nekter å vente, og begge feiler når mønsteret brytes."
+    }
+  ]
+}

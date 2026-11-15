@@ -4,7 +4,13 @@
   "title": "8.8 Hele stabelen",
   "description": "Alle lagene fra kode til transistorer satt sammen. Ingen av dem er magi lenger.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "8.8.1 Hele stabelen",
+      "file": "video1.mp4",
+      "summary": "Fra «svar er a pluss b» til ladning, og hver egenskap ved maskinen har en grunn."
+    }
+  ],
   "terms": [
     {
       "term": "Abstraksjonslag",

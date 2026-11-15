@@ -4,7 +4,13 @@
   "title": "8.1 Maskinen og de tre spørsmålene",
   "description": "En moderne maskin med åtte kjerner, buffer, minne, grafikk og nevral motor, og tre spørsmål kapitlet svarer på.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "8.1.1 Maskinen og de tre spørsmålene",
+      "file": "video1.mp4",
+      "summary": "Åtte kjerner, buffer, minne, grafikk og nevral motor, og de tre spørsmålene kapitlet svarer på."
+    }
+  ],
   "terms": [
     {
       "term": "Hele stabelen",

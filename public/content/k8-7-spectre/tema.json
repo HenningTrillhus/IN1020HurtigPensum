@@ -4,7 +4,18 @@
   "title": "8.7 Spectre: når maskinen røper et passord",
   "description": "Hvordan spekulasjon og cache sammen lar tiden avsløre en hemmelighet, uten at noen regel er brutt.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "8.7.1 Ingen feil, laget under lekker",
+      "file": "video1.mp4",
+      "summary": "Begge utsagn er sanne, og sammen er de et sikkerhetshull."
+    },
+    {
+      "title": "8.7.2 Fem steg og et stoppeur",
+      "file": "video2.mp4",
+      "summary": "Tiden røper hemmeligheten: ett av 256 oppslag går fort."
+    }
+  ],
   "terms": [
     {
       "term": "Spectre",

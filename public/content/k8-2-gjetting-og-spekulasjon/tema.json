@@ -4,7 +4,23 @@
   "title": "8.2 Gjetting og spekulasjon",
   "description": "Videresending, forgreningsprediksjon, spekulativ utføring, superskalar og utføring ute av rekkefølge.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "8.2.1 Rekk det over bordet, og gjett riktig",
+      "file": "video1.mp4",
+      "summary": "Videresending fjerner konsekvensen, og forgreningsprediksjon treffer over 95 prosent."
+    },
+    {
+      "title": "8.2.2 Flere samlebånd, og rekkefølgen som ikke er rekkefølgen",
+      "file": "video2.mp4",
+      "summary": "Superskalar og utføring ute av rekkefølge: mer gjort samtidig, men fullført i riktig rekkefølge."
+    },
+    {
+      "title": "8.2.3 Spekulativ utføring",
+      "file": "video3.mp4",
+      "summary": "Maskinen regner videre på en gjetning og kaster kladden hvis den var feil."
+    }
+  ],
   "terms": [
     {
       "term": "Pipeline (samlebånd)",

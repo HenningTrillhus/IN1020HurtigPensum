@@ -4,7 +4,13 @@
   "title": "2.13 Oppsummering",
   "description": "Hva som egentlig var nytt i kapitlet: alt er bit, og avtalen om hva bitene betyr.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2.13 Oppsummering",
+      "file": "video1.mp4",
+      "summary": "Alle representasjoner har en pris og en grense, og alt er bare bit."
+    }
+  ],
   "terms": [
     {
       "term": "Alt er bit",

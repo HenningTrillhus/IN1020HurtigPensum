@@ -4,7 +4,18 @@
   "title": "8.5 Tre slags regneenheter",
   "description": "CPU, GPU og nevral motor, kretser som bare kan én ting, og hvorfor det koster mer å flytte et tall enn å gange det.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "8.5.1 En skoleklasse mot noen få kokker",
+      "file": "video1.mp4",
+      "summary": "GPU gjør det samme på tusenvis av tall, CPU klarer valg. Spørsmålet er hvordan oppgaven ser ut."
+    },
+    {
+      "title": "8.5.2 Kretser som kan én ting, og nevral motor",
+      "file": "video2.mp4",
+      "summary": "Fleksibilitet koster strøm, og for nevrale nett er det transporten som koster."
+    }
+  ],
   "terms": [
     {
       "term": "CPU",
