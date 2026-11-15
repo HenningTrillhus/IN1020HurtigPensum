@@ -4,7 +4,23 @@
   "title": "N4 Introduksjon til operativsystemer",
   "description": "Hva et operativsystem er, hvorfor vi trenger det, og hva det styrer i maskinvaren.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "N4.1 Hva er et operativsystem",
+      "file": "video1.mp4",
+      "summary": "Et operativsystem skjuler maskinvaren og deler den rettferdig mellom alle som bruker den."
+    },
+    {
+      "title": "N4.2 Hva et operativsystem består av",
+      "file": "video2.mp4",
+      "summary": "Seks komponenter, og planleggeren avgjør hvem som får CPU-en."
+    },
+    {
+      "title": "N4.3 Brukermodus og kjernemodus",
+      "file": "video3.mp4",
+      "summary": "Programmer bruker systemkall for å få kjernen til å gjøre det de selv ikke har lov til."
+    }
+  ],
   "terms": [
     {
       "term": "Operativsystem",

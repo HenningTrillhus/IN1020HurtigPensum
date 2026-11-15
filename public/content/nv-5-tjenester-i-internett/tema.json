@@ -4,7 +4,43 @@
   "title": "N5 Tjenester i Internett",
   "description": "TCP med flyt- og metningskontroll, DNS, web og HTTP, videostrømming og tingenes internett.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "N5.1 TCP: pålitelighet",
+      "file": "video1.mp4",
+      "summary": "TCP gir en pålitelig byte-strøm med håndtrykk, bekreftelser og flytkontroll."
+    },
+    {
+      "title": "N5.2 Metningskontroll",
+      "file": "video2.mp4",
+      "summary": "TCP deler flaskehalsen likt mellom forbindelser, men ikke mellom brukere."
+    },
+    {
+      "title": "N5.3 Pull, push og CDN",
+      "file": "video3.mp4",
+      "summary": "Innhold flyttes nær brukeren for å spare kapasitet og gi raskere svar."
+    },
+    {
+      "title": "N5.4 Peer-to-peer",
+      "file": "video4.mp4",
+      "summary": "P2P deler ressurser uten sentral kontroll, men en sentral indeks gjør det sårbart."
+    },
+    {
+      "title": "N5.5 DNS",
+      "file": "video5.mp4",
+      "summary": "DNS gjør navn til adresser gjennom et hierarki, og må sikres fordi det går i klartekst."
+    },
+    {
+      "title": "N5.6 HTTP, cookies og HTTPS",
+      "file": "video6.mp4",
+      "summary": "HTTP husker ingenting selv, så cookies gir tilstand, og HTTPS gir kryptering og tillit."
+    },
+    {
+      "title": "N5.7 Strømming og IoT",
+      "file": "video7.mp4",
+      "summary": "Strømming tilpasser seg nettet, mens IoT-enheter ofte gjør deg sårbar."
+    }
+  ],
   "terms": [
     {
       "term": "Klient og tjener",

@@ -4,7 +4,23 @@
   "title": "N3 Din hjemmeruter: lagene spiller sammen",
   "description": "Hvordan applikasjon, transport, IP og link virker sammen: porter, IP-adresser, MAC-adresser og subnett.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "N3.1 Adresser og subnett",
+      "file": "video1.mp4",
+      "summary": "Masken deler adressen i nettverk og vert, og en bitvis AND gir subnettet."
+    },
+    {
+      "title": "N3.2 DHCP og ARP",
+      "file": "video2.mp4",
+      "summary": "DHCP gir deg en adresse, og ARP finner maskinvareadressen til den du skal snakke med."
+    },
+    {
+      "title": "N3.3 Porter og NAT",
+      "file": "video3.mp4",
+      "summary": "NAT lar mange enheter dele én adresse, og IPv6 gir nok adresser til alle."
+    }
+  ],
   "terms": [
     {
       "term": "Ruter",
