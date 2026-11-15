@@ -1,9 +1,10 @@
 {
   "id": "nv-0-hele-kapitlet",
   "chapter": "Nettverk",
-  "chapterKey": "nettverk",
-  "title": "N Hele kapitlet i én video",
+  "title": "Nettverk Hele kapitlet i én video",
   "description": "Hele nettverksdelen i én lengre video, fra pakker og lag til tjenestene i Internett.",
+  "icon": "icon.png",
   "videos": [],
+  "chapterKey": "nettverk",
   "noShuffle": true
 }

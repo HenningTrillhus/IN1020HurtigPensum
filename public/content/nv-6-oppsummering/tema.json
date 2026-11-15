@@ -3,6 +3,7 @@
   "chapter": "Nettverk",
   "title": "N6 Oppsummering",
   "description": "Nettverk samlet: lagene, adressene, operativsystemet og tjenestene i ett bilde.",
+  "icon": "icon.png",
   "videos": [],
   "chapterKey": "nettverk"
 }

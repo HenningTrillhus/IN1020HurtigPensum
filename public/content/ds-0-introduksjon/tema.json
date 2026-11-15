@@ -1,8 +1,9 @@
 {
   "id": "ds-0-introduksjon",
   "chapter": "Datasikkerhet",
-  "chapterKey": "datasikkerhet",
   "title": "S0 Introduksjon",
   "description": "Hva sikkerhet handler om, og hva du skal kunne etter kapitlet: målene, angrepene og tiltakene.",
-  "videos": []
+  "icon": "icon.png",
+  "videos": [],
+  "chapterKey": "datasikkerhet"
 }

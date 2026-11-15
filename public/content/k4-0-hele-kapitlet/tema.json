@@ -3,6 +3,7 @@
   "chapter": "Kapittel 4 – Arkitektur og ALU",
   "title": "4 Hele kapitlet i én video",
   "description": "Hele kapittel 4 i én lengre video, fra registre og busser til ALU og kontrollenhet.",
+  "icon": "icon.png",
   "videos": [],
   "noShuffle": true
 }
