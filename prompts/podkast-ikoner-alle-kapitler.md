@@ -192,8 +192,9 @@ STUDIO OG TEMA
 - Legg inn kapittelets tema som små dekorelementer på studioveggen, som plakater, innrammede bilder eller små skilt, ulikt i hvert ikon: en sky, en brikke med små ben, et tynt hjerneomriss, en laptop og en telefon, små tannhjul, flere små prosessorkjerner på rad. Bruk bare to eller tre i hver scene, og ikke dekk personene.
 
 FARGER
-- Bakgrunnene inni sirklene er ulike toner av dempet turkis, fra mørk turkis til lys isblå, så de varierer litt fra ikon til ikon.
-- Ytterkanten på hver sirkel er ensfarget turkis (omtrent RGB 45, 128, 132), samme farge og tykkelse i alle 16.
+- Bakgrunnene inni sirklene er ulike toner av tydelig turkis (blågrønn, cyan-aktig, som en tropisk lagune), fra mørk turkis (omtrent #1F7F86) via klar turkis (#2DB5B5) til lys isblå (#BDEFF0). Fargen skal være tydelig mer grønnblå og lysere enn mørk petrol eller marineblå, så de varierer litt fra ikon til ikon.
+- Ytterkanten på hver sirkel er ensfarget klar turkis (omtrent RGB 45, 128, 132, hex #2D8084), samme farge og tykkelse i alle 16.
+- Ikke bruk blå, marineblå, lilla eller grønn som hovedfarge i bakgrunnene. Hele bildet skal føles turkis.
 - Klærne har varierte, dempede farger som skiller seg fra bakgrunnen.
 
 RUTENETT OG FORMAT
@@ -260,8 +261,9 @@ STUDIO OG TEMA
 - Legg inn kapittelets tema som små dekorelementer på studioveggen, som plakater, innrammede bilder eller små skilt, ulikt i hvert ikon: hengelåser, nøkler, skjold med hake, et fingeravtrykk, en lås med nøkkelhull, kretslinjer. Bruk bare to eller tre i hver scene, og ikke dekk personene.
 
 FARGER
-- Bakgrunnene inni sirklene er ulike toner av dempet rød og vinrød, fra mørk vinrød til lys rosa, så de varierer litt fra ikon til ikon.
-- Ytterkanten på hver sirkel er ensfarget mørk rød (omtrent RGB 121, 28, 33), samme farge og tykkelse i alle 16.
+- Bakgrunnene inni sirklene er ulike toner av tydelig rød og vinrød, fra mørk vinrød (omtrent #7A1C21) via klar rød (#B83A40) til lys rosa (#F2C4C6). Rene røde toner, uten oransje, brunt eller lilla stikk, så de varierer litt fra ikon til ikon.
+- Ytterkanten på hver sirkel er ensfarget mørk vinrød (omtrent RGB 121, 28, 33, hex #791C21), samme farge og tykkelse i alle 16.
+- Ikke bruk oransje, brun, gul, lilla eller blå som hovedfarge i bakgrunnene. Hele bildet skal føles rødt.
 - Klærne har varierte, dempede farger som skiller seg fra bakgrunnen.
 
 RUTENETT OG FORMAT
