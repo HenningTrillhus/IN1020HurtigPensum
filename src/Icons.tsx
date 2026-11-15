@@ -168,3 +168,10 @@ export const Eye = () => (
     <circle cx="12" cy="12" r="3" />
   </svg>
 )
+
+/** Autoswipe: to piler ned. */
+export const AutoIcon = () => (
+  <svg {...base} fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
+    <path d="m6 5 6 6 6-6M6 12l6 6 6-6" />
+  </svg>
+)

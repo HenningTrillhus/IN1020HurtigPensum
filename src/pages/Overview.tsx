@@ -159,6 +159,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
         </button>
       )}
       <button type="button" className="consent-link" onClick={() => setConsent(null)}>Endre valg for lagring</button>
+      <a className="gh-link" href="https://github.com/HenningTrillhus/IN1020HurtigPensum" target="_blank" rel="noopener noreferrer">Se prosjektet på GitHub</a>
       {progressOpen && <ProgressSheet chapters={chapters} onClose={() => setProgressOpen(false)} />}
     </div>
   )

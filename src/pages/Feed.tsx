@@ -2,12 +2,12 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState, type Pointer
 import type { Topic } from '../types'
 import { isSoundOn, enableSound, subscribeSound, isPodcastPlaying, subscribePodcast } from '../sound'
 import { CAP, fetchStats, getReport, getVote, hasViewed, queueReport, queueVote, resumeReport, resumeVote, sendView, videoId, type Stat, type Vote } from '../stats'
-import { Back10Icon, Fwd10Icon, ChevronDown, ChevronUp, CloseIcon, Eye, CheckIcon, FlagIcon, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ShareIcon, ThumbDown, ThumbUp } from '../Icons'
+import { AutoIcon, Back10Icon, Fwd10Icon, ChevronDown, ChevronUp, CloseIcon, Eye, CheckIcon, FlagIcon, FullscreenIcon, ListIcon, MutedIcon, PauseIcon, PlayIcon, ShareIcon, ThumbDown, ThumbUp } from '../Icons'
 import { usePlayer } from '../player'
 import { SpeedButton, useSpeed } from '../speed'
 import { ChapterRating } from '../Rating'
 import { chColor } from '../chapters'
-import { isSeen, markSeen, setLast } from '../storage'
+import { getAuto, isSeen, markSeen, setAuto, setLast } from '../storage'
 
 interface P {
   /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
@@ -492,8 +492,12 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
   // Når en video er ferdig, går feeden videre til neste av seg selv. Lyd og stumming er felles for alle videoene
   // (sound.ts), så valget følger med. Etter den aller siste blir den stående.
   const slideCount = slides.length
+  const [auto, setAutoState] = useState(getAuto)
+  const autoRef = useRef(auto)
+  autoRef.current = auto
+  const toggleAuto = () => { const v = !auto; setAutoState(v); setAuto(v); poke() }
   const onEnded = useCallback((pos: number) => {
-    if (pos !== currentRef.current || pos >= slideCount - 1) return
+    if (!autoRef.current || pos !== currentRef.current || pos >= slideCount - 1) return
     step(1)
   }, [step, slideCount])
 
@@ -638,6 +642,27 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
         <EndSlide chapterKey={chapter} topics={topics} onDone={done} onVisible={setAtEnd} shuffle={shuffle?.onAgain} />
       </div>
 
+      {shuffle && !atEnd && cur && (
+        <a
+          className="part-chip"
+          href={`#/${cur.topic.id}/feed/${cur.i + 1}`}
+          aria-label={`Gå til delkapittelet ${cur.topic.title}`}
+        >
+          <ListIcon />
+          <span>Delkapittel</span>
+        </a>
+      )}
+      {!atEnd && (
+        <button
+          className={`auto-chip${auto ? ' on' : ''}`}
+          onClick={toggleAuto}
+          aria-pressed={auto}
+          aria-label="Autoswipe: gå automatisk til neste video når denne er ferdig"
+        >
+          <AutoIcon />
+          <span>Auto</span>
+        </button>
+      )}
       {multi && !atEnd && (
         <button
           className="part-chip"

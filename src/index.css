@@ -414,7 +414,16 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
   background: #000b; backdrop-filter: blur(6px); border: 1px solid #ffffff2a; color: #fff;
   font-weight: 700; font-size: 15px; font-variant-numeric: tabular-nums; animation: fadeIn .3s backwards;
 }
+.part-chip { text-decoration: none; display: inline-flex; align-items: center }
 .part-chip svg { width: 20px; height: 20px }
+/* Autoswipe-knappen ligger rett under delkapittelknappen, til venstre. */
+.auto-chip {
+  position: absolute; top: 80px; left: 12px; z-index: 4; min-height: 40px; padding: 0 14px 0 11px; gap: 6px; border-radius: 99px;
+  background: #000b; backdrop-filter: blur(6px); border: 1px solid #ffffff2a; color: #fff;
+  font-weight: 700; font-size: 14px; animation: fadeIn .3s backwards;
+}
+.auto-chip svg { width: 18px; height: 18px }
+.auto-chip.on { background: var(--ch, var(--acc)); border-color: transparent }
 .part-chip:hover { border-color: #ffffff80 }
 
 .sheet-backdrop { position: absolute; inset: 0; z-index: 8; background: #0009; border-radius: 16px; animation: fadeIn .2s both }
@@ -468,15 +477,16 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
 
 /* Etter noen sekunder uten berøring (mens videoen spiller) tones alt over videoen ned.
    Sveip, trykk eller musebevegelse henter det tilbake. */
-.caption, .actions, .views, .top-actions button:not(.sound), .part-chip, .segs { transition: opacity .25s ease, transform .3s var(--ease) }
+.caption, .actions, .views, .top-actions button:not(.sound), .part-chip, .auto-chip, .segs { transition: opacity .25s ease, transform .3s var(--ease) }
 .feed-wrap.ui-hidden .caption, .feed-wrap.ui-hidden .actions, .feed-wrap.ui-hidden .views,
-.feed-wrap.ui-hidden .top-actions button:not(.sound), .feed-wrap.ui-hidden .part-chip, .feed-wrap.ui-hidden .segs { transition: opacity .9s ease, transform .9s var(--ease) }
+.feed-wrap.ui-hidden .top-actions button:not(.sound), .feed-wrap.ui-hidden .part-chip, .feed-wrap.ui-hidden .auto-chip, .feed-wrap.ui-hidden .segs { transition: opacity .9s ease, transform .9s var(--ease) }
 .feed-wrap.ui-hidden .caption { opacity: 0; transform: translateY(10px); pointer-events: none }
 .feed-wrap.ui-hidden .actions { opacity: 0; transform: translateX(10px); pointer-events: none }
 /* «Trykk for lyd» blir stående så lenge lyden er av. Bare fullskjerm-knappen tones bort. */
 .feed-wrap.ui-hidden .views,
 .feed-wrap.ui-hidden .top-actions button:not(.sound),
 .feed-wrap.ui-hidden .part-chip,
+.feed-wrap.ui-hidden .auto-chip,
 .feed-wrap.ui-hidden .segs { opacity: 0; pointer-events: none }
 
 /* Hopp fra valgarket: feeden toner kort ned mens vi flytter oss, og kommer mykt inn igjen. */
@@ -955,3 +965,5 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 .resume-ic { position: relative; width: 44px; height: 44px; overflow: hidden }
 .resume-ic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50% }
 .resume-ic .start-play svg { width: 20px; height: 20px }
+
+.gh-link { display: block; margin: 6px auto 18px; text-align: center; color: var(--mut); font-size: 13px; text-decoration: underline; padding: 8px }
