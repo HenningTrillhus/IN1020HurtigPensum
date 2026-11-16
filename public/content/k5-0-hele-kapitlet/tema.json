@@ -4,6 +4,20 @@
   "title": "5 Hele kapitlet i én video",
   "description": "Hele kapittel 5 i én lengre video, fra logiske porter til minnebiter og prosessor.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "5 Hele kapitlet i én video",
+      "file": "video1.mp4",
+      "summary": "Fra en bryter og en lampe til en krets som legger sammen to tall og en krets som husker, og hvorfor portene egentlig ikke finnes."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Fra logiske porter til datamaskinens regnemaskin",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "k5-pod16",
+      "duration": 1333
+    }
+  ],
   "noShuffle": true
 }

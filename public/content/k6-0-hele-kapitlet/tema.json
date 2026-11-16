@@ -5,5 +5,13 @@
   "description": "Hele kapittel 6 i én lengre video, fra transistoren til varmeveggen.",
   "icon": "icon.png",
   "videos": [],
+  "podcasts": [
+    {
+      "title": "Hvorfor prosessorer sluttet å bli raskere",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "k6-pod16",
+      "duration": 1743
+    }
+  ],
   "noShuffle": true
 }
