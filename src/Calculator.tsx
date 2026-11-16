@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { CalcIcon, CloseIcon } from './Icons'
-import { Field, Head, fmt, num } from './calcparts'
+import { Field, Head, Q, fmt, num } from './calcparts'
 import { Network, Perf, Security } from './CalcMore'
 
 const group = (s: string, n = 4) => s.replace(new RegExp(`\\B(?=(.{${n}})+$)`, 'g'), ' ')
