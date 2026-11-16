@@ -60,6 +60,26 @@
     {
       "term": "Designvalg",
       "def": "Antall bit er alltid et valg: flere bit gir større område og mer nøyaktighet, men koster plass og tid."
+    },
+    {
+      "term": "MB (megabyte)",
+      "def": "I dette faget alltid 10⁶ byte, altså én million, med mindre noe annet står. K, M og G betyr tusen, million og milliard."
+    },
+    {
+      "term": "MiB (mebibyte)",
+      "def": "2²⁰ = 1 048 576 byte. Navnet finnes fordi «MB» lenge ble brukt om begge tallene, og det er en av de mest utbredte kildene til forvirring."
+    },
+    {
+      "term": "BCD (binary coded decimal)",
+      "def": "Hvert desimalsiffer får sine egne 4 bit, så tallet blir lagret siffer for siffer. Det koster plass (ca. 3,3 bit holder per siffer), men desimalene blir nøyaktig det du skrev, som er viktig for penger."
+    },
+    {
+      "term": "GB (gigabyte)",
+      "def": "Ikke i kompendiet, men nyttig å kunne: 10⁹ byte, tusen megabyte. GiB er 2³⁰ byte."
+    },
+    {
+      "term": "LSB og MSB",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Det minst og det mest signifikante bitet: bitet lengst til høyre (verdi 1) og bitet lengst til venstre (størst verdi)."
     }
   ]
 }

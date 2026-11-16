@@ -1,6 +1,7 @@
 {
   "id": "nv-2-lagdeling",
   "chapter": "Nettverk",
+  "chapterKey": "nettverk",
   "title": "Nettverk 2 Lagdeling og protokoller",
   "description": "Hva en protokoll er, hvorfor kommunikasjon deles i lag, og TCP/IP-modellen.",
   "icon": "icon.png",
@@ -49,7 +50,42 @@
     {
       "term": "TCP og UDP",
       "def": "TCP gir pålitelig levering i riktig rekkefølge. UDP er raskere, men gir ingen garanti."
+    },
+    {
+      "term": "OSI-modellen",
+      "def": "Lagdelingsmodell med sju lag: fysisk, link, nettverk, transport, sesjon, presentasjon og applikasjon."
+    },
+    {
+      "term": "TCP/IP-modellen",
+      "def": "Lagdelingsmodellen Internett faktisk bruker, med fem lag: fysisk, link, nettverk, transport og applikasjon."
+    },
+    {
+      "term": "MAC (Medium Access Control)",
+      "def": "Del av linklaget som sørger for rettferdig tilgang til et delt medium."
+    },
+    {
+      "term": "MAC-adresse",
+      "def": "6 byte lang adresse i nettverkskortet, brukt til å identifisere maskinen i et kringkastingsdomene."
+    },
+    {
+      "term": "Ethernet",
+      "def": "Det vanligste linklaget, brukt i kablet nettverk."
+    },
+    {
+      "term": "Frame",
+      "def": "Pakken på linklaget: en header, selve dataene og en avslutning, med IP-pakken som innhold."
+    },
+    {
+      "term": "Switch og hub",
+      "def": "Begge kobler maskiner på lag 2. En switch filtrerer og videresender, en hub sender videre det som kommer inn ut på alle porter."
+    },
+    {
+      "term": "SYN, SYN+ACK og ACK",
+      "def": "De tre meldingene i TCPs treveis-håndtrykk som setter opp en forbindelse. ACK er også kvitteringen som sendes tilbake for hver pakke."
+    },
+    {
+      "term": "QUIC",
+      "def": "Transportprotokoll designet av Google for HTTP. Bruker UDP som transport, men legger til det som mangler."
     }
-  ],
-  "chapterKey": "nettverk"
+  ]
 }

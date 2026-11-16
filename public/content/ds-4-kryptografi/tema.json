@@ -1,6 +1,7 @@
 {
   "id": "ds-4-kryptografi",
   "chapter": "Datasikkerhet",
+  "chapterKey": "datasikkerhet",
   "title": "Sikkerhet 4 Kryptografi",
   "description": "Nøkkelen til digital samhandling: klartekst og kryptert tekst, hemmelig og offentlig nøkkel, hash og kryptering på flere lag.",
   "icon": "icon.png",
@@ -54,7 +55,22 @@
     {
       "term": "Sertifikat",
       "def": "Et dokument som knytter en offentlig nøkkel til en identitet, utstedt av en pålitelig tredjepart."
+    },
+    {
+      "term": "AES",
+      "def": "Mye brukt symmetrisk blokkchiffer som krypterer i blokker på 128 bit."
+    },
+    {
+      "term": "PKI",
+      "def": "Public Key Infrastructure: rammeverk for utstedelse, administrasjon og bruk av digitale sertifikater med offentlige nøkler."
+    },
+    {
+      "term": "X.509",
+      "def": "Standarden for hva et sertifikat skal inneholde."
+    },
+    {
+      "term": "RSA",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Mye brukt algoritme for offentlig-nøkkel-kryptering, bygget på at det er vanskelig å faktorisere store tall."
     }
-  ],
-  "chapterKey": "datasikkerhet"
+  ]
 }

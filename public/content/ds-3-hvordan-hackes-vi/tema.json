@@ -1,6 +1,7 @@
 {
   "id": "ds-3-hvordan-hackes-vi",
   "chapter": "Datasikkerhet",
+  "chapterKey": "datasikkerhet",
   "title": "Sikkerhet 3 Hvordan hackes vi?",
   "description": "Trusselaktører og angrepsvektorer: sårbarheter, skadevare, SQL-injeksjon, XSS og sosial manipulasjon.",
   "icon": "icon.png",
@@ -59,7 +60,22 @@
     {
       "term": "Nulldagssårbarhet",
       "def": "En sårbarhet som angriperen kjenner, men som utvikleren ikke har rukket å rette."
+    },
+    {
+      "term": "C2 (command and control)",
+      "def": "Server angriperen bruker til å styre en infisert maskin, og som skadevaren kontakter for nye kommandoer."
+    },
+    {
+      "term": "SEO-forgiftning",
+      "def": "Angriperen får et skadelig nettsted til å dukke høyt opp i søk, så ofre klikker og laster ned skadevare."
+    },
+    {
+      "term": "CVE",
+      "def": "Common Vulnerabilities and Exposures: en felles katalog med id-er på kjente sårbarheter, som CVE-2026-31431."
+    },
+    {
+      "term": "KRACK",
+      "def": "Key Reinstallation Attack: angrep på svakheter i WPA som ble offentliggjort i oktober 2017."
     }
-  ],
-  "chapterKey": "datasikkerhet"
+  ]
 }

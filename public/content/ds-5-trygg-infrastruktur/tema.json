@@ -1,6 +1,7 @@
 {
   "id": "ds-5-trygg-infrastruktur",
   "chapter": "Datasikkerhet",
+  "chapterKey": "datasikkerhet",
   "title": "Sikkerhet 5 Trygg infrastruktur og sikre datasystemer",
   "description": "Trusler mot trådløse og kablede nett, systemsikkerhet, buffer-utnyttelser og digitale verdikjeder.",
   "icon": "icon.png",
@@ -45,7 +46,18 @@
     {
       "term": "Forsvar i dybden",
       "def": "Flere lag med beskyttelse, så ett lag som svikter ikke åpner alt."
+    },
+    {
+      "term": "VPN",
+      "def": "Virtual Private Network: kobler to nettverk sammen så de fungerer som ett LAN, selv om de er fysisk adskilt."
+    },
+    {
+      "term": "WPA",
+      "def": "WiFi Protected Access: kryptering på trådløse nettverk mellom deg og ruteren."
+    },
+    {
+      "term": "TLS og SSL",
+      "def": "Transport Layer Security (som har tatt over for Secure Sockets Layer) gir ende-til-ende-kryptering, for eksempel for nettbank og butikker."
     }
-  ],
-  "chapterKey": "datasikkerhet"
+  ]
 }

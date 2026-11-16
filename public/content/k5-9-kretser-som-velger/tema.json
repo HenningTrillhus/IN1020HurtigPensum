@@ -61,6 +61,10 @@
     {
       "term": "Fra opkode til linje",
       "def": "Fire biter av ordren (opkoden) går inn i en dekoder, og akkurat én av AND-portene treffer. Linja derfra styrer datastien."
+    },
+    {
+      "term": "MUX",
+      "def": "Vanlig forkortelse for multiplekser i kretstegninger."
     }
   ]
 }

@@ -1,6 +1,7 @@
 {
   "id": "ds-6-trygge-digitale-tjenester",
   "chapter": "Datasikkerhet",
+  "chapterKey": "datasikkerhet",
   "title": "Sikkerhet 6 Å skape trygge digitale tjenester",
   "description": "Lovpålagte krav som GDPR, trusselmodellering og risikoanalyse, og systematisk sikkerhetsarbeid.",
   "icon": "icon.png",
@@ -41,7 +42,18 @@
     {
       "term": "GDPR",
       "def": "EUs personvernforordning. Gir deg rettigheter over hvordan opplysninger om deg brukes."
+    },
+    {
+      "term": "SQL-injeksjon",
+      "def": "Angriperen lurer inn egen databasekode i et skjemafelt, så databasen gjør noe den ikke skulle."
+    },
+    {
+      "term": "XSS (cross-site scripting)",
+      "def": "Angriperen får et skadelig skript til å kjøre i en annens nettleser, via en nettside som stoler på inndata."
+    },
+    {
+      "term": "OWASP Top 10",
+      "def": "Liste over de ti vanligste og farligste sårbarhetene i nettapplikasjoner. På topp står brudd på tilgangskontroll."
     }
-  ],
-  "chapterKey": "datasikkerhet"
+  ]
 }

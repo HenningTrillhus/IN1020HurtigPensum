@@ -1,6 +1,7 @@
 {
   "id": "nv-4-operativsystemer",
   "chapter": "Nettverk",
+  "chapterKey": "nettverk",
   "title": "Nettverk 4 Introduksjon til operativsystemer",
   "description": "Hva et operativsystem er, hvorfor vi trenger det, og hva det styrer i maskinvaren.",
   "icon": "icon.png",
@@ -45,7 +46,22 @@
     {
       "term": "Virtualisering",
       "def": "Å la flere operativsystemer kjøre på samme maskin, hver i sin egen avgrensede verden."
+    },
+    {
+      "term": "API",
+      "def": "Application Programming Interface: kommandoene et program bruker for å be operativsystemet om noe, for eksempel å lagre data."
+    },
+    {
+      "term": "GUI",
+      "def": "Graphical User Interface: vinduer, ikoner, menyer og pekere."
+    },
+    {
+      "term": "POSIX",
+      "def": "Standard for et portabelt grensesnitt mot UNIX-lignende systemer."
+    },
+    {
+      "term": "UNIX",
+      "def": "Operativsystemfamilie som Linux og macOS stammer fra eller ligner på."
     }
-  ],
-  "chapterKey": "nettverk"
+  ]
 }

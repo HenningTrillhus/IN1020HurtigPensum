@@ -78,6 +78,10 @@
     {
       "term": "Silisium",
       "def": "Materialet transistorene er laget av."
+    },
+    {
+      "term": "MOSFET",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Typen transistor kapittelet kaller nMOS og pMOS: Metal-Oxide-Semiconductor Field-Effect Transistor. Styreledningen påvirker bryteren med et elektrisk felt, uten at strøm går inn."
     }
   ]
 }

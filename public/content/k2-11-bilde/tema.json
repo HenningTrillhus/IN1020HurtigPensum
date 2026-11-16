@@ -101,6 +101,14 @@
     {
       "term": "Vektorgrafikk",
       "def": "Lagrer oppskriften på å tegne bildet, ikke pikslene. Skarpt uansett størrelse, men passer bare for logoer, ikoner og diagrammer."
+    },
+    {
+      "term": "PNG",
+      "def": "Bildeformat med tapsfri komprimering: bildet kan gjenskapes bit for bit. Virker godt når nabopiksler ofte er like, og dårlig på bilder med tilfeldig støy."
+    },
+    {
+      "term": "GIF",
+      "def": "Gammelt, tapsfritt bildeformat med bare 256 farger, kjent for korte animasjoner."
     }
   ]
 }

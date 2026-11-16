@@ -66,6 +66,10 @@
     {
       "term": "Avveining",
       "def": "Et valg der du ikke kan få alt. En bredere transistor leverer mer strøm og skifter raskere, men den tar mer plass, trekker mer strøm og er selv et større kar for porten foran. Fart, plass og strøm drar hver sin vei."
+    },
+    {
+      "term": "ps, ns, µs og ms",
+      "def": "Pikosekund (10⁻¹² s), nanosekund (10⁻⁹ s), mikrosekund (10⁻⁶ s) og millisekund (10⁻³ s). Hvert trinn er tusen ganger større enn det forrige."
     }
   ]
 }

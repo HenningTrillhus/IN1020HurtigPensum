@@ -66,6 +66,14 @@
     {
       "term": "Forespørsel og svar",
       "def": "Klienten sender en forespørsel, tjeneren sender et svar. Slik fungerer HTTP."
+    },
+    {
+      "term": "HTML",
+      "def": "Språket nettsider er skrevet i."
+    },
+    {
+      "term": "FTP",
+      "def": "File Transfer Protocol: gammel protokoll for å overføre filer."
     }
   ]
 }

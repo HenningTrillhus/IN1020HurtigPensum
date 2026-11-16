@@ -25,6 +25,22 @@
     {
       "term": "Ny generasjon, gammel ISA",
       "def": "En ny prosessorgenerasjon er som regel en ny mikroarkitektur på en gammel ISA. Den er raskere og bruker mindre strøm, men forstår de samme ordrene, så programvaren overlever."
+    },
+    {
+      "term": "RISC",
+      "def": "Reduced Instruction Set Computer: få, enkle instruksjoner av samme lengde. ARM og MIPS er RISC."
+    },
+    {
+      "term": "CISC",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Complex Instruction Set Computer: mange og mer kompliserte instruksjoner av ulik lengde. x86, som PC-er lenge har brukt, er CISC."
+    },
+    {
+      "term": "ARM",
+      "def": "Instruksjonssett og prosessorfamilie som brukes i de fleste telefoner. Et eksempel på en RISC-arkitektur."
+    },
+    {
+      "term": "x86",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Instruksjonssettet i de fleste PC-er og servere, fra Intel og AMD. Har holdt seg kompatibelt i flere tiår."
     }
   ]
 }

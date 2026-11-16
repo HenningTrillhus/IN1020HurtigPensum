@@ -75,6 +75,14 @@
     {
       "term": "Sum = A XOR B (halvadder)",
       "def": "Summen av to bit er 1 når nøyaktig én av dem er 1, altså en XOR. Menten er 1 når begge er 1, altså en AND."
+    },
+    {
+      "term": "HA (halvadder)",
+      "def": "Legger sammen to bit og gir sum og mente. Sum er en XOR, mente er en AND."
+    },
+    {
+      "term": "FA (fulladder)",
+      "def": "Legger sammen to bit pluss en mente inn, og gir sum og mente ut. Bygget av to halvaddere og en OR."
     }
   ]
 }

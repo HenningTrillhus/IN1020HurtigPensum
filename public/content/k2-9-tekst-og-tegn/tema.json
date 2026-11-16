@@ -93,6 +93,14 @@
     {
       "term": "Mojibake",
       "def": "Rotete tegn som æ blir til Ã¦. Oppstår når en tekst lagres med én tegnkode og leses med en annen."
+    },
+    {
+      "term": "ISO 8859-1 (Latin-1)",
+      "def": "Utvidelse av ASCII som bruker det åttende bitet, så det blir 256 plasser. De første 128 er identiske med ASCII, og de neste rommer vesteuropeiske tegn som æ, ø og å."
+    },
+    {
+      "term": "CR og LF",
+      "def": "Ikke i kompendiet, men nyttig å kunne: CR (carriage return) flytter til starten av linja, og LF (line feed) går ned en linje. Windows bruker begge to som linjeskift, Linux og macOS bare LF."
     }
   ]
 }

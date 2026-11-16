@@ -41,6 +41,46 @@
     {
       "term": "Samme tall, to betydninger",
       "def": "Tallet 104 er både bokstaven h i ASCII og ordren «legg til det som ligger i 04». Ingenting i tallet avgjør hvilken av delene det er."
+    },
+    {
+      "term": "LDA (load)",
+      "def": "5xx. Henter verdien i postkasse xx til akkumulatoren."
+    },
+    {
+      "term": "STA (store)",
+      "def": "3xx. Lagrer akkumulatoren i postkasse xx."
+    },
+    {
+      "term": "ADD",
+      "def": "1xx. Legger verdien i postkasse xx til akkumulatoren."
+    },
+    {
+      "term": "SUB",
+      "def": "2xx. Trekker verdien i postkasse xx fra akkumulatoren."
+    },
+    {
+      "term": "INP (input)",
+      "def": "901. Leser et tall fra innkurven inn i akkumulatoren. Har ingen adressedel: 01 utvider bare opkoden."
+    },
+    {
+      "term": "OUT (output)",
+      "def": "902. Skriver akkumulatoren til utkurven. Ingen postkasse er innom."
+    },
+    {
+      "term": "OTC (output character)",
+      "def": "922. Skriver akkumulatoren som ett ASCII-tegn. Tallet 104 blir for eksempel til bokstaven h."
+    },
+    {
+      "term": "HLT (halt)",
+      "def": "0xx. Stopper kjøringen. Glemmer du den, fortsetter kontoristen inn i dataene og utfører dem som instruksjoner."
+    },
+    {
+      "term": "DAT (data)",
+      "def": "Ikke en ordre, men en beskjed til assembleren om å sette av en postkasse til data."
+    },
+    {
+      "term": "Mnemonic",
+      "def": "Det korte navnet på en instruksjon, som LDA eller STA. Ordet kommer av gresk for hukommelse."
     }
   ]
 }

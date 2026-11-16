@@ -30,6 +30,10 @@
     {
       "term": "Risiko",
       "def": "Hvor sannsynlig det er at noe går galt, og hvor stor skaden blir hvis det gjør det."
+    },
+    {
+      "term": "NSM (Nasjonal sikkerhetsmyndighet)",
+      "def": "Norsk myndighet for forebyggende sikkerhet."
     }
   ]
 }

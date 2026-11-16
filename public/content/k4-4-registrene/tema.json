@@ -45,6 +45,18 @@
     {
       "term": "Registerallokering",
       "def": "Arbeidet en kompilator gjør med å bestemme hvilke variabler som skal bo i et register. Variabler programmet rører ofte, særlig inne i en løkke, gir mest igjen."
+    },
+    {
+      "term": "PC (program counter)",
+      "def": "Registeret som holder adressen til neste instruksjon."
+    },
+    {
+      "term": "IR (instruction register)",
+      "def": "Registeret som holder instruksjonen som utføres nå."
+    },
+    {
+      "term": "ACC (akkumulator)",
+      "def": "Registeret som holder mellomresultater fra ALU-en."
     }
   ]
 }

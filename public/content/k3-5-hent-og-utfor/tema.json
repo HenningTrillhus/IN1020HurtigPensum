@@ -41,6 +41,18 @@
     {
       "term": "Syklusen spør aldri",
       "def": "Steg 1 henter et tall, og steg 3 gjør det tallet sier. Ingen steg sjekker om tallet var ment som en ordre. Legger du data der neste ordre hentes, blir dataene utført."
+    },
+    {
+      "term": "PC (program counter)",
+      "def": "Engelsk navn på programtelleren, registeret som peker på neste instruksjon."
+    },
+    {
+      "term": "IR (instruction register)",
+      "def": "Engelsk navn på instruksjonsregisteret: det som holder instruksjonen som utføres akkurat nå."
+    },
+    {
+      "term": "ACC (akkumulator)",
+      "def": "Registeret som holder mellomresultatet. Nesten all regning i LMC går via det."
     }
   ]
 }

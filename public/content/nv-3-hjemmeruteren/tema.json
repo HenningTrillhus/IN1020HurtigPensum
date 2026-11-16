@@ -1,6 +1,7 @@
 {
   "id": "nv-3-hjemmeruteren",
   "chapter": "Nettverk",
+  "chapterKey": "nettverk",
   "title": "Nettverk 3 Din hjemmeruter: lagene spiller sammen",
   "description": "Hvordan applikasjon, transport, IP og link virker sammen: porter, IP-adresser, MAC-adresser og subnett.",
   "icon": "icon.png",
@@ -45,7 +46,26 @@
     {
       "term": "Wi-Fi",
       "def": "Trådløst nettverk mellom enheten og ruteren."
+    },
+    {
+      "term": "ARP",
+      "def": "Address Resolution Protocol: kobler nettverks- og linklaget, så en IP-adresse kan oversettes til MAC-adressen til maskinen."
+    },
+    {
+      "term": "CIDR-notasjon",
+      "def": "Skrivemåte for omfanget av et subnett, for eksempel 192.168.1.0/24, der tallet etter skråstreken er antall biter i nettverksdelen."
+    },
+    {
+      "term": "Nettverksmaske",
+      "def": "En rekke enere etterfulgt av nuller, som 255.255.255.0. Enerne sier hvilken del av IP-adressen som er nettverket."
+    },
+    {
+      "term": "Gateway",
+      "def": "Ruteren som maskinene sender pakker til når mottakeren er utenfor det lokale nettverket."
+    },
+    {
+      "term": "BGP",
+      "def": "Border Gateway Protocol: rutingprotokollen som brukes mellom ISP-er."
     }
-  ],
-  "chapterKey": "nettverk"
+  ]
 }

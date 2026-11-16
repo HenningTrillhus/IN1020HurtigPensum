@@ -65,6 +65,14 @@
     {
       "term": "Ingen fortid",
       "def": "En kombinatorisk krets husker ingenting: endrer du en inngang, endres utgangen straks etter."
+    },
+    {
+      "term": "SR-lås (latch)",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Kretsen av to NOR-porter. S (set) setter biten til 1, R (reset) setter den til 0, og uten noen av dem holder den verdien den hadde."
+    },
+    {
+      "term": "Flip-flop",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Lås som lagrer bitet først når klokka gir en flanke. Slik er registrene i en prosessor bygget."
     }
   ]
 }

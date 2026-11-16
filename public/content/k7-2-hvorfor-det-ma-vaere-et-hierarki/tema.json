@@ -75,6 +75,18 @@
     {
       "term": "Effektiv aksesstid",
       "def": "Den gjennomsnittlige tiden en tilgang tar når du regner treff og bom sammen. Med treff på 1 ns og bom på 100 ns: ved 90 prosent treff er den 0,9 + 10 = 10,9 ns, og ved 99 prosent er den 0,99 + 1 = 1,99 ns. Bommene dominerer: én bom koster mer enn alle ni treffene til sammen, så ni prosentpoeng bedre treffrate gir over fem ganger raskere tilgang."
+    },
+    {
+      "term": "RAM",
+      "def": "Hovedminnet, lagt utenfor prosessorbrikken. Rundt 240 klokkesykluser unna, og bygget av DRAM."
+    },
+    {
+      "term": "SSD",
+      "def": "Lagring uten bevegelige deler. Rundt 50 mikrosekunder å hente fra, altså ca. 150 000 sykluser."
+    },
+    {
+      "term": "HDD (harddisk)",
+      "def": "Lagring med roterende plater. Rundt 8 millisekunder å hente fra, ca. 24 millioner sykluser."
     }
   ]
 }

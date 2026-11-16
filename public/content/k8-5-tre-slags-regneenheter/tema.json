@@ -52,6 +52,14 @@
     {
       "term": "Transport mot regning",
       "def": "Å hente et tall fra minnet koster flere tusen ganger mer enn å gange det. Derfor sender man tallet videre i stedet for å hente det."
+    },
+    {
+      "term": "FPGA",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Krets som kan kobles om etter produksjon, så den kan bli til en spesialkrets i stedet for å ha én fast jobb."
+    },
+    {
+      "term": "ASIC",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Krets laget for én bestemt oppgave og ikke noe annet, som en videodekoder. Rask og sparsom, men ikke fleksibel."
     }
   ]
 }

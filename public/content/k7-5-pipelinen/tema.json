@@ -69,6 +69,18 @@
     {
       "term": "Modellen med fem trinn",
       "def": "Den vanligste modellen utenfor kurset har fem trinn: IF, ID, EX, MEM og WB. Minnetilgangen får sitt eget trinn, fordi å lese og skrive minnet er en helt annen jobb enn å regne. Boka bruker fire, fordi det er modellen kurset bruker. Fire er ikke den korteste pipelinen som finnes: små prosessorer bruker gjerne tre."
+    },
+    {
+      "term": "IF, ID/DE, EX, MEM og WB",
+      "def": "Pipelinetrinnene: Instruction Fetch (hent), Instruction Decode (tyd), Execute (utfør), Memory (minnetilgang) og Write Back (skriv tilbake). Forkortelsene er engelske og beholdes."
+    },
+    {
+      "term": "IPC (instruksjoner per syklus)",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Hvor mange instruksjoner prosessoren fullfører per klokkeslag. En perfekt pipeline går mot 1, en superskalar maskin over 1."
+    },
+    {
+      "term": "NOP / boble",
+      "def": "Et trinn der ingenting nyttig skjer, fordi instruksjonen må vente. Bobler gjør at pipelinen går saktere enn idealet."
     }
   ]
 }

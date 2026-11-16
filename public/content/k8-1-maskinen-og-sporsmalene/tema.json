@@ -31,6 +31,10 @@
     {
       "term": "Delt buffer (L3)",
       "def": "Hurtigbuffer som alle kjernene bruker sammen. I eksempelmaskinen er den på 12 MB."
+    },
+    {
+      "term": "SoC (system on a chip)",
+      "def": "Ikke i kompendiet, men nyttig å kunne: Alt på én brikke: prosessorkjerner, grafikk, nevral motor og minnekontroller. Slik er telefoner og moderne bærbare bygget."
     }
   ]
 }
