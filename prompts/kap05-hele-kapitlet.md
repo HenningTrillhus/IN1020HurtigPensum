@@ -54,4 +54,4 @@ Ikke forklar transistorer, strøm og spenning, kritisk vei eller klokke utover d
 
 ## Etter generering
 
-Legg videoen i `Kap05/Videoer/` som `5.0.mp4` (eller der du vil) og gi meg beskjed. Jeg legger den inn under «Hele kapitlet» i kapittel 5, lager plakatbilde og oppsummering og sjekker at den starter raskt. Kapittel 5 har ikke et «Hele kapitlet»-delkapittel i appen ennå, så jeg oppretter det (med ikon, som for de andre kapitlene).
+Legg videoen i `Kap05/Videoer/` som `5.0.mp4` (eller der du vil) og gi meg beskjed. Jeg legger den inn i delkapittelet «Hele kapitlet» øverst i kapittel 5, lager plakatbilde og oppsummering og sjekker at den starter raskt.
