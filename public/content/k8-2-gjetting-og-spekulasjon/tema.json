@@ -33,6 +33,34 @@
     {
       "term": "Spekulativ kjøring",
       "def": "Prosessoren begynner å utføre ordre før den vet om de trengs, og kaster resultatet hvis gjettingen var feil."
+    },
+    {
+      "term": "Videresending (forwarding)",
+      "def": "Verdien rekkes direkte fra ett trinn til et annet i pipelinen, i stedet for å legges i registeret først. Avhengigheten er der fortsatt, men hasarden er borte."
+    },
+    {
+      "term": "Hasard",
+      "def": "Situasjon der neste instruksjon ikke kan gå videre i pipelinen fordi den trenger noe som ikke er klart."
+    },
+    {
+      "term": "Superskalar",
+      "def": "Flere hele samlebånd side om side, så flere instruksjoner fullføres per klokkeslag. Pipelining gir flere trinn, superskalar gir flere hele regneenheter."
+    },
+    {
+      "term": "Utføring ute av rekkefølge",
+      "def": "Maskinen gjør det som er klart, ikke det som står først i programmet. Instruksjonene fullføres likevel i programmets rekkefølge."
+    },
+    {
+      "term": "Omsorteringsvindu",
+      "def": "Området prosessoren ser framover i, for å finne instruksjoner den kan utføre mens andre venter på minnet."
+    },
+    {
+      "term": "Fullføring i programmets rekkefølge",
+      "def": "Selv om instruksjonene utføres hulter til bulter, blir resultatene gjort gyldige i den rekkefølgen programmet har. Slik ser utsiden ut som den enkle maskinen."
+    },
+    {
+      "term": "Tømt pipeline",
+      "def": "Det som er hentet inn på grunn av en feil gjetning, kastes, og samlebåndet begynner på nytt. Det er det en bom i forgreningsprediksjon koster."
     }
   ]
 }

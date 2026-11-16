@@ -27,6 +27,14 @@
     {
       "term": "Minnehierarki",
       "def": "Registre, hurtigbuffer, hovedminne og disk. Jo nærmere prosessoren, jo raskere og mindre."
+    },
+    {
+      "term": "Delt L3-buffer",
+      "def": "Den største og tregeste bufferen, delt mellom kjernene fordi minnet er rundt hundre ganger for tregt."
+    },
+    {
+      "term": "Usynlig for programmet",
+      "def": "En cache endrer aldri svaret et program gir, bare hvor lang tid det tar."
     }
   ]
 }

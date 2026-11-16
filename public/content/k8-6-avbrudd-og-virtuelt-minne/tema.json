@@ -32,6 +32,30 @@
     {
       "term": "Isolasjon",
       "def": "Programmer kan ikke se eller skrive til hverandres minne."
+    },
+    {
+      "term": "Avbruddsrutine",
+      "def": "Programmet som kjører når et avbrudd inntreffer, for eksempel når en tast trykkes. Etterpå fortsetter det avbrutte programmet der det slapp."
+    },
+    {
+      "term": "Lagring av tilstand ved avbrudd",
+      "def": "Prosessoren gjør ferdig instruksjonen, lagrer PC og registre, slår opp rutinen og legger alt tilbake etterpå. Programmet merker ingenting."
+    },
+    {
+      "term": "Sidetabell",
+      "def": "Tabellen som oversetter virtuelle adresser til fysiske. Hvert program har sin egen."
+    },
+    {
+      "term": "TLB",
+      "def": "Liten, rask hurtigbuffer for adresseoversettelser, så ikke hver oppslag må inn i sidetabellen."
+    },
+    {
+      "term": "Fysisk minne",
+      "def": "Det faktiske minnet i maskinen. Programmene ser det aldri direkte, bare gjennom virtuelle adresser."
+    },
+    {
+      "term": "Virtuell adresse",
+      "def": "Adressen et program bruker. To programmer kan begge si kasse 42 og havne i hvert sitt rom."
     }
   ]
 }

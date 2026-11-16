@@ -63,6 +63,14 @@
     {
       "term": "Tre porter som var én",
       "def": "To invertere og en AND, F = (ikke A) · (ikke B), gir 1 bare i raden der begge inngangene er 0. Mønsteret 1, 0, 0, 0 er NOR. Altså gjør tre porter nøyaktig det samme som én. Funksjonen er den samme, kretsen er ikke."
+    },
+    {
+      "term": "Inngang og utgang",
+      "def": "Inngangene (A, B …) er det som kommer inn i kretsen, utgangen (F) er svaret. Tabellen lister utgangen for hver mulig kombinasjon av innganger."
+    },
+    {
+      "term": "Kombinasjon",
+      "def": "Én bestemt verdi av alle inngangene samtidig. Med n innganger finnes 2ⁿ ulike kombinasjoner, og tabellen har én rad for hver."
     }
   ]
 }

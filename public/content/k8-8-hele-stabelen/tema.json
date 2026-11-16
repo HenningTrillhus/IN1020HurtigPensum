@@ -19,6 +19,18 @@
     {
       "term": "Avveininger",
       "def": "Alt i en maskin er et valg mellom fart, plass, strøm, pris og sikkerhet."
+    },
+    {
+      "term": "Kontrakten",
+      "def": "Utsiden av maskinen ser ut som den enkle maskinen fra tidligere kapitler. Alt innenfor kan gjøres smart så lenge svarene blir de samme."
+    },
+    {
+      "term": "Hver egenskap har en grunn",
+      "def": "Åtte kjerner fordi klokka ikke kunne gå fortere, 4,0 GHz fordi varmen setter grensen, 12 MB buffer fordi minnet er tregt, grafikk fordi noen jobber er like biter, og nevral motor fordi det koster mer å flytte et tall enn å gange det."
+    },
+    {
+      "term": "Tiden følger med hele veien",
+      "def": "Fra en linje kode til en transistor som skifter på noen pikosekunder: tid er med i hvert lag av stabelen."
     }
   ]
 }

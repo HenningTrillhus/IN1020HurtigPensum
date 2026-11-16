@@ -32,6 +32,30 @@
     {
       "term": "Samtidighetsfeil",
       "def": "Feil som oppstår når flere tråder bruker de samme dataene uten å koordinere."
+    },
+    {
+      "term": "Prosess",
+      "def": "Et program som kjører. En prosess kan ha flere tråder."
+    },
+    {
+      "term": "SMT (simultan flertråding)",
+      "def": "To tråder deler én kjerne, som to gryter og én sleiv. Gevinsten er typisk 10 til 30 prosent, ikke det dobbelte."
+    },
+    {
+      "term": "Operativsystemet som fordeler",
+      "def": "Operativsystemet deler trådene ut på kjernene. Trådene er arbeidet, kjernene er arbeiderne."
+    },
+    {
+      "term": "Amdahls lov",
+      "def": "Den delen av et program som ikke kan deles, setter taket for hvor mye raskere flere kjerner kan gjøre det."
+    },
+    {
+      "term": "Udelelig del",
+      "def": "Delen av arbeidet som må gjøres i rekkefølge. Er en tidel udelelig, blir taket ti ganger, uansett hvor mange kjerner du har."
+    },
+    {
+      "term": "Speedup (hastighetsøkning)",
+      "def": "Hvor mange ganger raskere noe blir. Åtte kjerner gir 4,7 ganger hvis 90 prosent kan deles, og 1,8 ganger hvis halvparten kan deles."
     }
   ]
 }

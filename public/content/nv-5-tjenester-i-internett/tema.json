@@ -1,6 +1,7 @@
 {
   "id": "nv-5-tjenester-i-internett",
   "chapter": "Nettverk",
+  "chapterKey": "nettverk",
   "title": "Nettverk 5 Tjenester i Internett",
   "description": "TCP med flyt- og metningskontroll, DNS, web og HTTP, videostrømming og tingenes internett.",
   "icon": "icon.png",
@@ -61,7 +62,10 @@
     {
       "term": "Lastbalansering",
       "def": "Å fordele forespørsler på flere tjenere."
+    },
+    {
+      "term": "Forespørsel og svar",
+      "def": "Klienten sender en forespørsel, tjeneren sender et svar. Slik fungerer HTTP."
     }
-  ],
-  "chapterKey": "nettverk"
+  ]
 }

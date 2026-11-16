@@ -28,6 +28,22 @@
     {
       "term": "Ytelse mot sikkerhet",
       "def": "Spectre viste at optimaliseringer som gjør maskinen rask, også kan åpne for lekkasje."
+    },
+    {
+      "term": "Tidsmåling som sidekanal",
+      "def": "Den som ikke får se svaret, kan se tiden. Går ett av 256 oppslag fort, røper det verdien."
+    },
+    {
+      "term": "Hemmelig verdi brukt som adresse",
+      "def": "Under spekulasjon leser maskinen et hemmelig tall og bruker det som adresse. Resultatet forkastes, men cachen husker linja."
+    },
+    {
+      "term": "Ingen feil i programmet",
+      "def": "Spectre skyldes ingen programmeringsfeil. Sjekken er riktig skrevet, prosessoren regner riktig, og ingen regel er brutt: det er laget under som lekker."
+    },
+    {
+      "term": "Patch (lapp)",
+      "def": "Oppdatering som tetter et sikkerhetshull. Spectre ble offentliggjort i 2018, og maskiner er for lengst lappet."
     }
   ]
 }

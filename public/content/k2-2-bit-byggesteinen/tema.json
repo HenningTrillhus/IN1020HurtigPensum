@@ -37,6 +37,14 @@
     {
       "term": "Representasjon",
       "def": "En avtale om hva et bitmønster betyr. Samme bit kan være tall, tekst eller farge, avhengig av avtalen."
+    },
+    {
+      "term": "Ja eller nei",
+      "def": "Et bit har bare to mulige verdier. Alt annet maskinen kan, bygges av mange slike valg."
+    },
+    {
+      "term": "Mønster av bit",
+      "def": "Samme mønster kan bety ulike ting avhengig av hva vi har avtalt at det representerer: tall, tekst, farge eller lyd."
     }
   ]
 }

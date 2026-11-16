@@ -19,6 +19,18 @@
     {
       "term": "Ytelse",
       "def": "Hvor fort en maskin gjør en oppgave. Avhenger av klokkefrekvens, antall ordre per takt og hvor lenge man venter på minnet."
+    },
+    {
+      "term": "Integrert grafikk",
+      "def": "Grafikkenhet som sitter på samme brikke som prosessoren, i stedet for på et eget kort. I eksempelmaskinen har den 10 kjerner."
+    },
+    {
+      "term": "Nevral motor (NPU)",
+      "def": "Egen regneenhet laget for kunstig intelligens. I eksempelmaskinen har den 16 kjerner."
+    },
+    {
+      "term": "Delt buffer (L3)",
+      "def": "Hurtigbuffer som alle kjernene bruker sammen. I eksempelmaskinen er den på 12 MB."
     }
   ]
 }

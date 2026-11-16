@@ -28,6 +28,30 @@
     {
       "term": "Spesialisert maskinvare",
       "def": "Kretser laget for én oppgave, som å dekode video. Raskere og sparsommere, men kan ikke annet."
+    },
+    {
+      "term": "Fastfunksjon",
+      "def": "En krets som bare kan én ting, som videodekoderen. Den henter ingen instruksjoner og gjetter aldri, og bruker minst strøm per oppgave."
+    },
+    {
+      "term": "Nevral motor (NPU)",
+      "def": "Regneenhet bygget for kunstig intelligens, med mange små enheter som regner vektede summer."
+    },
+    {
+      "term": "Vektet sum med terskel",
+      "def": "Hver inngang ganges med en vekt, summene legges sammen, og enheten slår til hvis summen er over en terskel. AND og OR er slike enheter, og et nevralt nett stiller inn vektene."
+    },
+    {
+      "term": "Dataparallellitet",
+      "def": "Samme regneoperasjon på tusenvis av tall samtidig, som et filter på et bilde. Her er GPU best."
+    },
+    {
+      "term": "Fleksibilitet mot effektivitet",
+      "def": "Jo mer en krets kan, jo mer strøm koster det per oppgave. CPU, GPU, NPU og fastfunksjon er punkter på samme kurve."
+    },
+    {
+      "term": "Transport mot regning",
+      "def": "Å hente et tall fra minnet koster flere tusen ganger mer enn å gange det. Derfor sender man tallet videre i stedet for å hente det."
     }
   ]
 }

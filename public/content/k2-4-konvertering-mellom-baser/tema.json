@@ -47,6 +47,18 @@
     {
       "term": "Rest",
       "def": "Det som blir igjen når du deler. Hver rest er ett siffer i den nye basen."
+    },
+    {
+      "term": "Fra desimalt til binært",
+      "def": "Del tallet på 2 om og om igjen, og skriv ned resten hver gang. Restene lest nedenfra og opp er det binære tallet."
+    },
+    {
+      "term": "Posisjonsverdi",
+      "def": "Hvert siffer teller med sin egen vekt: 1, 2, 4, 8 … i binært. Summerer du vektene til sifrene som er 1, får du det desimale tallet."
+    },
+    {
+      "term": "Sjekk av svaret",
+      "def": "Konverter tilbake: får du ikke tallet du startet med, er noe regnet feil."
     }
   ]
 }

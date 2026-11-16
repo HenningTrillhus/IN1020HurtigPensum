@@ -58,6 +58,14 @@
     {
       "term": "Kostnaden før forenkling",
       "def": "Med tre innganger og fire ettall får du fire ledd og tolv bokstaver. Bygger du uttrykket rett fram, trenger du tre invertere, fire AND-porter med tre innganger og en OR-port med fire: åtte porter for noe som skal vise seg å trenge to. Vi må ha uttrykket først, før vi kan forenkle det."
+    },
+    {
+      "term": "Nullene i stedet for ettallene",
+      "def": "Du kan like gjerne beskrive de radene der utgangen er 0, og så snu svaret. Resultatet er riktig, men uttrykket blir ofte annerledes."
+    },
+    {
+      "term": "Ledd",
+      "def": "Et produkt av inngangene (eller deres inverterte verdier) som er 1 for nøyaktig én rad i tabellen."
     }
   ]
 }

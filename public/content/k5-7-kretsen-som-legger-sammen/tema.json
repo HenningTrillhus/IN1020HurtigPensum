@@ -63,6 +63,18 @@
     {
       "term": "Prikk i kretstegning",
       "def": "En fylt prikk der to ledninger møtes betyr at de er koblet sammen og fører samme signal. Krysser to streker hverandre uten prikk, går de bare over hverandre uten å røre. Det er den eneste måten en flat tegning kan vise noe som i virkeligheten ligger i flere lag."
+    },
+    {
+      "term": "Svart boks",
+      "def": "En krets du bare beskriver ved hva som går inn og ut, uten å se hva som er inni. Adderen har A og B inn, og sum og mente ut."
+    },
+    {
+      "term": "Mente inn og mente ut",
+      "def": "Fulladderen tar imot menten fra posisjonen til høyre og sender en ny mente videre til posisjonen til venstre."
+    },
+    {
+      "term": "Sum = A XOR B (halvadder)",
+      "def": "Summen av to bit er 1 når nøyaktig én av dem er 1, altså en XOR. Menten er 1 når begge er 1, altså en AND."
     }
   ]
 }

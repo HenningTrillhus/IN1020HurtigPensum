@@ -49,6 +49,18 @@
     {
       "term": "Multipleksere i prosessoren",
       "def": "De sitter overalt, selv om de sjelden tegnes. Hver gang datastien har to mulige kilder til samme sted, sitter det en multiplekser der og velger. Subtraksjonskretsen kunne også brukt en, men en XOR er billigere der."
+    },
+    {
+      "term": "Én utgang av gangen",
+      "def": "I en dekoder er nøyaktig én utgang på. Hver port er skreddersydd for sin ene kombinasjon."
+    },
+    {
+      "term": "Velgeinngang (S)",
+      "def": "Inngangen som bestemmer hvilken kilde en multiplekser slipper gjennom. S = 0 gir A og S = 1 gir B."
+    },
+    {
+      "term": "Fra opkode til linje",
+      "def": "Fire biter av ordren (opkoden) går inn i en dekoder, og akkurat én av AND-portene treffer. Linja derfra styrer datastien."
     }
   ]
 }

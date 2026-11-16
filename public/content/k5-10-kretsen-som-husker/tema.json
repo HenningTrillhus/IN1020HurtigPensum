@@ -49,6 +49,22 @@
     {
       "term": "Appendiks C (ikke pensum)",
       "def": "«Kretser som husker» tar denne siden videre: SR-latchen (to NOR-porter og den forbudte kombinasjonen), D-latchen (som gjør den forbudte tilstanden umulig og bestemmer når kretsen lytter), vippen (som smeller igjen i et bestemt øyeblikk) og registeret (åtte vipper med felles klokkeledning). Det er ikke pensum."
+    },
+    {
+      "term": "Register",
+      "def": "En samling krets-biter som holder en verdi så lenge strømmen står på. Hvert bit er bygget av porter med tilbakekobling."
+    },
+    {
+      "term": "Tilstand",
+      "def": "Det kretsen husker akkurat nå. I en sekvensiell krets avhenger utgangen av tilstanden og ikke bare av inngangene."
+    },
+    {
+      "term": "To NOR-porter som mater hverandre",
+      "def": "Utgangen på den ene går inn på den andre. Kretsen kan stå stabilt i to tilstander og holder dermed ett bit."
+    },
+    {
+      "term": "Ingen fortid",
+      "def": "En kombinatorisk krets husker ingenting: endrer du en inngang, endres utgangen straks etter."
     }
   ]
 }

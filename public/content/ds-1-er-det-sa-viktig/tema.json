@@ -1,6 +1,7 @@
 {
   "id": "ds-1-er-det-sa-viktig",
   "chapter": "Datasikkerhet",
+  "chapterKey": "datasikkerhet",
   "title": "Sikkerhet 1 Datasikkerhet, er det så viktig?",
   "description": "Hvorfor sikkerhet angår alle som bruker eller bygger datasystemer.",
   "icon": "icon.png",
@@ -21,7 +22,14 @@
     {
       "term": "Trussel",
       "def": "Noe eller noen som kan utnytte en sårbarhet og gjøre skade."
+    },
+    {
+      "term": "Konsekvens",
+      "def": "Det som skjer hvis en trussel utnytter en sårbarhet: tapte data, tapt tid, tapte penger eller tapt tillit."
+    },
+    {
+      "term": "Risiko",
+      "def": "Hvor sannsynlig det er at noe går galt, og hvor stor skaden blir hvis det gjør det."
     }
-  ],
-  "chapterKey": "datasikkerhet"
+  ]
 }
