@@ -1,38 +1,8 @@
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { CalcIcon, CloseIcon } from './Icons'
-
-// ---------- Små byggeklosser ----------
-
-/** Lite spørsmålstegn som viser og skjuler en forklaring. */
-function Q({ open, onToggle }: { open: boolean; onToggle: () => void }) {
-  return (
-    <button type="button" className={`calc-q${open ? ' on' : ''}`} onClick={onToggle} aria-expanded={open} aria-label="Forklaring" title="Forklaring">
-      ?
-    </button>
-  )
-}
-
-/** Overskrift med spørsmålstegn og skjult forklaring. */
-function Head({ label, help }: { label: ReactNode; help?: ReactNode }) {
-  const [open, setOpen] = useState(false)
-  return (
-    <div className="calc-headrow">
-      <div className="calc-lab"><span>{label}</span>{help && <Q open={open} onToggle={() => setOpen(o => !o)} />}</div>
-      {open && help && <div className="calc-help">{help}</div>}
-    </div>
-  )
-}
-
-/** Felt med navn, spørsmålstegn og forklaring. */
-function Field({ label, help, children }: { label: ReactNode; help?: ReactNode; children: ReactNode }) {
-  return (
-    <div className="calc-field">
-      <Head label={label} help={help} />
-      {children}
-    </div>
-  )
-}
+import { Field, Head, fmt, num } from './calcparts'
+import { Network, Perf, Security } from './CalcMore'
 
 const group = (s: string, n = 4) => s.replace(new RegExp(`\\B(?=(.{${n}})+$)`, 'g'), ' ')
 
@@ -419,21 +389,6 @@ function Table() {
 
 // ---------- Klokke, tid og effekt ----------
 
-const num = (s: string) => {
-  const t = s.trim().replace(',', '.')
-  if (!t) return null
-  const x = Number(t)
-  return Number.isFinite(x) && x > 0 ? x : NaN
-}
-/** Pent tall med norsk komma og rimelig antall siffer. */
-const fmt = (x: number) => {
-  if (!Number.isFinite(x)) return ''
-  if (x === 0) return '0'
-  const a = Math.abs(x)
-  if (a >= 1e9 || a < 1e-4) return x.toExponential(3).replace('.', ',')
-  return String(Number(x.toPrecision(5))).replace('.', ',')
-}
-
 const T_UNITS = [['ps', 1e-12], ['ns', 1e-9], ['µs', 1e-6], ['ms', 1e-3], ['s', 1]] as const
 const F_UNITS = [['Hz', 1], ['kHz', 1e3], ['MHz', 1e6], ['GHz', 1e9]] as const
 const tFactor = (u: string) => T_UNITS.find(x => x[0] === u)![1]
@@ -559,6 +514,9 @@ const TABS = [
   { id: 'op', label: 'Bitoperasjoner', C: Bits },
   { id: 'tab', label: 'Sannhetstabell', C: Table },
   { id: 'klokke', label: 'Klokke og tid', C: Clock },
+  { id: 'nett', label: 'Nettverk', C: Network },
+  { id: 'ytelse', label: 'Minne og ytelse', C: Perf },
+  { id: 'sikker', label: 'Sikkerhet', C: Security },
 ] as const
 
 function CalcDialog({ onClose }: { onClose: () => void }) {
@@ -566,6 +524,16 @@ function CalcDialog({ onClose }: { onClose: () => void }) {
   const [closing, setClosing] = useState(false)
   const timer = useRef<number | undefined>(undefined)
   const Active = TABS.find(t => t.id === tab)!.C
+  const tabsRef = useRef<HTMLDivElement>(null)
+  const bodyRef = useRef<HTMLDivElement>(null)
+
+  // Fanen du velger glir på plass midt i fanelista, og innholdet starter øverst.
+  const pick = (id: (typeof TABS)[number]['id']) => {
+    setTab(id)
+    bodyRef.current?.scrollTo({ top: 0 })
+    const el = tabsRef.current?.querySelector<HTMLElement>(`[data-tab="${id}"]`)
+    el?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
+  }
 
   // Glir ned igjen før den fjernes.
   const close = () => {
@@ -591,14 +559,14 @@ function CalcDialog({ onClose }: { onClose: () => void }) {
           <strong>Kalkulator</strong>
           <button className="calc-close" onClick={close} aria-label="Lukk"><CloseIcon /></button>
         </div>
-        <div className="calc-tabs" role="tablist">
+        <div className="calc-tabs" role="tablist" ref={tabsRef}>
           {TABS.map(t => (
-            <button key={t.id} role="tab" aria-selected={t.id === tab} className={t.id === tab ? 'on' : ''} onClick={() => setTab(t.id)}>
+            <button key={t.id} data-tab={t.id} role="tab" aria-selected={t.id === tab} className={t.id === tab ? 'on' : ''} onClick={() => pick(t.id)}>
               {t.label}
             </button>
           ))}
         </div>
-        <div className="calc-body"><Active /></div>
+        <div className="calc-body" ref={bodyRef}><div className="calc-view" key={tab}><Active /></div></div>
       </div>
     </div>
   )
