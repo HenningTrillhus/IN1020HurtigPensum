@@ -1,19 +1,23 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import type { Chapter } from './chapters'
-import { norm } from './search'
+import { score, words } from './search'
+import Mark from './Mark'
 import SearchField from './SearchField'
 import { SearchIcon } from './Icons'
 
 interface Hit {
   term: string
   def: string
+  chapterKey: string
   chapterLabel: string
+  chapterIcon?: string
+  color?: string
   topicTitle: string
   href: string
-  inName: boolean
+  rank: number
 }
 
-const MAX = 30
+const MAX = 40
 
 const snippet = (s: string, n = 130) => (s.length > n ? `${s.slice(0, n).replace(/\s+\S*$/, '')} …` : s)
 
@@ -28,28 +32,45 @@ export function GlobalSearchBox({ q, setQ, onClose }: { q: string; setQ: (v: str
 }
 
 export function GlobalSearchResults({ chapters, q, courseUrl }: { chapters: Chapter[]; q: string; courseUrl?: string }) {
-  const n = norm(q.trim())
+  const ws = useMemo(() => words(q), [q])
+  const [only, setOnly] = useState<string | null>(null)
 
-  const hits = useMemo<Hit[]>(() => {
-    if (!n) return []
+  const all = useMemo<Hit[]>(() => {
+    if (!ws.length) return []
     const out: Hit[] = []
     for (const c of chapters) {
       for (const t of c.topics) {
         // Delkapitler med videoer åpnes på videoene. Er de ikke klare, går du til kapittelet.
         const href = t.videos.length > 0 ? `#/${t.id}/feed` : `#/kap/${c.key}`
         for (const x of t.terms ?? []) {
-          const inName = norm(x.term).includes(n)
-          if (inName || norm(x.def).includes(n)) out.push({ term: x.term, def: x.def, chapterLabel: c.label, topicTitle: t.title, href, inName })
+          const rank = score(x.term, x.def, ws)
+          if (rank >= 0) {
+            out.push({ term: x.term, def: x.def, chapterKey: c.key, chapterLabel: c.label, chapterIcon: c.icon, color: c.color, topicTitle: t.title, href, rank })
+          }
         }
       }
     }
-    // Treff i selve begrepet først, så treff i forklaringen. Ellers i kapittelrekkefølge.
-    return out.sort((a, b) => Number(b.inName) - Number(a.inName))
-  }, [chapters, n])
+    // Best treff først (eksakt navn, så navn som begynner med søket, så resten). Ellers i kapittelrekkefølge.
+    return out.sort((a, b) => b.rank - a.rank)
+  }, [chapters, ws])
 
-  if (!n) return null
+  // Hvor mange treff i hvert kapittel, som knapper du kan snevre inn med.
+  const perChapter = useMemo(() => {
+    const m = new Map<string, { key: string; label: string; color?: string; n: number }>()
+    for (const h of all) {
+      const e = m.get(h.chapterKey) ?? { key: h.chapterKey, label: h.chapterLabel, color: h.color, n: 0 }
+      e.n++
+      m.set(h.chapterKey, e)
+    }
+    return [...m.values()]
+  }, [all])
 
-  if (hits.length === 0) {
+  const active = only && perChapter.some(c => c.key === only) ? only : null
+  const hits = active ? all.filter(h => h.chapterKey === active) : all
+
+  if (!ws.length) return null
+
+  if (all.length === 0) {
     return (
       <p className="search-none">
         «{q.trim()}» finnes ikke som fagbegrep i noen av videoene. Prøv et annet ord, eller slå det opp i kompendiet selv
@@ -61,15 +82,30 @@ export function GlobalSearchResults({ chapters, q, courseUrl }: { chapters: Chap
   return (
     <div className="search-hits">
       <small className="search-count">
-        {hits.length} {hits.length === 1 ? 'treff' : 'treff'}{hits.length > MAX ? `, viser de ${MAX} beste` : ''}
+        {hits.length} treff{hits.length > MAX ? `, viser de ${MAX} beste` : ''}
       </small>
+      {perChapter.length > 1 && (
+        <div className="hit-filters" role="group" aria-label="Snevre inn til ett kapittel">
+          {perChapter.map(c => (
+            <button
+              key={c.key} type="button" data-ch={c.color} className={`hit-chip${active === c.key ? ' on' : ''}`}
+              aria-pressed={active === c.key} onClick={() => setOnly(active === c.key ? null : c.key)}
+            >
+              {c.label} <b>{c.n}</b>
+            </button>
+          ))}
+        </div>
+      )}
       {hits.slice(0, MAX).map((h, i) => (
-        <a key={`${h.href}:${h.term}:${i}`} className="hit" href={h.href}>
+        <a key={`${h.href}:${h.term}:${i}`} className="hit coloured" data-ch={h.color} href={h.href}>
           <div className="hit-head">
-            <strong>{h.term}</strong>
-            <span className="badge">{h.chapterLabel}</span>
+            <strong><Mark text={h.term} ws={ws} /></strong>
+            <span className="badge ch-badge">
+              {h.chapterIcon && <img src={h.chapterIcon} alt="" width={16} height={16} />}
+              {h.chapterLabel}
+            </span>
           </div>
-          <p className="hit-def">{snippet(h.def)}</p>
+          <p className="hit-def"><Mark text={snippet(h.def)} ws={ws} /></p>
           <span className="hit-go">{h.topicTitle} ›</span>
         </a>
       ))}

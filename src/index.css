@@ -966,4 +966,18 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 .resume-ic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50% }
 .resume-ic .start-play svg { width: 20px; height: 20px }
 
+/* Søketreff: farge etter kapittel, og markering av ordet du søkte på. */
+.hit.coloured { border-left: 4px solid var(--ch, var(--line)) }
+.hit.coloured:hover { border-color: var(--ch, var(--line-strong)) }
+.ch-badge { display: inline-flex; align-items: center; gap: 5px; color: var(--fg); background: color-mix(in srgb, var(--ch, var(--mut)) 20%, var(--surface2)); border-color: color-mix(in srgb, var(--ch, var(--mut)) 55%, var(--line)) }
+.ch-badge img { border-radius: 50% }
+.hit mark { background: color-mix(in srgb, var(--ch, #e8c14a) 38%, transparent); color: inherit; border-radius: 3px; padding: 0 1px }
+.hit-filters { display: flex; flex-wrap: wrap; gap: 6px }
+.hit-chip {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 12px; border-radius: 99px; cursor: pointer;
+  background: var(--surface); border: 1px solid color-mix(in srgb, var(--ch, var(--mut)) 55%, var(--line)); color: var(--fg); font: inherit; font-size: 13px;
+}
+.hit-chip b { font-weight: 700; opacity: .8 }
+.hit-chip.on { background: color-mix(in srgb, var(--ch, var(--mut)) 35%, var(--surface)); border-color: var(--ch, var(--fg)) }
+
 .gh-link { display: block; margin: 6px auto 18px; text-align: center; color: var(--mut); font-size: 13px; text-decoration: underline; padding: 8px }

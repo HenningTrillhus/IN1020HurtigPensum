@@ -1,14 +1,16 @@
 import { useMemo, useState } from 'react'
 import type { Topic } from './types'
-import { norm } from './search'
+import { norm, score, words } from './search'
+import Mark from './Mark'
 import SearchField from './SearchField'
 import { SearchIcon } from './Icons'
 
-interface Hit { topic: Topic; terms: { term: string; def: string }[] }
+interface Hit { topic: Topic; terms: { term: string; def: string; rank: number }[] }
 
 /** Søk etter fagbegreper på tvers av alle delkapitlene i kapitlet. Viser hvilke delkapitler (og videoer) som tar dem opp. */
 export default function ChapterSearch({ topics, compendiumUrl }: { topics: Topic[]; compendiumUrl?: string }) {
   const [q, setQ] = useState('')
+  const ws = useMemo(() => words(q), [q])
   const n = norm(q.trim())
 
   const { hits, suggestions } = useMemo(() => {
@@ -17,13 +19,13 @@ export default function ChapterSearch({ topics, compendiumUrl }: { topics: Topic
     const names = new Map<string, string>()
     for (const topic of topics) {
       // Alle videoene i et delkapittel deler de samme fagbegrepene.
-      const terms = (topic.terms ?? []).filter(t => norm(t.term).includes(n) || norm(t.def).includes(n))
+      const terms = (topic.terms ?? []).map(t => ({ ...t, rank: score(t.term, t.def, ws) })).filter(t => t.rank >= 0).sort((a, b) => b.rank - a.rank)
       if (terms.length) hits.push({ topic, terms })
       for (const t of topic.terms ?? []) if (norm(t.term).includes(n)) names.set(norm(t.term), t.term)
     }
     const suggestions = [...names.values()].filter(s => norm(s) !== n).slice(0, 6)
     return { hits, suggestions }
-  }, [topics, n])
+  }, [topics, n, ws])
 
   return (
     <div className="chap-search">
@@ -52,7 +54,7 @@ export default function ChapterSearch({ topics, compendiumUrl }: { topics: Topic
                   <strong>{topic.title}</strong>
                   <span className="badge">{v} {v === 1 ? 'video' : 'videoer'}</span>
                 </div>
-                <ul>{terms.map(t => <li key={t.term}><b>{t.term}</b></li>)}</ul>
+                <ul>{terms.map(t => <li key={t.term}><b><Mark text={t.term} ws={ws} /></b></li>)}</ul>
                 <span className="hit-go">Se videoene ›</span>
               </a>
             )
