@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import type { Chapter } from './chapters'
-import { chapterShareText, shareAward, totalShareText } from './share'
+import { chapterLink, chapterShareText, shareAward, SITE_URL, totalShareText } from './share'
 import { feedState, VIDEO_LEFT } from './feedState'
 import { addAwarded, allDone, badgeOf, getAwarded, isDone, TOTAL_BADGE, totalBadge } from './badges'
 
-interface Award { key: string; name: string; badge: string; color?: string; total?: boolean }
+interface Award { key: string; name: string; label?: string; title?: string; badge: string; color?: string; total?: boolean }
 
 const COLORS = ['#ffd24a', '#ff6b6b', '#5ac8fa', '#7ee081', '#c58bff', '#ff9f43', '#ffffff']
 
@@ -53,7 +53,7 @@ export default function Achievements({ chapters }: { chapters: Chapter[] }) {
       const had = new Set(getAwarded())
       const fresh: Award[] = chapters
         .filter(c => badgeOf(c, true) && isDone(c) && !had.has(c.key))
-        .map(c => ({ key: c.key, name: c.title ? `${c.label}: ${c.title}` : c.label, badge: badgeOf(c, true)!, color: c.color }))
+        .map(c => ({ key: c.key, name: c.title ? `${c.label}: ${c.title}` : c.label, label: c.label, title: c.title, badge: badgeOf(c, true)!, color: c.color }))
       if (TOTAL_BADGE && allDone(chapters) && !had.has('total')) {
         fresh.push({ key: 'total', name: 'hele pensum', badge: totalBadge(true), total: true })
       }
@@ -93,9 +93,10 @@ export default function Achievements({ chapters }: { chapters: Chapter[] }) {
 
   const close = () => { setNote(''); setQueue(q => q.slice(1)) }
   const name = c.name
-  const text = c.total ? totalShareText() : chapterShareText(name)
+  const text = c.total ? totalShareText() : chapterShareText(c.label ?? name, c.title)
+  const link = c.total ? SITE_URL : chapterLink(c.key)
   const share = async () => {
-    const r = await shareAward(text, c.badge)
+    const r = await shareAward(text, c.badge, link)
     if (r === 'copied') setNote('Kopiert! Lim det inn i en melding.')
     else if (r === 'failed') setNote('Kunne ikke dele her.')
   }

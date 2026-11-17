@@ -3,7 +3,7 @@ import { seenCount, videoCount } from './chapters'
 import { badgeOf, isDone } from './badges'
 import { useState } from 'react'
 import { CheckIcon, LockIcon } from './Icons'
-import { chapterShareText, shareAward } from './share'
+import { chapterLink, chapterShareText, shareAward } from './share'
 
 /** Kapittelmerket nederst på kapittelsiden: låst til alle videoene er sett, så åpent. Viser også hvor mye som er gjort. */
 export default function ChapterBadge({ chapter }: { chapter: Chapter }) {
@@ -31,8 +31,7 @@ export default function ChapterBadge({ chapter }: { chapter: Chapter }) {
         </small>
         {done && (
           <button type="button" className="cb-share" onClick={async () => {
-            const name = chapter.title ? `${chapter.label}: ${chapter.title}` : chapter.label
-            const r = await shareAward(chapterShareText(name), src)
+            const r = await shareAward(chapterShareText(chapter.label, chapter.title), src, chapterLink(chapter.key))
             setNote(r === 'copied' ? 'Kopiert! Lim det inn i en melding.' : r === 'failed' ? 'Kunne ikke dele her.' : '')
           }}>Del merket</button>
         )}

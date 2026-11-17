@@ -2,13 +2,14 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { bannerOf, seenCount, videoCount, type Chapter } from './chapters'
 import { CloseIcon, LockIcon } from './Icons'
-import { shareAward, totalShareText } from './share'
+import { progressShareText, shareAward, totalShareText } from './share'
 import { allDone, badgeOf, isDone, TOTAL_BADGE, totalBadge } from './badges'
 
 /** Liten side med fremdriften i hvert kapittel: prosent og antall videoer du har sett. Samme vindu som kalkulatoren. */
 export default function ProgressSheet({ chapters, onClose }: { chapters: Chapter[]; onClose: () => void }) {
   const [closing, setClosing] = useState(false)
   const [shareNote, setShareNote] = useState('')
+  const [progNote, setProgNote] = useState('')
   const [settled, setSettled] = useState(false) // åpne-animasjonen er ferdig, så fingeren kan styre posisjonen
   const timer = useRef<number | undefined>(undefined)
   const gone = useRef(false)
@@ -147,6 +148,15 @@ export default function ProgressSheet({ chapters, onClose }: { chapters: Chapter
               </li>
             ))}
           </ul>
+          {totalV > 0 && (
+            <div className="prog-share">
+              <button type="button" className="prog-share-btn" onClick={async () => {
+                const r = await shareAward(progressShareText(totalS, totalV, pct(totalS, totalV)))
+                setProgNote(r === 'copied' ? 'Kopiert! Lim det inn i en melding.' : r === 'failed' ? 'Kunne ikke dele her.' : '')
+              }}>Del fremdriften min</button>
+              {progNote && <small role="status">{progNote}</small>}
+            </div>
+          )}
         </div>
       </div>
     </div>,
