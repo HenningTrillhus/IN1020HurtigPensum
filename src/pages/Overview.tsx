@@ -127,7 +127,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
               href={`#/kap/${c.key}`}
               data-ch={c.color}
             >
-              <span className="ring-wrap">
+              <span className={`ring-wrap${isDone(c) && badgeOf(c, true) ? ' has-badge' : ''}`}>
                 <svg className="ring" viewBox="0 0 64 64" aria-hidden>
                   <circle className="ring-track" cx="32" cy="32" r="29" pathLength={100} />
                   {seen > 0 && <circle className="ring-fill" cx="32" cy="32" r="29" pathLength={100} strokeDasharray={`${Math.min(100, (seen / v) * 100)} 100`} />}
