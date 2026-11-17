@@ -21,6 +21,3 @@ export const getLast = (): { topic: string; i: number } | null => {
 }
 export const setLast = (topic: string, i: number) => write('last', { topic, i })
 
-/** Autoswipe: gå av seg selv til neste video når den du ser er ferdig. Av som standard. */
-export const getAuto = (): boolean => read('autoswipe', false)
-export const setAuto = (on: boolean) => write('autoswipe', on)

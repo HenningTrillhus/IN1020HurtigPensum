@@ -7,7 +7,7 @@ import { usePlayer } from '../player'
 import { SpeedButton, useSpeed } from '../speed'
 import { ChapterRating } from '../Rating'
 import { chColor } from '../chapters'
-import { getAuto, isSeen, markSeen, setAuto, setLast } from '../storage'
+import { isSeen, markSeen, setLast } from '../storage'
 
 interface P {
   /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
@@ -492,10 +492,11 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
   // Når en video er ferdig, går feeden videre til neste av seg selv. Lyd og stumming er felles for alle videoene
   // (sound.ts), så valget følger med. Etter den aller siste blir den stående.
   const slideCount = slides.length
-  const [auto, setAutoState] = useState(getAuto)
+  // Autoswipe huskes ikke: den er alltid av når du kommer inn i en feed, og står bare på mens du blir i den.
+  const [auto, setAutoState] = useState(false)
   const autoRef = useRef(auto)
   autoRef.current = auto
-  const toggleAuto = () => { const v = !auto; setAutoState(v); setAuto(v); poke() }
+  const toggleAuto = () => { setAutoState(!auto); poke() }
   const onEnded = useCallback((pos: number) => {
     if (!autoRef.current || pos !== currentRef.current || pos >= slideCount - 1) return
     step(1)
