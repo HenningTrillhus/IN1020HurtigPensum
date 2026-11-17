@@ -7,12 +7,16 @@ import { swipeHandlers, type SwipeStart } from '../swipe'
 /** Så mange videoer får du i én blanding. Er de brukt opp, kan du blande på nytt. */
 const BATCH = 40
 
-/** Tilfeldig utvalg av videoer du ikke har sett, på tvers av alle kapitler. */
+/**
+ * Tilfeldig utvalg av videoer på tvers av alle kapitler. Bare de du ikke har sett, helt til du har sett alle:
+ * da blir det et tilfeldig utvalg av alle videoene.
+ */
 function pickUnseen(topics: Topic[]) {
-  const pool = topics
+  const all = topics
     .filter(t => !t.noShuffle)
     .flatMap(t => t.videos.map((_, i) => ({ topic: t, i })))
-    .filter(s => !isSeen(s.topic.id, s.i))
+  const unseen = all.filter(s => !isSeen(s.topic.id, s.i))
+  const pool = unseen.length > 0 ? unseen : all
   for (let k = pool.length - 1; k > 0; k--) {
     const j = Math.floor(Math.random() * (k + 1))
     ;[pool[k], pool[j]] = [pool[j], pool[k]]
@@ -20,7 +24,7 @@ function pickUnseen(topics: Topic[]) {
   return pool.slice(0, BATCH)
 }
 
-/** Bland: en endeløs-følelse av korte videoer i tilfeldig rekkefølge, men bare de du ikke har sett. */
+/** Bland: en endeløs-følelse av korte videoer i tilfeldig rekkefølge, helst de du ikke har sett. */
 export default function Shuffle({ topics, root }: { topics: Topic[]; root: string }) {
   const [round, setRound] = useState(0)
   const swipe = useRef<SwipeStart | null>(null)
@@ -35,8 +39,8 @@ export default function Shuffle({ topics, root }: { topics: Topic[]; root: strin
       </nav>
       {slides.length === 0 ? (
         <div className="wip-page">
-          <h2>Du har sett alt</h2>
-          <p>Det er ingen usette videoer igjen å blande. Kom tilbake når det er lagt til flere.</p>
+          <h2>Ingen videoer å blande</h2>
+          <p>Det er ingen videoer å blande ennå. Kom tilbake når det er lagt til flere.</p>
         </div>
       ) : (
         <Feed

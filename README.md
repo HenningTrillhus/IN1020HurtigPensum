@@ -15,7 +15,7 @@
 - **Rene kontroller.** Teksten og knappene tones bort når videoen spiller, så du ser hele bildet. Et trykk på skjermen henter dem tilbake, mens et sveip ikke gjør det. Pause-knappen ligger midt på videoen, med spol 10 sekunder tilbake og fram på hver side, og spolelinjen nederst.
 - **Hastighet.** 0,75×, 1×, 1,25× og 1,5× for både video og podkast. Valget huskes.
 - **Podkaster.** En fast spiller nederst som fortsetter når du bytter side, husker hvor du var, og har hopp på 10 sekunder og styring fra låseskjermen. Videoene pauses og dempes mens en podkast spiller. Hvert kapittel har egne podkastikoner i kapittelets farger.
-- **Bland.** Tilfeldige videoer på tvers av alle kapitler, bare de du ikke har sett. Under shuffle er det en knapp som tar deg til delkapittelet videoen hører til.
+- **Bland.** Tilfeldige videoer på tvers av alle kapitler, bare de du ikke har sett. Har du sett alle, blir det et tilfeldig utvalg av alle videoene. Under shuffle er det en knapp som tar deg til delkapittelet videoen hører til.
 - **Delkapitler med flere videoer.** En liten velger lar deg hoppe mellom delene, og baren øverst kan dras for å velge video.
 - **Fagbegreper.** Egen fane per delkapittel, og et søk øverst i hvert kapittel som viser hvilke delkapitler som tar opp et begrep. Søket på forsiden finner også videoer (titler og sammendrag), i en egen seksjon under fagbegrepene.
 - **Kapittelsider** med banner, ikon per delkapittel og en startknapp som hopper rett til neste video du ikke har sett.
