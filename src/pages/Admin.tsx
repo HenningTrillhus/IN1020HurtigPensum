@@ -84,7 +84,7 @@ export default function Admin({ topics, secret }: { topics: Topic[]; secret: str
     }
   })
   const top = [...rows].sort((a, b) => b.views - a.views).slice(0, 15)
-  const problems = [...rows].filter(r => r.dislikes > 0 || r.reports > 0).sort((a, b) => (b.reports * 3 + b.dislikes) - (a.reports * 3 + a.dislikes)).slice(0, 10)
+  const problems = [...rows].filter(r => r.dislikes > 0 || r.reports > 0).sort((a, b) => (b.reports * 3 + b.dislikes) - (a.reports * 3 + a.dislikes)).slice(0, 40)
 
   // Grovt anslag på forbruk siste 30 dager. Tallene er kommandoer per handling, talt fra API-koden:
   // visning ≈ 7, stemme ≈ 9, feilmelding ≈ 9, vurdering ≈ 10. Lesing av tall (ca. 30 kommandoer og 8 kall per besøk)
@@ -193,11 +193,12 @@ export default function Admin({ topics, secret }: { topics: Topic[]; secret: str
 
           {problems.length > 0 && (
             <>
-              <h2 className="adm-h">Flest feilmeldinger og tommel ned</h2>
+              <h2 className="adm-h">Meldte feil og tommel ned</h2>
+              <p className="sub">Sortert med feilmeldinger først (tre ganger så tungt som tommel ned). Trykk på en video for å åpne den.</p>
               <div className="adm-scroll"><table className="adm-table">
                 <thead><tr><th>Video</th><th>Feil</th><th>Ned</th><th>Opp</th></tr></thead>
                 <tbody>{problems.map(r => (
-                  <tr key={r.id}><td>{r.title}</td><td>{nf(r.reports)}</td><td>{nf(r.dislikes)}</td><td>{nf(r.likes)}</td></tr>
+                  <tr key={r.id}><td><a href={`#/${r.id.split(':')[0]}/feed/${+r.id.split(':')[1] + 1}`}>{r.title}</a><br /><small>{r.chapter.label} · {r.topic}</small></td><td>{nf(r.reports)}</td><td>{nf(r.dislikes)}</td><td>{nf(r.likes)}</td></tr>
                 ))}</tbody>
               </table></div>
             </>

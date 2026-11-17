@@ -1031,3 +1031,8 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 .hit-chip.on { background: color-mix(in srgb, var(--ch, var(--mut)) 35%, var(--surface)); border-color: var(--ch, var(--fg)) }
 
 .gh-link { display: block; margin: 6px auto 18px; text-align: center; color: var(--mut); font-size: 13px; text-decoration: underline; padding: 8px }
+
+.video-hits-h { display: block; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line, rgba(255,255,255,.12)) }
+.search-count { display: flex; align-items: center; gap: 10px; flex-wrap: wrap }
+.video-jump { order: 2; margin-left: auto; font: inherit; font-size: 13px; font-weight: 600; color: var(--txt); background: var(--card, rgba(255,255,255,.08)); border: 1px solid var(--line, rgba(255,255,255,.14)); border-radius: 99px; padding: 5px 12px; cursor: pointer }
+.video-hits-h { display: block }
