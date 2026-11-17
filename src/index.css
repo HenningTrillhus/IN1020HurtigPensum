@@ -1036,3 +1036,8 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 .search-count { display: flex; align-items: center; gap: 10px; flex-wrap: wrap }
 .video-jump { order: 2; margin-left: auto; font: inherit; font-size: 13px; font-weight: 600; color: var(--txt); background: var(--card, rgba(255,255,255,.08)); border: 1px solid var(--line, rgba(255,255,255,.14)); border-radius: 99px; padding: 5px 12px; cursor: pointer }
 .video-hits-h { display: block }
+
+.to-top { position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(20px, calc(env(safe-area-inset-bottom) + 12px)); z-index: 40; width: 46px; height: 46px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(255,255,255,.18); background: rgba(24,24,24,.92); color: #fff; box-shadow: 0 6px 20px rgba(0,0,0,.5); cursor: pointer; animation: toTopIn .2s ease both; -webkit-tap-highlight-color: transparent }
+.to-top:active { transform: scale(.94) }
+@keyframes toTopIn { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+@media (prefers-reduced-motion: reduce) { .to-top { animation: none } }

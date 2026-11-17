@@ -4,6 +4,7 @@ import { norm, score, words } from './search'
 import Mark from './Mark'
 import SearchField from './SearchField'
 import { SearchIcon } from './Icons'
+import ToTop from './ToTop'
 
 interface Hit {
   term: string
@@ -104,6 +105,7 @@ export function GlobalSearchResults({ chapters, q, courseUrl }: { chapters: Chap
 
   return (
     <div className="search-hits">
+      <ToTop />
       <small className="search-count">
         {videoHits.length > 0 && (
           <button type="button" className="video-jump" onClick={() => document.getElementById('video-hits')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>
