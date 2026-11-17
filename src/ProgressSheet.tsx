@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { bannerOf, seenCount, videoCount, type Chapter } from './chapters'
-import { CloseIcon } from './Icons'
+import { CloseIcon, LockIcon } from './Icons'
 import { shareAward, totalShareText } from './share'
 import { allDone, badgeOf, isDone, TOTAL_BADGE, totalBadge } from './badges'
 
@@ -95,7 +95,8 @@ export default function ProgressSheet({ chapters, onClose }: { chapters: Chapter
   const rows = chapters.map(c => ({ c, v: videoCount(c), s: seenCount(c) }))
   const totalV = rows.reduce((n, r) => n + r.v, 0)
   const totalS = rows.reduce((n, r) => n + r.s, 0)
-  const pct = (s: number, v: number) => (v ? Math.round((s / v) * 100) : 0)
+  // Aldri 100 % før alt er sett, selv om avrundingen skulle gi det.
+  const pct = (s: number, v: number) => (v ? (s >= v ? 100 : Math.min(99, Math.round((s / v) * 100))) : 0)
 
   return createPortal(
     <div ref={backdropRef} className={`calc-backdrop${closing ? ' closing' : ''}${settled ? ' settled' : ''}`} onClick={close}>
@@ -115,7 +116,10 @@ export default function ProgressSheet({ chapters, onClose }: { chapters: Chapter
           </div>
           {TOTAL_BADGE && totalV > 0 && (
             <div className={`total-badge${allDone(chapters) ? ' done' : ''}`}>
-              <img src={totalBadge(allDone(chapters))} alt={allDone(chapters) ? 'Merket for hele pensum, opplåst' : 'Merket for hele pensum, låst'} width={104} height={104} draggable={false} />
+              <span className="tb-art">
+                <img src={totalBadge(allDone(chapters))} alt={allDone(chapters) ? 'Merket for hele pensum, opplåst' : 'Merket for hele pensum, låst'} width={104} height={104} draggable={false} />
+                {!allDone(chapters) && <span className="tb-lock" aria-hidden><LockIcon /></span>}
+              </span>
               <div>
                 <strong>Hele pensum</strong>
                 <span>{allDone(chapters) ? 'Du har sett alle videoene i alle kapitlene.' : `Se alle videoene i alle kapitlene for å låse opp. ${totalV - totalS} igjen.`}</span>

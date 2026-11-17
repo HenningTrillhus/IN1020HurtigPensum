@@ -50,7 +50,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   }, [chapters])
   const totalVideos = chapters.reduce((n, c) => n + videoCount(c), 0)
   const totalSeen = chapters.reduce((n, c) => n + seenCount(c), 0)
-  const pct = totalVideos ? Math.round((totalSeen / totalVideos) * 100) : 0
+  const pct = totalVideos ? (totalSeen >= totalVideos ? 100 : Math.min(99, Math.round((totalSeen / totalVideos) * 100))) : 0
   const shownPct = useCountUp(pct)
   // Første video i kurset, til de som er nye her.
   const first = useMemo(() => {

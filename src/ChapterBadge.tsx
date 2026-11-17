@@ -13,7 +13,7 @@ export default function ChapterBadge({ chapter }: { chapter: Chapter }) {
   const done = isDone(chapter)
   const src = badgeOf(chapter, done)
   if (!total || !src) return null
-  const pct = Math.round((seen / total) * 100)
+  const pct = seen >= total ? 100 : Math.min(99, Math.round((seen / total) * 100))
   return (
     <section className={`chapter-badge${done ? ' done' : ''}`} data-ch={chapter.color} aria-label="Kapittelmerke">
       <img src={src} alt={done ? `Merket for ${chapter.label}, opplåst` : `Merket for ${chapter.label}, låst`} width={112} height={112} draggable={false} />
