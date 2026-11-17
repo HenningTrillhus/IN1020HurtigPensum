@@ -6,8 +6,8 @@ import BugButton from '../BugButton'
 import ShuffleButton from '../ShuffleButton'
 import { setConsent } from '../consent'
 import { RatingLine } from '../Rating'
-import { GlobalSearchBox, GlobalSearchResults } from '../GlobalSearch'
-import { PlayIcon } from '../Icons'
+import { GlobalSearchBox, GlobalSearchResults, SearchSuggestions } from '../GlobalSearch'
+import { BackIcon, PlayIcon } from '../Icons'
 import ProgressSheet from '../ProgressSheet'
 import { getLast } from '../storage'
 import { useStoredQuery } from '../navState'
@@ -40,6 +40,10 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   const [q, setQ] = useStoredQuery('home')
   const [progressOpen, setProgressOpen] = useState(false)
   const swipe = useRef<SwipeStart | null>(null)
+  // Søkemodus: feltet er i fokus eller du har skrevet noe. Da fjernes alt unødvendig, så søket kommer fram.
+  const [focus, setFocus] = useState(false)
+  const searching = focus || !!q.trim()
+  const exitSearch = () => { setQ(''); setFocus(false); (document.activeElement as HTMLElement | null)?.blur?.() }
   // Siste video du så på, så du kan fortsette der du slapp.
   const last = useMemo(() => {
     const l = getLast()
@@ -68,25 +72,30 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
 
   return (
     // Er et søk åpent, tar et sveip mot høyre deg ut av det.
-    <div className="shell" {...swipeHandlers(swipe, undefined, q.trim() ? () => setQ('') : undefined, () => true)}>
-      {exam && <ExamCountdown exam={exam} />}
+    <div className="shell" {...swipeHandlers(swipe, undefined, searching ? exitSearch : undefined, () => true)}>
+      {exam && !searching && <ExamCountdown exam={exam} />}
       {/* Verktøyrad under nedtellingen: feilmelding til venstre, så søk, bland og kalkulator til høyre. Søkefeltet fyller resten av bredden. */}
-      <div className="tool-row">
-        <BugButton />
-        <GlobalSearchBox q={q} setQ={setQ} />
-        <ShuffleButton />
-        <CalcButton />
+      <div className={`tool-row${searching ? ' searching' : ''}`}>
+        {searching ? (
+          <button type="button" className="search-back" onPointerDown={e => e.preventDefault()} onClick={exitSearch} aria-label="Tilbake" title="Tilbake">
+            <BackIcon />
+          </button>
+        ) : <BugButton />}
+        <GlobalSearchBox q={q} setQ={setQ} searching={searching} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)} />
+        {!searching && <ShuffleButton />}
+        {!searching && <CalcButton />}
       </div>
-      <header className="hero">
+      {searching && <SearchSuggestions chapters={chapters} q={q} setQ={setQ} />}
+      {!searching && <header className="hero">
         <h1>IN1020 Hurtigpensum</h1>
         <p className="sub">
           {totalSeen > 0 ? 'Velkommen tilbake. Fortsett der du slapp, eller velg et kapittel.' : 'Velkommen! Pensum i korte klipp, uten pugging. Trykk på knappen under for å begynne, eller velg et kapittel selv.'}
         </p>
-      </header>
-      <Disclaimer courseUrl={courseUrl} />
+      </header>}
+      {!searching && <Disclaimer courseUrl={courseUrl} />}
       <GlobalSearchResults chapters={chapters} q={q} courseUrl={courseUrl} />
       {/* Mens du søker, vises treffene i stedet for kapittellisten. */}
-      {!last && totalSeen === 0 && first && !q.trim() && (
+      {!last && totalSeen === 0 && first && !searching && (
         <a className="start-btn" href={`#/${first.topic.id}/feed`} data-ch={first.chapter.color}>
           <span className="start-ic" aria-hidden>
             {first.topic.icon && <img src={`/content/${first.topic.id}/${first.topic.icon}`} alt="" width={48} height={48} draggable={false} />}
@@ -99,7 +108,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
           <span className="chev" aria-hidden>›</span>
         </a>
       )}
-      {last && !q.trim() && (
+      {last && !searching && (
         <a
           className={`resume${bannerOf(last.chapter) ? ' has-banner' : ''}`} href={`#/${last.topic.id}/feed/${last.i + 1}`} data-ch={last.chapter.color}
           style={{ '--banner': bannerOf(last.chapter) ? `url(${bannerOf(last.chapter)})` : undefined } as CSSProperties}
@@ -116,7 +125,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
           <span className="chev" aria-hidden>›</span>
         </a>
       )}
-      <div className="grid" hidden={!!q.trim()}>
+      <div className="grid" hidden={searching}>
         {chapters.map((c, i) => {
           const v = videoCount(c)
           const d = c.topics.length
@@ -155,15 +164,15 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
           )
         })}
       </div>
-      {!q.trim() && totalVideos > 0 && (
+      {!searching && totalVideos > 0 && (
         <button type="button" className="total-progress" onClick={() => setProgressOpen(true)} aria-haspopup="dialog" aria-label="Se fremdrift per kapittel">
           <span className="tp-head"><span>Total fremdrift</span><strong>{shownPct} %</strong></span>
           <span className="completion" role="progressbar" aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}><i style={{ width: `${pct}%` }} /></span>
           <small><span>Du har sett {totalSeen} av {totalVideos} videoer</span><span className="tp-more">Per kapittel ›</span></small>
         </button>
       )}
-      <button type="button" className="consent-link" onClick={() => setConsent(null)}>Endre valg for lagring</button>
-      <a className="gh-link" href="https://github.com/HenningTrillhus/IN1020HurtigPensum" target="_blank" rel="noopener noreferrer">Se prosjektet på GitHub</a>
+      {!searching && <button type="button" className="consent-link" onClick={() => setConsent(null)}>Endre valg for lagring</button>}
+      {!searching && <a className="gh-link" href="https://github.com/HenningTrillhus/IN1020HurtigPensum" target="_blank" rel="noopener noreferrer">Se prosjektet på GitHub</a>}
       {progressOpen && <ProgressSheet chapters={chapters} onClose={() => setProgressOpen(false)} />}
     </div>
   )

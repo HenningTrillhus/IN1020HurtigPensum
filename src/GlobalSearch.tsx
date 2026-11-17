@@ -28,12 +28,52 @@ interface VideoHit { title: string; summary?: string; chapterKey: string; chapte
 const snippet = (s: string, n = 130) => (s.length > n ? `${s.slice(0, n).replace(/\s+\S*$/, '')} …` : s)
 
 /** Søkefelt på forsiden som finner fagbegreper i alle kapitler. Et treff tar deg rett til delkapittelet. */
-export function GlobalSearchBox({ q, setQ, onClose }: { q: string; setQ: (v: string) => void; onClose?: () => void }) {
+export function GlobalSearchBox({ q, setQ, onClose, searching, onFocus, onBlur }: { q: string; setQ: (v: string) => void; onClose?: () => void; searching?: boolean; onFocus?: () => void; onBlur?: () => void }) {
   return (
     <SearchField
-      className="global-search tool-search" value={q} onChange={setQ} onClose={onClose} icon={<SearchIcon />}
+      className={`global-search tool-search${searching ? ' big' : ''}`} value={q} onChange={setQ} onClose={onClose} icon={<SearchIcon />}
       placeholder="Søk i fagbegreper" label="Søk etter fagbegrep i alle kapitler"
+      onFocus={onFocus} onBlur={onBlur} keepFocus={searching}
     />
+  )
+}
+
+// Begreper folk mest sannsynlig leter etter. Vises under søkefeltet før du har skrevet noe.
+const POPULAR = [
+  'Toerkomplement', 'Overflyt', 'Flyttall', 'UTF-8', 'ALU', 'Cache', 'Pipeline', 'Akkumulator', 'TCP', 'DNS', 'NAND',
+  'Kryptografi', 'SQL-injeksjon', 'NAT', 'Transistor', 'Register', 'Assembler', 'GDPR', 'Spectre', 'Hashing', 'IEEE 754', 'Virtuelt minne',
+]
+
+/** Én linje med forslag rett under søkefeltet: populære begreper først, og mens du skriver, begreper som passer. */
+export function SearchSuggestions({ chapters, q, setQ }: { chapters: Chapter[]; q: string; setQ: (v: string) => void }) {
+  const ws = useMemo(() => words(q), [q])
+  const names = useMemo(() => {
+    const seen = new Set<string>()
+    const out: string[] = []
+    for (const c of chapters) for (const t of c.topics) for (const x of t.terms ?? []) {
+      const k = norm(x.term)
+      if (!seen.has(k)) { seen.add(k); out.push(x.term) }
+    }
+    return out
+  }, [chapters])
+  const list = useMemo(() => {
+    if (!ws.length) return POPULAR
+    const n = ws.join(' ')
+    return names
+      .map(t => ({ t, k: norm(t) }))
+      .filter(x => ws.every(w => x.k.includes(w)))
+      .sort((a, b) => Number(b.k.startsWith(n)) - Number(a.k.startsWith(n)) || a.t.length - b.t.length)
+      .map(x => x.t)
+      .filter(t => norm(t) !== n)
+      .slice(0, 10)
+  }, [ws, names])
+  if (!list.length) return null
+  return (
+    <div className="search-suggest" role="group" aria-label={ws.length ? 'Forslag som passer' : 'Populære begreper'}>
+      {list.map(t => (
+        <button key={t} type="button" className="search-chip" onPointerDown={e => e.preventDefault()} onClick={() => setQ(t)}>{t}</button>
+      ))}
+    </div>
   )
 }
 
