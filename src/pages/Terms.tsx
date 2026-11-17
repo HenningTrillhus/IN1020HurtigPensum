@@ -1,6 +1,7 @@
 import { useMemo, useState, type CSSProperties } from 'react'
 import type { Topic } from '../types'
 import { norm } from '../search'
+import { chColor, delBannerByColor } from '../chapters'
 import SearchField from '../SearchField'
 import { SearchIcon } from '../Icons'
 
@@ -8,6 +9,7 @@ import { SearchIcon } from '../Icons'
 export default function Terms({ topic }: { topic: Topic }) {
   const all = topic.terms ?? []
   const [q, setQ] = useState('')
+  const banner = delBannerByColor(chColor(topic))
   const shown = useMemo(() => {
     const n = norm(q.trim())
     return n ? all.filter(t => norm(t.term).includes(n) || norm(t.def).includes(n)) : all
@@ -36,7 +38,7 @@ export default function Terms({ topic }: { topic: Topic }) {
       ) : (
         <dl className="terms">
           {shown.map((t, i) => (
-            <div className="term" key={t.term} style={{ '--i': Math.min(i, 10) } as CSSProperties}>
+            <div className={`term${banner ? ' has-banner term-banner' : ''}`} key={t.term} style={{ '--i': Math.min(i, 10), '--banner': banner ? `url(${banner})` : undefined } as CSSProperties}>
               <dt>{t.term}</dt>
               <dd>{t.def}</dd>
             </div>

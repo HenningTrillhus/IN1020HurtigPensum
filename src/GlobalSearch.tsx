@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import type { Chapter } from './chapters'
+import { useMemo, useState, type CSSProperties } from 'react'
+import { delBannerByColor, type Chapter } from './chapters'
 import { norm, score, words } from './search'
 import Mark from './Mark'
 import SearchField from './SearchField'
@@ -127,7 +127,7 @@ export function GlobalSearchResults({ chapters, q, courseUrl }: { chapters: Chap
         </div>
       )}
       {hits.slice(0, MAX).map((h, i) => (
-        <a key={`${h.href}:${h.term}:${i}`} className="hit coloured" data-ch={h.color} href={h.href}>
+        <a key={`${h.href}:${h.term}:${i}`} className={`hit coloured${delBannerByColor(h.color) ? ' has-banner term-banner' : ''}`} data-ch={h.color} href={h.href} style={{ '--banner': delBannerByColor(h.color) ? `url(${delBannerByColor(h.color)})` : undefined } as CSSProperties}>
           <div className="hit-head">
             <strong><Mark text={h.term} ws={ws} /></strong>
             <span className="badge ch-badge">

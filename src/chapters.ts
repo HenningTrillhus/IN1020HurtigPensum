@@ -85,3 +85,5 @@ export const podcastCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + (t
 /** Hvor mange videoer i kapitlet du har sett (lagres bare i nettleseren din). */
 export const seenCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + seenIn(t.id, t.videos.length), 0)
 export const videoCount = (c: Chapter) => c.topics.reduce((sum, t) => sum + t.videos.length, 0)
+/** Delkapittelbanneret til et kapittel, funnet ut fra kapittelfargen (2, 3, … eller nettverk og datasikkerhet). */
+export const delBannerByColor = (color?: string) => (color ? `/chapter-banners/del${color}.webp` : undefined)

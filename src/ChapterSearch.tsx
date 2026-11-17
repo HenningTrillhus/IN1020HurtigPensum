@@ -1,5 +1,6 @@
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type CSSProperties } from 'react'
 import type { Topic } from './types'
+import { chColor, delBannerByColor } from './chapters'
 import { norm, score, words } from './search'
 import Mark from './Mark'
 import SearchField from './SearchField'
@@ -49,7 +50,7 @@ export default function ChapterSearch({ topics, compendiumUrl }: { topics: Topic
           {hits.map(({ topic, terms }) => {
             const v = topic.videos.length
             return (
-              <a key={topic.id} className="hit" href={`#/${topic.id}/feed`}>
+              <a key={topic.id} className={`hit${delBannerByColor(chColor(topic)) ? ' has-banner term-banner' : ''}`} href={`#/${topic.id}/feed`} style={{ '--banner': delBannerByColor(chColor(topic)) ? `url(${delBannerByColor(chColor(topic))})` : undefined } as CSSProperties}>
                 <div className="hit-head">
                   <strong>{topic.title}</strong>
                   <span className="badge">{v} {v === 1 ? 'video' : 'videoer'}</span>

@@ -1,5 +1,5 @@
-import { useMemo, useRef, useState } from 'react'
-import type { Chapter } from '../chapters'
+import { useMemo, useRef, useState, type CSSProperties } from 'react'
+import { delBannerByColor, type Chapter } from '../chapters'
 import { swipeHandlers, type SwipeStart } from '../swipe'
 import SearchField from '../SearchField'
 import { SearchIcon } from '../Icons'
@@ -20,6 +20,7 @@ export default function ChapterTerms({ chapter }: { chapter: Chapter }) {
   const [q, setQ] = useState('')
   const swipe = useRef<SwipeStart | null>(null)
   const back = `#/kap/${chapter.key}`
+  const banner = delBannerByColor(chapter.color)
 
   const all = useMemo<Entry[]>(() => {
     const list = chapter.topics.flatMap(t => (t.terms ?? []).map(x => ({ term: x.term, def: x.def, topicId: t.id, topicTitle: t.title })))
@@ -66,7 +67,7 @@ export default function ChapterTerms({ chapter }: { chapter: Chapter }) {
               <h2 className="terms-letter">{g.letter}</h2>
               <dl className="terms">
                 {g.items.map(e => (
-                  <div className="term" key={`${e.topicId}:${e.term}`}>
+                  <div className={`term${banner ? ' has-banner term-banner' : ''}`} key={`${e.topicId}:${e.term}`} style={{ '--banner': banner ? `url(${banner})` : undefined } as CSSProperties}>
                     <dt>{e.term}</dt>
                     <dd>{e.def}</dd>
                     <a className="term-from" href={`#/${e.topicId}/begreper`}>{e.topicTitle}</a>
