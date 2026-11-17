@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type CSSProperties } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { bannerOf, podcastCount, seenCount, videoCount, type Chapter } from '../chapters'
 import Disclaimer from '../Disclaimer'
 import { CalcButton } from '../Calculator'
@@ -11,6 +11,7 @@ import { PlayIcon } from '../Icons'
 import ProgressSheet from '../ProgressSheet'
 import { getLast } from '../storage'
 import { useStoredQuery } from '../navState'
+import { swipeHandlers, type SwipeStart } from '../swipe'
 import { fetchRatings, type Rating } from '../stats'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
 
@@ -38,6 +39,7 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   const [ratings, setRatings] = useState<Record<string, Rating>>({})
   const [q, setQ] = useStoredQuery('home')
   const [progressOpen, setProgressOpen] = useState(false)
+  const swipe = useRef<SwipeStart | null>(null)
   // Siste video du så på, så du kan fortsette der du slapp.
   const last = useMemo(() => {
     const l = getLast()
@@ -65,7 +67,8 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
   }, [chapters])
 
   return (
-    <div className="shell">
+    // Er et søk åpent, tar et sveip mot høyre deg ut av det.
+    <div className="shell" {...swipeHandlers(swipe, undefined, q.trim() ? () => setQ('') : undefined, () => true)}>
       {exam && <ExamCountdown exam={exam} />}
       {/* Verktøyrad under nedtellingen: feilmelding til venstre, så søk, bland og kalkulator til høyre. Søkefeltet fyller resten av bredden. */}
       <div className="tool-row">

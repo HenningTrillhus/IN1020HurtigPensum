@@ -4,7 +4,7 @@ import { swipeHandlers, type SwipeStart } from '../swipe'
 import SearchField from '../SearchField'
 import { SearchIcon } from '../Icons'
 import { norm } from '../search'
-import { useStoredQuery } from '../navState'
+import { clearQuery, getQuery, useStoredQuery } from '../navState'
 import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
 
@@ -47,7 +47,7 @@ export default function ChapterTerms({ chapter }: { chapter: Chapter }) {
 
   return (
     // Dra fingeren mot høyre for å gå tilbake til kapittelet.
-    <div className="shell" data-ch={chapter.color} {...swipeHandlers(swipe, undefined, () => { location.hash = back })}>
+    <div className="shell" data-ch={chapter.color} {...swipeHandlers(swipe, undefined, () => { const k = `terms:${chapter.key}`; if (getQuery(k).trim()) clearQuery(k); else location.hash = back }, () => !!getQuery(`terms:${chapter.key}`).trim())}>
       <nav className="tabs">
         <a href={back}>← {chapter.label}</a>
         <BugButton className="push" />

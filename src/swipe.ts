@@ -19,7 +19,11 @@ const clear = (el: HTMLElement) => { el.style.transform = ''; el.style.opacity =
  * Siden følger fingeren mens du drar, glir ut når sveipet går gjennom, og den nye siden glir inn fra motsatt side.
  * Rulling opp og ned, korte og trege dra, flere fingre og dra på spolelinja, fanene, valgark og kalkulatoren regnes ikke.
  */
-export function swipeHandlers(ref: MutableRefObject<SwipeStart | null>, onLeft?: () => void, onRight?: () => void) {
+export function swipeHandlers(
+  ref: MutableRefObject<SwipeStart | null>, onLeft?: () => void, onRight?: () => void,
+  /** Gir true når sveipet til høyre bare endrer noe på siden (for eksempel lukker et søk): da glir ikke siden ut. */
+  stays?: () => boolean,
+) {
   const allowed = (dx: number) => (dx < 0 ? !!onLeft : !!onRight)
 
   return {
@@ -65,6 +69,16 @@ export function swipeHandlers(ref: MutableRefObject<SwipeStart | null>, onLeft?:
           el.style.opacity = '1'
           window.setTimeout(() => clear(el), 220)
         }
+        return
+      }
+
+      // Sveipet endrer bare siden (lukker et søk): ingen glidning ut, siden hopper rolig tilbake og så skjer det.
+      if (dx > 0 && stays?.()) {
+        el.style.transition = 'transform .15s ease-out, opacity .15s ease-out'
+        el.style.transform = 'translateX(0)'
+        el.style.opacity = '1'
+        window.setTimeout(() => clear(el), 170)
+        onRight?.()
         return
       }
 

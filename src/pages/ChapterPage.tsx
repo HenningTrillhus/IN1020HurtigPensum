@@ -8,6 +8,7 @@ import BugButton from '../BugButton'
 import { ChapterRating } from '../Rating'
 import ChapterBadge from '../ChapterBadge'
 import { swipeHandlers, type SwipeStart } from '../swipe'
+import { clearQuery, getQuery } from '../navState'
 import { isSeen, seenIn } from '../storage'
 import { CheckIcon, PlayIcon } from '../Icons'
 
@@ -28,7 +29,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
   const next = vids.find(x => !isSeen(x.t.id, x.i))
   return (
     // Dra fingeren mot venstre for å gå til alle fagbegrepene i kapitlet, og mot høyre for å gå tilbake til forsiden.
-    <div className="shell" data-ch={chapter.color} {...swipeHandlers(swipe, termCount > 0 ? () => { location.hash = termsHref } : undefined, () => { location.hash = '#/' })}>
+    <div className="shell" data-ch={chapter.color} {...swipeHandlers(swipe, termCount > 0 ? () => { location.hash = termsHref } : undefined, () => { const k = `kap:${chapter.key}`; if (getQuery(k).trim()) clearQuery(k); else location.hash = '#/' }, () => !!getQuery(`kap:${chapter.key}`).trim())}>
       <nav className="tabs">
         <a href="#/">← Alle kapitler</a>
         <BugButton className="push" />

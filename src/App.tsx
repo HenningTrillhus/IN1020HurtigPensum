@@ -5,7 +5,7 @@ import { buildChapters, chapterInfo, type Chapter, type EmptyChapter } from './c
 import Achievements from './Achievements'
 import DebugBar from './DebugBar'
 import { isDebug } from './debug'
-import { clearQueries, getOrigin, isTopicHash, setOrigin } from './navState'
+import { clearQueries, clearQuery, getOrigin, getQuery, isTopicHash, setOrigin } from './navState'
 import { Loader, LoadError } from './Loader'
 import Overview from './pages/Overview'
 import ChapterPage from './pages/ChapterPage'
@@ -221,7 +221,12 @@ function AppInner({ onChapters }: { onChapters: (c: Chapter[]) => void }) {
   const swipeProps = swipeHandlers(
     swipe,
     view !== 'begreper' && hasTerms ? () => { location.hash = `#/${topic.id}/begreper` } : undefined,
-    () => { location.hash = view === 'begreper' ? `#/${topic.id}/feed` : (getOrigin() ?? chapterHref) },
+    () => {
+      const k = `topic:${topic.id}`
+      if (view === 'begreper' && getQuery(k).trim()) clearQuery(k)
+      else location.hash = view === 'begreper' ? `#/${topic.id}/feed` : (getOrigin() ?? chapterHref)
+    },
+    () => view === 'begreper' && !!getQuery(`topic:${topic.id}`).trim(),
   )
 
   return (
