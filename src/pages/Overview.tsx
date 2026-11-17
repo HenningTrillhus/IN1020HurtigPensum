@@ -9,7 +9,6 @@ import { RatingLine } from '../Rating'
 import { GlobalSearchBox, GlobalSearchResults } from '../GlobalSearch'
 import { PlayIcon } from '../Icons'
 import ProgressSheet from '../ProgressSheet'
-import { badgeOf, isDone } from '../badges'
 import { getLast } from '../storage'
 import { fetchRatings, type Rating } from '../stats'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
@@ -127,13 +126,13 @@ export default function Overview({ chapters, courseUrl, exam }: { chapters: Chap
               href={`#/kap/${c.key}`}
               data-ch={c.color}
             >
-              <span className={`ring-wrap${isDone(c) && badgeOf(c, true) ? ' has-badge' : ''}`}>
+              <span className="ring-wrap">
                 <svg className="ring" viewBox="0 0 64 64" aria-hidden>
                   <circle className="ring-track" cx="32" cy="32" r="29" pathLength={100} />
                   {seen > 0 && <circle className="ring-fill" cx="32" cy="32" r="29" pathLength={100} strokeDasharray={`${Math.min(100, (seen / v) * 100)} 100`} />}
                 </svg>
                 {c.icon
-                  ? <img className={`ch-icon${isDone(c) && badgeOf(c, true) ? ' badge' : ''}`} src={(isDone(c) && badgeOf(c, true)) || c.icon} alt="" width={44} height={44} draggable={false} />
+                  ? <img className="ch-icon" src={c.icon} alt="" width={44} height={44} draggable={false} />
                   : <span className="num">{c.n ?? '•'}</span>}
               </span>
               <div className="body">
