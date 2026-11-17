@@ -4,5 +4,11 @@
   "title": "3.1 Introduksjon",
   "description": "Hvordan en ordre i et programmeringsspråk blir til noe en maskin forstår, og hva kapitlet bygger.",
   "icon": "icon.png",
-  "videos": []
+  "videos": [
+    {
+      "title": "3.1 Introduksjon",
+      "file": "video1.mp4",
+      "summary": "De første «computers» var mennesker som fulgte en liste uten å forstå den, og et program er tall i minnet."
+    }
+  ]
 }

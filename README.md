@@ -11,15 +11,17 @@
 ## Hva du kan gjøre
 
 - **Sveipe gjennom videoer.** Én video om gangen, med snapping. Du kan sveipe både opp og ned, og sveipe forbi den siste for å komme tilbake til kapitlet. Piltaster fungerer på PC.
-- **Autoswipe.** Knappen «Auto» går av seg selv til neste video når den du ser er ferdig. Den er av som standard, og valget huskes.
+- **Autoswipe.** Knappen «Auto» går av seg selv til neste video når den du ser er ferdig. Den er alltid av når du går inn i en feed, og står bare på mens du blir i den.
 - **Rene kontroller.** Teksten og knappene tones bort når videoen spiller, så du ser hele bildet. Et trykk på skjermen henter dem tilbake, mens et sveip ikke gjør det. Pause-knappen ligger midt på videoen, med spol 10 sekunder tilbake og fram på hver side, og spolelinjen nederst.
 - **Hastighet.** 0,75×, 1×, 1,25× og 1,5× for både video og podkast. Valget huskes.
 - **Podkaster.** En fast spiller nederst som fortsetter når du bytter side, husker hvor du var, og har hopp på 10 sekunder og styring fra låseskjermen. Videoene pauses og dempes mens en podkast spiller. Hvert kapittel har egne podkastikoner i kapittelets farger.
 - **Bland.** Tilfeldige videoer på tvers av alle kapitler, bare de du ikke har sett. Under shuffle er det en knapp som tar deg til delkapittelet videoen hører til.
 - **Delkapitler med flere videoer.** En liten velger lar deg hoppe mellom delene, og baren øverst kan dras for å velge video.
-- **Fagbegreper.** Egen fane per delkapittel, og et søk øverst i hvert kapittel som viser hvilke delkapitler som tar opp et begrep.
+- **Fagbegreper.** Egen fane per delkapittel, og et søk øverst i hvert kapittel som viser hvilke delkapitler som tar opp et begrep. Søket på forsiden finner også videoer (titler og sammendrag), i en egen seksjon under fagbegrepene.
 - **Kapittelsider** med banner, ikon per delkapittel og en startknapp som hopper rett til neste video du ikke har sett.
 - **Fremdrift.** Hvilke videoer du har sett, total fremdrift på forsiden og fremdrift per kapittel.
+- **Kapittelmerker.** Hvert kapittel har et merke som er låst til du har sett alle videoene, og åpent etterpå, med gratulasjon og konfetti og en knapp for å dele det. Ferdige kapitler får merket i stedet for ikonet på forsiden, og et trofé for hele pensum ligger i fremdriftsarket. Med `?debug=1` i adressen vises testknapper som gjør et delkapittel ferdig eller nullstiller det.
+- **Installerbar.** Siden har manifest og ikoner, så den kan legges på hjemskjermen.
 - **Tommel opp og ned**, visningstall, rating av kapitler og «meld feil» på videoene, med vern mot spam.
 - **Velkomstboks** første gang du åpner siden, som oppfordrer til å dele lenken videre.
 - **Nedtelling til eksamen**, mørkt og lyst tema (mørkt som standard), og layout som er laget for telefon først. Sidene glir inn med View Transitions der nettleseren støtter det.

@@ -4,6 +4,20 @@
   "title": "3 Hele kapitlet i én video",
   "description": "Hele kapittel 3 i én lengre video, fra språk til maskin og assembler.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "3 Hele kapitlet i én video",
+      "file": "video1.mp4",
+      "summary": "Fra en Python-linje til et program som skriver om seg selv: LMC, hent-utfør, assembler, hopp og etiketter."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Hvorfor prosessoren er helt blind",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "k3-pod6",
+      "duration": 1169
+    }
+  ],
   "noShuffle": true
 }

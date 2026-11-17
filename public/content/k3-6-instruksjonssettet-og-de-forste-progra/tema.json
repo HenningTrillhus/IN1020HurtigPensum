@@ -4,7 +4,23 @@
   "title": "3.6 Instruksjonssettet og de første programmene",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "3.6.1 Det første programmet",
+      "file": "video1.mp4",
+      "summary": "Hele instruksjonssettet, og et program som legger sammen to tall: akkumulatoren er en arbeidsbenk."
+    },
+    {
+      "title": "3.6.2 Hvorfor postkasse 99?",
+      "file": "video2.mp4",
+      "summary": "Legg data langt unna programmet, og husk HLT: uten den fortsetter kontoristen inn i dataene."
+    },
+    {
+      "title": "3.6.3 Tre tall og tekst",
+      "file": "video3.mp4",
+      "summary": "Les, legg til og lagre tilbake, og tegn er tall: OTC skriver «hei»."
+    }
+  ],
   "terms": [
     {
       "term": "Instruksjonssett",

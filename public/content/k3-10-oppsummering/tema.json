@@ -4,5 +4,11 @@
   "title": "3.10 Oppsummering",
   "description": "Postkassene, ordren som et tall og syklusen hent og utfør, samlet i ett bilde.",
   "icon": "icon.png",
-  "videos": []
+  "videos": [
+    {
+      "title": "3.10.1 Oppsummering",
+      "file": "video1.mp4",
+      "summary": "De ti begrepene i kapitlet, og kontoristen var aldri der: det er kretser som gjør jobben."
+    }
+  ]
 }

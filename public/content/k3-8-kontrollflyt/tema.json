@@ -4,7 +4,28 @@
   "title": "3.8 Kontrollflyt",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "3.8.1 De tre hoppene",
+      "file": "video1.mp4",
+      "summary": "BRA, BRZ og BRP setter programtelleren, og null er positivt i BRP."
+    },
+    {
+      "title": "3.8.2 En løkke som ikke stopper, og en som stopper",
+      "file": "video2.mp4",
+      "summary": "Nedtellingen med BRA hopper alltid, og med BRP stopper den fordi −1 ikke er positivt."
+    },
+    {
+      "title": "3.8.3 Det samme i Python",
+      "file": "video3.mp4",
+      "summary": "Fire linjer Python mot sju postkasser: i LMC står hoppet nederst og testen er en subtraksjon."
+    },
+    {
+      "title": "3.8.4 Et valg, ikke en løkke",
+      "file": "video4.mp4",
+      "summary": "If-else er en BRP som hopper forbi else-grenen, og data rett etter HLT gir en feil som bare viser seg for noen inndata."
+    }
+  ],
   "terms": [
     {
       "term": "Kontrollflyt",

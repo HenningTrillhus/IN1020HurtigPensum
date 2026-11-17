@@ -4,7 +4,33 @@
   "title": "3.9 Adresser, etiketter og data",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "3.9.1 Når alt forskyves",
+      "file": "video1.mp4",
+      "summary": "Setter du inn én instruksjon, peker tre adresser feil, og ingenting sier fra."
+    },
+    {
+      "title": "3.9.2 Etiketter og DAT",
+      "file": "video2.mp4",
+      "summary": "En etikett er et navn på en adresse som ligger fast, og DAT er en beskjed til assembleren."
+    },
+    {
+      "title": "3.9.3 Hva ligger egentlig i postkassen?",
+      "file": "video3.mp4",
+      "summary": "En etikett er bare et tall, og forskjellen på DAT og LDA er sifferet lengst til venstre."
+    },
+    {
+      "title": "3.9.4 Et program som skriver om seg selv",
+      "file": "video4.mp4",
+      "summary": "LDA 12 er tallet 512, og legger du til én, peker instruksjonen på neste postkasse."
+    },
+    {
+      "title": "3.9.5 Er det lov, og hva når det går galt?",
+      "file": "video5.mp4",
+      "summary": "Grensen mellom kode og data håndheves av operativsystemet, og feil adresse ligger under mange sikkerhetshull."
+    }
+  ],
   "terms": [
     {
       "term": "Talladresser skalerer ikke",

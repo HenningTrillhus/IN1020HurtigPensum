@@ -4,7 +4,18 @@
   "title": "3.2 Fra språk til maskin",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "3.2.1 Fra Python til bit",
+      "file": "video1.mp4",
+      "summary": "Én Python-linje går gjennom høynivåspråk, assemblerspråk og maskinkode, oversatt av en kompilator eller en tolk."
+    },
+    {
+      "title": "3.2.2 Hvorfor vi går helt ned",
+      "file": "video2.mp4",
+      "summary": "Abstraksjonene lekker, sikkerhetshull bor her nede, og resten av faget bygger på dette."
+    }
+  ],
   "terms": [
     {
       "term": "Høynivåspråk",

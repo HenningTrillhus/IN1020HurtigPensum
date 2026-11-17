@@ -4,7 +4,28 @@
   "title": "3.5 Hent og utfør",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "3.5.1 De fire stegene",
+      "file": "video1.mp4",
+      "summary": "Hent, del, utfør og gjenta: hele maskinen er en løkke som aldri varierer."
+    },
+    {
+      "title": "3.5.2 De fire registrene",
+      "file": "video2.mp4",
+      "summary": "Akkumulatoren, programtelleren, instruksjonsregisteret og adresseregisteret."
+    },
+    {
+      "title": "3.5.3 Når klikkes telleren?",
+      "file": "video3.mp4",
+      "summary": "Telleren klikkes fram under hentingen og peker alltid på den neste instruksjonen, så hopp virker."
+    },
+    {
+      "title": "3.5.4 Den viktigste konsekvensen",
+      "file": "video4.mp4",
+      "summary": "Syklusen spør aldri om det den hentet er en ordre, så data på feil sted blir utført."
+    }
+  ],
   "terms": [
     {
       "term": "Hent-utfør-syklusen",

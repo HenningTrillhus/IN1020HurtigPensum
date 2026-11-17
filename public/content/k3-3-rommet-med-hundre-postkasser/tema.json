@@ -4,7 +4,23 @@
   "title": "3.3 Rommet med hundre postkasser",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "3.3.1 Rommet og kontoristen",
+      "file": "video1.mp4",
+      "summary": "Little Man Computer: hundre postkasser, en kalkulator, en teller, en innkurv og en utkurv."
+    },
+    {
+      "title": "3.3.2 Hundre postkasser, og innhold er ikke adresse",
+      "file": "video2.mp4",
+      "summary": "En adresse får plass i to sifre, og postkasse 42 er et sted mens tallet 42 er en verdi."
+    },
+    {
+      "title": "3.3.3 Regelen som bærer resten av kapitlet",
+      "file": "video3.mp4",
+      "summary": "Kontoristen kan ikke se forskjell på en ordre og en verdi: det avgjøres av hvordan tallet hentes."
+    }
+  ],
   "terms": [
     {
       "term": "Little Man Computer (LMC)",

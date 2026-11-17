@@ -4,7 +4,23 @@
   "title": "3.4 Ordren som et tall",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "3.4.1 Ordren som et tall",
+      "file": "video1.mp4",
+      "summary": "En instruksjon er et tresifret tall i to deler: opkoden sier hva, adressedelen sier hvor."
+    },
+    {
+      "title": "3.4.2 Adressen som ikke er en adresse",
+      "file": "video2.mp4",
+      "summary": "901, 902 og 922 trenger ingen postkasse, så adressedelen skiller mellom instruksjonene."
+    },
+    {
+      "title": "3.4.3 Hvor mange ordrer finnes det?",
+      "file": "video3.mp4",
+      "summary": "LMC har elleve instruksjoner, og det er nok, fordi enkle operasjoner gjentas svært mange ganger."
+    }
+  ],
   "terms": [
     {
       "term": "Instruksjon",

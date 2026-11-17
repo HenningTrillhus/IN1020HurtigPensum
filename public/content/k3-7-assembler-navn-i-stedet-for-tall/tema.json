@@ -4,7 +4,18 @@
   "title": "3.7 Assembler: navn i stedet for tall",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "3.7.1 Fire grunner til at tall er tungvint",
+      "file": "video1.mp4",
+      "summary": "Maskinkode er ikke laget for mennesker, og den fjerde grunnen er den verste."
+    },
+    {
+      "title": "3.7.2 Hva en assembler faktisk er",
+      "file": "video2.mp4",
+      "summary": "En én-til-én-oversettelse fra navn til tall, og maskinen har aldri sett bokstavene."
+    }
+  ],
   "terms": [
     {
       "term": "Maskinkode er ikke laget for mennesker",
