@@ -11,6 +11,7 @@ import PodButtons from './PodButtons'
 import type { Exam } from './ExamCountdown'
 import { MiniPlayer, PlayerProvider } from './player'
 import Wip from './pages/Wip'
+import NotFound from './pages/NotFound'
 import ChapterTerms from './pages/ChapterTerms'
 import Shuffle from './pages/Shuffle'
 import ConsentBanner from './ConsentBanner'
@@ -138,9 +139,11 @@ function AppInner() {
     } else if (a === 'kap') {
       const c = chapters.find(x => x.key === b)
       if (c) title = `${sub === 'begreper' ? 'Fagbegreper i ' : ''}${c.label}${c.title ? ` – ${c.title}` : ''} · ${SITE}`
+      else if (b) title = `Siden finnes ikke · ${SITE}`
     } else {
       const t = topics.find(x => x.id === a)
       if (t) title = `${t.title} · ${SITE}`
+      else if (a) title = `Siden finnes ikke · ${SITE}`
     }
     document.title = title
     // Går du ut av en video eller et kapittel, kommer du tilbake dit du var. Ellers starter siden øverst.
@@ -160,9 +163,8 @@ function AppInner() {
   if (a === 'kap') {
     const chapter = chapters.find(ch => ch.key === b)
     if (chapter && c === 'begreper') return <ChapterTerms chapter={chapter} />
-    return chapter
-      ? <ChapterPage chapter={chapter} compendiumUrl={compendia[chapter.key]} />
-      : <Overview chapters={chapters} courseUrl={courseUrl} exam={exam} />
+    if (chapter) return <ChapterPage chapter={chapter} compendiumUrl={compendia[chapter.key]} />
+    return b ? <NotFound /> : <Overview chapters={chapters} courseUrl={courseUrl} exam={exam} />
   }
 
   // Skjult statistikkside. Finnes bare som lenke (#/admin/<nøkkel>), og nøkkelen sjekkes på serveren.
@@ -170,7 +172,7 @@ function AppInner() {
   if (a === 'shuffle') return <Shuffle topics={topics} root={base} />
 
   const topic = topics.find(t => t.id === a)
-  if (!topic) return <Overview chapters={chapters} courseUrl={courseUrl} exam={exam} />
+  if (!topic) return a ? <NotFound /> : <Overview chapters={chapters} courseUrl={courseUrl} exam={exam} />
 
   const info = chapterInfo(topic)
   const chapterHref = `#/kap/${info.key}`

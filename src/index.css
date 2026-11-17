@@ -141,6 +141,17 @@ button.on { background: var(--acc); color: var(--on-acc); border-color: transpar
   background: var(--acc); color: var(--on-acc); font-weight: 600; transition: transform .15s var(--ease);
 }
 .wip-back:active { transform: scale(.97) }
+/* 404 */
+.nf-code {
+  margin: 0 0 4px !important; font-size: clamp(76px, 28vw, 132px); font-weight: 800; line-height: 1; letter-spacing: -.04em; color: transparent;
+  background: linear-gradient(135deg, var(--fg), var(--mut)); -webkit-background-clip: text; background-clip: text;
+}
+.nf-page p:not(.nf-code) { max-width: 34ch; margin-left: auto; margin-right: auto; line-height: 1.5 }
+.nf-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 8px }
+.nf-alt {
+  display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; border-radius: 99px; margin-top: 16px;
+  background: var(--surface); border: 1px solid var(--line-strong); color: var(--fg); font-weight: 600; text-decoration: none;
+}
 
 /* ============ Feed ============ */
 .feed-wrap { position: relative; flex: 1; min-height: 0 }
