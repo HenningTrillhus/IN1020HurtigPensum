@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { bannerOf, seenCount, videoCount, type Chapter } from './chapters'
 import { CloseIcon } from './Icons'
-import { badgeOf, isDone } from './badges'
+import { allDone, badgeOf, isDone, TOTAL_BADGE, totalBadge } from './badges'
 
 /** Liten side med fremdriften i hvert kapittel: prosent og antall videoer du har sett. Samme vindu som kalkulatoren. */
 export default function ProgressSheet({ chapters, onClose }: { chapters: Chapter[]; onClose: () => void }) {
@@ -111,6 +111,15 @@ export default function ProgressSheet({ chapters, onClose }: { chapters: Chapter
             <strong>{pct(totalS, totalV)} %</strong>
             <span>{totalS} av {totalV} videoer sett</span>
           </div>
+          {TOTAL_BADGE && totalV > 0 && (
+            <div className={`total-badge${allDone(chapters) ? ' done' : ''}`}>
+              <img src={totalBadge(allDone(chapters))} alt={allDone(chapters) ? 'Merket for hele pensum, opplåst' : 'Merket for hele pensum, låst'} width={104} height={104} draggable={false} />
+              <div>
+                <strong>Hele pensum</strong>
+                <span>{allDone(chapters) ? 'Du har sett alle videoene i alle kapitlene.' : `Se alle videoene i alle kapitlene for å låse opp. ${totalV - totalS} igjen.`}</span>
+              </div>
+            </div>
+          )}
           <ul className="prog-list">
             {rows.map(({ c, v, s }) => (
               <li key={c.key}>

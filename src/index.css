@@ -1078,3 +1078,10 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
   .confetti { display: none }
   .award, .award-badge, .award-backdrop, .ch-icon.badge, .prog-ic.badge { animation: none }
 }
+
+.total-badge { display: flex; align-items: center; gap: 14px; margin: 0 0 14px; padding: 14px; border-radius: 18px; border: 1px solid var(--line); background: var(--surface) }
+.total-badge img { flex: none; width: 88px; height: 88px; object-fit: contain }
+.total-badge strong { display: block; font-size: 17px; margin-bottom: 4px }
+.total-badge span { color: var(--mut); font-size: 14px; line-height: 1.4 }
+.total-badge.done { border-color: rgba(255, 210, 74, .55); background: color-mix(in srgb, #ffd24a 9%, var(--surface)) }
+.total-badge.done img { filter: drop-shadow(0 4px 14px rgba(255, 210, 74, .45)) }

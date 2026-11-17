@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import type { Chapter } from './chapters'
-import { addAwarded, badgeOf, getAwarded, isDone } from './badges'
+import { addAwarded, allDone, badgeOf, getAwarded, isDone, TOTAL_BADGE, totalBadge } from './badges'
+
+interface Award { key: string; name: string; badge: string; color?: string; total?: boolean }
 
 const COLORS = ['#ffd24a', '#ff6b6b', '#5ac8fa', '#7ee081', '#c58bff', '#ff9f43', '#ffffff']
 
@@ -37,14 +39,19 @@ function Confetti() {
  * bare kapitler du fullfører mens du bruker siden gir gratulasjon, og bare én gang per kapittel.
  */
 export default function Achievements({ chapters }: { chapters: Chapter[] }) {
-  const [queue, setQueue] = useState<Chapter[]>([])
+  const [queue, setQueue] = useState<Award[]>([])
   const ready = useRef(false)
 
   useEffect(() => {
     if (!chapters.length) return
     const check = () => {
       const had = new Set(getAwarded())
-      const fresh = chapters.filter(c => badgeOf(c, true) && isDone(c) && !had.has(c.key))
+      const fresh: Award[] = chapters
+        .filter(c => badgeOf(c, true) && isDone(c) && !had.has(c.key))
+        .map(c => ({ key: c.key, name: c.title ? `${c.label}: ${c.title}` : c.label, badge: badgeOf(c, true)!, color: c.color }))
+      if (TOTAL_BADGE && allDone(chapters) && !had.has('total')) {
+        fresh.push({ key: 'total', name: 'hele pensum', badge: totalBadge(true), total: true })
+      }
       if (!ready.current) {
         // Første gang: de som allerede er ferdige skal ikke gi en haug med pop-ups.
         fresh.forEach(c => addAwarded(c.key))
@@ -70,7 +77,7 @@ export default function Achievements({ chapters }: { chapters: Chapter[] }) {
   if (!c) return null
 
   const close = () => setQueue(q => q.slice(1))
-  const name = c.title ? `${c.label}: ${c.title}` : c.label
+  const name = c.name
   const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function'
   const share = async () => {
     try { await navigator.share({ title: 'IN1020 Hurtigpensum', text: `Jeg har gjennomført ${name} på IN1020 Hurtigpensum!`, url: 'https://www.in1020-hurtig-pensum.no/' }) } catch { /* avbrutt */ }
@@ -80,8 +87,8 @@ export default function Achievements({ chapters }: { chapters: Chapter[] }) {
     <div className="award-backdrop" onClick={close}>
       <Confetti />
       <div className="award" role="dialog" aria-modal="true" aria-labelledby="award-title" data-ch={c.color} onClick={e => e.stopPropagation()}>
-        <img className="award-badge" src={badgeOf(c, true)} alt="" width={180} height={180} draggable={false} />
-        <h2 id="award-title">Gratulerer!</h2>
+        <img className="award-badge" src={c.badge} alt="" width={180} height={180} draggable={false} />
+        <h2 id="award-title">{c.total ? 'Gratulerer, du er i mål!' : 'Gratulerer!'}</h2>
         <p>Du har gjennomført <strong>{name}</strong>. Merket er ditt.</p>
         <div className="award-actions">
           {canShare && <button type="button" className="award-share" onClick={share}>Del</button>}

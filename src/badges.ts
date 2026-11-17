@@ -19,3 +19,12 @@ export const getAwarded = (): string[] => {
 export const addAwarded = (key: string) => {
   try { localStorage.setItem(KEY, JSON.stringify([...new Set([...getAwarded(), key])])) } catch { /* ignore */ }
 }
+
+// Merket for hele pensum: total.png og total-last.png i /public/badges. Sett til true når bildene ligger der.
+export const TOTAL_BADGE = false
+export const totalBadge = (open: boolean) => `/badges/total${open ? '' : '-last'}.png`
+/** Alle videoene i alle kapitler er sett. */
+export const allDone = (chapters: Chapter[]) => {
+  const v = chapters.reduce((n, c) => n + videoCount(c), 0)
+  return v > 0 && chapters.reduce((n, c) => n + seenCount(c), 0) >= v
+}

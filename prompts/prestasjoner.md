@@ -93,3 +93,22 @@ Bruk det vedlagte emblemet og lag nøyaktig samme badge, med samme form, større
 ## Etter generering
 
 Legg bildene i en mappe, for eksempel `Prestasjoner/` med navn som `sikkerhet-apen.png` og `sikkerhet-last.png`, og gi meg beskjed. Jeg klipper dem ut til transparente PNG-er, sjekker at åpen og låst har samme størrelse og plassering, og legger dem inn.
+
+---
+
+## Merket for hele pensum (ligger i fremdriftsarket)
+
+Dette er det store merket for å ha sett alt. Det skal skille seg tydelig fra kapittelmerkene: gull i stedet for kapittelfarge, en større og mer høytidelig form (en krone), og de ni kapittelfargene som små edelstener i kronen. Lag det åpne først, og det låste fra det, på samme måte som for kapitlene. Legg ved ett av kapittelmerkene (for eksempel skjoldet) som stilreferanse.
+
+### Åpen
+```
+Bruk det vedlagte merket som stilreferanse: samme flate, moderne klistremerkestil, tykk jevn mørk ytterkontur og enkle flate farger med en lysere og en mørkere nyanse. Lag et stort prestasjonsmerke i form av en gullkrone sett rett forfra og nøyaktig sentrert: tre tydelige spisser og en bred, avrundet bunn, med en tykk indre ring som følger formen. Kronen er gull (varm gul med lysere og mørkere gullnyanser). På kronen sitter ni små, runde edelstener på rekke, hver i sin farge: blå, oransje, petrol, lilla, gul, grønn, turkis, rosa og rød. I midten under dem et enkelt linjeikon av en studenthette. Dette er den største prestasjonen i appen, så den skal føles ekstra belønnende: en gullfarget stjerne øverst til høyre på kanten og et par små konfettistjerner helt inntil merket. Bakgrunnen er helt ensfarget ren hvit (#FFFFFF), uten skygge, uten refleksjon, uten glød og uten gradient, slik at merket kan klippes ut. Merket fyller rundt 85 prosent av bildehøyden. Ingen tekst, ingen bokstaver, ingen tall, ingen logoer. Kvadratisk format 1:1, skarpe kanter, høy oppløsning.
+```
+
+### Låst
+(legg ved den åpne du valgte)
+```
+Bruk det vedlagte kronemerket og lag nøyaktig samme merke, med samme form, størrelse og plassering, men som en låst versjon. Hele merket er svært mørkt og avdempet: nesten svart, i en dyp, nedtonet gråbrun tone uten metning og uten glans. Bare ytterkonturen og ringen skimtes svakt som litt lysere linjer, og edelstenene og ikonet kan så vidt anes som mørke, innpressede silhuetter. Ingen farger, ingen stjerne, ingen konfetti, ingen glød og ingen lysskinn. Behold den mørke ytterkonturen helt rundt, så merket kan klippes ut. Bakgrunnen er helt ensfarget ren hvit (#FFFFFF), uten skygge, uten refleksjon og uten gradient. Ingen tekst, ingen bokstaver, ingen tall. Kvadratisk format 1:1, høy oppløsning.
+```
+
+Legg bildene i `Kap Badges/` som `Total.jpeg` og `TotalLåst.jpeg`, så klipper jeg dem ut og slår på merket i appen.
