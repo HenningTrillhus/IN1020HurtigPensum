@@ -1,9 +1,10 @@
-import { useMemo, useRef, useState, type CSSProperties } from 'react'
+import { useMemo, useRef, type CSSProperties } from 'react'
 import { delBannerByColor, type Chapter } from '../chapters'
 import { swipeHandlers, type SwipeStart } from '../swipe'
 import SearchField from '../SearchField'
 import { SearchIcon } from '../Icons'
 import { norm } from '../search'
+import { useStoredQuery } from '../navState'
 import { CalcButton } from '../Calculator'
 import BugButton from '../BugButton'
 
@@ -17,7 +18,7 @@ const letterOf = (s: string) => {
 
 /** Alle fagbegrepene i et kapittel, sortert alfabetisk, med søk. Hvert begrep viser hvilket delkapittel det hører til. */
 export default function ChapterTerms({ chapter }: { chapter: Chapter }) {
-  const [q, setQ] = useState('')
+  const [q, setQ] = useStoredQuery(`terms:${chapter.key}`)
   const swipe = useRef<SwipeStart | null>(null)
   const back = `#/kap/${chapter.key}`
   const banner = delBannerByColor(chapter.color)

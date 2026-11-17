@@ -1,6 +1,7 @@
-import { useMemo, useState, type CSSProperties } from 'react'
+import { useMemo, type CSSProperties } from 'react'
 import type { Topic } from './types'
-import { chColor, delBannerByColor } from './chapters'
+import { chColor, chapterInfo, delBannerByColor } from './chapters'
+import { useStoredQuery } from './navState'
 import { norm, score, words } from './search'
 import Mark from './Mark'
 import SearchField from './SearchField'
@@ -10,7 +11,7 @@ interface Hit { topic: Topic; terms: { term: string; def: string; rank: number }
 
 /** Søk etter fagbegreper på tvers av alle delkapitlene i kapitlet. Viser hvilke delkapitler (og videoer) som tar dem opp. */
 export default function ChapterSearch({ topics, compendiumUrl }: { topics: Topic[]; compendiumUrl?: string }) {
-  const [q, setQ] = useState('')
+  const [q, setQ] = useStoredQuery(`kap:${topics[0] ? chapterInfo(topics[0]).key : ''}`)
   const ws = useMemo(() => words(q), [q])
   const n = norm(q.trim())
 

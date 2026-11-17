@@ -1115,6 +1115,6 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 /* Delkapittelbanneret bak fagbegreper og søketreff: nesten usynlig, bare en antydning nede til høyre. */
 .term.term-banner, .hit.term-banner { position: relative; overflow: hidden }
 .term-banner::before {
-  background-position: right bottom; opacity: .09;
+  background-position: right bottom; opacity: .17;
   -webkit-mask-image: linear-gradient(115deg, transparent 35%, #000 100%); mask-image: linear-gradient(115deg, transparent 35%, #000 100%);
 }

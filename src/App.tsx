@@ -5,6 +5,7 @@ import { buildChapters, chapterInfo, type Chapter, type EmptyChapter } from './c
 import Achievements from './Achievements'
 import DebugBar from './DebugBar'
 import { isDebug } from './debug'
+import { clearQueries, getOrigin, isTopicHash, setOrigin } from './navState'
 import { Loader, LoadError } from './Loader'
 import Overview from './pages/Overview'
 import ChapterPage from './pages/ChapterPage'
@@ -31,7 +32,8 @@ const pageOf = (hash: string): { key: string | null; depth: number } => {
   const [, a, b, c] = hash.replace('#', '').split('/')
   if (!a) return { key: 'home', depth: 0 }
   if (a === 'kap' && b && !c) return { key: `kap/${b}`, depth: 1 }
-  return { key: null, depth: 2 }
+  if (a === 'kap' && b && c === 'begreper') return { key: `kap/${b}/begreper`, depth: 2 }
+  return { key: null, depth: 3 }
 }
 
 interface Index {
@@ -100,8 +102,13 @@ function AppInner({ onChapters }: { onChapters: (c: Chapter[]) => void }) {
     const on = () => {
       const old = pageOf(lastHash.current)
       if (old.key) scrollMem.current[old.key] = window.scrollY
+      const prevHash = lastHash.current
       lastHash.current = location.hash
       const next = location.hash
+      // Husk hvor du kom fra når du går inn på et delkapittel, så sveip tilbake tar deg dit (for eksempel til søket).
+      // Går du mellom sider uten å innom et delkapittel, glemmes gamle søk.
+      if (isTopicHash(next) && !isTopicHash(prevHash)) setOrigin(prevHash)
+      else if (!isTopicHash(next) && !isTopicHash(prevHash)) clearQueries()
       const vt = (document as Document & { startViewTransition?: (cb: () => void) => unknown }).startViewTransition
       if (vt && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         // Sidene glir inn fra høyre når du går dypere og fra venstre når du går tilbake.
@@ -214,7 +221,7 @@ function AppInner({ onChapters }: { onChapters: (c: Chapter[]) => void }) {
   const swipeProps = swipeHandlers(
     swipe,
     view !== 'begreper' && hasTerms ? () => { location.hash = `#/${topic.id}/begreper` } : undefined,
-    () => { location.hash = view === 'begreper' ? `#/${topic.id}/feed` : chapterHref },
+    () => { location.hash = view === 'begreper' ? `#/${topic.id}/feed` : (getOrigin() ?? chapterHref) },
   )
 
   return (

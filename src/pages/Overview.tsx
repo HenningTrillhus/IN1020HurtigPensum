@@ -10,6 +10,7 @@ import { GlobalSearchBox, GlobalSearchResults } from '../GlobalSearch'
 import { PlayIcon } from '../Icons'
 import ProgressSheet from '../ProgressSheet'
 import { getLast } from '../storage'
+import { useStoredQuery } from '../navState'
 import { fetchRatings, type Rating } from '../stats'
 import ExamCountdown, { type Exam } from '../ExamCountdown'
 
@@ -35,7 +36,7 @@ function useCountUp(target: number, ms = 800) {
 export default function Overview({ chapters, courseUrl, exam }: { chapters: Chapter[]; courseUrl?: string; exam?: Exam }) {
   // Snitt på vurderingene av hvert kapittel, vist ved siden av antall videoer og podkaster.
   const [ratings, setRatings] = useState<Record<string, Rating>>({})
-  const [q, setQ] = useState('')
+  const [q, setQ] = useStoredQuery('home')
   const [progressOpen, setProgressOpen] = useState(false)
   // Siste video du så på, så du kan fortsette der du slapp.
   const last = useMemo(() => {

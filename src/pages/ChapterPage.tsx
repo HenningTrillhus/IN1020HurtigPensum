@@ -54,7 +54,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
           <span className="chev" aria-hidden>›</span>
         </a>
       )}
-      <Disclaimer compact compendiumUrl={compendiumUrl} chapterLabel={chapter.label} />
+      <Disclaimer compact compendiumUrl={compendiumUrl} chapterLabel={chapter.n !== null ? chapter.label : undefined} />
       {termCount > 0 && (
         <a className="terms-link" href={termsHref}>
           <span>Fagbegreper</span>

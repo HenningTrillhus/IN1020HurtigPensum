@@ -1,6 +1,7 @@
-import { useMemo, useState, type CSSProperties } from 'react'
+import { useMemo, type CSSProperties } from 'react'
 import type { Topic } from '../types'
 import { norm } from '../search'
+import { useStoredQuery } from '../navState'
 import { chColor, delBannerByColor } from '../chapters'
 import SearchField from '../SearchField'
 import { SearchIcon } from '../Icons'
@@ -8,7 +9,7 @@ import { SearchIcon } from '../Icons'
 /** Fagbegreper for ett delkapittel, med søk. */
 export default function Terms({ topic }: { topic: Topic }) {
   const all = topic.terms ?? []
-  const [q, setQ] = useState('')
+  const [q, setQ] = useStoredQuery(`topic:${topic.id}`)
   const banner = delBannerByColor(chColor(topic))
   const shown = useMemo(() => {
     const n = norm(q.trim())

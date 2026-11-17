@@ -2,7 +2,7 @@ import { useEffect, useState, useSyncExternalStore } from 'react'
 import { getConsent, subscribeConsent } from './consent'
 import { CloseIcon, ShareIcon } from './Icons'
 
-const KEY = 'welcome-seen'
+const KEY = 'welcome-seen-2'
 
 const seenBefore = () => {
   try { return localStorage.getItem(KEY) === '1' } catch { return false }
@@ -46,7 +46,7 @@ export default function WelcomeModal() {
   return (
     <div className="welcome" role="dialog" aria-label="Velkommen">
       <p className="welcome-text">
-        <strong>Laget av IN1020-studenter.</strong> Mer pensum legges inn, ferdig i god tid før eksamen. Del lenken videre!
+        <strong>Pensumet er komplett!</strong> Over 300 videoer dekker hele pensum. Lykke til med eksamenslesingen! Laget av IN1020-studenter, så del gjerne lenken videre.
       </p>
       <div className="welcome-actions">
         <button className="welcome-share" onClick={share}><ShareIcon /> Del lenken</button>
