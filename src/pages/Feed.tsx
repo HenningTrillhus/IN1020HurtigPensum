@@ -263,7 +263,7 @@ function Slide({ topic, root, i, pos, mode, stat, onStat, onActive, onPlayState,
           src={`${root}${topic.id}/${v.file}#t=0.1`}
           // Stillbilde bare for den aktive, de nærmeste og de som allerede har vært nær. Sparer data på lange kapitler.
           poster={mode !== 'far' || warm ? `${root}${topic.id}/${v.file.replace(/\.mp4$/i, '.jpg')}` : undefined}
-          playsInline muted={muted || podOn} controls={fullscreen} controlsList="nofullscreen" preload={preload}
+          aria-label={`${v.title}, video ${i + 1} i ${topic.title}`} playsInline muted={muted || podOn} controls={fullscreen} controlsList="nofullscreen" preload={preload}
           onTimeUpdate={e => { markIfSeen(e.currentTarget.currentTime, e.currentTarget.duration); if (scrub === null) setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
           onLoadedMetadata={e => { e.currentTarget.playbackRate = rate; setTime({ t: e.currentTarget.currentTime, d: e.currentTarget.duration || 0 }) }}
           // Trykker du play på videoen mens en podkast spiller, tar videoen over: podkasten pauses og videoen får lyd.

@@ -46,10 +46,22 @@ export function sameOrigin(req: VercelRequest): boolean {
   }
 }
 
+// Første sperre i minnet til denne serverinstansen: en IP som hamrer løs treffer ikke databasen før den har brukt opp
+// kvoten her. Sparer Redis-kall under flom. Delt grense over alle instanser ligger fortsatt i Redis under.
+const local = new Map<string, { n: number; reset: number }>()
+function overLocal(key: string, limit: number, windowSec: number) {
+  const now = Date.now()
+  if (local.size > 5000) for (const [k, v] of local) if (v.reset < now) local.delete(k)
+  let e = local.get(key)
+  if (!e || e.reset < now) { e = { n: 0, reset: now + windowSec * 1000 }; local.set(key, e) }
+  return ++e.n > limit * 2
+}
+
 // Fast vindu per IP. INCR og EXPIRE NX sendes samlet, så nøkkelen aldri blir stående uten utløp.
 export async function overIpLimit(req: VercelRequest, action: string, limit: number, windowSec: number) {
   if (!redis) return false
   const key = `rl:${action}:${clientIp(req)}`
+  if (overLocal(key, limit, windowSec)) return true
   const [n] = (await redis.pipeline().incr(key).expire(key, windowSec, 'NX').exec()) as [number, unknown]
   return n > limit
 }

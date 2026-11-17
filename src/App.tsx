@@ -146,6 +146,16 @@ function AppInner() {
       else if (a) title = `Siden finnes ikke · ${SITE}`
     }
     document.title = title
+    // Beskrivelsen følger siden, så delte lenker og søkemotorer ikke bare ser forsidens tekst.
+    let desc: string | undefined
+    if (a === 'kap') desc = chapters.find(x => x.key === b)?.title
+    else if (a !== 'admin' && a !== 'shuffle') desc = topics.find(x => x.id === a)?.description
+    const meta = document.querySelector('meta[name="description"]')
+    if (meta) {
+      if (!meta.hasAttribute('data-default')) meta.setAttribute('data-default', meta.getAttribute('content') ?? '')
+      const base = meta.getAttribute('data-default') ?? ''
+      meta.setAttribute('content', desc ? `${title.split(' · ')[0]}: ${desc}. ${base}`.slice(0, 300) : base)
+    }
     // Går du ut av en video eller et kapittel, kommer du tilbake dit du var. Ellers starter siden øverst.
     const here = pageOf(hash)
     const back = here.depth < lastDepth.current
