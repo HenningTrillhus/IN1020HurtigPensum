@@ -4,7 +4,13 @@
   "title": "8 Hele kapitlet i én video",
   "description": "Hele kapittel 8 i én lengre video, fra pipeline og kjerner til Spectre.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "8 Hele kapitlet i én video",
+      "file": "video1.mp4",
+      "summary": "Fra pipeline og kjerner til Spectre: gjetting, tråder, buffer, regneenheter, avbrudd og virtuelt minne, og hele stabelen."
+    }
+  ],
   "podcasts": [
     {
       "title": "Hvordan utålmodige prosessorer lekker passord",

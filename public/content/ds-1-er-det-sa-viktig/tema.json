@@ -5,7 +5,13 @@
   "title": "Sikkerhet 1 Datasikkerhet, er det så viktig?",
   "description": "Hvorfor sikkerhet angår alle som bruker eller bygger datasystemer.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "Sikkerhet 1.1 Datasikkerhet, er det så viktig?",
+      "file": "video1.mp4",
+      "summary": "Hva en hacker er ute etter, sikkerhetsmålene K, I, T og P, og hvorfor et system aldri er sikrere enn det svakeste leddet."
+    }
+  ],
   "terms": [
     {
       "term": "Informasjonssikkerhet",

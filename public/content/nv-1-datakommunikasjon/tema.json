@@ -5,7 +5,13 @@
   "title": "Nettverk 1 Introduksjon til datakommunikasjon",
   "description": "Pakkesvitsjing mot telefonnett, komponentene i et nettverk, klient-tjener og peer-to-peer, og nettverkstopologier.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "Nettverk 1.1 Introduksjon til datakommunikasjon",
+      "file": "video1.mp4",
+      "summary": "En beskjeds vei over nettet: telefonnett mot pakkenett, endesystemer og mellomsystemer, og klient-tjener mot peer-to-peer."
+    }
+  ],
   "terms": [
     {
       "term": "Datakommunikasjon",

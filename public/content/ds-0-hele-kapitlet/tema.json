@@ -5,7 +5,13 @@
   "title": "Sikkerhet Hele kapitlet i én video",
   "description": "Hele sikkerhetsdelen i én lengre video, fra sikkerhetsmål og angrep til kryptografi og trygge tjenester.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "Sikkerhet Hele kapitlet i én video",
+      "file": "video1.mp4",
+      "summary": "Hele sikkerhetsdelen i én video: sikkerhetsmål, angrepsvektorer, kryptografi, trygge nett og systemer, og lov og risiko."
+    }
+  ],
   "podcasts": [
     {
       "title": "Fra autentisering og kryptering til cyberangrep",

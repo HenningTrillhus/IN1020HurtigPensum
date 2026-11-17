@@ -4,5 +4,11 @@
   "title": "2.1 Introduksjon",
   "description": "Alt en datamaskin lagrer er bit. Hva er et bit, og hvordan blir tall, tekst, bilde og lyd til det?",
   "icon": "icon.png",
-  "videos": []
+  "videos": [
+    {
+      "title": "2.1 Introduksjon",
+      "file": "video1.mp4",
+      "summary": "Maskinen kan bare skille mellom to tilstander, og den ene ideen er at et bitmønster betyr det vi har blitt enige om at det betyr."
+    }
+  ]
 }
