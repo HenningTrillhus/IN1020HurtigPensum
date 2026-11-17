@@ -46,6 +46,11 @@
       "summary": "ASCII er allerede gyldig UTF-8, og du finner tegngrensen hvor som helst."
     },
     {
+      "title": "2.9.9 Ett tegn, kodet bit for bit",
+      "file": "video9.mp4",
+      "summary": "ø har kodepunkt 248, og i UTF-8 blir det 0xC3 0xB8: to byte, som et Latin-1-program leser som «Ã¸»."
+    },
+    {
       "title": "2.9.10 De andre kodingene",
       "file": "video10.mp4",
       "summary": "UTF-8, UTF-16 og UTF-32 er tre kodinger av de samme kodepunktene."

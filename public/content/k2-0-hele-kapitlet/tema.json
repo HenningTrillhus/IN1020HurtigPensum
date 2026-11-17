@@ -4,7 +4,13 @@
   "title": "2 Hele kapitlet i én video",
   "description": "Hele kapittel 2 i én lengre video, fra bit og tall til tekst, bilde og lyd.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "2 Hele kapitlet i én video",
+      "file": "video1.mp4",
+      "summary": "Fra to tilstander i en transistor til bilde og lyd: bit, tall i ulike baser, negative tall, overflyt, tekst, flyttall og hvorfor et bitmønster bare betyr det vi er enige om."
+    }
+  ],
   "podcasts": [
     {
       "title": "Hvordan datamaskinen tolker nuller og enere",

@@ -19,6 +19,21 @@
       "title": "7.5.3 Regnestykket",
       "file": "video3.mp4",
       "summary": "Tre pluss antall instruksjoner, og gevinsten nærmer seg fire."
+    },
+    {
+      "title": "7.5.4 Latens og gjennomstrømning",
+      "file": "video4.mp4",
+      "summary": "Pipelinen gjorde ingen instruksjon raskere, men flere blir ferdige per syklus: hele gevinsten ligger i gjennomstrømningen."
+    },
+    {
+      "title": "7.5.5 Alle trinn må ta like lang tid",
+      "file": "video5.mp4",
+      "summary": "Samlebåndet går i takt med det tregeste trinnet, og i en prosessor er det klokka som må rekke over det."
+    },
+    {
+      "title": "7.5.6 Hvorfor ikke hundre trinn",
+      "file": "video6.mp4",
+      "summary": "Fire trinn er bra, men førti ble ikke bedre: registre, deling av arbeidet og kasting av instruksjoner setter en grense."
     }
   ],
   "podcasts": [

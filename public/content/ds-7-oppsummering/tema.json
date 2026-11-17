@@ -1,9 +1,15 @@
 {
   "id": "ds-7-oppsummering",
   "chapter": "Datasikkerhet",
+  "chapterKey": "datasikkerhet",
   "title": "Sikkerhet 7 Oppsummering",
   "description": "Sikkerhet samlet: målene, angrepsvektorene, kryptografien og tiltakene i ett bilde.",
   "icon": "icon.png",
-  "videos": [],
-  "chapterKey": "datasikkerhet"
+  "videos": [
+    {
+      "title": "Sikkerhet 7.1 Oppsummering",
+      "file": "video1.mp4",
+      "summary": "Hele sikkerhetsdelen samlet: målene, angrepsvektorene, kryptografien, trygge nett og systemer og styring."
+    }
+  ]
 }

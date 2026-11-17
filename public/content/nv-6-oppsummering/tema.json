@@ -1,9 +1,15 @@
 {
   "id": "nv-6-oppsummering",
   "chapter": "Nettverk",
+  "chapterKey": "nettverk",
   "title": "Nettverk 6 Oppsummering",
   "description": "Nettverk samlet: lagene, adressene, operativsystemet og tjenestene i ett bilde.",
   "icon": "icon.png",
-  "videos": [],
-  "chapterKey": "nettverk"
+  "videos": [
+    {
+      "title": "Nettverk 6.1 Oppsummering",
+      "file": "video1.mp4",
+      "summary": "Hele nettverksdelen samlet: pakker og lag, adresser, operativsystemet og tjenestene i Internett."
+    }
+  ]
 }
