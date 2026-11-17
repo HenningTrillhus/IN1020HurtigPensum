@@ -10,6 +10,8 @@ export const seenIn = (topic: string, videos: number): number => getSeen(topic).
 export const isSeen = (topic: string, i: number): boolean => getSeen(topic).includes(i)
 export const markSeen = (topic: string, i: number) => {
   const s = new Set(getSeen(topic)); s.add(i); write(`seen:${topic}`, [...s])
+  // Gir beskjed til dem som følger med på fremdriften (kapittelmerkene og gratulasjonen).
+  try { window.dispatchEvent(new Event('seen-changed')) } catch { /* ignore */ }
 }
 export const getPos = (key: string): number => read(`pos:${key}`, 0)
 export const setPos = (key: string, t: number) => write(`pos:${key}`, t)

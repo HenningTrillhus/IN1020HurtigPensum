@@ -3,6 +3,8 @@ import { flushSync } from 'react-dom'
 import type { Topic } from './types'
 import { buildChapters, chapterInfo, type Chapter, type EmptyChapter } from './chapters'
 import Achievements from './Achievements'
+import DebugBar from './DebugBar'
+import { isDebug } from './debug'
 import { Loader, LoadError } from './Loader'
 import Overview from './pages/Overview'
 import ChapterPage from './pages/ChapterPage'
@@ -224,6 +226,7 @@ function AppInner({ onChapters }: { onChapters: (c: Chapter[]) => void }) {
           <a className={view === 'begreper' ? 'on' : ''} href={`#/${topic.id}/begreper`}>Fagbegreper</a>
         ) : null}
       </nav>
+      {isDebug() && <DebugBar topic={topic} chapterKey={info.key} />}
       {topic.podcasts?.length ? (
         <div className="pod-bar">
           <span className="pod-label">Podkast</span>

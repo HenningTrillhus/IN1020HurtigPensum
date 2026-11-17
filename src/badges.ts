@@ -28,3 +28,6 @@ export const allDone = (chapters: Chapter[]) => {
   const v = chapters.reduce((n, c) => n + videoCount(c), 0)
   return v > 0 && chapters.reduce((n, c) => n + seenCount(c), 0) >= v
 }
+export const removeAwarded = (key: string) => {
+  try { localStorage.setItem(KEY, JSON.stringify(getAwarded().filter(k => k !== key))) } catch { /* ignore */ }
+}

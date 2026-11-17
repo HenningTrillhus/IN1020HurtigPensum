@@ -2,7 +2,7 @@ import type { Chapter } from './chapters'
 import { seenCount, videoCount } from './chapters'
 import { badgeOf, isDone } from './badges'
 import { useState } from 'react'
-import { CheckIcon } from './Icons'
+import { CheckIcon, LockIcon } from './Icons'
 import { chapterShareText, shareAward } from './share'
 
 /** Kapittelmerket nederst på kapittelsiden: låst til alle videoene er sett, så åpent. Viser også hvor mye som er gjort. */
@@ -16,7 +16,10 @@ export default function ChapterBadge({ chapter }: { chapter: Chapter }) {
   const pct = seen >= total ? 100 : Math.min(99, Math.round((seen / total) * 100))
   return (
     <section className={`chapter-badge${done ? ' done' : ''}`} data-ch={chapter.color} aria-label="Kapittelmerke">
-      <img src={src} alt={done ? `Merket for ${chapter.label}, opplåst` : `Merket for ${chapter.label}, låst`} width={112} height={112} draggable={false} />
+      <span className="cb-art">
+        <img src={src} alt={done ? `Merket for ${chapter.label}, opplåst` : `Merket for ${chapter.label}, låst`} width={112} height={112} draggable={false} />
+        {!done && <span className="tb-lock" aria-hidden><LockIcon /></span>}
+      </span>
       <div className="cb-body">
         <span className="cb-label">Kapittelmerke</span>
         <strong className="cb-pct">{pct} % gjennomført</strong>
