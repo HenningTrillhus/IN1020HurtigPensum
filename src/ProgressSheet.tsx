@@ -2,11 +2,13 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { bannerOf, seenCount, videoCount, type Chapter } from './chapters'
 import { CloseIcon } from './Icons'
+import { shareAward, totalShareText } from './share'
 import { allDone, badgeOf, isDone, TOTAL_BADGE, totalBadge } from './badges'
 
 /** Liten side med fremdriften i hvert kapittel: prosent og antall videoer du har sett. Samme vindu som kalkulatoren. */
 export default function ProgressSheet({ chapters, onClose }: { chapters: Chapter[]; onClose: () => void }) {
   const [closing, setClosing] = useState(false)
+  const [shareNote, setShareNote] = useState('')
   const [settled, setSettled] = useState(false) // åpne-animasjonen er ferdig, så fingeren kan styre posisjonen
   const timer = useRef<number | undefined>(undefined)
   const gone = useRef(false)
@@ -117,6 +119,10 @@ export default function ProgressSheet({ chapters, onClose }: { chapters: Chapter
               <div>
                 <strong>Hele pensum</strong>
                 <span>{allDone(chapters) ? 'Du har sett alle videoene i alle kapitlene.' : `Se alle videoene i alle kapitlene for å låse opp. ${totalV - totalS} igjen.`}</span>
+                {allDone(chapters) && (
+                  <button type="button" className="cb-share" onClick={async () => { const r = await shareAward(totalShareText(), totalBadge(true)); setShareNote(r === 'copied' ? 'Kopiert! Lim det inn i en melding.' : r === 'failed' ? 'Kunne ikke dele her.' : '') }}>Del merket</button>
+                )}
+                {shareNote && <em className="share-note" role="status">{shareNote}</em>}
               </div>
             </div>
           )}

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import type { Chapter } from './chapters'
+import { chapterShareText, shareAward, totalShareText } from './share'
 import { addAwarded, allDone, badgeOf, getAwarded, isDone, TOTAL_BADGE, totalBadge } from './badges'
 
 interface Award { key: string; name: string; badge: string; color?: string; total?: boolean }
@@ -41,6 +42,7 @@ function Confetti() {
 export default function Achievements({ chapters }: { chapters: Chapter[] }) {
   const [queue, setQueue] = useState<Award[]>([])
   const ready = useRef(false)
+  const [note, setNote] = useState('')
 
   useEffect(() => {
     if (!chapters.length) return
@@ -76,11 +78,13 @@ export default function Achievements({ chapters }: { chapters: Chapter[] }) {
   }, [c])
   if (!c) return null
 
-  const close = () => setQueue(q => q.slice(1))
+  const close = () => { setNote(''); setQueue(q => q.slice(1)) }
   const name = c.name
-  const canShare = typeof navigator !== 'undefined' && typeof navigator.share === 'function'
+  const text = c.total ? totalShareText() : chapterShareText(name)
   const share = async () => {
-    try { await navigator.share({ title: 'IN1020 Hurtigpensum', text: `Jeg har gjennomført ${name} på IN1020 Hurtigpensum!`, url: 'https://www.in1020-hurtig-pensum.no/' }) } catch { /* avbrutt */ }
+    const r = await shareAward(text, c.badge)
+    if (r === 'copied') setNote('Kopiert! Lim det inn i en melding.')
+    else if (r === 'failed') setNote('Kunne ikke dele her.')
   }
 
   return createPortal(
@@ -89,11 +93,13 @@ export default function Achievements({ chapters }: { chapters: Chapter[] }) {
       <div className="award" role="dialog" aria-modal="true" aria-labelledby="award-title" data-ch={c.color} onClick={e => e.stopPropagation()}>
         <img className="award-badge" src={c.badge} alt="" width={180} height={180} draggable={false} />
         <h2 id="award-title">{c.total ? 'Gratulerer, du er i mål!' : 'Gratulerer!'}</h2>
-        <p>Du har gjennomført <strong>{name}</strong>. Merket er ditt.</p>
+        <p>{c.total ? 'Du har sett alle videoene i alle kapitlene.' : <>Du har gjennomført <strong>{name}</strong>.</>} Merket er ditt.</p>
+        <p className="award-nudge">Del det med en medstudent, så kan dere pugge sammen.</p>
         <div className="award-actions">
-          {canShare && <button type="button" className="award-share" onClick={share}>Del</button>}
-          <button type="button" className="award-ok" onClick={close} autoFocus>Fortsett</button>
+          <button type="button" className="award-share" onClick={share} autoFocus>Del med venner</button>
+          <button type="button" className="award-ok" onClick={close}>Fortsett</button>
         </div>
+        {note && <small className="award-note" role="status">{note}</small>}
       </div>
     </div>,
     document.body,

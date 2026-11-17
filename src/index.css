@@ -1085,3 +1085,10 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 .total-badge span { color: var(--mut); font-size: 14px; line-height: 1.4 }
 .total-badge.done { border-color: rgba(255, 210, 74, .55); background: color-mix(in srgb, #ffd24a 9%, var(--surface)) }
 .total-badge.done img { filter: drop-shadow(0 4px 14px rgba(255, 210, 74, .45)) }
+
+.award-nudge { margin: -8px 0 16px; font-size: 14px; color: var(--mut) }
+.award-note { display: block; margin-top: 12px; color: var(--mut) }
+.award-share { background: var(--fg); color: var(--bg); border-color: transparent }
+.award-ok { background: transparent; color: var(--fg); border: 1px solid var(--line) }
+.cb-share { align-self: flex-start; margin-top: 6px; font: inherit; font-size: 14px; font-weight: 600; min-height: 38px; padding: 0 18px; border-radius: 99px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer }
+.share-note { display: block; margin-top: 6px; font-style: normal; font-size: 13px }
