@@ -8,6 +8,7 @@ import { SpeedButton, useSpeed } from '../speed'
 import { ChapterRating } from '../Rating'
 import { chColor } from '../chapters'
 import { isSeen, markSeen, setLast } from '../storage'
+import { feedState, VIDEO_LEFT } from '../feedState'
 
 interface P {
   /** Alle temaene i kapitlet, i rekkefølge. Feeden sveiper gjennom alle videoene deres. */
@@ -410,6 +411,9 @@ export default function Feed({ topics, root, startId, startI = 0, chapter, exitH
 
   const [stats, setStats] = useState<Record<string, Stat>>({})
   const [current, setCurrent] = useState(startIdx)
+  // Gratulasjonen for et ferdig kapittel venter til du har gått videre fra den siste videoen.
+  useEffect(() => { feedState.open++; return () => { feedState.open-- } }, [])
+  useEffect(() => () => { window.dispatchEvent(new Event(VIDEO_LEFT)) }, [current])
   const [atEnd, setAtEnd] = useState(false)       // sluttsiden er i bildet
   const [picker, setPicker] = useState(false)     // valgarket for videoene i delkapittelet
   const [scrub, setScrub] = useState<{ idx: number; x: number } | null>(null) // du drar i baren øverst

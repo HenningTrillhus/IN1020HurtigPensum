@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import type { Chapter } from './chapters'
 import { chapterShareText, shareAward, totalShareText } from './share'
+import { feedState, VIDEO_LEFT } from './feedState'
 import { addAwarded, allDone, badgeOf, getAwarded, isDone, TOTAL_BADGE, totalBadge } from './badges'
 
 interface Award { key: string; name: string; badge: string; color?: string; total?: boolean }
@@ -42,6 +43,8 @@ function Confetti() {
 export default function Achievements({ chapters }: { chapters: Chapter[] }) {
   const [queue, setQueue] = useState<Award[]>([])
   const ready = useRef(false)
+  // Kapitler som er blitt ferdige, men der du fortsatt ser den siste videoen. Gratulasjonen venter til du har gått videre.
+  const pending = useRef<Award[]>([])
   const [note, setNote] = useState('')
 
   useEffect(() => {
@@ -62,11 +65,21 @@ export default function Achievements({ chapters }: { chapters: Chapter[] }) {
       }
       if (!fresh.length) return
       fresh.forEach(c => addAwarded(c.key))
-      setQueue(q => [...q, ...fresh.filter(c => !q.some(x => x.key === c.key))])
+      pending.current = [...pending.current, ...fresh.filter(c => !pending.current.some(x => x.key === c.key))]
+      // Ser du ikke på en video akkurat nå, kan den komme med en gang.
+      if (feedState.open === 0) flush()
+    }
+    const flush = () => {
+      const p = pending.current
+      if (!p.length) return
+      pending.current = []
+      setQueue(q => [...q, ...p.filter(c => !q.some(x => x.key === c.key))])
     }
     check()
     window.addEventListener('seen-changed', check)
-    return () => window.removeEventListener('seen-changed', check)
+    // Videoen du så på er byttet ut (sveip videre), eller du har gått ut av videosiden.
+    window.addEventListener(VIDEO_LEFT, flush)
+    return () => { window.removeEventListener('seen-changed', check); window.removeEventListener(VIDEO_LEFT, flush) }
   }, [chapters])
 
   const c = queue[0]
