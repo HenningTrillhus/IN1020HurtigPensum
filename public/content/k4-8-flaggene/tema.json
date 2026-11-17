@@ -4,7 +4,28 @@
   "title": "4.8 Flaggene",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "4.8.1 De fire vanlige",
+      "file": "video1.mp4",
+      "summary": "Z, N, C og V er ettbits-kvitteringer som settes etter hver regneoperasjon."
+    },
+    {
+      "title": "4.8.2 Slik bruker et betinget hopp dem",
+      "file": "video2.mp4",
+      "summary": "Å sammenligne er å trekke fra og se på flaggene, og V må være med."
+    },
+    {
+      "title": "4.8.3 Mente og overflyt er ikke det samme",
+      "file": "video3.mp4",
+      "summary": "Mente alene er ufarlig, mens overflyt betyr at svaret er galt."
+    },
+    {
+      "title": "4.8.4 Hva mente brukes til",
+      "file": "video4.mp4",
+      "summary": "Menten brukes når en 32-bits ALU legger sammen 64-bits tall, og maskinen sjekker ikke flagget selv."
+    }
+  ],
   "terms": [
     {
       "term": "Flagg",

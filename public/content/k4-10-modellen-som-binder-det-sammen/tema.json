@@ -4,7 +4,18 @@
   "title": "4.10 Modellen som binder det sammen",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "4.10.1 Von Neumann-modellen",
+      "file": "video1.mp4",
+      "summary": "Fire regler, der lagret program er viktigst, og kjøkkenet med oppskrift og råvarer i samme skap."
+    },
+    {
+      "title": "4.10.2 Flaskehalsen",
+      "file": "video2.mp4",
+      "summary": "Program og data deler veien til prosessoren, så alt må gjennom én åpning."
+    }
+  ],
   "terms": [
     {
       "term": "Von Neumann-arkitekturen",

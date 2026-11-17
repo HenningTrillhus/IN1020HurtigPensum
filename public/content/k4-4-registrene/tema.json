@@ -4,7 +4,23 @@
   "title": "4.4 Registrene",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "4.4.1 Lommer, ikke garderobe",
+      "file": "video1.mp4",
+      "summary": "Et register er en fast lagringsplass viet til én oppgave, uten adresse."
+    },
+    {
+      "title": "4.4.2 De fire du kjenner, og flere",
+      "file": "video2.mp4",
+      "summary": "Akkumulator, programteller, instruksjonsregister og adresseregister, og generelle registre i en registerfil."
+    },
+    {
+      "title": "4.4.3 Hvorfor registre finnes",
+      "file": "video3.mp4",
+      "summary": "Minnet tar tid, og med registre går telleren ned med én tur til minnet i stedet for seks."
+    }
+  ],
   "terms": [
     {
       "term": "Register",

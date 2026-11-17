@@ -4,7 +4,18 @@
   "title": "4.6 Bussene",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "4.6.1 Tre busser, tre jobber",
+      "file": "video1.mp4",
+      "summary": "Adressebuss, databuss og kontrollbuss, og bussbredde er antall ledninger."
+    },
+    {
+      "title": "4.6.2 Hvorfor brede busser likevel taper",
+      "file": "video2.mp4",
+      "summary": "Skjevhet setter et tak på parallelle busser, og løsningen er serielle busser."
+    }
+  ],
   "terms": [
     {
       "term": "Buss",

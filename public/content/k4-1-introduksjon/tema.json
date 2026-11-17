@@ -4,5 +4,11 @@
   "title": "4.1 Introduksjon",
   "description": "Åpne maskinen: hvordan prosessor og minne er bygget og hvordan de snakker sammen.",
   "icon": "icon.png",
-  "videos": []
+  "videos": [
+    {
+      "title": "4.1 Introduksjon",
+      "file": "video1.mp4",
+      "summary": "To gravelag som møtes i fjellet, og møtepunktet er ordren skrevet i bit."
+    }
+  ]
 }

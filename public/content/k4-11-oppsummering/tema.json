@@ -4,5 +4,11 @@
   "title": "4.11 Oppsummering",
   "description": "Registre, busser, ALU og kontrollenhet samlet i én modell.",
   "icon": "icon.png",
-  "videos": []
+  "videos": [
+    {
+      "title": "4.11 Oppsummering",
+      "file": "video1.mp4",
+      "summary": "Det meste er kapittel 3 med riktige navn, og den ene ideen kom igjen fire ganger."
+    }
+  ]
 }

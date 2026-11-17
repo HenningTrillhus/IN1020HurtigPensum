@@ -4,7 +4,23 @@
   "title": "4.5 Minnet sett fra prosessoren",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "4.5.1 MAR og MDR",
+      "file": "video1.mp4",
+      "summary": "MAR holder adressen og går én vei, MDR holder verdien og går begge veier."
+    },
+    {
+      "title": "4.5.2 Lese eller skrive, og når",
+      "file": "video2.mp4",
+      "summary": "Lese/skriv-linja bestemmer retningen, og aktiveringslinja bestemmer tidspunktet."
+    },
+    {
+      "title": "4.5.3 Hvorfor 32 bit stoppet på fire gigabyte",
+      "file": "video3.mp4",
+      "summary": "Bredden på MAR setter taket for minnet, og adressefeltet kan være smalere enn MAR."
+    }
+  ],
   "terms": [
     {
       "term": "MAR (minneadresseregisteret)",

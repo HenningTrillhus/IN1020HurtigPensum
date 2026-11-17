@@ -4,7 +4,33 @@
   "title": "4.9 Kontrollenheten og datastien",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "4.9.1 Fra opkode til styresignal",
+      "file": "video1.mp4",
+      "summary": "En dekoder slår på nøyaktig én linje ut fra opkoden."
+    },
+    {
+      "title": "4.9.2 Datastien",
+      "file": "video2.mp4",
+      "summary": "Datastien er veiene data kan ta, og MAR brukes to ganger per ordre."
+    },
+    {
+      "title": "4.9.3 LDA 42 steg for steg",
+      "file": "video3.mp4",
+      "summary": "Fem steg gjennom registrene, der det meste er flytting av tall."
+    },
+    {
+      "title": "4.9.4 ADD, STA og hopp",
+      "file": "video4.mp4",
+      "summary": "ADD og STA ligner LDA, og i et hopp går adressedelen til programtelleren."
+    },
+    {
+      "title": "4.9.5 Klokka",
+      "file": "video5.mp4",
+      "summary": "Klokka holder takten, og tempoet må rekke over det tregeste steget."
+    }
+  ],
   "terms": [
     {
       "term": "Kontrollenhet",

@@ -4,7 +4,13 @@
   "title": "4.2 To ord for den samme maskinen",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "4.2 To ord for den samme maskinen",
+      "file": "video1.mp4",
+      "summary": "ISA er avtalen om hva maskinen kan, mikroarkitekturen er hvordan den gjør det: rattet og motoren."
+    }
+  ],
   "terms": [
     {
       "term": "ISA (instruksjonssettarkitektur)",

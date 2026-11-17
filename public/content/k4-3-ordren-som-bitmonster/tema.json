@@ -4,7 +4,33 @@
   "title": "4.3 Ordren som bitmønster",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "4.3.1 Fra tre sifre til tolv bit",
+      "file": "video1.mp4",
+      "summary": "LDA 42 blir 0101 00101010: fire bit opkode og åtte bit adresse."
+    },
+    {
+      "title": "4.3.2 Hvor mange bit til hva?",
+      "file": "video2.mp4",
+      "summary": "Ordet har fast bredde, så hver bit du gir til opkoden, tar du fra adressen."
+    },
+    {
+      "title": "4.3.3 Å regne baklengs",
+      "file": "video3.mp4",
+      "summary": "Fra kravene til hvor bredt ordet må være, og rund opp til et helt antall byte."
+    },
+    {
+      "title": "4.3.4 Tre formater fra en ekte maskin",
+      "file": "video4.mp4",
+      "summary": "MIPS har tre formater på 32 bit, og registre er billige å peke på."
+    },
+    {
+      "title": "4.3.5 Hvorfor telleren øker med fire",
+      "file": "video5.mp4",
+      "summary": "Minnet adresseres i byte, og en ordre på 32 bit er fire byte."
+    }
+  ],
   "terms": [
     {
       "term": "Ordre som bitmønster",

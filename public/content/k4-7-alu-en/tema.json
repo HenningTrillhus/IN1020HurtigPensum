@@ -4,7 +4,23 @@
   "title": "4.7 ALU-en",
   "description": "",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "4.7.1 Tre inn, to ut",
+      "file": "video1.mp4",
+      "summary": "ALU-en har to datainnganger og ett styresignal fra opkoden, og gir resultat og flagg."
+    },
+    {
+      "title": "4.7.2 Hva ALU-en kan",
+      "file": "video2.mp4",
+      "summary": "Addisjon, subtraksjon, logikk og skift, og mye kan bygges av addisjon, men ikke alt."
+    },
+    {
+      "title": "4.7.3 Mange små, satt sammen",
+      "file": "video3.mp4",
+      "summary": "En 64-bits ALU er 64 små enheter, og addisjon blir en kjede via menten."
+    }
+  ],
   "terms": [
     {
       "term": "ALU (aritmetisk-logisk enhet)",

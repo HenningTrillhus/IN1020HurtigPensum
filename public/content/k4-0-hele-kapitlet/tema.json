@@ -4,6 +4,20 @@
   "title": "4 Hele kapitlet i én video",
   "description": "Hele kapittel 4 i én lengre video, fra registre og busser til ALU og kontrollenhet.",
   "icon": "icon.png",
-  "videos": [],
+  "videos": [
+    {
+      "title": "4 Hele kapitlet i én video",
+      "file": "video1.mp4",
+      "summary": "Fra to gravelag som møtes til en maskin der alt må gjennom én flaskehals: ordren i bit, registre, minne, busser, ALU, flagg og datasti."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Fra opkoder til Von Neumanns flaskehals",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "k4-pod6",
+      "duration": 1071
+    }
+  ],
   "noShuffle": true
 }
