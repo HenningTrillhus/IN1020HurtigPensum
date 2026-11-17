@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { bannerOf, seenCount, videoCount, type Chapter } from './chapters'
 import { CloseIcon } from './Icons'
+import { badgeOf, isDone } from './badges'
 
 /** Liten side med fremdriften i hvert kapittel: prosent og antall videoer du har sett. Samme vindu som kalkulatoren. */
 export default function ProgressSheet({ chapters, onClose }: { chapters: Chapter[]; onClose: () => void }) {
@@ -114,7 +115,7 @@ export default function ProgressSheet({ chapters, onClose }: { chapters: Chapter
             {rows.map(({ c, v, s }) => (
               <li key={c.key}>
                 <a className={`prog-row${bannerOf(c) ? ' has-banner' : ''}`} href={`#/kap/${c.key}`} data-ch={c.color} style={{ '--banner': bannerOf(c) ? `url(${bannerOf(c)})` : undefined } as CSSProperties}>
-                  {c.icon ? <img className="prog-ic" src={c.icon} alt="" width={32} height={32} draggable={false} /> : <span className="prog-ic" />}
+                  {c.icon ? <img className={`prog-ic${isDone(c) && badgeOf(c, true) ? ' badge' : ''}`} src={(isDone(c) && badgeOf(c, true)) || c.icon} alt="" width={32} height={32} draggable={false} /> : <span className="prog-ic" />}
                   <span className="prog-main">
                     <span className="prog-top">
                       <span className="prog-name">{c.title || c.label}</span>

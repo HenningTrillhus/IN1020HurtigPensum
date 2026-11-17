@@ -6,6 +6,7 @@ import { CalcButton } from '../Calculator'
 import Disclaimer from '../Disclaimer'
 import BugButton from '../BugButton'
 import { ChapterRating } from '../Rating'
+import ChapterBadge from '../ChapterBadge'
 import { swipeHandlers, type SwipeStart } from '../swipe'
 import { isSeen, seenIn } from '../storage'
 import { CheckIcon, PlayIcon } from '../Icons'
@@ -113,6 +114,7 @@ export default function ChapterPage({ chapter, compendiumUrl }: { chapter: Chapt
           })}
         </div>
       )}
+      {chapter.topics.length > 0 && <ChapterBadge chapter={chapter} />}
       {chapter.topics.length > 0 && <ChapterRating chapterKey={chapter.key} topics={chapter.topics} />}
     </div>
   )

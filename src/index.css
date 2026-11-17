@@ -1041,3 +1041,40 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 .to-top:active { transform: scale(.94) }
 @keyframes toTopIn { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
 @media (prefers-reduced-motion: reduce) { .to-top { animation: none } }
+
+/* Kapittelmerker */
+.ch-icon.badge, .prog-ic.badge { animation: badgePop .5s var(--ease) both }
+@keyframes badgePop { from { transform: scale(.7); opacity: 0 } to { transform: none; opacity: 1 } }
+.chapter-badge { display: flex; align-items: center; gap: 16px; margin: 20px 0 8px; padding: 16px; border-radius: 20px; border: 1px solid var(--line); background: var(--surface) }
+.chapter-badge img { flex: none; width: 96px; height: 96px; object-fit: contain; user-select: none }
+.chapter-badge.done { border-color: color-mix(in srgb, var(--ch, var(--acc)) 60%, var(--line)); background: color-mix(in srgb, var(--ch, var(--acc)) 10%, var(--surface)) }
+.chapter-badge.done img { filter: drop-shadow(0 4px 14px color-mix(in srgb, var(--ch, var(--acc)) 55%, transparent)) }
+.cb-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; flex: 1 }
+.cb-label { font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--mut) }
+.cb-pct { font-size: 18px }
+.cb-body small { color: var(--mut); line-height: 1.4 }
+.cb-body small svg { width: 14px; height: 14px; vertical-align: -2px; margin-right: 4px }
+
+/* Gratulasjon når et kapittel er ferdig */
+.award-backdrop { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 20px; background: rgba(0,0,0,.72); animation: awardFade .25s ease both; overflow: hidden }
+@keyframes awardFade { from { opacity: 0 } to { opacity: 1 } }
+.award { position: relative; z-index: 1; width: min(380px, 100%); text-align: center; padding: 26px 22px 20px; border-radius: 26px; background: var(--surface); border: 1px solid color-mix(in srgb, var(--ch, var(--acc)) 55%, var(--line)); box-shadow: 0 20px 60px rgba(0,0,0,.6); animation: awardIn .5s var(--ease) both }
+@keyframes awardIn { from { transform: translateY(30px) scale(.9); opacity: 0 } to { transform: none; opacity: 1 } }
+.award-badge { width: 168px; height: 168px; object-fit: contain; animation: awardBadge .8s var(--ease) .15s both; filter: drop-shadow(0 8px 24px color-mix(in srgb, var(--ch, var(--acc)) 60%, transparent)) }
+@keyframes awardBadge { 0% { transform: scale(.3) rotate(-12deg); opacity: 0 } 60% { transform: scale(1.12) rotate(3deg); opacity: 1 } 100% { transform: none } }
+.award h2 { margin: 10px 0 6px; font-size: 26px }
+.award p { margin: 0 0 18px; color: var(--txt2, var(--mut)); line-height: 1.5 }
+.award-actions { display: flex; gap: 10px; justify-content: center }
+.award-ok, .award-share { font: inherit; font-weight: 600; min-height: 46px; padding: 0 24px; border-radius: 99px; cursor: pointer; border: 1px solid var(--line) }
+.award-ok { background: var(--fg); color: var(--bg); border-color: transparent }
+.award-share { background: transparent; color: var(--fg) }
+.confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden }
+.confetti i { position: absolute; top: -20px; opacity: 0; animation-name: confettiFall; animation-timing-function: cubic-bezier(.3,.6,.4,1); animation-fill-mode: forwards }
+@keyframes confettiFall {
+  0% { transform: translate3d(0, 0, 0) rotate(var(--rot)); opacity: 1 }
+  100% { transform: translate3d(var(--drift), 110vh, 0) rotate(calc(var(--rot) + 720deg)); opacity: 1 }
+}
+@media (prefers-reduced-motion: reduce) {
+  .confetti { display: none }
+  .award, .award-badge, .award-backdrop, .ch-icon.badge, .prog-ic.badge { animation: none }
+}

@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { flushSync } from 'react-dom'
 import type { Topic } from './types'
-import { buildChapters, chapterInfo, type EmptyChapter } from './chapters'
+import { buildChapters, chapterInfo, type Chapter, type EmptyChapter } from './chapters'
+import Achievements from './Achievements'
 import { Loader, LoadError } from './Loader'
 import Overview from './pages/Overview'
 import ChapterPage from './pages/ChapterPage'
@@ -50,9 +51,11 @@ async function getJson<T>(url: string): Promise<T> {
 
 // Spilleren ligger utenfor sidene, så podkasten fortsetter å spille når du bytter side.
 export default function App() {
+  const [chapters, setChapters] = useState<Chapter[]>([])
   return (
     <PlayerProvider>
-      <AppInner />
+      <AppInner onChapters={setChapters} />
+      <Achievements chapters={chapters} />
       <MiniPlayer />
       <ConsentBanner />
       <WelcomeModal />
@@ -61,7 +64,7 @@ export default function App() {
   )
 }
 
-function AppInner() {
+function AppInner({ onChapters }: { onChapters: (c: Chapter[]) => void }) {
   const [topics, setTopics] = useState<Topic[] | null>(null)
   const [empty, setEmpty] = useState<EmptyChapter[]>([])
   const [courseUrl, setCourseUrl] = useState<string | undefined>()
@@ -126,6 +129,7 @@ function AppInner() {
   }, [attempt])
 
   const chapters = useMemo(() => (topics ? buildChapters(topics, empty) : []), [topics, empty])
+  useEffect(() => { onChapters(chapters) }, [chapters, onChapters])
 
   // Sidetittel per side, og start øverst ved sidebytte.
   useEffect(() => {
