@@ -214,4 +214,4 @@ STIL
 
 ## Etter generering
 
-Legg podkastene i `KapS/Podkast/` som `S1.m4a` til `S7.m4a` og gi meg beskjed. Jeg legger dem inn i hvert delkapittel med et ikon med både mann og dame fra Sikkerhets egne podkastikoner, siden alle er lengre enn to minutter. Jeg sjekker at lengden stemmer og at de starter raskt.
+Gi hver fil navnet fra tabellen (`S1.m4a` til `S7.m4a`), legg dem i `KapS/Podkast/` og gi meg beskjed. NotebookLM gir podkastene sine egne titler som ikke sier hvilket delkapittel de hører til, så filnavnet er det jeg plasserer etter. Jeg setter delkapitlets navn som tittel og legger dem inn i hvert delkapittel med et ikon med både mann og dame fra Sikkerhets egne podkastikoner, siden alle er lengre enn to minutter. Jeg sjekker at lengden stemmer og at de starter raskt.
