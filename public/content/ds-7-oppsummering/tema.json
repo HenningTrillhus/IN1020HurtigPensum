@@ -11,5 +11,13 @@
       "file": "video1.mp4",
       "summary": "Hele sikkerhetsdelen samlet: målene, angrepsvektorene, kryptografien, trygge nett og systemer og styring."
     }
+  ],
+  "podcasts": [
+    {
+      "title": "Sikkerhet 7 Oppsummering",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "ds-pod8",
+      "duration": 465
+    }
   ]
 }

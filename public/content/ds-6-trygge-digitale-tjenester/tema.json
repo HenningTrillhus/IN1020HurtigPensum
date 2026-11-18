@@ -22,6 +22,14 @@
       "summary": "Ett klikk på en forgiftet nedlasting ble et angrep som kostet 25 millioner kroner."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Sikkerhet 6 Å skape trygge digitale tjenester",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "ds-pod15",
+      "duration": 1226
+    }
+  ],
   "terms": [
     {
       "term": "HTTPS",
