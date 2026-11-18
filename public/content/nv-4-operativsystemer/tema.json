@@ -22,6 +22,14 @@
       "summary": "Programmer bruker systemkall for å få kjernen til å gjøre det de selv ikke har lov til."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Nettverk 4 Introduksjon til operativsystemer",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "nv-pod11",
+      "duration": 1498
+    }
+  ],
   "terms": [
     {
       "term": "Operativsystem",

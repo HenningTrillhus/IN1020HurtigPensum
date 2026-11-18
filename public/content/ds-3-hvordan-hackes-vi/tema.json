@@ -32,6 +32,14 @@
       "summary": "Sikkerhetstiltak støtter hvert sitt mål, og det svakeste leddet bestemmer styrken."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Sikkerhet 3 Hvordan hackes vi?",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "ds-pod13",
+      "duration": 615
+    }
+  ],
   "terms": [
     {
       "term": "Phishing",

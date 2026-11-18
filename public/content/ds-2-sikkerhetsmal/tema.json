@@ -1,6 +1,7 @@
 {
   "id": "ds-2-sikkerhetsmal",
   "chapter": "Datasikkerhet",
+  "chapterKey": "datasikkerhet",
   "title": "Sikkerhet 2 Å innfri sikkerhetsmål",
   "description": "Autorisert og uautorisert tilgang: entitet, identitet, autentisering, autorisering og tilgangskontroll.",
   "icon": "icon.png",
@@ -14,6 +15,14 @@
       "title": "Sikkerhet 2.2 Autorisering, tilgangskontroll og sikkerhetsmålene",
       "file": "video2.mp4",
       "summary": "Tilgangskontroll gjør at bare de som skal ha tilgang, får det, og det støtter sikkerhetsmålene."
+    }
+  ],
+  "podcasts": [
+    {
+      "title": "Sikkerhet 2 Å innfri sikkerhetsmål",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "ds-pod6",
+      "duration": 672
     }
   ],
   "terms": [
@@ -41,6 +50,5 @@
       "term": "Autorisasjon",
       "def": "Å avgjøre hva en bekreftet bruker har lov til å gjøre."
     }
-  ],
-  "chapterKey": "datasikkerhet"
+  ]
 }

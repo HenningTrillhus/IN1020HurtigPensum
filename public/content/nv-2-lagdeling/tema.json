@@ -22,6 +22,14 @@
       "summary": "Hvert lag har én jobb, og sammen får de en nettside fra A til B."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Nettverk 2 Lagdeling og protokoller",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "nv-pod10",
+      "duration": 694
+    }
+  ],
   "terms": [
     {
       "term": "Lagdeling",
