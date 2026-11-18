@@ -1132,3 +1132,7 @@ html[data-nav="same"]::view-transition-new(root) { animation-name: pageIn }
 .search-chip { flex: none; font: inherit; font-size: 13px; line-height: 1; padding: 8px 12px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); color: var(--txt2, var(--fg)); cursor: pointer; white-space: nowrap }
 .search-chip:active { background: var(--surface2) }
 @media (prefers-reduced-motion: reduce) { .search-back { animation: none } }
+
+/* Merkene står fritt: ingen ramme eller bakgrunn rundt bildet, bare selve merket. */
+.chapter-badge, .chapter-badge.done, .total-badge, .total-badge.done { border: 0; background: none; border-radius: 0; padding-left: 0; padding-right: 0 }
+.chapter-badge.done img, .total-badge.done img { filter: none }
