@@ -12,6 +12,14 @@
       "summary": "En beskjeds vei over nettet: telefonnett mot pakkenett, endesystemer og mellomsystemer, og klient-tjener mot peer-to-peer."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Nettverk 1 Introduksjon til datakommunikasjon",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "nv-pod12",
+      "duration": 1035
+    }
+  ],
   "terms": [
     {
       "term": "Datakommunikasjon",

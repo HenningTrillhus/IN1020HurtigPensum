@@ -42,6 +42,14 @@
       "summary": "Strømming tilpasser seg nettet, mens IoT-enheter ofte gjør deg sårbar."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Nettverk 5 Tjenester i Internett",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "nv-pod15",
+      "duration": 846
+    }
+  ],
   "terms": [
     {
       "term": "Klient og tjener",

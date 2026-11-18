@@ -27,6 +27,14 @@
       "summary": "Sertifikater og en CA lar oss stole på at en offentlig nøkkel hører til den den utgir seg for."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Sikkerhet 4 Kryptografi",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "ds-pod14",
+      "duration": 1038
+    }
+  ],
   "terms": [
     {
       "term": "Kryptografi",

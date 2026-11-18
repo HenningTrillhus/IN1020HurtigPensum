@@ -12,6 +12,14 @@
       "summary": "Hva en hacker er ute etter, sikkerhetsmålene K, I, T og P, og hvorfor et system aldri er sikrere enn det svakeste leddet."
     }
   ],
+  "podcasts": [
+    {
+      "title": "Sikkerhet 1 Datasikkerhet, er det så viktig?",
+      "file": "podkast-dame-mann.m4a",
+      "icon": "ds-pod7",
+      "duration": 677
+    }
+  ],
   "terms": [
     {
       "term": "Informasjonssikkerhet",
