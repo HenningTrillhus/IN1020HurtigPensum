@@ -61,6 +61,26 @@
     {
       "term": "Tømt pipeline",
       "def": "Det som er hentet inn på grunn av en feil gjetning, kastes, og samlebåndet begynner på nytt. Det er det en bom i forgreningsprediksjon koster."
+    },
+    {
+      "term": "ILP (instruksjonsnivå-parallellitet)",
+      "def": "Instruksjoner i ett og samme program som ikke venter på hverandre og derfor kan gjøres samtidig. Pipelining, superskalar og utføring ute av rekkefølge handler alle om å utnytte den."
+    },
+    {
+      "term": "IPC (instruksjoner per syklus)",
+      "def": "Hvor mange instruksjoner prosessoren fullfører i hver klokketakt. Løkken med fire uavhengige addisjoner kom opp i omtrent 4 per syklus, mot 1 for løkken med én kjede."
+    },
+    {
+      "term": "OoO (out-of-order)",
+      "def": "Engelsk forkortelse for utføring ute av rekkefølge: maskinen gjør det som er klart, ikke det som står først."
+    },
+    {
+      "term": "ROB (reorder buffer)",
+      "def": "Et ventested der utførte instruksjoner ligger til de kan fullføres i programmets rekkefølge. Det er ROB-en som gjør at utsiden ser ut som den enkle maskinen."
+    },
+    {
+      "term": "BTB (branch target buffer)",
+      "def": "En liten tabell som husker hvor hopp pleier å ende, så prosessoren vet hvor den skal hente neste instruksjon fra uten å vente på svaret."
     }
   ]
 }

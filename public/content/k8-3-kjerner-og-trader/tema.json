@@ -56,6 +56,30 @@
     {
       "term": "Speedup (hastighetsøkning)",
       "def": "Hvor mange ganger raskere noe blir. Åtte kjerner gir 4,7 ganger hvis 90 prosent kan deles, og 1,8 ganger hvis halvparten kan deles."
+    },
+    {
+      "term": "Falsk deling (false sharing)",
+      "def": "To kjerner skriver til hver sin variabel, men variablene ligger på samme cachelinje. Linjen sendes fram og tilbake mellom kjernene, og programmet blir tregt selv om ingen deler data. Løsningen er å legge variablene på hver sin linje."
+    },
+    {
+      "term": "Cache-koherens",
+      "def": "Reglene som sørger for at alle kjernene ser samme verdi, selv om hver har sin egen kopi i bufferen. Skriver én kjerne, må de andre kopiene ugyldiggjøres eller oppdateres."
+    },
+    {
+      "term": "Hyper-Threading",
+      "def": "Intels navn på SMT: to tråder deler én kjerne."
+    },
+    {
+      "term": "Kappløpstilstand (race condition)",
+      "def": "En feil som oppstår når resultatet avhenger av hvilken tråd som rekker fram først. Programmet kan gi riktig svar tusen ganger og feil svar den neste."
+    },
+    {
+      "term": "Lås (mutex)",
+      "def": "Gjør at bare én tråd om gangen kommer inn i et stykke kode eller til en variabel. Løser kappløp, men koster ventetid."
+    },
+    {
+      "term": "Vranglås (deadlock)",
+      "def": "To tråder venter på hverandre for alltid: hver holder en lås den andre trenger."
     }
   ]
 }

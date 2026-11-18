@@ -35,6 +35,22 @@
     {
       "term": "SoC (system on a chip)",
       "def": "Ikke i kompendiet, men nyttig å kunne: Alt på én brikke: prosessorkjerner, grafikk, nevral motor og minnekontroller. Slik er telefoner og moderne bærbare bygget."
+    },
+    {
+      "term": "GHz (gigahertz)",
+      "def": "En milliard klokketikk i sekundet. 4,0 GHz betyr fire milliarder takter i sekundet, og hver instruksjon bruker ett eller flere av dem."
+    },
+    {
+      "term": "L1, L2 og L3",
+      "def": "Nivåene i hurtigbufferen. L1 er minst og raskest og ligger nærmest kjernen, L3 er størst og tregest og deles mellom kjernene."
+    },
+    {
+      "term": "CPU (sentralenhet)",
+      "def": "Prosessoren som utfører programmenes instruksjoner. Noen få store kjerner som er gode på oppgaver med mange valg."
+    },
+    {
+      "term": "RAM (arbeidsminne)",
+      "def": "Hovedminnet maskinen jobber i mens programmene kjører. Mye større, men rundt hundre ganger tregere enn bufferen."
     }
   ]
 }

@@ -60,6 +60,26 @@
     {
       "term": "ASIC",
       "def": "Ikke i kompendiet, men nyttig å kunne: Krets laget for én bestemt oppgave og ikke noe annet, som en videodekoder. Rask og sparsom, men ikke fleksibel."
+    },
+    {
+      "term": "SIMD (én instruksjon, mange data)",
+      "def": "Én instruksjon som gjør samme regneoperasjon på flere tall på en gang, for eksempel fire desimaltall i ett steg. Samme idé som GPU-en, bare mindre."
+    },
+    {
+      "term": "DSP (digital signalprosessor)",
+      "def": "Spesialisert prosessor for signaler som lyd og radio. Den gjør mange multiplikasjoner og addisjoner på rad, veldig effektivt."
+    },
+    {
+      "term": "TPU (tensor processing unit)",
+      "def": "Googles brikke for kunstig intelligens, en ASIC som regner matriser. Samme familie som NPU-en."
+    },
+    {
+      "term": "TOPS (tera-operasjoner per sekund)",
+      "def": "Enheten som brukes for å oppgi hvor mye en NPU kan regne: tusen milliarder enkle operasjoner i sekundet."
+    },
+    {
+      "term": "GPGPU",
+      "def": "Å bruke en GPU til annet enn grafikk, for eksempel kunstig intelligens og vitenskapelige beregninger."
     }
   ]
 }

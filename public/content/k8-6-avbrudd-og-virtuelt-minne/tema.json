@@ -56,6 +56,38 @@
     {
       "term": "Virtuell adresse",
       "def": "Adressen et program bruker. To programmer kan begge si kasse 42 og havne i hvert sitt rom."
+    },
+    {
+      "term": "DMA (direct memory access)",
+      "def": "Maskinvare som flytter data mellom en enhet og minnet uten at prosessoren kopierer hver byte. Prosessoren setter opp overføringen og får et avbrudd når den er ferdig."
+    },
+    {
+      "term": "IRQ (interrupt request)",
+      "def": "Signalet en enhet sender for å be om oppmerksomhet. Hver enhet har et nummer, så prosessoren vet hvilken rutine som skal kjøre."
+    },
+    {
+      "term": "ISR (interrupt service routine)",
+      "def": "Engelsk forkortelse for avbruddsrutinen: koden som kjører når et avbrudd kommer."
+    },
+    {
+      "term": "MMU (memory management unit)",
+      "def": "Maskinvaren som oversetter virtuelle adresser til fysiske, ved hjelp av sidetabellen og TLB-en. Den sjekker også at programmet har lov til å bruke adressen."
+    },
+    {
+      "term": "Sidefeil (page fault)",
+      "def": "Programmet bruker en side som ikke ligger i det fysiske minnet. Operativsystemet henter den inn, og programmet fortsetter som om ingenting hadde skjedd."
+    },
+    {
+      "term": "Polling",
+      "def": "At prosessoren spør en enhet om og om igjen om den er klar. Det er det motsatte av avbrudd, og sløser tid hvis enheten sjelden er klar."
+    },
+    {
+      "term": "Unntak (exception)",
+      "def": "En hendelse som utløses av instruksjonen selv, for eksempel deling på null eller en sidefeil. Et avbrudd kommer utenfra, et unntak kommer innenfra."
+    },
+    {
+      "term": "Kontekstbytte",
+      "def": "Operativsystemet lagrer tilstanden til én tråd og laster inn en annen, så kjernen kan bytte arbeid. Samme grep som ved et avbrudd, og det koster litt tid."
     }
   ]
 }

@@ -35,6 +35,18 @@
     {
       "term": "Usynlig for programmet",
       "def": "En cache endrer aldri svaret et program gir, bare hvor lang tid det tar."
+    },
+    {
+      "term": "Cachelinje",
+      "def": "Den minste biten som flyttes mellom minnet og bufferen, typisk 64 byte. Leser du én byte, får du hele linjen, og det er derfor tilgang til naboer er billig."
+    },
+    {
+      "term": "Forhåndshenting (prefetching)",
+      "def": "Prosessoren gjetter hva programmet skal bruke og henter det inn i bufferen før det trengs. Det virker best når programmet leser i et jevnt mønster."
+    },
+    {
+      "term": "LLC (last-level cache)",
+      "def": "Det siste bufferlaget før minnet. I eksempelmaskinen er det L3, delt mellom kjernene."
     }
   ]
 }

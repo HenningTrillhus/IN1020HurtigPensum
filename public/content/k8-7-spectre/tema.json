@@ -44,6 +44,18 @@
     {
       "term": "Patch (lapp)",
       "def": "Oppdatering som tetter et sikkerhetshull. Spectre ble offentliggjort i 2018, og maskiner er for lengst lappet."
+    },
+    {
+      "term": "Meltdown",
+      "def": "Et angrep oppdaget samtidig med Spectre i 2018. Det lar vanlig kode lese minne den ikke har lov til, ved å utnytte utføring ute av rekkefølge. Rettes blant annet ved å skille programmets og kjernens minne bedre."
+    },
+    {
+      "term": "Flush+Reload",
+      "def": "En teknikk for å se hva et annet program har brukt: du tømmer en cachelinje, lar det andre programmet kjøre, og måler hvor fort du får lest linjen igjen. Går det fort, har noen hentet den."
+    },
+    {
+      "term": "CVE",
+      "def": "Et nummer i den felles listen over kjente sikkerhetshull. Spectre har flere CVE-er, siden det finnes flere varianter."
     }
   ]
 }
